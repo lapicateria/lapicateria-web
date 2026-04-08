@@ -1,53 +1,51 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import {
   COOKIE_CONSENT_EVENT,
-  type CookieConsent,
   createConsent,
   readStoredConsent,
   writeStoredConsent,
 } from "@/lib/cookies";
 
+function subscribeToConsent(onStoreChange: () => void) {
+  window.addEventListener(COOKIE_CONSENT_EVENT, onStoreChange);
+  window.addEventListener("storage", onStoreChange);
+
+  return () => {
+    window.removeEventListener(COOKIE_CONSENT_EVENT, onStoreChange);
+    window.removeEventListener("storage", onStoreChange);
+  };
+}
+
 export function CookieBanner() {
-  const [consent, setConsent] = useState<CookieConsent | null>(() =>
-    typeof window === "undefined" ? null : readStoredConsent(),
+  const consent = useSyncExternalStore(
+    subscribeToConsent,
+    readStoredConsent,
+    () => null,
   );
   const [isConfigOpen, setIsConfigOpen] = useState(false);
-  const [analyticsEnabled, setAnalyticsEnabled] = useState(
-    consent?.analytics ?? true,
-  );
+  const [analyticsEnabled, setAnalyticsEnabled] = useState(true);
 
   function acceptAll() {
-    writeStoredConsent(createConsent("accepted", true));
-    setConsent(readStoredConsent());
+    const nextConsent = createConsent("accepted", true);
+    writeStoredConsent(nextConsent);
+    setAnalyticsEnabled(true);
     setIsConfigOpen(false);
   }
 
   function rejectAll() {
-    writeStoredConsent(createConsent("rejected", false));
-    setConsent(readStoredConsent());
+    const nextConsent = createConsent("rejected", false);
+    writeStoredConsent(nextConsent);
+    setAnalyticsEnabled(false);
     setIsConfigOpen(false);
   }
 
   function saveCustomPreferences() {
-    writeStoredConsent(createConsent("customized", analyticsEnabled));
-    setConsent(readStoredConsent());
+    const nextConsent = createConsent("customized", analyticsEnabled);
+    writeStoredConsent(nextConsent);
     setIsConfigOpen(false);
   }
-
-  useEffect(() => {
-    const onUpdate = () => {
-      const nextConsent = readStoredConsent();
-      setConsent(nextConsent);
-      setAnalyticsEnabled(nextConsent?.analytics ?? true);
-    };
-
-    window.addEventListener(COOKIE_CONSENT_EVENT, onUpdate);
-    return () => {
-      window.removeEventListener(COOKIE_CONSENT_EVENT, onUpdate);
-    };
-  }, []);
 
   if (consent) {
     return null;
@@ -83,7 +81,10 @@ export function CookieBanner() {
               </button>
               <button
                 type="button"
-                onClick={() => setIsConfigOpen(true)}
+                onClick={() => {
+                  setAnalyticsEnabled(readStoredConsent()?.analytics ?? true);
+                  setIsConfigOpen(true);
+                }}
                 className="inline-flex items-center justify-center rounded-full border border-border bg-bone px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition hover:border-sand-300"
               >
                 Configurar

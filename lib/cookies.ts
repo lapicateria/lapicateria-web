@@ -69,9 +69,19 @@ function parseConsent(raw: string): CookieConsent | null {
 
 function readCookie(name: string) {
   const prefix = `${name}=`;
-  return document.cookie
+  const rawValue = document.cookie
     .split(";")
     .map((entry) => entry.trim())
     .find((entry) => entry.startsWith(prefix))
-    ?.slice(prefix.length) ?? null;
+    ?.slice(prefix.length);
+
+  if (!rawValue) {
+    return null;
+  }
+
+  try {
+    return decodeURIComponent(rawValue);
+  } catch {
+    return rawValue;
+  }
 }
