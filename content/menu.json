@@ -1,0 +1,819 @@
+{
+  "notes": {
+    "es": [
+      "Nuestra brasa es de carbon.",
+      "Paellas con elaboracion minima para 2 personas.",
+      "Tiempo estimado de paellas: 35-40 min.",
+      "Servicio en terraza +10%.",
+      "Precios IVA incluido.",
+      "Nuestro vermut es casero."
+    ],
+    "en": [
+      "Our grill uses charcoal.",
+      "Paellas require a minimum order of 2 people.",
+      "Estimated paella cooking time: 35-40 min.",
+      "Terrace service +10%.",
+      "Prices include VAT.",
+      "Our vermouth is homemade."
+    ],
+    "fr": [
+      "Notre braise est au charbon.",
+      "Paellas avec preparation minimum pour 2 personnes.",
+      "Temps estime des paellas : 35-40 min.",
+      "Service en terrasse +10%.",
+      "Prix TTC.",
+      "Notre vermouth est maison."
+    ]
+  },
+  "categories": [
+    {
+      "id": "entrantes",
+      "names": {
+        "es": "Entrantes",
+        "en": "Starters",
+        "fr": "Entrees"
+      },
+      "descriptions": {
+        "es": "Tomate, huerta y aperitivos frios para abrir la mesa con ritmo de mercado.",
+        "en": "Tomatoes, vegetables and fresh starters to begin with a market feel.",
+        "fr": "Tomates, legumes et entrees fraiches pour ouvrir la table avec un esprit de marche."
+      },
+      "items": [
+        {
+          "id": "ensalada-clasica",
+          "names": {
+            "es": "Ensalada clasica",
+            "en": "Classic salad",
+            "fr": "Salade classique"
+          },
+          "descriptions": {
+            "es": "Base de brotes verdes, tomate y pepino, maiz, zanahoria. Anade mas ingredientes: aguacate, atun, pollo.",
+            "en": "Mixed greens with tomato, cucumber, sweetcorn and carrot. Add avocado, tuna or chicken.",
+            "fr": "Base de pousses vertes, tomate, concombre, mais et carotte. Possibilite d'ajouter avocat, thon ou poulet."
+          },
+          "price": "10,50 EUR"
+        },
+        {
+          "id": "volcan-de-tomate",
+          "names": {
+            "es": "Volcan de tomate",
+            "en": "Tomato volcano",
+            "fr": "Volcan de tomate"
+          },
+          "descriptions": {
+            "es": "Jardin de tomate rosa con pesto de tomate seco y aguacate.",
+            "en": "Pink tomato salad with sun-dried tomato pesto and avocado.",
+            "fr": "Jardin de tomate rose avec pesto de tomate sechee et avocat."
+          },
+          "price": "14,50 EUR"
+        },
+        {
+          "id": "alcachofas-con-anchoas",
+          "names": {
+            "es": "Alcachofas con anchoas",
+            "en": "Artichokes with anchovies",
+            "fr": "Artichauts aux anchois"
+          },
+          "descriptions": {
+            "es": "Cuatro medias alcachofas con anchoas del Cantabrico.",
+            "en": "Four artichoke halves topped with Cantabrian anchovies.",
+            "fr": "Quatre demi-artichauts avec anchois de Cantabrie."
+          },
+          "price": "12,00 EUR"
+        },
+        {
+          "id": "tomate-con-boqueron",
+          "names": {
+            "es": "Tomate con boqueron en vinagre",
+            "en": "Tomato with marinated anchovies",
+            "fr": "Tomate et boquerons au vinaigre"
+          },
+          "descriptions": {
+            "es": "Tomates de temporada, frescos y carnosos, acompanados de boquerones en vinagre y un alino especial de la casa.",
+            "en": "Seasonal tomatoes served with marinated anchovies and the house dressing.",
+            "fr": "Tomates de saison, fraiches et charnues, accompagnees de boquerons au vinaigre et d'un assaisonnement maison."
+          },
+          "price": "14,50 EUR"
+        }
+      ]
+    },
+    {
+      "id": "del-mar",
+      "names": {
+        "es": "Del mar",
+        "en": "From the sea",
+        "fr": "De la mer"
+      },
+      "descriptions": {
+        "es": "Pescados y mariscos con protagonismo de plancha, vapor y brasa.",
+        "en": "Fish and seafood with grill, steam and charcoal taking the lead.",
+        "fr": "Poissons et fruits de mer avec un role central pour la plancha, la vapeur et la braise."
+      },
+      "items": [
+        {
+          "id": "pulpo-a-la-brasa",
+          "names": {
+            "es": "Pulpo a la brasa",
+            "en": "Chargrilled octopus",
+            "fr": "Poulpe a la braise"
+          },
+          "descriptions": {
+            "es": "Pata de pulpo a la brasa sobre parmentier y florecillas.",
+            "en": "Chargrilled octopus leg over parmentier and edible flowers.",
+            "fr": "Patte de poulpe a la braise sur parmentier et petites fleurs."
+          },
+          "price": "22,50 EUR"
+        },
+        {
+          "id": "fritura-de-pescado",
+          "names": {
+            "es": "Fritura de pescado",
+            "en": "Fried fish platter",
+            "fr": "Friture de poisson"
+          },
+          "descriptions": {
+            "es": "Bacalao, cazon, rojos, boquerones, langostinos. Puede variar en funcion de la disponibilidad del dia.",
+            "en": "Cod, marinated dogfish, red mullet, anchovies and prawns. Selection may vary with the daily catch.",
+            "fr": "Morue, chien de mer, poissons rouges, boquerons et gambas. Peut varier selon la disponibilite du jour."
+          },
+          "price": "16,50 EUR"
+        },
+        {
+          "id": "mejillones",
+          "names": {
+            "es": "Mejillones",
+            "en": "Mussels",
+            "fr": "Moules"
+          },
+          "descriptions": {
+            "es": "Sabrosos y frescos mejillones al vapor regados con nuestra salsa verde de ajo y perejil.",
+            "en": "Fresh steamed mussels served with our garlic and parsley green sauce.",
+            "fr": "Moules fraiches cuites a la vapeur avec notre sauce verte a l'ail et au persil."
+          },
+          "price": "13,00 EUR"
+        },
+        {
+          "id": "captura-del-dia",
+          "names": {
+            "es": "Captura del dia",
+            "en": "Catch of the day",
+            "fr": "Peche du jour"
+          },
+          "descriptions": {
+            "es": "Calamar plancha, lubina o dorada a la espalda.",
+            "en": "Grilled squid, sea bass or butterflied gilt-head bream.",
+            "fr": "Calamar a la plancha, loup de mer ou dorade ouverte."
+          },
+          "price": "S/M"
+        }
+      ]
+    },
+    {
+      "id": "paellas",
+      "names": {
+        "es": "Paellas",
+        "en": "Paellas",
+        "fr": "Paellas"
+      },
+      "descriptions": {
+        "es": "Elaboracion minima para 2 pax. Tiempo de cocina estimado 35-40 min.",
+        "en": "Minimum order for 2 guests. Estimated cooking time 35-40 min.",
+        "fr": "Preparation minimum pour 2 personnes. Temps estime 35-40 min."
+      },
+      "items": [
+        {
+          "id": "paella-marisco",
+          "names": {
+            "es": "De marisco",
+            "en": "Seafood paella",
+            "fr": "Paella de fruits de mer"
+          },
+          "descriptions": {
+            "es": "Precio por persona, elaboracion minima para 2 pax. Tiempo de elaboracion 35-40 min.",
+            "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
+            "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
+          },
+          "price": "16,50 EUR"
+        },
+        {
+          "id": "paella-carne",
+          "names": {
+            "es": "De carne",
+            "en": "Meat paella",
+            "fr": "Paella de viande"
+          },
+          "descriptions": {
+            "es": "Precio por persona, elaboracion minima para 2 pax. Tiempo de elaboracion 35-40 min.",
+            "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
+            "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
+          },
+          "price": "16,50 EUR"
+        },
+        {
+          "id": "arroz-negro",
+          "names": {
+            "es": "Arroz negro",
+            "en": "Black rice",
+            "fr": "Riz noir"
+          },
+          "descriptions": {
+            "es": "Precio por persona, elaboracion minima para 2 pax. Tiempo de elaboracion 35-40 min.",
+            "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
+            "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
+          },
+          "price": "16,50 EUR"
+        },
+        {
+          "id": "paella-verduras",
+          "names": {
+            "es": "De verduras",
+            "en": "Vegetable paella",
+            "fr": "Paella de legumes"
+          },
+          "descriptions": {
+            "es": "Precio por persona, elaboracion minima para 2 pax. Tiempo de elaboracion 35-40 min.",
+            "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
+            "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
+          },
+          "price": "13,50 EUR"
+        }
+      ]
+    },
+    {
+      "id": "para-compartir",
+      "names": {
+        "es": "Para compartir",
+        "en": "To share",
+        "fr": "A partager"
+      },
+      "descriptions": {
+        "es": "Los platos con mas ADN de casa, pensados para centro de mesa.",
+        "en": "The most house-led dishes, designed for the middle of the table.",
+        "fr": "Les plats les plus identitaires de la maison, pensés pour etre partages."
+      },
+      "items": [
+        {
+          "id": "jamon-asado",
+          "names": {
+            "es": "Jamon asado",
+            "en": "Roast ham",
+            "fr": "Jambon roti"
+          },
+          "descriptions": {
+            "es": "Nuestra especialidad. Jamon de cerdo asado a fuego lento y regado en su jugo con nuestro toque especial.",
+            "en": "Our house specialty. Slow-roasted pork ham served in its own juices with the house touch.",
+            "fr": "Notre specialite. Jambon de porc roti a feu doux et arrose de son jus avec la touche de la maison."
+          },
+          "price": "13,00 EUR"
+        },
+        {
+          "id": "croquetas-caseras",
+          "names": {
+            "es": "Croquetas caseras",
+            "en": "Homemade croquettes",
+            "fr": "Croquettes maison"
+          },
+          "descriptions": {
+            "es": "De jamon asado o de huevos fritos con ajos.",
+            "en": "Choose roast ham or fried eggs with garlic.",
+            "fr": "Au jambon roti ou aux oeufs frits a l'ail."
+          },
+          "price": "14,50 EUR"
+        },
+        {
+          "id": "nachos-con-guacamole",
+          "names": {
+            "es": "Nachos con guacamole",
+            "en": "Nachos with guacamole",
+            "fr": "Nachos au guacamole"
+          },
+          "descriptions": {
+            "es": "Tortillas mexicanas acompanadas de verduras y carne picada y colmadas de queso fundido y jalapenos.",
+            "en": "Corn chips topped with vegetables, minced meat, melted cheese and jalapenos.",
+            "fr": "Tortillas mexicaines avec legumes, viande hachee, fromage fondu et jalapenos."
+          },
+          "price": "16,00 EUR"
+        },
+        {
+          "id": "tablas-a-tu-gusto",
+          "names": {
+            "es": "Tablas a tu gusto",
+            "en": "Boards to your taste",
+            "fr": "Planches a votre gout"
+          },
+          "descriptions": {
+            "es": "De jamon, de quesos o de jamon y quesos.",
+            "en": "Choose ham, cheese or a mixed board.",
+            "fr": "Jambon, fromages ou mixte jambon et fromages."
+          },
+          "price": "Desde 12,00 EUR"
+        }
+      ]
+    },
+    {
+      "id": "ternera-o-vaca",
+      "names": {
+        "es": "Ternera o vaca",
+        "en": "Beef or veal",
+        "fr": "Veau ou boeuf"
+      },
+      "descriptions": {
+        "es": "Nuestra brasa es de carbon. Cortes de vaca o ternera, consulta las razas disponibles.",
+        "en": "Our grill is charcoal-fired. Beef and veal cuts, ask about current breeds available.",
+        "fr": "Notre braise est au charbon. Morceaux de boeuf ou de veau, demandez les races disponibles."
+      },
+      "items": [
+        {
+          "id": "entrecot",
+          "names": {
+            "es": "Entrecot",
+            "en": "Entrecote",
+            "fr": "Entrecote"
+          },
+          "descriptions": {
+            "es": "Corte de vaca o ternera, consultanos por las diferentes razas que tenemos.",
+            "en": "Beef or veal cut, ask us about the breeds currently available.",
+            "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
+          },
+          "price": "28,50 EUR"
+        },
+        {
+          "id": "solomillo",
+          "names": {
+            "es": "Solomillo",
+            "en": "Tenderloin",
+            "fr": "Filet"
+          },
+          "descriptions": {
+            "es": "Corte de solomillo de ternera premium al corte (aprox. 300 g).",
+            "en": "Premium beef tenderloin cut to order (approx. 300 g).",
+            "fr": "Filet de boeuf premium coupe minute (env. 300 g)."
+          },
+          "price": "29,50 EUR"
+        },
+        {
+          "id": "chuleton",
+          "names": {
+            "es": "Chuleton",
+            "en": "Bone-in rib steak",
+            "fr": "Cote de boeuf"
+          },
+          "descriptions": {
+            "es": "Corte de vaca o ternera, consultanos por las diferentes razas que tenemos.",
+            "en": "Beef or veal cut, ask us about the breeds currently available.",
+            "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
+          },
+          "price": "S/M"
+        },
+        {
+          "id": "t-bone",
+          "names": {
+            "es": "T-Bone",
+            "en": "T-Bone",
+            "fr": "T-Bone"
+          },
+          "descriptions": {
+            "es": "Corte de vaca o ternera, consultanos por las diferentes razas que tenemos.",
+            "en": "Beef or veal cut, ask us about the breeds currently available.",
+            "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
+          },
+          "price": "38,50 EUR"
+        }
+      ]
+    },
+    {
+      "id": "vegetarianos",
+      "names": {
+        "es": "Vegetarianos",
+        "en": "Vegetarian",
+        "fr": "Vegetariens"
+      },
+      "descriptions": {
+        "es": "Verdura, queso y despensa mediterranea con protagonismo de carbon y aceite.",
+        "en": "Vegetables, cheese and Mediterranean pantry ingredients with charcoal and olive oil at the center.",
+        "fr": "Legumes, fromage et produits mediterraneens avec la braise et l'huile comme fil conducteur."
+      },
+      "items": [
+        {
+          "id": "parrillada-de-verduras",
+          "names": {
+            "es": "Parrillada de verduras",
+            "en": "Grilled vegetables",
+            "fr": "Parrillade de legumes"
+          },
+          "descriptions": {
+            "es": "Seleccion de verduras frescas de nuestra huerta asadas a la brasa de carbon.",
+            "en": "Selection of fresh vegetables grilled over charcoal.",
+            "fr": "Selection de legumes frais de notre potager cuits a la braise."
+          },
+          "price": "16,00 EUR"
+        },
+        {
+          "id": "provolone-trufado",
+          "names": {
+            "es": "Provolone trufado",
+            "en": "Truffled provolone",
+            "fr": "Provolone truffe"
+          },
+          "descriptions": {
+            "es": "Queso provolone a la parrilla con pan de pueblo.",
+            "en": "Grilled provolone served with country bread.",
+            "fr": "Provolone grille avec pain de campagne."
+          },
+          "price": "15,50 EUR"
+        },
+        {
+          "id": "alcachofas-con-tomate-seco",
+          "names": {
+            "es": "Alcachofas con tomate seco",
+            "en": "Artichokes with sun-dried tomato",
+            "fr": "Artichauts a la tomate sechee"
+          },
+          "descriptions": {
+            "es": "Tiernas alcachofas salteadas con tomate seco y aceitunas negras, alinadas con un aromatico aceite.",
+            "en": "Tender artichokes sauteed with sun-dried tomato and black olives, dressed with aromatic oil.",
+            "fr": "Artichauts tendres sautes avec tomate sechee et olives noires, assaisonnes avec une huile aromatique."
+          },
+          "price": "15,50 EUR"
+        },
+        {
+          "id": "tartar-de-tomate-seco",
+          "names": {
+            "es": "Tartar de tomate seco y aceituna negra",
+            "en": "Sun-dried tomato and black olive tartare",
+            "fr": "Tartare de tomate sechee et olive noire"
+          },
+          "descriptions": {
+            "es": "Delicioso tartar de tomate seco, acompanado de aceitunas negras y nueces crujientes, realzado con nuestro aderezo especial de la casa.",
+            "en": "Sun-dried tomato tartare with black olives, crunchy walnuts and the house dressing.",
+            "fr": "Tartare de tomate sechee accompagne d'olives noires, de noix croquantes et de notre assaisonnement maison."
+          },
+          "price": "16,50 EUR"
+        }
+      ]
+    },
+    {
+      "id": "huevos-rotos",
+      "names": {
+        "es": "Huevos rotos",
+        "en": "Broken eggs",
+        "fr": "Oeufs casses"
+      },
+      "descriptions": {
+        "es": "Patata frita, huevos y toppings para compartir sin ceremonia.",
+        "en": "Fried potatoes, eggs and toppings made for easy sharing.",
+        "fr": "Pommes frites, oeufs et garnitures a partager sans ceremonie."
+      },
+      "items": [
+        {
+          "id": "huevos-rotos",
+          "names": {
+            "es": "Huevos rotos",
+            "en": "Broken eggs",
+            "fr": "Oeufs casses"
+          },
+          "descriptions": {
+            "es": "Patatas fritas con huevos bien fritos.",
+            "en": "Fried potatoes topped with properly fried eggs.",
+            "fr": "Pommes frites avec oeufs bien frits."
+          },
+          "price": "11,50 EUR"
+        },
+        {
+          "id": "con-jamon",
+          "names": {
+            "es": "Con jamon",
+            "en": "With ham",
+            "fr": "Au jambon"
+          },
+          "descriptions": {
+            "es": "Base de patatas con 2 huevos y jamon serrano.",
+            "en": "Potatoes topped with 2 eggs and Serrano ham.",
+            "fr": "Base de pommes de terre avec 2 oeufs et jambon serrano."
+          },
+          "price": "14,00 EUR"
+        },
+        {
+          "id": "con-gulas",
+          "names": {
+            "es": "Con gulas",
+            "en": "With baby eels",
+            "fr": "Aux gulas"
+          },
+          "descriptions": {
+            "es": "Base de patatas con 2 huevos y gulas del norte pero con la gracia del sur.",
+            "en": "Potatoes with 2 eggs and baby eels, northern product with southern attitude.",
+            "fr": "Base de pommes de terre avec 2 oeufs et gulas du nord, avec la grace du sud."
+          },
+          "price": "15,50 EUR"
+        },
+        {
+          "id": "con-pulpo",
+          "names": {
+            "es": "Con pulpo",
+            "en": "With octopus",
+            "fr": "Au poulpe"
+          },
+          "descriptions": {
+            "es": "Base de patatas con 2 huevos, pulpo al estilo gallego y nuestro suave alioli de ajo confitado.",
+            "en": "Potatoes with 2 eggs, Galician-style octopus and our smooth confit garlic aioli.",
+            "fr": "Pommes de terre avec 2 oeufs, poulpe a la galicienne et notre aioli doux a l'ail confit."
+          },
+          "price": "16,50 EUR"
+        }
+      ]
+    },
+    {
+      "id": "brasa",
+      "names": {
+        "es": "Brasa",
+        "en": "Grill",
+        "fr": "Braise"
+      },
+      "descriptions": {
+        "es": "Carnes ibericas con patatas fritas y pimientos de Padron.",
+        "en": "Iberian pork cuts served with fries and Padron peppers.",
+        "fr": "Pieces iberiques servies avec frites et piments de Padron."
+      },
+      "items": [
+        {
+          "id": "secreto-iberico",
+          "names": {
+            "es": "Secreto iberico",
+            "en": "Iberian secreto",
+            "fr": "Secreto iberique"
+          },
+          "descriptions": {
+            "es": "Corte de carne iberica servido con patatas fritas y pimientos de Padron.",
+            "en": "Iberian pork cut served with fries and Padron peppers.",
+            "fr": "Piece de porc iberique servie avec frites et piments de Padron."
+          },
+          "price": "16,50 EUR"
+        },
+        {
+          "id": "churrasco",
+          "names": {
+            "es": "Churrasco",
+            "en": "Churrasco",
+            "fr": "Churrasco"
+          },
+          "descriptions": {
+            "es": "Solomillo de cerdo iberico abierto servido con patatas fritas y pimientos de Padron.",
+            "en": "Butterflied Iberian pork loin served with fries and Padron peppers.",
+            "fr": "Solomillo de porc iberique ouvert servi avec frites et piments de Padron."
+          },
+          "price": "16,50 EUR"
+        },
+        {
+          "id": "abanico",
+          "names": {
+            "es": "Abanico",
+            "en": "Abanico",
+            "fr": "Abanico"
+          },
+          "descriptions": {
+            "es": "Corte de carne iberica servido con patatas fritas y pimientos de Padron.",
+            "en": "Iberian pork cut served with fries and Padron peppers.",
+            "fr": "Piece de porc iberique servie avec frites et piments de Padron."
+          },
+          "price": "18,50 EUR"
+        },
+        {
+          "id": "pluma-iberica",
+          "names": {
+            "es": "Pluma iberica",
+            "en": "Iberian pluma",
+            "fr": "Pluma iberique"
+          },
+          "descriptions": {
+            "es": "Pluma de cerdo raza 100% iberica acompanada de patatas fritas y pimientos de Padron.",
+            "en": "100% Iberian pork pluma served with fries and Padron peppers.",
+            "fr": "Pluma de porc 100% iberique accompagnee de frites et de piments de Padron."
+          },
+          "price": "19,00 EUR"
+        }
+      ]
+    },
+    {
+      "id": "extra",
+      "names": {
+        "es": "Extra",
+        "en": "Extra",
+        "fr": "Extra"
+      },
+      "descriptions": {
+        "es": "Opciones familiares, parrilladas y cortes para ampliar la mesa.",
+        "en": "Family options, mixed grills and extra cuts for larger tables.",
+        "fr": "Options familiales, grillades mixtes et supplements pour les grandes tables."
+      },
+      "items": [
+        {
+          "id": "nuggets-de-pollo",
+          "names": {
+            "es": "Nuggets de pollo",
+            "en": "Chicken nuggets",
+            "fr": "Nuggets de poulet"
+          },
+          "descriptions": {
+            "es": "Los favoritos de los peques acompanados de patatas fritas y ketchup.",
+            "en": "A children's favourite served with fries and ketchup.",
+            "fr": "Les preferes des petits, servis avec frites et ketchup."
+          },
+          "price": "12,00 EUR"
+        },
+        {
+          "id": "parrillada-iberica-mixta",
+          "names": {
+            "es": "Parrillada iberica mixta",
+            "en": "Mixed Iberian grill",
+            "fr": "Parrillade iberique mixte"
+          },
+          "descriptions": {
+            "es": "Casi 1 kg de carne iberica: secreto, pluma, abanico y solomillo de cerdo.",
+            "en": "Almost 1 kg of Iberian pork: secreto, pluma, abanico and pork loin.",
+            "fr": "Pres d'1 kg de viande iberique : secreto, pluma, abanico et filet de porc."
+          },
+          "price": "38,50 EUR"
+        },
+        {
+          "id": "contramuslo-de-pollo",
+          "names": {
+            "es": "Contramuslo de pollo",
+            "en": "Chicken thigh",
+            "fr": "Haut de cuisse de poulet"
+          },
+          "descriptions": {
+            "es": "Marinado a la brasa, acompanado de nuestras patatas recien cortadas y pimientos de Padron.",
+            "en": "Charcoal-marinated chicken thigh served with hand-cut fries and Padron peppers.",
+            "fr": "Haut de cuisse marine a la braise, servi avec nos frites fraichement coupees et des piments de Padron."
+          },
+          "price": "12,00 EUR"
+        },
+        {
+          "id": "chuletillas-de-cordero",
+          "names": {
+            "es": "Chuletillas de cordero",
+            "en": "Lamb chops",
+            "fr": "Cotelettes d'agneau"
+          },
+          "descriptions": {
+            "es": "Racion de chuletillas de cordero lechal acompanadas de patatas fritas y pimientos de Padron.",
+            "en": "Portion of milk-fed lamb chops with fries and Padron peppers.",
+            "fr": "Portion de cotelettes d'agneau de lait accompagnees de frites et de piments de Padron."
+          },
+          "price": "22,50 EUR"
+        }
+      ]
+    },
+    {
+      "id": "bebidas-vinos-tintos",
+      "names": {
+        "es": "Bebidas · Vinos tintos",
+        "en": "Drinks · Red wines",
+        "fr": "Boissons · Vins rouges"
+      },
+      "descriptions": {
+        "es": "Copas para acompanar brasas, arroces y mesa larga.",
+        "en": "Wines by the glass to pair with grill dishes and rice.",
+        "fr": "Vins au verre pour accompagner braises, riz et grandes tables."
+      },
+      "items": [
+        {
+          "id": "ribera",
+          "names": { "es": "Ribera", "en": "Ribera", "fr": "Ribera" },
+          "descriptions": { "es": "Vino tinto por copa.", "en": "Red wine by the glass.", "fr": "Vin rouge au verre." },
+          "price": "4,50 EUR"
+        },
+        {
+          "id": "rioja",
+          "names": { "es": "Rioja", "en": "Rioja", "fr": "Rioja" },
+          "descriptions": { "es": "Vino tinto por copa.", "en": "Red wine by the glass.", "fr": "Vin rouge au verre." },
+          "price": "4,00 EUR"
+        },
+        {
+          "id": "opta",
+          "names": { "es": "Opta", "en": "Opta", "fr": "Opta" },
+          "descriptions": { "es": "Vino tinto por copa.", "en": "Red wine by the glass.", "fr": "Vin rouge au verre." },
+          "price": "4,00 EUR"
+        }
+      ]
+    },
+    {
+      "id": "bebidas-vinos-blancos",
+      "names": {
+        "es": "Bebidas · Vinos blancos",
+        "en": "Drinks · White wines",
+        "fr": "Boissons · Vins blancs"
+      },
+      "descriptions": {
+        "es": "Blancos frescos para entrantes, pescado y terraza.",
+        "en": "Fresh whites for starters, fish and terrace service.",
+        "fr": "Blancs frais pour les entrees, le poisson et la terrasse."
+      },
+      "items": [
+        {
+          "id": "rueda-verdejo",
+          "names": { "es": "Rueda-Verdejo", "en": "Rueda-Verdejo", "fr": "Rueda-Verdejo" },
+          "descriptions": { "es": "Vino blanco por copa.", "en": "White wine by the glass.", "fr": "Vin blanc au verre." },
+          "price": "3,50 EUR"
+        },
+        {
+          "id": "flor-de-sabina",
+          "names": { "es": "Flor de Sabina", "en": "Flor de Sabina", "fr": "Flor de Sabina" },
+          "descriptions": { "es": "Vino blanco por copa.", "en": "White wine by the glass.", "fr": "Vin blanc au verre." },
+          "price": "3,50 EUR"
+        },
+        {
+          "id": "frizzante",
+          "names": { "es": "Frizzante", "en": "Frizzante", "fr": "Frizzante" },
+          "descriptions": { "es": "Vino blanco por copa.", "en": "White wine by the glass.", "fr": "Vin blanc au verre." },
+          "price": "4,50 EUR"
+        }
+      ]
+    },
+    {
+      "id": "bebidas-cervezas",
+      "names": {
+        "es": "Bebidas · Cervezas",
+        "en": "Drinks · Beers",
+        "fr": "Boissons · Bieres"
+      },
+      "descriptions": {
+        "es": "Selecciones clasicas de barra granadina.",
+        "en": "Classic beer options for a Granada-style table.",
+        "fr": "Selections classiques de comptoir a la grenadine."
+      },
+      "items": [
+        {
+          "id": "alhambra-especial",
+          "names": { "es": "Alhambra Especial", "en": "Alhambra Especial", "fr": "Alhambra Especial" },
+          "descriptions": { "es": "Cerveza.", "en": "Beer.", "fr": "Biere." },
+          "price": "3,00 EUR"
+        },
+        {
+          "id": "alhambra-roja",
+          "names": { "es": "Alhambra Roja", "en": "Alhambra Roja", "fr": "Alhambra Roja" },
+          "descriptions": { "es": "Cerveza.", "en": "Beer.", "fr": "Biere." },
+          "price": "4,00 EUR"
+        },
+        {
+          "id": "tercio",
+          "names": { "es": "Tercio", "en": "Bottle beer", "fr": "Tercio" },
+          "descriptions": { "es": "Cerveza.", "en": "Beer.", "fr": "Biere." },
+          "price": "3,25 EUR"
+        }
+      ]
+    },
+    {
+      "id": "bebidas-refrescos",
+      "names": {
+        "es": "Bebidas · Refrescos",
+        "en": "Drinks · Soft drinks",
+        "fr": "Boissons · Softs"
+      },
+      "descriptions": {
+        "es": "Refrescos y aguas para barra, terraza y menu familiar.",
+        "en": "Soft drinks and water for terrace service and family tables.",
+        "fr": "Softs et eaux pour la terrasse et les tables familiales."
+      },
+      "items": [
+        {
+          "id": "pepsi",
+          "names": { "es": "Pepsi", "en": "Pepsi", "fr": "Pepsi" },
+          "descriptions": { "es": "Refresco.", "en": "Soft drink.", "fr": "Boisson." },
+          "price": "2,50 EUR"
+        },
+        {
+          "id": "kas-naranja",
+          "names": { "es": "Kas Naranja", "en": "Kas Orange", "fr": "Kas Orange" },
+          "descriptions": { "es": "Refresco.", "en": "Soft drink.", "fr": "Boisson." },
+          "price": "2,50 EUR"
+        },
+        {
+          "id": "kas-limon",
+          "names": { "es": "Kas Limon", "en": "Kas Lemon", "fr": "Kas Citron" },
+          "descriptions": { "es": "Refresco.", "en": "Soft drink.", "fr": "Boisson." },
+          "price": "2,50 EUR"
+        },
+        {
+          "id": "agua",
+          "names": { "es": "Agua", "en": "Water", "fr": "Eau" },
+          "descriptions": { "es": "Agua mineral.", "en": "Mineral water.", "fr": "Eau minerale." },
+          "price": "2,50 EUR"
+        },
+        {
+          "id": "agua-gas",
+          "names": { "es": "Agua gas", "en": "Sparkling water", "fr": "Eau petillante" },
+          "descriptions": { "es": "Agua con gas.", "en": "Sparkling water.", "fr": "Eau gazeuse." },
+          "price": "2,50 EUR"
+        },
+        {
+          "id": "lipton",
+          "names": { "es": "Lipton", "en": "Lipton", "fr": "Lipton" },
+          "descriptions": { "es": "Refresco.", "en": "Soft drink.", "fr": "Boisson." },
+          "price": "2,75 EUR"
+        }
+      ]
+    }
+  ]
+}

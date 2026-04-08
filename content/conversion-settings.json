@@ -1,0 +1,118 @@
+{
+  "timezone": "Europe/Madrid",
+  "hoursToday": "13:00–16:30 · 20:00–23:30",
+  "automaticRules": {
+    "monday": [
+      { "start": "12:00", "end": "13:59", "state": "quiet" },
+      { "start": "14:00", "end": "15:59", "state": "busy" },
+      { "start": "16:00", "end": "19:59", "state": "quiet" },
+      { "start": "20:00", "end": "21:29", "state": "busy" },
+      { "start": "21:30", "end": "23:30", "state": "very_busy" }
+    ],
+    "tuesday": [
+      { "start": "12:00", "end": "13:59", "state": "quiet" },
+      { "start": "14:00", "end": "15:59", "state": "busy" },
+      { "start": "16:00", "end": "19:59", "state": "quiet" },
+      { "start": "20:00", "end": "21:29", "state": "busy" },
+      { "start": "21:30", "end": "23:30", "state": "very_busy" }
+    ],
+    "wednesday": [
+      { "start": "12:00", "end": "13:59", "state": "quiet" },
+      { "start": "14:00", "end": "15:59", "state": "busy" },
+      { "start": "16:00", "end": "19:59", "state": "quiet" },
+      { "start": "20:00", "end": "21:29", "state": "busy" },
+      { "start": "21:30", "end": "23:30", "state": "very_busy" }
+    ],
+    "thursday": [
+      { "start": "12:00", "end": "13:59", "state": "quiet" },
+      { "start": "14:00", "end": "15:59", "state": "busy" },
+      { "start": "16:00", "end": "19:59", "state": "quiet" },
+      { "start": "20:00", "end": "21:29", "state": "busy" },
+      { "start": "21:30", "end": "23:30", "state": "very_busy" }
+    ],
+    "friday": [
+      { "start": "12:00", "end": "13:59", "state": "busy" },
+      { "start": "14:00", "end": "15:59", "state": "very_busy" },
+      { "start": "16:00", "end": "19:59", "state": "quiet" },
+      { "start": "20:00", "end": "21:29", "state": "very_busy" },
+      { "start": "21:30", "end": "23:30", "state": "packed" }
+    ],
+    "saturday": [
+      { "start": "12:00", "end": "13:59", "state": "busy" },
+      { "start": "14:00", "end": "15:59", "state": "packed" },
+      { "start": "16:00", "end": "19:59", "state": "quiet" },
+      { "start": "20:00", "end": "21:29", "state": "very_busy" },
+      { "start": "21:30", "end": "23:30", "state": "packed" }
+    ],
+    "sunday": [
+      { "start": "12:00", "end": "13:59", "state": "busy" },
+      { "start": "14:00", "end": "15:59", "state": "very_busy" },
+      { "start": "16:00", "end": "18:00", "state": "quiet" }
+    ]
+  },
+  "override": {
+    "mode": "automatic",
+    "state": "quiet",
+    "terrace": "available",
+    "customMessage": "",
+    "expiresAt": null
+  },
+  "planOptions": {
+    "solo_tapas": {
+      "label": "Solo tapas",
+      "message": "Perfecto para pasar, tapear y sentarte con más flexibilidad.",
+      "primaryAction": "menu",
+      "secondaryAction": "call"
+    },
+    "a_la_carte": {
+      "label": "Comer a la carta",
+      "message": "Si vienes a comer con calma o en hora punta, mejor reservar mesa.",
+      "primaryAction": "reserve",
+      "secondaryAction": "menu"
+    },
+    "group_sharing": {
+      "label": "Compartir en grupo",
+      "message": "Si venís a compartir paellas, brasa o mesa larga, mejor venir con reserva.",
+      "primaryAction": "reserve",
+      "secondaryAction": "call"
+    }
+  },
+  "stateCopy": {
+    "quiet": {
+      "label": "Tranquilo",
+      "reservationHint": "Buen momento para venir",
+      "currentSignals": [
+        "Terraza disponible",
+        "Buen momento para venir",
+        "Servicio más tranquilo"
+      ]
+    },
+    "busy": {
+      "label": "Concurrido",
+      "reservationHint": "Recomendable reservar",
+      "currentSignals": [
+        "Cocina en marcha",
+        "Servicio con movimiento",
+        "Recomendable reservar"
+      ]
+    },
+    "very_busy": {
+      "label": "Muy concurrido",
+      "reservationHint": "Mejor reservar antes de venir",
+      "currentSignals": [
+        "Hora fuerte de servicio",
+        "Mejor venir con reserva",
+        "Terraza y sala con más movimiento"
+      ]
+    },
+    "packed": {
+      "label": "A rebosar",
+      "reservationHint": "Reserva imprescindible o llama antes",
+      "currentSignals": [
+        "Servicio al máximo ritmo",
+        "Mejor llamar o reservar antes",
+        "Mucho movimiento en sala y terraza"
+      ]
+    }
+  }
+}
