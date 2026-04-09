@@ -15,6 +15,7 @@ import {
   reviewSummaryByLocale,
 } from "@/content/brand-story";
 import menuData from "@/content/menu.json";
+import { getSeoLanding, seoLandingSlugs } from "@/content/seo-landings";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, getMenuPreview, isValidLocale } from "@/lib/i18n";
 
@@ -58,6 +59,15 @@ export default async function HomePage({ params }: PageProps) {
   const featuredReviews = featuredReviewsByLocale[locale];
   const featuredDishes = featuredDishesByLocale[locale];
   const experienceStory = experienceStoryByLocale[locale];
+  const seoIntentLinks = seoLandingSlugs
+    .map((slug) => getSeoLanding(slug))
+    .filter(Boolean)
+    .map((entry) => ({
+      slug: entry!.slug,
+      title: entry!.content[locale].title,
+      description: entry!.content[locale].description,
+      eyebrow: entry!.content[locale].eyebrow,
+    }));
   const decisionCards =
     locale === "es"
       ? [
@@ -719,6 +729,52 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {locale === "es" ? (
+        <section className="px-5 py-16 sm:px-6 lg:px-10">
+          <div className="mx-auto max-w-6xl space-y-6">
+            <div className="space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                Búsquedas locales
+              </p>
+              <h2 className="font-display text-5xl leading-tight text-ink">
+                Páginas pensadas para quien compara dónde comer en Granada
+              </h2>
+              <p className="max-w-3xl text-base leading-8 text-charcoal">
+                Si vienes desde Google buscando tapas, mercado, centro o restaurantes cerca de la Catedral, aquí tienes accesos directos a la información más útil.
+              </p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {seoIntentLinks.map((item) => (
+                <article
+                  key={item.slug}
+                  className="rounded-[1.6rem] border border-border bg-white p-5 shadow-[0_14px_28px_rgba(31,26,23,0.05)]"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sand-500">
+                    {item.eyebrow}
+                  </p>
+                  <h3 className="mt-3 font-display text-3xl leading-tight text-ink">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-charcoal">
+                    {item.description}
+                  </p>
+                  <div className="mt-4">
+                    <TrackedCtaButton
+                      href={`/${locale}/${item.slug}`}
+                      label="Abrir página"
+                      locale={locale}
+                      location="seo_page"
+                      eventName={`click_home_seo_link_${item.slug}`}
+                      variant="secondary"
+                    />
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {locale === "es" ? (
         <section className="px-5 py-16 sm:px-6 lg:px-10">

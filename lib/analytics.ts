@@ -16,7 +16,8 @@ export type TrackingLocation =
   | "social_proof"
   | "featured_dishes"
   | "experience_block"
-  | "language_switcher";
+  | "language_switcher"
+  | "seo_page";
 
 type EventParams = Record<string, string | number | boolean | undefined>;
 

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { seoLandingSlugs } from "@/content/seo-landings";
 import { locales } from "@/lib/i18n";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/aviso-legal",
     "/privacidad",
     "/cookies",
+    ...seoLandingSlugs.map((slug) => `/${slug}`),
   ];
 
   return locales.flatMap((locale) =>
