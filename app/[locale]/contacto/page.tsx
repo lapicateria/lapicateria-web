@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CtaButton } from "@/components/cta-button";
+import { TrackedPhoneLink } from "@/components/tracked-phone-link";
+import { TrackedReservationLink } from "@/components/tracked-reservation-link";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLocale } from "@/lib/i18n";
 
@@ -83,11 +85,54 @@ export default async function ContactPage({ params }: PageProps) {
               </p>
             ) : null}
           </div>
-          <CtaButton href={`/${locale}/reservas`} label={dictionary.cta.reserve} />
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <TrackedReservationLink
+              label={dictionary.cta.reserve}
+              locale={locale}
+              location="contact_page"
+              eventName={locale === "es" ? "click_reserve_contact_top" : undefined}
+            />
+            {locale === "es" ? (
+              <TrackedPhoneLink
+                phoneHref={dictionary.business.phoneHref}
+                label="Llamar"
+                locale={locale}
+                eventName="click_call_contact_top"
+                variant="secondary"
+              />
+            ) : null}
+          </div>
         </div>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
           <div className="space-y-6">
+            {locale === "es" ? (
+              <div className="rounded-[1.6rem] border border-sand-300 bg-sand-200/22 p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-600">
+                  Decidir rápido
+                </p>
+                <div className="mt-4 space-y-3 text-sm leading-7 text-charcoal">
+                  <p>Estás en el centro, dentro del mercado y a un paso de la Catedral.</p>
+                  <p>Si ya te encaja la ubicación, lo más práctico es reservar ahora o llamar.</p>
+                </div>
+                <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                  <TrackedReservationLink
+                    label="Reservar mesa"
+                    locale={locale}
+                    location="contact_page"
+                    eventName="click_reserve_contact_card"
+                  />
+                  <TrackedPhoneLink
+                    phoneHref={dictionary.business.phoneHref}
+                    label="Llamar"
+                    locale={locale}
+                    eventName="click_call_contact_card"
+                    variant="secondary"
+                  />
+                </div>
+              </div>
+            ) : null}
+
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.26em] text-sand-500">
                 {dictionary.business.addressLabel}

@@ -43,6 +43,31 @@ export default async function HomePage({ params }: PageProps) {
   }
 
   const dictionary = getDictionary(locale);
+  const decisionCards =
+    locale === "es"
+      ? [
+          {
+            eyebrow: "Dónde",
+            title: "Mercado de San Agustín",
+            text: "Junto a la Catedral y muy fácil de ubicar si estás por el centro.",
+          },
+          {
+            eyebrow: "Qué tipo de sitio",
+            title: "Brasa, tapas y carta para compartir",
+            text: "Una casa pensada para tapear, comer con calma o alargar la mesa.",
+          },
+          {
+            eyebrow: "Por qué ir",
+            title: "Terraza y producto reconocible",
+            text: "Pulpo, jamón asado, arroces y brasa de carbón con un tono muy de mercado.",
+          },
+          {
+            eyebrow: "Qué hacer ahora",
+            title: "Ver carta o reservar",
+            text: "Si vienes en hora punta o el fin de semana, mejor llegar con mesa confirmada.",
+          },
+        ]
+      : null;
   const preview = getMenuPreview(menuData, locale);
   const featureList =
     locale === "es"
@@ -154,7 +179,7 @@ export default async function HomePage({ params }: PageProps) {
             "Tapas incluidas con cada bebida",
             "Puedes venir a tapear o sentarte a comer a la carta",
             "Comida media alrededor de 20 €",
-            "Mejor reservar en horas punta",
+            "Fines de semana y horas punta: mejor reservar antes",
           ],
         }
       : locale === "en"
@@ -198,7 +223,7 @@ export default async function HomePage({ params }: PageProps) {
             eyebrow: "Mercado · brasa de carbón · Granada",
             title: "Brasa de carbón, tapas y producto real en el centro de Granada",
             subtitle:
-            "En el Mercado de San Agustín, junto a la Catedral. Un sitio para tapear, compartir paellas y sentarse a comer con calma, sin vueltas.",
+            "En el Mercado de San Agustín, junto a la Catedral. Un sitio para tapear, compartir paellas, sentarse con calma y decidir rápido si reservas o vienes directo.",
             reserve: "Reservar mesa",
             menu: "Ver carta",
           }
@@ -331,6 +356,7 @@ export default async function HomePage({ params }: PageProps) {
                         {[
                           "Tapas incluidas con cada bebida",
                           "Mercado de San Agustín · centro de Granada",
+                          "Precio medio orientativo: 20 €",
                           "Si vienes en hora punta, mejor reservar",
                         ].map((item, index) => (
                           <p
@@ -395,6 +421,25 @@ export default async function HomePage({ params }: PageProps) {
 
       <section className="px-5 py-10 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-6xl">
+          {locale === "es" && decisionCards ? (
+            <div className="mb-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {decisionCards.map((card) => (
+                <article
+                  key={card.title}
+                  className="rounded-[1.5rem] border border-border bg-white/92 p-5 shadow-[0_14px_28px_rgba(31,26,23,0.06)]"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-sand-500">
+                    {card.eyebrow}
+                  </p>
+                  <h2 className="mt-3 font-display text-3xl leading-tight text-ink">
+                    {card.title}
+                  </h2>
+                  <p className="mt-3 text-sm leading-7 text-charcoal">{card.text}</p>
+                </article>
+              ))}
+            </div>
+          ) : null}
+
           <div className="space-y-5 border-y border-border py-8">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
               {locale === "es"
@@ -455,6 +500,24 @@ export default async function HomePage({ params }: PageProps) {
               </article>
             ))}
           </div>
+          {locale === "es" ? (
+            <div className="mt-8 flex flex-col gap-3 rounded-[1.6rem] border border-border bg-white px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
+              <div className="space-y-1">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
+                  Decisión rápida
+                </p>
+                <p className="text-base leading-7 text-charcoal">
+                  Si ya te encaja la carta, reserva tu mesa y evita improvisar en hora punta.
+                </p>
+              </div>
+              <TrackedReservationLink
+                label="Reservar mesa"
+                locale={locale}
+                location="hero"
+                eventName="click_reserve_home_specialties"
+              />
+            </div>
+          ) : null}
         </div>
       </section>
 
@@ -545,6 +608,16 @@ export default async function HomePage({ params }: PageProps) {
                 </div>
               ))}
             </div>
+            {locale === "es" ? (
+              <div className="rounded-[1.5rem] border border-border bg-white px-5 py-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
+                  Reserva recomendada
+                </p>
+                <p className="mt-3 text-sm leading-7 text-charcoal">
+                  Si vienes a por arroz, terraza o mesa con calma, lo más cómodo es reservar antes desde la web.
+                </p>
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -639,6 +712,16 @@ export default async function HomePage({ params }: PageProps) {
               <CtaButton href={`/${locale}/carta`} label={dictionary.cta.menu} />
               <CtaButton href={`/${locale}/reservas`} label={dictionary.navigation.booking} variant="secondary" />
             </div>
+            {locale === "es" ? (
+              <div className="rounded-[1.5rem] border border-border bg-cream/55 px-5 py-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
+                  Carta a un paso de reservar
+                </p>
+                <p className="mt-3 text-sm leading-7 text-charcoal">
+                  La carta está pensada para decidir rápido. Si ya sabes que vienes, reserva mesa y deja resuelto el plan.
+                </p>
+              </div>
+            ) : null}
           </div>
 
           <div className="overflow-hidden rounded-[1.9rem] bg-white shadow-[0_20px_48px_rgba(31,26,23,0.11)]">
@@ -726,23 +809,6 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-border bg-white/94 px-4 py-2.5 shadow-[0_-8px_20px_rgba(31,26,23,0.08)] backdrop-blur md:hidden">
-        <div className="grid grid-cols-[1.5fr_1fr] gap-2">
-          <TrackedReservationLink
-            label={locale === "es" ? "Reservar mesa" : locale === "en" ? "Book a table" : "Reserver une table"}
-            locale={locale}
-            location="hero"
-            className="inline-flex w-full items-center justify-center rounded-full bg-sand-400 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-bone shadow-[0_12px_22px_rgba(132,81,28,0.22)] transition hover:bg-sand-500"
-          />
-          <TrackedPhoneLink
-            phoneHref={dictionary.business.phoneHref}
-            label={locale === "es" ? "Llamar" : locale === "en" ? "Call" : "Appeler"}
-            locale={locale}
-            eventName="click_call_home"
-            variant="secondary"
-          />
-        </div>
-      </div>
     </>
   );
 }

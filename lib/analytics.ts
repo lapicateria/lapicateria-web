@@ -8,9 +8,11 @@ export type TrackingLocation =
   | "header"
   | "reservas_page"
   | "carta_page"
+  | "contact_page"
   | "home_availability"
   | "plan_simulator"
-  | "phone";
+  | "phone"
+  | "sticky_bar";
 
 type EventParams = Record<string, string | number | boolean | undefined>;
 

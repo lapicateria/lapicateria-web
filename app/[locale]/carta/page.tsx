@@ -90,6 +90,11 @@ export default async function MenuPage({ params }: PageProps) {
             <p className="text-base leading-8 text-charcoal">
               {dictionary.menuPage.description}
             </p>
+            {locale === "es" ? (
+              <p className="text-sm font-medium leading-7 text-charcoal">
+                Si vienes en hora punta, con idea de arroz o a comer con calma, mejor reservar antes de venir.
+              </p>
+            ) : null}
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <TrackedReservationLink
@@ -120,6 +125,17 @@ export default async function MenuPage({ params }: PageProps) {
               </div>
             ))}
           </div>
+          {locale === "es" ? (
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+              <TrackedReservationLink
+                label="¿Te encaja? Reserva tu mesa"
+                locale={locale}
+                location="carta_page"
+                eventName="click_reserve_menu_decision"
+              />
+              <CtaButton href={`/${locale}/reservas`} label="Ver reservas" variant="secondary" />
+            </div>
+          ) : null}
         </div>
 
         <div className="mt-10 overflow-hidden rounded-[1.8rem] bg-white shadow-[0_18px_44px_rgba(95,106,100,0.1)]">
@@ -212,11 +228,43 @@ export default async function MenuPage({ params }: PageProps) {
           ))}
         </div>
 
+        {locale === "es" ? (
+          <div className="mt-12 rounded-[1.8rem] border border-border bg-white px-6 py-7 shadow-[0_14px_30px_rgba(31,26,23,0.06)]">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-2xl space-y-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
+                  Reserva recomendada
+                </p>
+                <h2 className="font-display text-4xl leading-tight text-ink">
+                  ¿Te apetece venir? Reserva tu mesa
+                </h2>
+                <p className="text-sm leading-7 text-charcoal">
+                  La carta está hecha para compartir y decidir rápido. Si ya sabes que vienes, deja la mesa cerrada antes de acercarte.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <TrackedReservationLink
+                  label="Reservar mesa"
+                  locale={locale}
+                  location="carta_page"
+                  eventName="click_reserve_menu_mid"
+                />
+                <CtaButton href={`/${locale}/contacto`} label="Cómo llegar" variant="secondary" />
+              </div>
+            </div>
+          </div>
+        ) : null}
+
         <div className="mt-14 rounded-[1.8rem] border border-border bg-cream/68 px-6 py-8 text-center sm:px-8">
           <div className="mx-auto max-w-2xl space-y-5">
             <h2 className="font-display text-4xl leading-tight text-ink">
               {locale === "es" ? "¿Te apetece probarlo?" : locale === "en" ? "Fancy trying it?" : "Envie de gouter ?"}
             </h2>
+            {locale === "es" ? (
+              <p className="text-sm leading-7 text-charcoal">
+                Si vienes en hora punta o quieres venir con calma, mejor reservar antes.
+              </p>
+            ) : null}
             <TrackedReservationLink
               label={dictionary.cta.reserve}
               locale={locale}

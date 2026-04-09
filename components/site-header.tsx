@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
 import type { Dictionary, Locale } from "@/lib/i18n";
 
@@ -43,6 +44,14 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               </Link>
             </nav>
             <LanguageSwitcher currentLocale={locale} />
+            <TrackedPhoneLink
+              phoneHref={dictionary.business.phoneHref}
+              label={locale === "es" ? "Llamar" : locale === "en" ? "Call" : "Appeler"}
+              locale={locale}
+              eventName={locale === "es" ? "click_call_header" : "click_call_global"}
+              variant="secondary"
+              className="hidden rounded-full border border-border bg-white/88 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-ink transition hover:border-sand-300 lg:inline-flex"
+            />
             <TrackedReservationLink
               label={dictionary.cta.reserve}
               locale={locale}
@@ -50,6 +59,15 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               className="hidden rounded-full bg-sand-400 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-bone shadow-[0_12px_24px_rgba(132,81,28,0.2)] transition hover:bg-sand-500 sm:inline-flex"
             />
           </div>
+        </div>
+
+        <div className="mt-3 hidden items-center justify-between border-t border-border/80 pt-3 md:flex">
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-charcoal/78">
+            {dictionary.business.address}
+          </p>
+          <p className="text-xs font-medium uppercase tracking-[0.18em] text-charcoal/78">
+            {locale === "es" ? "Reserva recomendada en horas punta" : locale === "en" ? "Booking recommended at peak times" : "Reservation conseillee aux heures de pointe"}
+          </p>
         </div>
 
         <nav className="mt-4 grid grid-cols-3 gap-2 md:hidden">

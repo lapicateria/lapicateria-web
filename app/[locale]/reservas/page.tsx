@@ -83,6 +83,11 @@ export default async function BookingPage({ params }: PageProps) {
                 ? "Si vienes en hora punta, quieres terraza o vienes a comer con calma, mejor reservar antes de venir."
                 : dictionary.bookingPage.description}
             </p>
+            {locale === "es" ? (
+              <p className="text-sm font-medium leading-7 text-charcoal">
+                Fines de semana, festivos y tramos fuertes de comida o cena: recomendamos reservar con antelación.
+              </p>
+            ) : null}
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <TrackedReservationLink
@@ -106,6 +111,19 @@ export default async function BookingPage({ params }: PageProps) {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.62fr_1.38fr]">
           <div className="space-y-8">
+            {locale === "es" ? (
+              <div className="rounded-[1.6rem] border border-sand-300 bg-sand-200/22 p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-600">
+                  Antes de reservar
+                </p>
+                <div className="mt-4 space-y-3 text-sm leading-7 text-charcoal">
+                  <p>Reservar desde aquí te deja la visita resuelta en pocos pasos.</p>
+                  <p>Si vienes con idea de terraza, arroz o mesa tranquila, mejor no dejarlo para última hora.</p>
+                  <p>Si el formulario tarda o falla, usa el botón principal o llámanos directamente.</p>
+                </div>
+              </div>
+            ) : null}
+
             {locale === "es" ? <BookingStatusCard locale={locale} /> : null}
 
             <div className="rounded-[1.6rem] border border-border bg-cream/55 p-6">
@@ -130,7 +148,7 @@ export default async function BookingPage({ params }: PageProps) {
               </p>
               {locale === "es" ? (
                 <p className="text-sm leading-7 text-charcoal">
-                  Puedes venir a tapear, reservar una comida completa o asegurar mesa antes de acercarte al mercado.
+                  Puedes venir a tapear, reservar una comida completa o asegurar la mesa antes de acercarte al mercado.
                 </p>
               ) : null}
             </div>
@@ -177,8 +195,15 @@ export default async function BookingPage({ params }: PageProps) {
           />
         </div>
 
-        <div className="mt-5 text-sm leading-7 text-charcoal">
-          {dictionary.bookingPage.embedNotice}
+        <div className="mt-5 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+          <p className="text-sm leading-7 text-charcoal">
+            {dictionary.bookingPage.embedNotice}
+          </p>
+          {locale === "es" ? (
+            <div className="rounded-[1.4rem] border border-border bg-white px-5 py-4 text-sm leading-7 text-charcoal">
+              Reservar desde la web es la forma más directa de venir con la mesa resuelta.
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
