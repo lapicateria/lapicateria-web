@@ -1,8 +1,7 @@
-import type { Locale } from "@/lib/i18n";
+import { business, type Locale } from "@/lib/i18n";
 
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-export const QAMARERO_BOOKING_URL =
-  "https://booking.qamarero.com/new-reservation/la-picateria";
+export const QAMARERO_BOOKING_URL = business.bookingUrl;
 
 export type TrackingLocation =
   | "hero"

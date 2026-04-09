@@ -42,7 +42,7 @@ export default async function MenuPage({ params }: PageProps) {
           points: [
             "Carta pensada para compartir",
             "Brasa de carbón, tapas, paellas y platos para poner al centro",
-            "Si vienes con idea de paella o de mesa larga, mejor reservar",
+            "Si vienes con idea de paella, brasa o mesa larga, mejor reservar",
           ],
         }
       : locale === "en"
@@ -134,7 +134,7 @@ export default async function MenuPage({ params }: PageProps) {
             </div>
             <div className="flex items-center bg-cream/60 p-6 sm:p-8">
               <p className="max-w-md text-base leading-8 text-charcoal">
-                Carta clara, precios visibles y una selección pensada para decidir rápido qué pedir.
+                Carta clara, precios visibles y una selección pensada para pedir con criterio desde el móvil y reservar sin fricción.
               </p>
             </div>
           </div>

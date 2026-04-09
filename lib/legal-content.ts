@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/i18n";
+import { business, type Locale } from "@/lib/i18n";
 
 export type LegalSection = {
   title: string;
@@ -30,8 +30,8 @@ const comingSoonByLocale: Record<Exclude<Locale, "es">, LegalDocument> = {
         title: "Contact",
         paragraphs: [
           "La Picatería S.L.",
-          "Mercado de San Agustín, Plaza de San Agustín s/n, 18001 Granada",
-          "online@lapicateria.es · +34 628 736 029",
+          business.address,
+          `${business.email} · ${business.phone}`,
         ],
       },
     ],
@@ -46,8 +46,8 @@ const comingSoonByLocale: Record<Exclude<Locale, "es">, LegalDocument> = {
         title: "Contact",
         paragraphs: [
           "La Picatería S.L.",
-          "Mercado de San Agustín, Plaza de San Agustín s/n, 18001 Granada",
-          "online@lapicateria.es · +34 628 736 029",
+          business.address,
+          `${business.email} · ${business.phone}`,
         ],
       },
     ],
@@ -65,8 +65,8 @@ export const legalContent: LegalContent = {
         {
           title: "Titularidad del sitio web",
           paragraphs: [
-            "En cumplimiento de la normativa vigente, se informa de que este sitio web es titularidad de La Picatería S.L., con CIF B19614072 y domicilio en Mercado de San Agustín, Plaza de San Agustín s/n, 18001 Granada.",
-            "Puedes contactar con nosotros en el teléfono +34 628 736 029 o en el correo electrónico online@lapicateria.es.",
+            `En cumplimiento de la normativa vigente, se informa de que este sitio web es titularidad de ${business.legalName}, con CIF ${business.taxId} y domicilio en ${business.address}.`,
+            `Puedes contactar con nosotros en el teléfono ${business.phone} o en el correo electrónico ${business.email}.`,
           ],
         },
         {
@@ -123,9 +123,9 @@ export const legalContent: LegalContent = {
           paragraphs: [
             "La Picatería S.L.",
             "CIF: B19614072",
-            "Domicilio: Mercado de San Agustín, Plaza de San Agustín s/n, 18001 Granada",
-            "Email: online@lapicateria.es",
-            "Teléfono: +34 628 736 029",
+            `Domicilio: ${business.address}`,
+            `Email: ${business.email}`,
+            `Teléfono: ${business.phone}`,
           ],
         },
         {
@@ -174,7 +174,7 @@ export const legalContent: LegalContent = {
           title: "Derechos de las personas usuarias",
           paragraphs: [
             "Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, así como retirar tu consentimiento cuando el tratamiento se base en él.",
-            "Para ello, puedes escribir a online@lapicateria.es indicando el derecho que deseas ejercer. Si fuera necesario, podremos solicitar un documento acreditativo de identidad.",
+            `Para ello, puedes escribir a ${business.email} indicando el derecho que deseas ejercer. Si fuera necesario, podremos solicitar un documento acreditativo de identidad.`,
             "También puedes presentar una reclamación ante la Agencia Española de Protección de Datos si consideras que el tratamiento no se ajusta a la normativa vigente.",
           ],
         },

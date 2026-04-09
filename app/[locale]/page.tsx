@@ -194,14 +194,14 @@ export default async function HomePage({ params }: PageProps) {
 
   const heroCopy =
     locale === "es"
-      ? {
-          eyebrow: "Mercado · brasa de carbón · Granada",
-          title: "Brasa de carbón, tapas y producto real en el centro de Granada",
-          subtitle:
-            "En el Mercado de San Agustín, junto a la Catedral. Un sitio para tapear, compartir paellas y sentarse a comer con calma.",
-          reserve: "Reservar mesa",
-          menu: "Ver carta",
-        }
+        ? {
+            eyebrow: "Mercado · brasa de carbón · Granada",
+            title: "Brasa de carbón, tapas y producto real en el centro de Granada",
+            subtitle:
+            "En el Mercado de San Agustín, junto a la Catedral. Un sitio para tapear, compartir paellas y sentarse a comer con calma, sin vueltas.",
+            reserve: "Reservar mesa",
+            menu: "Ver carta",
+          }
       : locale === "en"
         ? {
             eyebrow: "MARKET · CHARCOAL GRILL · GRANADA",
@@ -222,12 +222,12 @@ export default async function HomePage({ params }: PageProps) {
 
   const terraceCopy =
     locale === "es"
-      ? {
-          title: "Comer en el centro, dentro del mercado",
+        ? {
+            title: "Comer en el centro, dentro del mercado",
           text:
-            "Terraza, mercado y centro histórico: La Picatería está en el corazón de Granada, a pocos pasos de la Catedral.",
-          cta: "Ver contacto",
-        }
+            "Terraza, mercado y centro histórico: La Picatería está en el corazón de Granada, a pocos pasos de la Catedral y muy fácil de ubicar.",
+            cta: "Ver contacto",
+          }
       : locale === "en"
         ? {
             title: "A location that makes sense the moment you see it",

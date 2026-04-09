@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import { OwnerLoginForm } from "@/components/owner-login-form";
+
+export const metadata: Metadata = {
+  title: "Owner login",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function OwnerLoginPage({
   searchParams,

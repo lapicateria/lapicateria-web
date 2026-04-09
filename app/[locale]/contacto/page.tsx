@@ -40,7 +40,7 @@ export default async function ContactPage({ params }: PageProps) {
             "Tapas incluidas con cada bebida",
             "Puedes venir solo de tapas o comer a la carta",
             "Comida media alrededor de 20 €",
-            "Mejor reservar en horas punta",
+            "Mejor reservar si vienes en hora punta o con idea de terraza",
           ],
         }
       : locale === "en"
@@ -79,7 +79,7 @@ export default async function ContactPage({ params }: PageProps) {
             </p>
             {locale === "es" ? (
               <p className="text-sm font-medium text-charcoal">
-                A 1 minuto andando de la Catedral.
+                A 1 minuto andando de la Catedral y dentro del Mercado de San Agustín.
               </p>
             ) : null}
           </div>

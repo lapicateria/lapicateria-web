@@ -57,6 +57,8 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
         </div>
 
         <div className="grid gap-3 text-sm text-charcoal">
+          <p className="leading-7">{dictionary.business.address}</p>
+          <p className="leading-7">{dictionary.business.serviceHoursSummary}</p>
           <Link href={`/${locale}/reservas`} className="transition hover:text-sand-500">
             {dictionary.cta.reserve}
           </Link>

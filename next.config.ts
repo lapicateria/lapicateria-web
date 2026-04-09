@@ -9,6 +9,60 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/carta",
+        destination: "/es/carta",
+        permanent: true,
+      },
+      {
+        source: "/reservas",
+        destination: "/es/reservas",
+        permanent: true,
+      },
+      {
+        source: "/contacto",
+        destination: "/es/contacto",
+        permanent: true,
+      },
+      {
+        source: "/aviso-legal",
+        destination: "/es/aviso-legal",
+        permanent: true,
+      },
+      {
+        source: "/privacidad",
+        destination: "/es/privacidad",
+        permanent: true,
+      },
+      {
+        source: "/cookies",
+        destination: "/es/cookies",
+        permanent: true,
+      },
+      {
+        source: "/horario",
+        destination: "/es/contacto",
+        permanent: true,
+      },
+      {
+        source: "/quienes-somos",
+        destination: "/es",
+        permanent: true,
+      },
+      {
+        source: "/13-nuestra-carta-restaurante",
+        destination: "/es/carta",
+        permanent: true,
+      },
+      {
+        source: "/content/:path*",
+        destination: "/es",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

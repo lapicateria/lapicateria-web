@@ -5,7 +5,7 @@ export const locales = ["es", "en", "fr"] as const;
 export type Locale = (typeof locales)[number];
 export type Dictionary = (typeof dictionaries)["es"];
 
-const business = {
+export const business = {
   name: "La Picatería",
   legalName: "La Picatería S.L.",
   taxId: "B19614072",
@@ -22,6 +22,13 @@ const business = {
   instagramUrl: "https://www.instagram.com/lapicateria.granada/",
   facebookUrl: "https://www.facebook.com/lapicateria.granada",
   tiktokUrl: "https://www.tiktok.com/@lapicateriadegranada",
+  neighborhood: "Mercado de San Agustín",
+  city: "Granada",
+  postalCode: "18001",
+  country: "ES",
+  bookingProvider: "Qamarero",
+  bookingProviderLabel: "Reserva oficial en Qamarero",
+  serviceHoursSummary: "Lunes a sábado 13:00-16:30 y 20:00-23:30 · Domingo 13:00-18:00",
 } as const;
 
 const dictionaries = {
@@ -46,7 +53,7 @@ const dictionaries = {
       kicker: "Mercado · brasa de carbón · Granada",
       title: "Brasa de carbón y cocina de mercado en La Picatería",
       subtitle:
-        "Tapas, paellas, brasa y producto de mercado dentro del Mercado de San Agustín, junto a la Catedral.",
+        "Tapas, paellas, brasa y producto de mercado en el Mercado de San Agustín, junto a la Catedral de Granada.",
       card: {
         eyebrow: "Cocina real",
         title: "Carta honesta, brasa de carbón y mesa para compartir",
@@ -119,7 +126,7 @@ const dictionaries = {
         eyebrow: "Reservas",
         title: "Reserva oficial y directa",
         description:
-          "Reserva desde la web con el canal oficial y, si el formulario falla, usa el botón principal o llámanos."
+          "Reserva desde la web con el canal oficial y, si el formulario falla o tarda en cargar, usa el botón principal o llámanos."
       }
     },
     location: {
@@ -143,15 +150,15 @@ const dictionaries = {
       eyebrow: "Reservas oficiales",
       title: "Reserva tu mesa",
       description:
-        "Reserva online desde el canal oficial de Qamarero. Si no carga el formulario, usa el botón principal o llámanos.",
+        "Reserva online desde el canal oficial de Qamarero. Si el formulario tarda o no carga, usa el botón principal o llámanos.",
       primaryCtaLabel: "Reserva oficial",
       primaryCtaCopy:
         "Usa el botón principal para confirmar tu mesa. En horas punta, mejor reservar antes de venir.",
       fallbackTitle: "Si el formulario falla",
       fallbackCopy:
-        "Si el formulario embebido no responde, completa la reserva desde el enlace oficial o contacta por teléfono o email.",
+        "Si el formulario embebido no responde, completa la reserva desde el enlace oficial o contacta por teléfono o email para confirmar tu mesa.",
       embedNotice:
-        "El formulario oficial de Qamarero se muestra aquí siempre que el proveedor lo permita. Si falla, utiliza el botón principal."
+        "El formulario oficial de Qamarero se muestra aquí siempre que el proveedor lo permita. Si tarda demasiado o falla, utiliza la reserva oficial o llámanos."
     },
     contactPage: {
       eyebrow: "Contacto",
@@ -163,14 +170,14 @@ const dictionaries = {
     },
     footer: {
       copy:
-        "La Picatería. Barra, brasa de carbón, producto de mercado y reservas directas en el centro de Granada."
+        "La Picatería. Barra, brasa de carbón, producto de mercado y reservas directas en pleno centro de Granada."
     },
     menuNotesTitle: "Notas de carta",
     meta: {
       home: {
         title: "La Picatería · brasa de carbón y cocina de mercado en Granada",
         description:
-          "La Picatería, dentro del Mercado de San Agustín junto a la Catedral, reúne brasa, paellas, tapas, terraza y reservas directas."
+          "La Picatería, en el Mercado de San Agustín junto a la Catedral, reúne brasa, paellas, tapas, terraza y reservas directas."
       },
       menu: {
         title: "Carta real de La Picatería",

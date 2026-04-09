@@ -1,11 +1,11 @@
 {
   "notes": {
     "es": [
-      "Nuestra brasa es de carbon.",
-      "Paellas con elaboracion minima para 2 personas.",
+      "Nuestra brasa es de carbón.",
+      "Paellas con elaboración mínima para 2 personas.",
       "Tiempo estimado de paellas: 35-40 min.",
       "Servicio en terraza +10%.",
-      "Precios IVA incluido.",
+      "Precios con IVA incluido.",
       "Nuestro vermut es casero."
     ],
     "en": [
@@ -34,7 +34,7 @@
         "fr": "Entrees"
       },
       "descriptions": {
-        "es": "Tomate, huerta y aperitivos frios para abrir la mesa con ritmo de mercado.",
+        "es": "Tomate, huerta y aperitivos fríos para abrir la mesa con ritmo de mercado.",
         "en": "Tomatoes, vegetables and fresh starters to begin with a market feel.",
         "fr": "Tomates, legumes et entrees fraiches pour ouvrir la table avec un esprit de marche."
       },
@@ -42,12 +42,12 @@
         {
           "id": "ensalada-clasica",
           "names": {
-            "es": "Ensalada clasica",
+            "es": "Ensalada clásica",
             "en": "Classic salad",
             "fr": "Salade classique"
           },
           "descriptions": {
-            "es": "Base de brotes verdes, tomate y pepino, maiz, zanahoria. Anade mas ingredientes: aguacate, atun, pollo.",
+            "es": "Base de brotes verdes, tomate, pepino, maíz y zanahoria. Añade más ingredientes: aguacate, atún o pollo.",
             "en": "Mixed greens with tomato, cucumber, sweetcorn and carrot. Add avocado, tuna or chicken.",
             "fr": "Base de pousses vertes, tomate, concombre, mais et carotte. Possibilite d'ajouter avocat, thon ou poulet."
           },
@@ -56,7 +56,7 @@
         {
           "id": "volcan-de-tomate",
           "names": {
-            "es": "Volcan de tomate",
+            "es": "Volcán de tomate",
             "en": "Tomato volcano",
             "fr": "Volcan de tomate"
           },
@@ -84,12 +84,12 @@
         {
           "id": "tomate-con-boqueron",
           "names": {
-            "es": "Tomate con boqueron en vinagre",
+            "es": "Tomate con boquerón en vinagre",
             "en": "Tomato with marinated anchovies",
             "fr": "Tomate et boquerons au vinaigre"
           },
           "descriptions": {
-            "es": "Tomates de temporada, frescos y carnosos, acompanados de boquerones en vinagre y un alino especial de la casa.",
+            "es": "Tomates de temporada, frescos y carnosos, acompañados de boquerones en vinagre y un aliño especial de la casa.",
             "en": "Seasonal tomatoes served with marinated anchovies and the house dressing.",
             "fr": "Tomates de saison, fraiches et charnues, accompagnees de boquerons au vinaigre et d'un assaisonnement maison."
           },

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { CookieBanner } from "@/components/cookie-banner";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { business } from "@/lib/i18n";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,11 +17,28 @@ export const metadata: Metadata = {
   },
   description:
     "Brasa de carbón, tapas y producto real en el centro de Granada, dentro del Mercado de San Agustín junto a la Catedral.",
+  alternates: {
+    canonical: "https://lapicateria.es/es",
+    languages: {
+      "x-default": "https://lapicateria.es/es",
+      es: "https://lapicateria.es/es",
+      en: "https://lapicateria.es/en",
+      fr: "https://lapicateria.es/fr",
+    },
+  },
+  keywords: [
+    business.name,
+    `restaurante en ${business.city}`,
+    "restaurante Mercado de San Agustín",
+    "brasa de carbón Granada",
+    "tapas Granada centro",
+    "reservar restaurante Granada centro",
+  ],
   openGraph: {
     title: "La Picatería",
     description:
       "Tapas, brasa de carbón y producto real en una ubicación única del centro de Granada.",
-    url: "https://lapicateria.es",
+    url: "https://lapicateria.es/es",
     siteName: "La Picatería",
     type: "website",
     locale: "es_ES",
@@ -44,6 +62,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  category: "restaurant",
 };
 
 export default function RootLayout({

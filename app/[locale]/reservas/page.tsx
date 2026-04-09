@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { BookingEmbedPanel } from "@/components/booking-embed-panel";
 import { BookingStatusCard } from "@/components/booking-status-card";
 import { CtaButton } from "@/components/cta-button";
 import { TrackedPhoneLink } from "@/components/tracked-phone-link";
@@ -79,7 +80,7 @@ export default async function BookingPage({ params }: PageProps) {
             </h1>
             <p className="text-base leading-8 text-charcoal">
               {locale === "es"
-                ? "Si vienes en hora punta o quieres sentarte con calma, mejor reservar antes de venir."
+                ? "Si vienes en hora punta, quieres terraza o vienes a comer con calma, mejor reservar antes de venir."
                 : dictionary.bookingPage.description}
             </p>
           </div>
@@ -129,7 +130,7 @@ export default async function BookingPage({ params }: PageProps) {
               </p>
               {locale === "es" ? (
                 <p className="text-sm leading-7 text-charcoal">
-                  Puedes venir tanto a tapear como a comer a la carta.
+                  Puedes venir a tapear, reservar una comida completa o asegurar mesa antes de acercarte al mercado.
                 </p>
               ) : null}
             </div>
@@ -169,15 +170,11 @@ export default async function BookingPage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="overflow-hidden rounded-[1.8rem] bg-white shadow-[0_24px_58px_rgba(31,26,23,0.1)]">
-            <iframe
-              title="Reserva oficial Qamarero La Picatería"
-              src={dictionary.business.bookingUrl}
-              className="min-h-[820px] w-full bg-white"
-              loading="lazy"
-              referrerPolicy="strict-origin-when-cross-origin"
-            />
-          </div>
+          <BookingEmbedPanel
+            locale={locale}
+            bookingUrl={dictionary.business.bookingUrl}
+            phoneHref={dictionary.business.phoneHref}
+          />
         </div>
 
         <div className="mt-5 text-sm leading-7 text-charcoal">

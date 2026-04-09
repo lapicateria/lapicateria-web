@@ -1,6 +1,14 @@
+import type { Metadata } from "next";
 import { OwnerConversionDashboard } from "@/components/owner-conversion-dashboard";
 
 export const dynamic = "force-dynamic";
+export const metadata: Metadata = {
+  title: "Owner dashboard",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function OwnerConversionPage() {
   return (

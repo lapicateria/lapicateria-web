@@ -24,9 +24,12 @@ export function buildMetadata(
     description,
     alternates: {
       canonical,
-      languages: Object.fromEntries(
-        locales.map((entry) => [entry, `https://lapicateria.es/${entry}${path.replace(/^\/(es|en|fr)/, "")}`]),
-      ),
+      languages: {
+        "x-default": `https://lapicateria.es/es${path.replace(/^\/(es|en|fr)/, "")}`,
+        ...Object.fromEntries(
+          locales.map((entry) => [entry, `https://lapicateria.es/${entry}${path.replace(/^\/(es|en|fr)/, "")}`]),
+        ),
+      },
     },
     openGraph: {
       title,
@@ -54,6 +57,8 @@ export function buildMetadata(
       "social:instagram": socialProfiles[0],
       "social:facebook": socialProfiles[1],
       "social:tiktok": socialProfiles[2],
+      "geo.region": "ES-GR",
+      "geo.placename": "Granada",
     },
   };
 }
