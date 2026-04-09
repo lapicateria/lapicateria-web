@@ -2,6 +2,7 @@ import {
   getResolvedBusinessHours,
   readConversionConfig,
   type BusinessDayHours,
+  type BusinessHoursSlot,
   type DayKey,
 } from "@/lib/conversion";
 import type { Locale } from "@/lib/i18n";
@@ -36,8 +37,23 @@ const dayLabelsByLocale: Record<Locale, Record<DayKey, string>> = {
   },
 };
 
+const dayOrder: DayKey[] = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
+];
+
 function formatSlot(open: string, close: string) {
   return `${open}–${close}`;
+}
+
+function parseTimeToMinutes(time: string) {
+  const [hours, minutes] = time.split(":").map(Number);
+  return (hours * 60) + minutes;
 }
 
 function formatDay(day: BusinessDayHours, locale: Locale) {
@@ -52,9 +68,216 @@ function formatDay(day: BusinessDayHours, locale: Locale) {
   return slots.join(" · ");
 }
 
+function getLocalParts(date: Date, timeZone: string) {
+  const formatter = new Intl.DateTimeFormat("en-GB", {
+    timeZone,
+    weekday: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
+  const parts = formatter.formatToParts(date);
+  const weekday = parts.find((part) => part.type === "weekday")?.value.toLowerCase() as DayKey;
+  const hour = Number(parts.find((part) => part.type === "hour")?.value ?? "0");
+  const minute = Number(parts.find((part) => part.type === "minute")?.value ?? "0");
+
+  return {
+    dayKey: weekday,
+    minutes: (hour * 60) + minute,
+  };
+}
+
+function getSlots(day: BusinessDayHours | undefined) {
+  if (!day?.isOpen) {
+    return [];
+  }
+
+  return [day.primary, day.secondary].filter((slot): slot is BusinessHoursSlot => Boolean(slot));
+}
+
+function getNextOpening(
+  hours: Record<DayKey, BusinessDayHours>,
+  currentDayKey: DayKey,
+  currentMinutes: number,
+) {
+  const currentDayIndex = dayOrder.indexOf(currentDayKey);
+
+  for (let offset = 0; offset < dayOrder.length; offset += 1) {
+    const dayKey = dayOrder[(currentDayIndex + offset) % dayOrder.length];
+    const slots = getSlots(hours[dayKey]);
+    if (slots.length === 0) {
+      continue;
+    }
+
+    const slot = offset === 0
+      ? slots.find((entry) => parseTimeToMinutes(entry.open) > currentMinutes)
+      : slots[0];
+
+    if (slot) {
+      return { dayKey, slot, offset };
+    }
+  }
+
+  return null;
+}
+
+function getLiveStatus(
+  locale: Locale,
+  hours: Record<DayKey, BusinessDayHours>,
+  currentDayKey: DayKey,
+  currentMinutes: number,
+) {
+  const currentDay = hours[currentDayKey];
+  const currentSlots = getSlots(currentDay);
+  const labels = dayLabelsByLocale[locale];
+  const specialMessage = currentDay?.specialMessage?.trim() ?? "";
+
+  for (const slot of currentSlots) {
+    const openMinutes = parseTimeToMinutes(slot.open);
+    const closeMinutes = parseTimeToMinutes(slot.close);
+
+    if (currentMinutes >= openMinutes && currentMinutes < closeMinutes) {
+      return {
+        status:
+          locale === "es"
+            ? `Abierto ahora · hasta las ${slot.close}`
+            : locale === "en"
+              ? `Open now · until ${slot.close}`
+              : `Ouvert maintenant · jusqu'à ${slot.close}`,
+        message:
+          locale === "es"
+            ? specialMessage
+              ? `Abierto ahora hasta las ${slot.close}. ${specialMessage}`
+              : `Abierto ahora hasta las ${slot.close}.`
+            : locale === "en"
+              ? specialMessage
+                ? `Open now until ${slot.close}. ${specialMessage}`
+                : `Open now until ${slot.close}.`
+              : specialMessage
+                ? `Ouvert maintenant jusqu'à ${slot.close}. ${specialMessage}`
+                : `Ouvert maintenant jusqu'à ${slot.close}.`,
+      };
+    }
+  }
+
+  const nextOpening = getNextOpening(hours, currentDayKey, currentMinutes);
+
+  if (nextOpening && nextOpening.offset === 0) {
+    return {
+      status:
+        locale === "es"
+          ? `Cerrado ahora · abre hoy a las ${nextOpening.slot.open}`
+          : locale === "en"
+            ? `Closed now · opens today at ${nextOpening.slot.open}`
+            : `Fermé maintenant · ouvre aujourd'hui à ${nextOpening.slot.open}`,
+      message:
+        locale === "es"
+          ? specialMessage
+            ? `Cerrado ahora. Abre hoy a las ${nextOpening.slot.open}. ${specialMessage}`
+            : `Cerrado ahora. Abre hoy a las ${nextOpening.slot.open}.`
+          : locale === "en"
+            ? specialMessage
+              ? `Closed now. Opens today at ${nextOpening.slot.open}. ${specialMessage}`
+              : `Closed now. Opens today at ${nextOpening.slot.open}.`
+            : specialMessage
+              ? `Fermé maintenant. Ouvre aujourd'hui à ${nextOpening.slot.open}. ${specialMessage}`
+              : `Fermé maintenant. Ouvre aujourd'hui à ${nextOpening.slot.open}.`,
+    };
+  }
+
+  if (!currentDay?.isOpen || currentSlots.length === 0) {
+    if (nextOpening) {
+      const nextDayLabel =
+        nextOpening.offset === 1
+          ? locale === "es"
+            ? "mañana"
+            : locale === "en"
+              ? "tomorrow"
+              : "demain"
+          : labels[nextOpening.dayKey];
+
+      return {
+        status:
+          locale === "es"
+            ? `Cerrado hoy · abre ${nextDayLabel} a las ${nextOpening.slot.open}`
+            : locale === "en"
+              ? `Closed today · opens ${nextDayLabel} at ${nextOpening.slot.open}`
+              : `Fermé aujourd'hui · ouvre ${nextDayLabel} à ${nextOpening.slot.open}`,
+        message:
+          locale === "es"
+            ? specialMessage
+              ? `Cerrado hoy. Abre ${nextDayLabel} a las ${nextOpening.slot.open}. ${specialMessage}`
+              : `Cerrado hoy. Abre ${nextDayLabel} a las ${nextOpening.slot.open}.`
+            : locale === "en"
+              ? specialMessage
+                ? `Closed today. Opens ${nextDayLabel} at ${nextOpening.slot.open}. ${specialMessage}`
+                : `Closed today. Opens ${nextDayLabel} at ${nextOpening.slot.open}.`
+              : specialMessage
+                ? `Fermé aujourd'hui. Ouvre ${nextDayLabel} à ${nextOpening.slot.open}. ${specialMessage}`
+                : `Fermé aujourd'hui. Ouvre ${nextDayLabel} à ${nextOpening.slot.open}.`,
+      };
+    }
+
+    return {
+      status: locale === "es" ? "Cerrado hoy" : locale === "en" ? "Closed today" : "Fermé aujourd'hui",
+      message:
+        locale === "es"
+          ? specialMessage || "Cerrado hoy."
+          : locale === "en"
+            ? specialMessage || "Closed today."
+            : specialMessage || "Fermé aujourd'hui.",
+    };
+  }
+
+  if (nextOpening) {
+    const nextDayLabel =
+      nextOpening.offset === 1
+        ? locale === "es"
+          ? "mañana"
+          : locale === "en"
+            ? "tomorrow"
+            : "demain"
+        : labels[nextOpening.dayKey];
+
+    return {
+      status:
+        locale === "es"
+          ? `Cerrado ahora · abre ${nextDayLabel} a las ${nextOpening.slot.open}`
+          : locale === "en"
+            ? `Closed now · opens ${nextDayLabel} at ${nextOpening.slot.open}`
+            : `Fermé maintenant · ouvre ${nextDayLabel} à ${nextOpening.slot.open}`,
+      message:
+        locale === "es"
+          ? specialMessage
+            ? `Cerrado ahora. Abre ${nextDayLabel} a las ${nextOpening.slot.open}. ${specialMessage}`
+            : `Cerrado ahora. Abre ${nextDayLabel} a las ${nextOpening.slot.open}.`
+          : locale === "en"
+            ? specialMessage
+              ? `Closed now. Opens ${nextDayLabel} at ${nextOpening.slot.open}. ${specialMessage}`
+              : `Closed now. Opens ${nextDayLabel} at ${nextOpening.slot.open}.`
+            : specialMessage
+              ? `Fermé maintenant. Ouvre ${nextDayLabel} à ${nextOpening.slot.open}. ${specialMessage}`
+              : `Fermé maintenant. Ouvre ${nextDayLabel} à ${nextOpening.slot.open}.`,
+    };
+  }
+
+  return {
+    status: locale === "es" ? "Cerrado ahora" : locale === "en" ? "Closed now" : "Fermé maintenant",
+    message:
+      locale === "es"
+        ? specialMessage || "Cerrado ahora."
+        : locale === "en"
+          ? specialMessage || "Closed now."
+          : specialMessage || "Fermé maintenant.",
+  };
+}
+
 export async function getBusinessHoursPresentation(locale: Locale) {
   const config = await readConversionConfig();
   const { resolved } = await getResolvedBusinessHours();
+  const localParts = getLocalParts(new Date(), config.timezone);
+  const liveStatus = getLiveStatus(locale, config.businessHours, localParts.dayKey, localParts.minutes);
 
   const labels = dayLabelsByLocale[locale];
   const weekly = (Object.keys(labels) as DayKey[]).map((dayKey) => ({
@@ -64,27 +287,11 @@ export async function getBusinessHoursPresentation(locale: Locale) {
     specialMessage: config.businessHours[dayKey]?.specialMessage?.trim() || "",
   }));
 
-  const todayLabelPrefix =
-    locale === "es"
-      ? resolved.isOpenToday
-        ? "Abierto hoy"
-        : "Cerrado hoy"
-      : locale === "en"
-        ? resolved.isOpenToday
-          ? "Open today"
-          : "Closed today"
-        : resolved.isOpenToday
-          ? "Ouvert aujourd'hui"
-          : "Fermé aujourd'hui";
-
   return {
     weekly,
     summary: resolved.summary,
-    todayStatus:
-      resolved.isOpenToday && !resolved.currentMessage.toLowerCase().includes("cerrado")
-        ? `${todayLabelPrefix}: ${resolved.currentMessage.replace(/^Hoy\s*/i, "")}`
-        : todayLabelPrefix,
-    todayMessage: resolved.currentMessage,
+    todayStatus: liveStatus.status,
+    todayMessage: liveStatus.message,
     openingHoursSpecification: resolved.openingHoursSpecification,
     source: config.businessHoursSource,
   };
