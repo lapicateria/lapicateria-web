@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CtaButton } from "@/components/cta-button";
@@ -178,13 +179,32 @@ export default async function ContactPage({ params }: PageProps) {
           </div>
 
           <div className="overflow-hidden rounded-[1.8rem] bg-white shadow-[0_24px_58px_rgba(31,26,23,0.1)]">
-            <iframe
-              title="Mapa de La Picatería"
-              src={dictionary.contactPage.mapEmbedUrl}
-              className="min-h-[520px] w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <div className="grid gap-0 lg:grid-rows-[0.72fr_1.28fr]">
+              <div className="relative min-h-[240px]">
+                <Image
+                  src="/images/real/terraza.jpg"
+                  alt="Terraza de La Picatería en el centro de Granada"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  className="object-cover"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,rgba(16,16,14,0)_0%,rgba(16,16,14,0.7)_100%)] px-5 py-5 text-white">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/72">
+                    Ubicación y ambiente
+                  </p>
+                  <p className="mt-2 max-w-lg text-sm leading-7 text-white/92">
+                    Mercado, terraza y centro histórico. Si ya te encaja la zona, reserva antes de venir.
+                  </p>
+                </div>
+              </div>
+              <iframe
+                title="Mapa de La Picatería"
+                src={dictionary.contactPage.mapEmbedUrl}
+                className="min-h-[360px] w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
         </div>
       </div>

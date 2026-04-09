@@ -11,9 +11,13 @@ import menuData from "@/content/menu.json";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, getMenuPreview, isValidLocale } from "@/lib/i18n";
 
-const heroImage = "/images/real/barra-producto.jpg";
+const heroImage = "/images/real/paella_entrecot.jpg";
 const terraceImage = "/images/real/terraza.jpg";
-const brandImage = "/images/real/barra-madera.jpg";
+const brandImage = "/images/real/jamon_asado.jpg";
+const chuletonImage = "/images/real/chuleton.jpg";
+const paellaImage = "/images/real/paella.jpg";
+const pinchosImage = "/images/real/pinchos_picateria.jpg";
+const atmosphereImage = "/images/real/barra-producto.jpg";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -72,10 +76,10 @@ export default async function HomePage({ params }: PageProps) {
   const featureList =
     locale === "es"
       ? [
-          "Tapas incluidas con cada bebida",
-          "Brasa de carbón real",
-          "Paellas y platos para compartir",
-          "Terraza en pleno centro",
+          "Tapas con cada bebida",
+          "Brasa de carbón",
+          "Mercado de San Agustín (centro)",
+          "Para compartir y comer con calma",
         ]
       : locale === "en"
         ? [
@@ -272,31 +276,72 @@ export default async function HomePage({ params }: PageProps) {
           {
             title: "Pulpo a la brasa",
             description: "Marcado al fuego y pensado para compartir.",
-            image: heroImage,
-            alt: "Producto real y cocina de La Picatería",
-            position: "object-[45%_40%]",
+            image: pinchosImage,
+            alt: "Pinchos y producto real de La Picatería",
+            position: "object-cover object-center",
           },
           {
-            title: "Carne a la brasa",
-            description: "Brasa de carbón y punto de cocina directo.",
-            image: brandImage,
-            alt: "Barra de madera y cocina de La Picatería",
-            position: "object-center",
+            title: "Chuletón",
+            description: "Carne a la brasa y plato de decisión rápida si vienes a comer.",
+            image: chuletonImage,
+            alt: "Chuletón a la brasa en La Picatería",
+            position: "object-cover object-center",
           },
           {
             title: "Paella",
             description: "Para venir con tiempo, pedir mesa y compartir.",
-            image: heroImage,
-            alt: "Barra con producto y ambiente gastronómico de La Picatería",
-            position: "object-[62%_45%]",
+            image: paellaImage,
+            alt: "Paella de La Picatería",
+            position: "object-cover object-center",
           },
           {
-            title: "Plato destacado",
-            description: "Producto real, barra y una cocina que apetece.",
-            image: terraceImage,
-            alt: "Terraza y experiencia real de La Picatería",
-            position: "object-center",
+            title: "Jamón asado",
+            description: "Uno de los platos de casa que mejor explica el tono de la carta.",
+            image: brandImage,
+            alt: "Jamón asado de La Picatería",
+            position: "object-cover object-center",
           },
+        ]
+      : null;
+  const realGallery =
+    locale === "es"
+      ? [
+          {
+            title: "Paella",
+            note: "Para compartir",
+            image: paellaImage,
+            alt: "Paella servida en La Picatería",
+            className: "md:col-span-2",
+          },
+          {
+            title: "Chuletón",
+            note: "Brasa de carbón",
+            image: chuletonImage,
+            alt: "Chuletón a la brasa de La Picatería",
+            className: "",
+          },
+          {
+            title: "Jamón asado",
+            note: "Especialidad",
+            image: brandImage,
+            alt: "Jamón asado de La Picatería",
+            className: "",
+          },
+          {
+            title: "Ambiente",
+            note: "Barra y producto real",
+            image: atmosphereImage,
+            alt: "Barra con producto real en La Picatería",
+            className: "md:col-span-2",
+          },
+        ]
+      : null;
+  const socialProofHighlights =
+    locale === "es"
+      ? [
+          "De los mejores sitios para tapear en Granada",
+          "Producto brutal y ambiente top",
+          "Muy buena ubicación para comer en el centro",
         ]
       : null;
 
@@ -440,29 +485,128 @@ export default async function HomePage({ params }: PageProps) {
             </div>
           ) : null}
 
-          <div className="space-y-5 border-y border-border py-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-              {locale === "es"
-                ? "Qué encontrarás"
-                : locale === "en"
-                  ? "What you will find"
-                  : "Ce que vous allez trouver"}
-            </p>
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {featureList.map((item, index) => (
-                <div key={item} className="space-y-3 border-t border-border pt-4">
-                  <span className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-500">
-                    {`0${index + 1}`}
-                  </span>
-                  <p className="max-w-[18rem] text-base font-medium leading-7 text-ink">
-                    {item}
+          <div className="grid gap-8 border-y border-border py-8 lg:grid-cols-[0.98fr_1.02fr] lg:items-start">
+            <div className="space-y-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {locale === "es"
+                  ? "Qué esperar"
+                  : locale === "en"
+                    ? "What you will find"
+                    : "Ce que vous allez trouver"}
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {featureList.map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-start gap-3 rounded-[1.3rem] border border-border bg-white px-4 py-4 shadow-[0_12px_24px_rgba(31,26,23,0.04)]"
+                  >
+                    <span className="mt-0.5 text-base font-semibold text-sand-500">✔</span>
+                    <p className="text-sm font-medium leading-7 text-ink">{item}</p>
+                  </div>
+                ))}
+              </div>
+              {locale === "es" ? (
+                <div className="rounded-[1.5rem] border border-sand-300 bg-sand-200/20 px-5 py-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
+                    Microdecisión
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-charcoal">
+                    Si vienes en hora punta, a por paella o con idea de terraza, mejor reservar antes.
                   </p>
                 </div>
+              ) : null}
+            </div>
+
+            {locale === "es" && socialProofHighlights ? (
+              <div className="space-y-5 rounded-[1.7rem] border border-border bg-white p-6 shadow-[0_18px_34px_rgba(31,26,23,0.06)]">
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                    Prueba social
+                  </p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sand-500">
+                    ⭐ 4,4 en Google · +2.500 opiniones
+                  </p>
+                </div>
+                <div className="grid gap-3">
+                  {socialProofHighlights.map((item) => (
+                    <blockquote
+                      key={item}
+                      className="rounded-[1.3rem] border border-border bg-cream/45 px-4 py-4 text-sm font-medium leading-7 text-charcoal"
+                    >
+                      “{item}”
+                    </blockquote>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+
+          {locale === "es" && realGallery ? (
+            <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {realGallery.map((item) => (
+                <article
+                  key={item.title}
+                  className={`overflow-hidden rounded-[1.8rem] bg-white shadow-[0_18px_38px_rgba(31,26,23,0.09)] ${item.className}`}
+                >
+                  <div className="relative min-h-[280px] sm:min-h-[320px]">
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 bg-[linear-gradient(180deg,rgba(16,16,14,0)_0%,rgba(16,16,14,0.72)_100%)] px-5 py-5 text-white">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/72">
+                        {item.note}
+                      </p>
+                      <h2 className="mt-2 font-display text-3xl leading-tight">{item.title}</h2>
+                    </div>
+                  </div>
+                </article>
               ))}
             </div>
-          </div>
+          ) : null}
         </div>
       </section>
+
+      {locale === "es" ? (
+        <section className="px-5 pb-4 sm:px-6 lg:px-10">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid gap-6 rounded-[1.9rem] border border-border bg-white p-5 shadow-[0_18px_38px_rgba(31,26,23,0.08)] lg:grid-cols-[0.94fr_1.06fr] lg:items-center sm:p-6">
+              <div className="relative min-h-[260px] overflow-hidden rounded-[1.5rem]">
+                <Image
+                  src={pinchosImage}
+                  alt="Pinchos y producto real de La Picatería"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                />
+              </div>
+              <div className="space-y-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                  Decidir rápido
+                </p>
+                <h2 className="font-display text-4xl leading-tight text-ink">
+                  Producto reconocible, carta clara y un plan fácil de cerrar
+                </h2>
+                <p className="text-sm leading-8 text-charcoal">
+                  Vienes, ves brasa, tapas, platos para compartir y entiendes enseguida si te apetece reservar o pasar a tapear.
+                </p>
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <TrackedReservationLink
+                    label="Reservar mesa"
+                    locale={locale}
+                    location="hero"
+                    eventName="click_reserve_home_visual_block"
+                  />
+                  <CtaButton href={`/${locale}/carta`} label="Ver carta" variant="secondary" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {locale === "es" ? (
         <ConversionStatusPanel locale={locale} phoneHref={dictionary.business.phoneHref} />
@@ -541,7 +685,8 @@ export default async function HomePage({ params }: PageProps) {
                         src={item.image}
                         alt={item.alt}
                         fill
-                        className={`object-cover ${item.position}`}
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                        className={item.position}
                       />
                     </div>
                   </div>
@@ -727,8 +872,8 @@ export default async function HomePage({ params }: PageProps) {
           <div className="overflow-hidden rounded-[1.9rem] bg-white shadow-[0_20px_48px_rgba(31,26,23,0.11)]">
             <div className="relative min-h-[520px]">
               <Image
-                src={brandImage}
-                alt="Barra de madera e identidad interior de La Picatería"
+                src={paellaImage}
+                alt="Paella real de La Picatería"
                 fill
                 className="object-cover"
               />
@@ -769,8 +914,8 @@ export default async function HomePage({ params }: PageProps) {
           <div className="overflow-hidden rounded-[1.9rem] bg-white shadow-[0_20px_48px_rgba(31,26,23,0.11)]">
             <div className="relative min-h-[460px]">
               <Image
-                src={brandImage}
-                alt="Interior con barra de madera y branding de La Picatería"
+                src={chuletonImage}
+                alt="Chuletón a la brasa de La Picatería"
                 fill
                 className="object-cover"
               />

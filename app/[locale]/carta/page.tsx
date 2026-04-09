@@ -75,6 +75,23 @@ export default async function MenuPage({ params }: PageProps) {
     }
     return tags;
   };
+  const menuVisuals =
+    locale === "es"
+      ? [
+          {
+            image: "/images/real/paella.jpg",
+            alt: "Paella de La Picatería",
+            title: "Paella para compartir",
+            text: "Si vienes con idea de arroz, mejor reservar y venir con tiempo.",
+          },
+          {
+            image: "/images/real/chuleton.jpg",
+            alt: "Chuletón a la brasa de La Picatería",
+            title: "Brasa de carbón",
+            text: "Chuletón, cortes a la brasa y platos de mesa larga para venir con ganas de comer.",
+          },
+        ]
+      : null;
 
   return (
     <section className="px-5 py-14 sm:px-6 lg:px-10 lg:py-18">
@@ -142,42 +159,44 @@ export default async function MenuPage({ params }: PageProps) {
           <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="relative min-h-[320px]">
               <Image
-                src="/images/real/barra-madera.jpg"
-                alt="Barra de madera y personalidad interior de La Picatería"
+                src="/images/real/paella_entrecot.jpg"
+                alt="Paella y carne a la brasa en La Picatería"
                 fill
                 className="object-cover"
               />
             </div>
             <div className="flex items-center bg-cream/60 p-6 sm:p-8">
               <p className="max-w-md text-base leading-8 text-charcoal">
-                Carta clara, precios visibles y una selección pensada para pedir con criterio desde el móvil y reservar sin fricción.
+                Carta clara, precios visibles y platos reales que ayudan a decidir rápido desde el móvil si hoy vienes de tapas o a comer con calma.
               </p>
             </div>
           </div>
         </div>
 
-        {locale === "es" ? (
+        {locale === "es" && menuVisuals ? (
           <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            <div className="overflow-hidden rounded-[1.6rem] bg-white shadow-[0_16px_34px_rgba(31,26,23,0.08)]">
-              <div className="relative min-h-[260px]">
-                <Image
-                  src="/images/real/barra-producto.jpg"
-                  alt="Producto real y barra de La Picatería"
-                  fill
-                  className="object-cover object-[58%_42%]"
-                />
-              </div>
-            </div>
-            <div className="overflow-hidden rounded-[1.6rem] bg-white shadow-[0_16px_34px_rgba(31,26,23,0.08)]">
-              <div className="relative min-h-[260px]">
-                <Image
-                  src="/images/real/barra-madera.jpg"
-                  alt="Barra de madera y ambiente de La Picatería"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
+            {menuVisuals.map((item) => (
+              <article
+                key={item.title}
+                className="overflow-hidden rounded-[1.6rem] bg-white shadow-[0_16px_34px_rgba(31,26,23,0.08)]"
+              >
+                <div className="relative min-h-[260px]">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="space-y-2 px-5 py-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
+                    {item.title}
+                  </p>
+                  <p className="text-sm leading-7 text-charcoal">{item.text}</p>
+                </div>
+              </article>
+            ))}
           </div>
         ) : null}
 
@@ -224,6 +243,38 @@ export default async function MenuPage({ params }: PageProps) {
                   </article>
                 ))}
               </div>
+
+              {locale === "es" && category.id === "arroces-y-fideua" ? (
+                <div className="overflow-hidden rounded-[1.6rem] border border-border bg-white shadow-[0_14px_30px_rgba(31,26,23,0.05)]">
+                  <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+                    <div className="relative min-h-[260px]">
+                      <Image
+                        src="/images/real/paella.jpg"
+                        alt="Paella de La Picatería"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 45vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex items-center p-6">
+                      <div className="space-y-3">
+                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
+                          Puente carta → reserva
+                        </p>
+                        <p className="text-sm leading-7 text-charcoal">
+                          Si vienes a por arroz, fines de semana o con idea de alargar la mesa, mejor reservar antes y llegar con el plan hecho.
+                        </p>
+                        <TrackedReservationLink
+                          label="Reservar mesa"
+                          locale={locale}
+                          location="carta_page"
+                          eventName="click_reserve_menu_rice_block"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : null}
             </section>
           ))}
         </div>
