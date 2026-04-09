@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import type { Dictionary, Locale } from "@/lib/i18n";
 
 type SiteFooterProps = {
@@ -7,7 +8,8 @@ type SiteFooterProps = {
   dictionary: Dictionary;
 };
 
-export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
+export async function SiteFooter({ locale, dictionary }: SiteFooterProps) {
+  const hours = await getBusinessHoursPresentation(locale);
   const legalLinks =
     locale === "es"
       ? [
@@ -58,7 +60,8 @@ export function SiteFooter({ locale, dictionary }: SiteFooterProps) {
 
         <div className="grid gap-3 text-sm text-charcoal">
           <p className="leading-7">{dictionary.business.address}</p>
-          <p className="leading-7">{dictionary.business.serviceHoursSummary}</p>
+          <p className="leading-7">{hours.summary}</p>
+          <p className="text-xs uppercase tracking-[0.16em] text-charcoal/76">{hours.todayStatus}</p>
           <Link href={`/${locale}/reservas`} className="transition hover:text-sand-500">
             {dictionary.cta.reserve}
           </Link>

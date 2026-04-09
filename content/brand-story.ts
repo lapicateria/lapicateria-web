@@ -22,6 +22,22 @@ type ExperienceStory = {
   alt: string;
 };
 
+type QuickDecisionModule = {
+  title: string;
+  items: string[];
+};
+
+type TouristModule = {
+  title: string;
+  description: string;
+  bullets: string[];
+};
+
+type ReturnModule = {
+  title: string;
+  points: string[];
+};
+
 export const reviewSummaryByLocale: Record<
   Locale,
   { title: string; rating: string; volume: string; kicker: string }
@@ -238,5 +254,95 @@ export const experienceStoryByLocale: Record<Locale, ExperienceStory> = {
     ],
     image: "/images/real/barra-producto.jpg",
     alt: "Comptoir et vrai produit a La Picatería",
+  },
+};
+
+export const quickDecisionByLocale: Record<Locale, QuickDecisionModule> = {
+  es: {
+    title: "Decisión rápida",
+    items: [
+      "Centro de Granada · junto a la Catedral",
+      "Tapas, brasa y platos para compartir",
+      "Precio medio alrededor de 20 €",
+      "Muy recomendable reservar en hora punta",
+    ],
+  },
+  en: {
+    title: "Quick decision",
+    items: [
+      "Central Granada · next to the Cathedral",
+      "Tapas, charcoal grill and sharing dishes",
+      "Typical spend around 20 EUR",
+      "Booking is advisable at peak times",
+    ],
+  },
+  fr: {
+    title: "Decision rapide",
+    items: [
+      "Centre de Grenade · a cote de la Cathedrale",
+      "Tapas, braise et plats a partager",
+      "Addition moyenne autour de 20 EUR",
+      "Reservation conseillee aux heures fortes",
+    ],
+  },
+};
+
+export const touristModuleByLocale: Record<Locale, TouristModule> = {
+  es: {
+    title: "Si estás visitando Granada centro",
+    description:
+      "La Picatería es una parada fácil de recomendar si quieres comer cerca de la Catedral, dentro del Mercado de San Agustín y sin complicarte demasiado comparando opciones.",
+    bullets: [
+      "A 1 minuto de la Catedral",
+      "Dentro del mercado y muy fácil de ubicar",
+      "Sirve para tapear o sentarte a comer",
+    ],
+  },
+  en: {
+    title: "If you are visiting central Granada",
+    description:
+      "La Picatería is an easy recommendation if you want to eat near the Cathedral, inside Mercado de San Agustin and without overcomplicating the choice.",
+    bullets: [
+      "1 minute from the Cathedral",
+      "Inside the market and easy to find",
+      "Works for tapas or a proper meal",
+    ],
+  },
+  fr: {
+    title: "Si vous visitez le centre de Grenade",
+    description:
+      "La Picatería est une adresse facile a recommander si vous voulez manger pres de la Cathedrale, dans le Mercado de San Agustin et sans compliquer votre choix.",
+    bullets: [
+      "A une minute de la Cathedrale",
+      "Dans le marche et tres facile a trouver",
+      "Convient pour tapas ou vrai repas",
+    ],
+  },
+};
+
+export const whyPeopleReturnByLocale: Record<Locale, ReturnModule> = {
+  es: {
+    title: "Por qué la gente vuelve",
+    points: [
+      "Porque está en el centro y es fácil quedar aquí.",
+      "Porque puedes venir de tapas o sentarte a comer con calma.",
+      "Porque la brasa, el jamón asado y los arroces dejan recuerdo.",
+    ],
+  },
+  en: {
+    title: "Why people come back",
+    points: [
+      "Because the central location makes it easy to meet here.",
+      "Because it works for quick tapas or a slower meal.",
+      "Because the grill dishes, roast ham and rice are memorable.",
+    ],
+  },
+  fr: {
+    title: "Pourquoi les gens reviennent",
+    points: [
+      "Parce que l'emplacement central est tres pratique.",
+      "Parce que l'adresse fonctionne pour tapas ou repas plus calme.",
+      "Parce que la braise, le jambon roti et les riz marquent.",
+    ],
   },
 };

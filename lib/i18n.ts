@@ -28,7 +28,6 @@ export const business = {
   country: "ES",
   bookingProvider: "Qamarero",
   bookingProviderLabel: "Reserva oficial en Qamarero",
-  serviceHoursSummary: "Lunes a sábado 13:00-16:30 y 20:00-23:30 · Domingo 13:00-18:00",
 } as const;
 
 const dictionaries = {

@@ -3,8 +3,15 @@ import { notFound } from "next/navigation";
 import { BookingEmbedPanel } from "@/components/booking-embed-panel";
 import { BookingStatusCard } from "@/components/booking-status-card";
 import { CtaButton } from "@/components/cta-button";
+import { TrackedCtaButton } from "@/components/tracked-cta-button";
 import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
+import {
+  quickDecisionByLocale,
+  touristModuleByLocale,
+  whyPeopleReturnByLocale,
+} from "@/content/brand-story";
+import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLocale } from "@/lib/i18n";
 
@@ -36,6 +43,10 @@ export default async function BookingPage({ params }: PageProps) {
   }
 
   const dictionary = getDictionary(locale);
+  const hours = await getBusinessHoursPresentation(locale);
+  const quickDecision = quickDecisionByLocale[locale];
+  const touristModule = touristModuleByLocale[locale];
+  const whyPeopleReturn = whyPeopleReturnByLocale[locale];
   const trustModule =
     locale === "es"
       ? {
@@ -111,15 +122,38 @@ export default async function BookingPage({ params }: PageProps) {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.62fr_1.38fr]">
           <div className="space-y-8">
+            <div className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_14px_28px_rgba(31,26,23,0.05)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {quickDecision.title}
+              </p>
+              <div className="mt-4 grid gap-3">
+                {quickDecision.items.map((item) => (
+                  <div key={item} className="rounded-[1.2rem] border border-border bg-cream/35 px-4 py-4 text-sm leading-7 text-charcoal">
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-sm leading-7 text-charcoal">{hours.todayStatus}</p>
+            </div>
+
             {locale === "es" ? (
               <div className="rounded-[1.6rem] border border-sand-300 bg-sand-200/22 p-6">
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-600">
                   Antes de reservar
                 </p>
                 <div className="mt-4 space-y-3 text-sm leading-7 text-charcoal">
-                  <p>Reservar desde aquí te deja la visita resuelta en pocos pasos.</p>
-                  <p>Si vienes con idea de terraza, arroz o mesa tranquila, mejor no dejarlo para última hora.</p>
+                  <p>Reservar desde aquí te asegura mejor tu hora y te deja la visita resuelta en pocos pasos.</p>
+                  <p>Si vienes con idea clara de terraza, arroz o mesa tranquila, mejor no dejarlo para última hora.</p>
                   <p>Si el formulario tarda o falla, usa el botón principal o llámanos directamente.</p>
+                  <p>{hours.todayMessage}</p>
+                </div>
+                <div className="mt-5">
+                  <TrackedReservationLink
+                    label="Reservar mesa"
+                    locale={locale}
+                    location="decision_block"
+                    eventName="click_booking_decision_reserve"
+                  />
                 </div>
               </div>
             ) : null}
@@ -147,10 +181,47 @@ export default async function BookingPage({ params }: PageProps) {
                 {dictionary.bookingPage.primaryCtaCopy}
               </p>
               {locale === "es" ? (
-                <p className="text-sm leading-7 text-charcoal">
-                  Puedes venir a tapear, reservar una comida completa o asegurar la mesa antes de acercarte al mercado.
-                </p>
+                <div className="space-y-3">
+                  <p className="text-sm leading-7 text-charcoal">
+                    Puedes venir a tapear, reservar una comida completa o asegurar la mesa antes de acercarte al mercado.
+                  </p>
+                  <p className="text-sm leading-7 text-charcoal">
+                    Muy recomendable en horas punta, fines de semana y festivos. Si vienes con una hora pensada, mejor reservarla.
+                  </p>
+                </div>
               ) : null}
+            </div>
+
+            <div className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_14px_28px_rgba(31,26,23,0.05)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {touristModule.title}
+              </p>
+              <p className="mt-4 text-sm leading-7 text-charcoal">
+                {touristModule.description}
+              </p>
+              <div className="mt-4 space-y-3">
+                {touristModule.bullets.map((item) => (
+                  <p key={item} className="text-sm leading-7 text-charcoal">
+                    {item}
+                  </p>
+                ))}
+              </div>
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                <TrackedReservationLink
+                  label={locale === "es" ? "Reservar mesa" : dictionary.cta.reserve}
+                  locale={locale}
+                  location="tourist_block"
+                  eventName="click_booking_tourist_reserve"
+                />
+                <TrackedCtaButton
+                  href={`/${locale}/contacto`}
+                  label={locale === "es" ? "Ver ubicación" : dictionary.cta.contact}
+                  locale={locale}
+                  location="tourist_block"
+                  eventName="click_booking_tourist_contact"
+                  variant="secondary"
+                />
+              </div>
             </div>
 
             <div className="space-y-4 border-t border-border pt-5">
@@ -199,11 +270,11 @@ export default async function BookingPage({ params }: PageProps) {
           <p className="text-sm leading-7 text-charcoal">
             {dictionary.bookingPage.embedNotice}
           </p>
-          {locale === "es" ? (
-            <div className="rounded-[1.4rem] border border-border bg-white px-5 py-4 text-sm leading-7 text-charcoal">
-              Reservar desde la web es la forma más directa de venir con la mesa resuelta.
-            </div>
-          ) : null}
+          <div className="rounded-[1.4rem] border border-border bg-white px-5 py-4 text-sm leading-7 text-charcoal">
+            {locale === "es"
+              ? "Reservar desde la web es la forma más directa de venir con la mesa resuelta. " + whyPeopleReturn.points[1]
+              : whyPeopleReturn.points[1]}
+          </div>
         </div>
       </div>
     </section>

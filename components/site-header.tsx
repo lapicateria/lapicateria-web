@@ -3,6 +3,7 @@ import Link from "next/link";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
+import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import type { Dictionary, Locale } from "@/lib/i18n";
 
 type SiteHeaderProps = {
@@ -10,7 +11,9 @@ type SiteHeaderProps = {
   dictionary: Dictionary;
 };
 
-export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
+export async function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
+  const hours = await getBusinessHoursPresentation(locale);
+
   return (
     <header className="sticky top-0 z-20 border-b border-border/90 bg-bone/92 backdrop-blur-xl">
       <div className="mx-auto max-w-6xl px-5 py-3.5 sm:px-6 lg:px-10">
@@ -66,7 +69,7 @@ export function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
             {dictionary.business.address}
           </p>
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-charcoal/78">
-            {locale === "es" ? "Reserva recomendada en horas punta" : locale === "en" ? "Booking recommended at peak times" : "Reservation conseillee aux heures de pointe"}
+            {hours.todayStatus}
           </p>
         </div>
 

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type {
+  BusinessDayHours,
   ConversionConfig,
   DayKey,
   DemandState,
@@ -33,6 +34,15 @@ const terraceOptions: { value: TerraceState; label: string }[] = [
   { value: "full", label: "Completa" },
   { value: "unavailable", label: "No disponible" },
 ];
+
+function emptyDayHours(): BusinessDayHours {
+  return {
+    isOpen: false,
+    primary: null,
+    secondary: null,
+    specialMessage: "",
+  };
+}
 
 type OwnerResponse = {
   config: ConversionConfig;
@@ -121,6 +131,22 @@ export function OwnerConversionDashboard() {
     return <p className="text-sm text-charcoal">Cargando panel de conversión...</p>;
   }
 
+  function updateBusinessHours(dayKey: DayKey, next: BusinessDayHours) {
+    setConfig((current) => {
+      if (!current) {
+        return current;
+      }
+
+      return {
+        ...current,
+        businessHours: {
+          ...current.businessHours,
+          [dayKey]: next,
+        },
+      };
+    });
+  }
+
   return (
     <div className="space-y-8">
       <section className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_18px_36px_rgba(31,26,23,0.08)]">
@@ -136,6 +162,147 @@ export function OwnerConversionDashboard() {
             </p>
           </div>
         ) : null}
+      </section>
+
+      <section className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_18px_36px_rgba(31,26,23,0.08)]">
+        <div className="space-y-2">
+          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+            Horarios del negocio
+          </p>
+          <p className="text-sm leading-7 text-charcoal">
+            Fuente principal: owner panel. Estos horarios se publican en web, footer y schema. La sync con Google queda preparada para una fase futura.
+          </p>
+        </div>
+
+        <div className="mt-6 space-y-4">
+          {(Object.keys(dayLabels) as DayKey[]).map((dayKey) => {
+            const day = config.businessHours[dayKey] ?? emptyDayHours();
+
+            return (
+              <div
+                key={dayKey}
+                className="rounded-[1.4rem] border border-border bg-bone/60 p-4"
+              >
+                <div className="grid gap-4 lg:grid-cols-[0.9fr_0.7fr_0.7fr_0.7fr_0.7fr] lg:items-end">
+                  <div className="space-y-2">
+                    <p className="text-sm font-semibold text-ink">{dayLabels[dayKey]}</p>
+                    <label className="inline-flex items-center gap-2 text-sm text-charcoal">
+                      <input
+                        type="checkbox"
+                        checked={day.isOpen}
+                        onChange={(event) =>
+                          updateBusinessHours(dayKey, {
+                            ...day,
+                            isOpen: event.target.checked,
+                            primary: event.target.checked ? day.primary ?? { open: "09:00", close: "17:00" } : null,
+                            secondary: event.target.checked ? day.secondary : null,
+                          })
+                        }
+                      />
+                      Abierto
+                    </label>
+                  </div>
+
+                  <label className="space-y-2 text-sm text-charcoal">
+                    <span>Primer tramo abre</span>
+                    <input
+                      type="time"
+                      value={day.primary?.open ?? ""}
+                      disabled={!day.isOpen}
+                      onChange={(event) =>
+                        updateBusinessHours(dayKey, {
+                          ...day,
+                          primary: {
+                            open: event.target.value,
+                            close: day.primary?.close ?? "17:00",
+                          },
+                        })
+                      }
+                      className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink disabled:opacity-50"
+                    />
+                  </label>
+
+                  <label className="space-y-2 text-sm text-charcoal">
+                    <span>Primer tramo cierra</span>
+                    <input
+                      type="time"
+                      value={day.primary?.close ?? ""}
+                      disabled={!day.isOpen}
+                      onChange={(event) =>
+                        updateBusinessHours(dayKey, {
+                          ...day,
+                          primary: {
+                            open: day.primary?.open ?? "09:00",
+                            close: event.target.value,
+                          },
+                        })
+                      }
+                      className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink disabled:opacity-50"
+                    />
+                  </label>
+
+                  <label className="space-y-2 text-sm text-charcoal">
+                    <span>Segundo tramo abre</span>
+                    <input
+                      type="time"
+                      value={day.secondary?.open ?? ""}
+                      disabled={!day.isOpen}
+                      onChange={(event) =>
+                        updateBusinessHours(dayKey, {
+                          ...day,
+                          secondary: event.target.value
+                            ? {
+                                open: event.target.value,
+                                close: day.secondary?.close ?? "17:00",
+                              }
+                            : null,
+                        })
+                      }
+                      className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink disabled:opacity-50"
+                    />
+                  </label>
+
+                  <label className="space-y-2 text-sm text-charcoal">
+                    <span>Segundo tramo cierra</span>
+                    <input
+                      type="time"
+                      value={day.secondary?.close ?? ""}
+                      disabled={!day.isOpen || !day.secondary}
+                      onChange={(event) =>
+                        updateBusinessHours(dayKey, {
+                          ...day,
+                          secondary: day.secondary
+                            ? {
+                                open: day.secondary.open,
+                                close: event.target.value,
+                              }
+                            : null,
+                        })
+                      }
+                      className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink disabled:opacity-50"
+                    />
+                  </label>
+                </div>
+
+                <label className="mt-4 block space-y-2 text-sm text-charcoal">
+                  <span>Mensaje especial opcional</span>
+                  <input
+                    type="text"
+                    value={day.specialMessage}
+                    onChange={(event) =>
+                      updateBusinessHours(dayKey, {
+                        ...day,
+                        specialMessage: event.target.value,
+                      })
+                    }
+                    className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink"
+                    placeholder="Ej. Solo mediodía"
+                  />
+                </label>
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <section className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_18px_36px_rgba(31,26,23,0.08)]">

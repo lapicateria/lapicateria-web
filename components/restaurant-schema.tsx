@@ -1,11 +1,13 @@
+import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import { business, getDictionary, type Locale } from "@/lib/i18n";
 
 type RestaurantSchemaProps = {
   locale: Locale;
 };
 
-export function RestaurantSchema({ locale }: RestaurantSchemaProps) {
+export async function RestaurantSchema({ locale }: RestaurantSchemaProps) {
   const dictionary = getDictionary(locale);
+  const hours = await getBusinessHoursPresentation(locale);
 
   const schema = {
     "@context": "https://schema.org",
@@ -50,6 +52,7 @@ export function RestaurantSchema({ locale }: RestaurantSchemaProps) {
       dictionary.business.facebookUrl,
       dictionary.business.tiktokUrl,
     ],
+    openingHoursSpecification: hours.openingHoursSpecification,
   };
 
   return (

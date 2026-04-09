@@ -1,6 +1,57 @@
 {
   "timezone": "Europe/Madrid",
-  "hoursToday": "13:00–16:30 · 20:00–23:30",
+  "hoursToday": "09:00–17:00",
+  "businessHours": {
+    "monday": {
+      "isOpen": true,
+      "primary": { "open": "09:00", "close": "17:00" },
+      "secondary": null,
+      "specialMessage": ""
+    },
+    "tuesday": {
+      "isOpen": true,
+      "primary": { "open": "09:00", "close": "17:00" },
+      "secondary": null,
+      "specialMessage": ""
+    },
+    "wednesday": {
+      "isOpen": true,
+      "primary": { "open": "09:00", "close": "17:00" },
+      "secondary": null,
+      "specialMessage": ""
+    },
+    "thursday": {
+      "isOpen": true,
+      "primary": { "open": "09:00", "close": "17:00" },
+      "secondary": null,
+      "specialMessage": ""
+    },
+    "friday": {
+      "isOpen": true,
+      "primary": { "open": "09:00", "close": "17:00" },
+      "secondary": null,
+      "specialMessage": ""
+    },
+    "saturday": {
+      "isOpen": true,
+      "primary": { "open": "09:00", "close": "17:00" },
+      "secondary": null,
+      "specialMessage": ""
+    },
+    "sunday": {
+      "isOpen": false,
+      "primary": null,
+      "secondary": null,
+      "specialMessage": "Cerrado"
+    }
+  },
+  "businessHoursSource": {
+    "source": "owner_panel",
+    "externalSync": {
+      "provider": null,
+      "status": "ready_for_future_sync"
+    }
+  },
   "automaticRules": {
     "monday": [
       { "start": "12:00", "end": "13:59", "state": "quiet" },

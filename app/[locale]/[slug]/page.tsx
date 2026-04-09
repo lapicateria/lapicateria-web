@@ -9,9 +9,13 @@ import {
   experienceStoryByLocale,
   featuredDishesByLocale,
   featuredReviewsByLocale,
+  quickDecisionByLocale,
   reviewSummaryByLocale,
+  touristModuleByLocale,
+  whyPeopleReturnByLocale,
 } from "@/content/brand-story";
 import { getSeoLanding, seoLandingSlugs } from "@/content/seo-landings";
+import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import { buildMetadata } from "@/lib/metadata";
 import { isValidLocale, type Locale } from "@/lib/i18n";
 
@@ -51,12 +55,16 @@ export default async function SeoLandingPage({ params }: PageProps) {
   if (!landing) notFound();
 
   const content = landing.content[locale];
+  const hours = await getBusinessHoursPresentation(locale);
   const reviewSummary = reviewSummaryByLocale[locale];
   const featuredReviews = featuredReviewsByLocale[locale].slice(0, 2);
   const featuredDishes = featuredDishesByLocale[locale].filter((dish) =>
     content.featuredDishKeys.includes(dish.key),
   );
   const experienceStory = experienceStoryByLocale[locale];
+  const quickDecision = quickDecisionByLocale[locale];
+  const touristModule = touristModuleByLocale[locale];
+  const whyPeopleReturn = whyPeopleReturnByLocale[locale];
   const relatedLandings = content.relatedSlugs
     .map((entrySlug) => getSeoLanding(entrySlug))
     .filter(Boolean);
@@ -142,6 +150,22 @@ export default async function SeoLandingPage({ params }: PageProps) {
       <section className="px-5 py-8 sm:px-6 lg:px-10">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.98fr_1.02fr]">
           <div className="space-y-5">
+            <div className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_14px_28px_rgba(31,26,23,0.05)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {quickDecision.title}
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                {quickDecision.items.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[1.2rem] border border-border bg-cream/35 px-4 py-4 text-sm leading-7 text-charcoal"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-sm leading-7 text-charcoal">{hours.todayStatus}</p>
+            </div>
             <SectionHeading
               eyebrow={content.whyTitle}
               title={content.localTitle}
@@ -159,7 +183,7 @@ export default async function SeoLandingPage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="space-y-5 rounded-[1.8rem] border border-border bg-white p-6 shadow-[0_18px_34px_rgba(31,26,23,0.06)]">
+            <div className="space-y-5 rounded-[1.8rem] border border-border bg-white p-6 shadow-[0_18px_34px_rgba(31,26,23,0.06)]">
             <div className="space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
                 {reviewSummary.kicker}
@@ -184,9 +208,21 @@ export default async function SeoLandingPage({ params }: PageProps) {
             <TrackedReservationLink
               label={locale === "es" ? "Reservar mesa" : locale === "en" ? "Book a table" : "Reserver une table"}
               locale={locale}
-              location="seo_page"
+              location="credibility_block"
               eventName={`click_seo_${slug}_reserve_reviews`}
             />
+            <div className="rounded-[1.3rem] border border-border bg-cream/35 px-4 py-4">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sand-500">
+                {whyPeopleReturn.title}
+              </p>
+              <div className="mt-3 space-y-2">
+                {whyPeopleReturn.points.map((item) => (
+                  <p key={item} className="text-sm leading-7 text-charcoal">
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -330,6 +366,54 @@ export default async function SeoLandingPage({ params }: PageProps) {
                 locale={locale}
                 location="seo_page"
                 eventName={`click_seo_${slug}_contact_mid`}
+                variant="secondary"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 py-12 sm:px-6 lg:px-10">
+        <div className="mx-auto max-w-6xl rounded-[1.9rem] border border-border bg-cream/45 px-6 py-8 shadow-[0_16px_34px_rgba(31,26,23,0.06)] sm:px-8">
+          <div className="grid gap-6 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
+            <div className="space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {touristModule.title}
+              </p>
+              <h2 className="font-display text-4xl leading-tight text-ink">
+                {locale === "es"
+                  ? "Una opción fácil de recomendar si estás por Catedral o Mercado"
+                  : locale === "en"
+                    ? "An easy recommendation if you are near the Cathedral or the market"
+                    : "Une adresse facile a recommander si vous etes pres de la Cathedrale ou du marche"}
+              </h2>
+              <p className="max-w-2xl text-base leading-8 text-charcoal">
+                {touristModule.description}
+              </p>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {touristModule.bullets.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[1.2rem] border border-border bg-white px-4 py-4 text-sm leading-7 text-charcoal"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 lg:items-end">
+              <TrackedReservationLink
+                label={content.topCtaLabel}
+                locale={locale}
+                location="tourist_block"
+                eventName={`click_seo_${slug}_tourist_reserve`}
+              />
+              <TrackedCtaButton
+                href={`/${locale}/contacto`}
+                label={locale === "es" ? "Ver ubicación" : locale === "en" ? "See location" : "Voir l'emplacement"}
+                locale={locale}
+                location="tourist_block"
+                eventName={`click_seo_${slug}_tourist_contact`}
                 variant="secondary"
               />
             </div>

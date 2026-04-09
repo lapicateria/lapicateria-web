@@ -16,6 +16,26 @@ export type DayKey =
   | "saturday"
   | "sunday";
 
+export type BusinessHoursSlot = {
+  open: string;
+  close: string;
+};
+
+export type BusinessDayHours = {
+  isOpen: boolean;
+  primary: BusinessHoursSlot | null;
+  secondary: BusinessHoursSlot | null;
+  specialMessage: string;
+};
+
+export type BusinessHoursSource = {
+  source: "owner_panel";
+  externalSync: {
+    provider: "google_business_profile" | null;
+    status: "not_configured" | "ready_for_future_sync";
+  };
+};
+
 export type TimeRangeRule = {
   start: string;
   end: string;
@@ -46,6 +66,8 @@ export type StateCopy = {
 export type ConversionConfig = {
   timezone: string;
   hoursToday: string;
+  businessHours: Record<DayKey, BusinessDayHours>;
+  businessHoursSource: BusinessHoursSource;
   automaticRules: Record<DayKey, TimeRangeRule[]>;
   override: OverrideConfig;
   planOptions: Record<PlanKey, PlanOption>;
@@ -64,6 +86,20 @@ export type ResolvedConversionState = {
   dayKey: DayKey;
   localTime: string;
   matchedRule: TimeRangeRule | null;
+};
+
+export type ResolvedBusinessHours = {
+  dayKey: DayKey;
+  isOpenToday: boolean;
+  labelToday: string;
+  summary: string;
+  currentMessage: string;
+  openingHoursSpecification: Array<{
+    "@type": "OpeningHoursSpecification";
+    dayOfWeek: string;
+    opens: string;
+    closes: string;
+  }>;
 };
 
 export async function readConversionConfig(): Promise<ConversionConfig> {
@@ -88,6 +124,7 @@ export async function getResolvedConversionState(
   const config = await readConversionConfig();
   const normalizedOverride = normalizeOverride(config.override, now);
   const parts = getLocalParts(now, config.timezone);
+  const hoursToday = formatDaySummary(config.businessHours[parts.dayKey]);
   const automaticState = getAutomaticState(config, parts.dayKey, parts.minutes);
   const finalState = normalizedOverride.mode === "manual" ? normalizedOverride.state : automaticState;
   const stateCopy = config.stateCopy[finalState];
@@ -104,6 +141,7 @@ export async function getResolvedConversionState(
   return {
     config: {
       ...config,
+      hoursToday,
       override: normalizedOverride,
     },
     resolved: {
@@ -114,10 +152,31 @@ export async function getResolvedConversionState(
       reservationHint: stateCopy.reservationHint,
       currentSignals,
       customMessage,
-      hoursToday: config.hoursToday,
+      hoursToday,
       dayKey: parts.dayKey,
       localTime: parts.time,
       matchedRule: findMatchingRule(config.automaticRules[parts.dayKey], parts.minutes),
+    },
+  };
+}
+
+export async function getResolvedBusinessHours(now = new Date()): Promise<{
+  config: ConversionConfig;
+  resolved: ResolvedBusinessHours;
+}> {
+  const config = await readConversionConfig();
+  const parts = getLocalParts(now, config.timezone);
+  const todayHours = config.businessHours[parts.dayKey];
+
+  return {
+    config,
+    resolved: {
+      dayKey: parts.dayKey,
+      isOpenToday: todayHours?.isOpen ?? false,
+      labelToday: buildTodayLabel(todayHours),
+      summary: summarizeBusinessHours(config.businessHours),
+      currentMessage: buildCurrentHoursMessage(todayHours),
+      openingHoursSpecification: toOpeningHoursSpecification(config.businessHours),
     },
   };
 }
@@ -128,6 +187,18 @@ function withSafeDefaults(config: ConversionConfig): ConversionConfig {
   return {
     ...base,
     ...config,
+    businessHours: {
+      ...base.businessHours,
+      ...config.businessHours,
+    },
+    businessHoursSource: {
+      ...base.businessHoursSource,
+      ...config.businessHoursSource,
+      externalSync: {
+        ...base.businessHoursSource.externalSync,
+        ...config.businessHoursSource?.externalSync,
+      },
+    },
     automaticRules: {
       ...base.automaticRules,
       ...config.automaticRules,
@@ -235,4 +306,107 @@ function getLocalParts(date: Date, timeZone: string) {
     minutes: (hour * 60) + minute,
     time: `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`,
   };
+}
+
+function formatSlot(slot: BusinessHoursSlot | null) {
+  if (!slot) return "";
+  return `${slot.open}–${slot.close}`;
+}
+
+function buildTodayLabel(day: BusinessDayHours | undefined) {
+  if (!day || !day.isOpen || !day.primary) {
+    return "Cerrado hoy";
+  }
+
+  const slots = [formatSlot(day.primary), formatSlot(day.secondary)].filter(Boolean);
+  return `Abierto hoy de ${slots.join(" · ")}`;
+}
+
+function buildCurrentHoursMessage(day: BusinessDayHours | undefined) {
+  if (!day || !day.isOpen || !day.primary) {
+    return day?.specialMessage?.trim() || "Cerrado hoy";
+  }
+
+  if (day.specialMessage.trim()) {
+    return day.specialMessage.trim();
+  }
+
+  if (day.primary && !day.secondary) {
+    return `Hoy ${formatSlot(day.primary)}`;
+  }
+
+  return `Hoy ${[formatSlot(day.primary), formatSlot(day.secondary)].filter(Boolean).join(" · ")}`;
+}
+
+function summarizeBusinessHours(hours: Record<DayKey, BusinessDayHours>) {
+  const mondayToSaturday = ([
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+  ] as DayKey[]).every((dayKey) => haveSameHours(hours.monday, hours[dayKey]));
+
+  const sunday = hours.sunday;
+  if (mondayToSaturday && hours.monday?.isOpen && hours.monday?.primary && !hours.monday?.secondary) {
+    const mondaySummary = formatDaySummary(hours.monday);
+    const sundaySummary = sunday?.isOpen ? formatDaySummary(sunday) : "cerrado";
+    return `Lunes a sábado ${mondaySummary} · Domingo ${sundaySummary}`;
+  }
+
+  return ([
+    ["Lun", hours.monday],
+    ["Mar", hours.tuesday],
+    ["Mié", hours.wednesday],
+    ["Jue", hours.thursday],
+    ["Vie", hours.friday],
+    ["Sáb", hours.saturday],
+    ["Dom", hours.sunday],
+  ] as const)
+    .map(([label, day]) => `${label} ${formatDaySummary(day)}`)
+    .join(" · ");
+}
+
+function formatDaySummary(day: BusinessDayHours | undefined) {
+  if (!day || !day.isOpen || !day.primary) {
+    return "cerrado";
+  }
+
+  return [formatSlot(day.primary), formatSlot(day.secondary)].filter(Boolean).join(" · ");
+}
+
+function haveSameHours(a: BusinessDayHours | undefined, b: BusinessDayHours | undefined) {
+  return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+}
+
+function toOpeningHoursSpecification(hours: Record<DayKey, BusinessDayHours>) {
+  const mapping: Record<DayKey, string> = {
+    monday: "Monday",
+    tuesday: "Tuesday",
+    wednesday: "Wednesday",
+    thursday: "Thursday",
+    friday: "Friday",
+    saturday: "Saturday",
+    sunday: "Sunday",
+  };
+
+  const specs: ResolvedBusinessHours["openingHoursSpecification"] = [];
+
+  (Object.keys(mapping) as DayKey[]).forEach((dayKey) => {
+    const day = hours[dayKey];
+    if (!day?.isOpen) return;
+
+    [day.primary, day.secondary].forEach((slot) => {
+      if (!slot) return;
+      specs.push({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: mapping[dayKey],
+        opens: slot.open,
+        closes: slot.close,
+      });
+    });
+  });
+
+  return specs;
 }

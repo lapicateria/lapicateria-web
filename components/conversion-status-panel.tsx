@@ -253,7 +253,7 @@ function createFallbackStatus(): StatusResponse {
         "Servicio más tranquilo",
       ],
       customMessage: null,
-      hoursToday: "13:00–16:30 · 20:00–23:30",
+      hoursToday: "09:00–17:00",
       dayKey: "monday",
       localTime: "12:00",
       matchedRule: null,

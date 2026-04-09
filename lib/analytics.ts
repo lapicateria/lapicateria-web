@@ -17,7 +17,10 @@ export type TrackingLocation =
   | "featured_dishes"
   | "experience_block"
   | "language_switcher"
-  | "seo_page";
+  | "seo_page"
+  | "decision_block"
+  | "tourist_block"
+  | "credibility_block";
 
 type EventParams = Record<string, string | number | boolean | undefined>;
 

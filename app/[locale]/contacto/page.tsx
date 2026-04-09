@@ -1,9 +1,15 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { CtaButton } from "@/components/cta-button";
+import { TrackedCtaButton } from "@/components/tracked-cta-button";
 import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
+import {
+  quickDecisionByLocale,
+  touristModuleByLocale,
+  whyPeopleReturnByLocale,
+} from "@/content/brand-story";
+import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLocale } from "@/lib/i18n";
 
@@ -35,6 +41,10 @@ export default async function ContactPage({ params }: PageProps) {
   }
 
   const dictionary = getDictionary(locale);
+  const hours = await getBusinessHoursPresentation(locale);
+  const quickDecision = quickDecisionByLocale[locale];
+  const touristModule = touristModuleByLocale[locale];
+  const whyPeopleReturn = whyPeopleReturnByLocale[locale];
   const beforeYouCome =
     locale === "es"
       ? {
@@ -134,6 +144,20 @@ export default async function ContactPage({ params }: PageProps) {
               </div>
             ) : null}
 
+            <div className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_14px_28px_rgba(31,26,23,0.05)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {quickDecision.title}
+              </p>
+              <div className="mt-4 grid gap-3">
+                {quickDecision.items.map((item) => (
+                  <div key={item} className="rounded-[1.2rem] border border-border bg-cream/35 px-4 py-4 text-sm leading-7 text-charcoal">
+                    {item}
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-sm leading-7 text-charcoal">{hours.todayStatus}</p>
+            </div>
+
             <div className="space-y-3">
               <p className="text-xs font-semibold uppercase tracking-[0.26em] text-sand-500">
                 {dictionary.business.addressLabel}
@@ -160,8 +184,22 @@ export default async function ContactPage({ params }: PageProps) {
             </div>
 
             <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-              <CtaButton href={dictionary.business.mapsUrl} label={dictionary.cta.maps} external />
-              <CtaButton href={`/${locale}/reservas`} label={dictionary.navigation.booking} variant="secondary" />
+              <TrackedCtaButton
+                href={dictionary.business.mapsUrl}
+                label={dictionary.cta.maps}
+                locale={locale}
+                location="contact_page"
+                eventName="click_contact_maps"
+                external
+              />
+              <TrackedCtaButton
+                href={`/${locale}/reservas`}
+                label={dictionary.navigation.booking}
+                locale={locale}
+                location="contact_page"
+                eventName="click_contact_booking_page"
+                variant="secondary"
+              />
             </div>
 
             <div className="rounded-[1.6rem] border border-border bg-cream/55 p-6">
@@ -172,6 +210,22 @@ export default async function ContactPage({ params }: PageProps) {
                 {beforeYouCome.points.map((point) => (
                   <p key={point} className="text-sm leading-7 text-charcoal">
                     {point}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_14px_28px_rgba(31,26,23,0.05)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {touristModule.title}
+              </p>
+              <p className="mt-4 text-sm leading-7 text-charcoal">
+                {touristModule.description}
+              </p>
+              <div className="mt-4 space-y-3">
+                {touristModule.bullets.map((item) => (
+                  <p key={item} className="text-sm leading-7 text-charcoal">
+                    {item}
                   </p>
                 ))}
               </div>
@@ -194,6 +248,9 @@ export default async function ContactPage({ params }: PageProps) {
                   </p>
                   <p className="mt-2 max-w-lg text-sm leading-7 text-white/92">
                     Mercado, terraza y centro histórico. Si ya te encaja la zona, reserva antes de venir.
+                  </p>
+                  <p className="mt-2 max-w-lg text-sm leading-7 text-white/86">
+                    {whyPeopleReturn.points[0]}
                   </p>
                 </div>
               </div>

@@ -12,10 +12,14 @@ import {
   experienceStoryByLocale,
   featuredDishesByLocale,
   featuredReviewsByLocale,
+  quickDecisionByLocale,
   reviewSummaryByLocale,
+  touristModuleByLocale,
+  whyPeopleReturnByLocale,
 } from "@/content/brand-story";
 import menuData from "@/content/menu.json";
 import { getSeoLanding, seoLandingSlugs } from "@/content/seo-landings";
+import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, getMenuPreview, isValidLocale } from "@/lib/i18n";
 
@@ -55,10 +59,14 @@ export default async function HomePage({ params }: PageProps) {
   }
 
   const dictionary = getDictionary(locale);
+  const hours = await getBusinessHoursPresentation(locale);
   const reviewSummary = reviewSummaryByLocale[locale];
   const featuredReviews = featuredReviewsByLocale[locale];
   const featuredDishes = featuredDishesByLocale[locale];
   const experienceStory = experienceStoryByLocale[locale];
+  const quickDecision = quickDecisionByLocale[locale];
+  const touristModule = touristModuleByLocale[locale];
+  const whyPeopleReturn = whyPeopleReturnByLocale[locale];
   const seoIntentLinks = seoLandingSlugs
     .map((slug) => getSeoLanding(slug))
     .filter(Boolean)
@@ -94,27 +102,6 @@ export default async function HomePage({ params }: PageProps) {
         ]
       : null;
   const preview = getMenuPreview(menuData, locale);
-  const featureList =
-    locale === "es"
-      ? [
-          "Tapas con cada bebida",
-          "Brasa de carbón",
-          "Mercado de San Agustín (centro)",
-          "Para compartir y comer con calma",
-        ]
-      : locale === "en"
-        ? [
-            "Real charcoal grill",
-            "Tapas and paellas made for sharing",
-            "Terrace in the city centre",
-            "Inside Mercado de San Agustin",
-          ]
-        : [
-            "Vraie braise au charbon",
-            "Tapas et paellas a partager",
-            "Terrasse en plein centre",
-            "Dans le Mercado de San Agustin",
-          ];
   const beforeYouCome =
     locale === "es"
       ? {
@@ -282,7 +269,7 @@ export default async function HomePage({ params }: PageProps) {
                           "Tapas incluidas con cada bebida",
                           "Mercado de San Agustín · centro de Granada",
                           "Precio medio orientativo: 20 €",
-                          "Si vienes en hora punta, mejor reservar",
+                          hours.todayStatus,
                         ].map((item, index) => (
                           <p
                             key={item}
@@ -371,14 +358,10 @@ export default async function HomePage({ params }: PageProps) {
           <div className="grid gap-8 border-y border-border py-8 lg:grid-cols-[0.98fr_1.02fr] lg:items-start">
             <div className="space-y-5">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-                {locale === "es"
-                  ? "Qué esperar"
-                  : locale === "en"
-                    ? "What you will find"
-                    : "Ce que vous allez trouver"}
+                {quickDecision.title}
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
-                {featureList.map((item) => (
+                {quickDecision.items.map((item) => (
                   <div
                     key={item}
                     className="flex items-start gap-3 rounded-[1.3rem] border border-border bg-white px-4 py-4 shadow-[0_12px_24px_rgba(31,26,23,0.04)]"
@@ -389,13 +372,24 @@ export default async function HomePage({ params }: PageProps) {
                 ))}
               </div>
               {locale === "es" ? (
-                <div className="rounded-[1.5rem] border border-sand-300 bg-sand-200/20 px-5 py-5">
+              <div className="rounded-[1.5rem] border border-sand-300 bg-sand-200/20 px-5 py-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
                     Microdecisión
                   </p>
                   <p className="mt-3 text-sm leading-7 text-charcoal">
                     Si vienes en hora punta, a por paella o con idea de terraza, mejor reservar antes.
                   </p>
+                  <p className="mt-2 text-sm leading-7 text-charcoal">
+                    {hours.todayMessage}
+                  </p>
+                  <div className="mt-4">
+                    <TrackedReservationLink
+                      label="Reservar mesa"
+                      locale={locale}
+                      location="decision_block"
+                      eventName="click_home_decision_reserve"
+                    />
+                  </div>
                 </div>
               ) : null}
             </div>
@@ -656,10 +650,10 @@ export default async function HomePage({ params }: PageProps) {
             </div>
           </div>
 
-          <div className="space-y-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-              {beforeYouCome.title}
-            </p>
+            <div className="space-y-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {beforeYouCome.title}
+              </p>
             <div className="space-y-3">
               {beforeYouCome.points.map((item, index) => (
                 <div
@@ -690,8 +684,21 @@ export default async function HomePage({ params }: PageProps) {
                     eventName="click_reviews_sidebar_reserve"
                   />
                 </div>
+                <p className="mt-4 text-sm leading-7 text-charcoal">{hours.summary}</p>
               </div>
             ) : null}
+            <div className="rounded-[1.5rem] border border-border bg-cream/45 px-5 py-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
+                {whyPeopleReturn.title}
+              </p>
+              <div className="mt-4 space-y-3">
+                {whyPeopleReturn.points.map((item) => (
+                  <p key={item} className="text-sm leading-7 text-charcoal">
+                    {item}
+                  </p>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -723,6 +730,54 @@ export default async function HomePage({ params }: PageProps) {
                 locale={locale}
                 location="experience_block"
                 eventName="click_contact_location_block"
+                variant="secondary"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-5 py-12 sm:px-6 lg:px-10">
+        <div className="mx-auto max-w-6xl rounded-[1.9rem] border border-border bg-white px-6 py-8 shadow-[0_18px_38px_rgba(31,26,23,0.07)] sm:px-8">
+          <div className="grid gap-6 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
+            <div className="space-y-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                {touristModule.title}
+              </p>
+              <h2 className="font-display text-4xl leading-tight text-ink">
+                {locale === "es"
+                  ? "Una parada muy fácil de entender si te mueves por la zona de Catedral"
+                  : locale === "en"
+                    ? "An easy choice if you are moving around the Cathedral area"
+                    : "Une adresse tres simple a comprendre si vous passez par la zone de la Cathedrale"}
+              </h2>
+              <p className="max-w-2xl text-base leading-8 text-charcoal">
+                {touristModule.description}
+              </p>
+              <div className="grid gap-3 sm:grid-cols-3">
+                {touristModule.bullets.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[1.3rem] border border-border bg-cream/40 px-4 py-4 text-sm leading-7 text-charcoal"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col gap-3 lg:items-end">
+              <TrackedReservationLink
+                label={locale === "es" ? "Reservar mesa" : locale === "en" ? "Book a table" : "Reserver une table"}
+                locale={locale}
+                location="tourist_block"
+                eventName="click_home_tourist_reserve"
+              />
+              <TrackedCtaButton
+                href={`/${locale}/contacto`}
+                label={locale === "es" ? "Ver ubicación" : locale === "en" ? "See location" : "Voir l'emplacement"}
+                locale={locale}
+                location="tourist_block"
+                eventName="click_home_tourist_contact"
                 variant="secondary"
               />
             </div>
