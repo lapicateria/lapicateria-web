@@ -12,7 +12,11 @@ export type TrackingLocation =
   | "home_availability"
   | "plan_simulator"
   | "phone"
-  | "sticky_bar";
+  | "sticky_bar"
+  | "social_proof"
+  | "featured_dishes"
+  | "experience_block"
+  | "language_switcher";
 
 type EventParams = Record<string, string | number | boolean | undefined>;
 
@@ -48,4 +52,18 @@ export function trackReservationClick({
   location: TrackingLocation;
 }) {
   trackEvent("reservation_click", { locale, location });
+}
+
+export function trackLanguageSwitch({
+  fromLocale,
+  toLocale,
+}: {
+  fromLocale: Locale;
+  toLocale: Locale;
+}) {
+  trackEvent("language_switch", {
+    from_locale: fromLocale,
+    to_locale: toLocale,
+    location: "language_switcher",
+  });
 }

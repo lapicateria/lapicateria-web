@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { trackLanguageSwitch } from "@/lib/analytics";
 import { locales, type Locale } from "@/lib/i18n";
 
 type LanguageSwitcherProps = {
@@ -22,6 +23,11 @@ export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
           <Link
             key={locale}
             href={href}
+            onClick={() => {
+              if (!isActive) {
+                trackLanguageSwitch({ fromLocale: currentLocale, toLocale: locale });
+              }
+            }}
             className={`rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-[0.24em] transition ${
               isActive
                 ? "bg-sand-400 text-bone"

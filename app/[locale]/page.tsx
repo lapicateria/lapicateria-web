@@ -5,8 +5,15 @@ import { ConversionStatusPanel } from "@/components/conversion-status-panel";
 import { CtaButton } from "@/components/cta-button";
 import { RestaurantSchema } from "@/components/restaurant-schema";
 import { SectionHeading } from "@/components/section-heading";
+import { TrackedCtaButton } from "@/components/tracked-cta-button";
 import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
+import {
+  experienceStoryByLocale,
+  featuredDishesByLocale,
+  featuredReviewsByLocale,
+  reviewSummaryByLocale,
+} from "@/content/brand-story";
 import menuData from "@/content/menu.json";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, getMenuPreview, isValidLocale } from "@/lib/i18n";
@@ -47,6 +54,10 @@ export default async function HomePage({ params }: PageProps) {
   }
 
   const dictionary = getDictionary(locale);
+  const reviewSummary = reviewSummaryByLocale[locale];
+  const featuredReviews = featuredReviewsByLocale[locale];
+  const featuredDishes = featuredDishesByLocale[locale];
+  const experienceStory = experienceStoryByLocale[locale];
   const decisionCards =
     locale === "es"
       ? [
@@ -94,87 +105,6 @@ export default async function HomePage({ params }: PageProps) {
             "Terrasse en plein centre",
             "Dans le Mercado de San Agustin",
           ];
-  const specialties =
-    locale === "es"
-      ? [
-          {
-            name: "Pulpo a la brasa",
-            note: "Muy pedido",
-            description: "Marcado a fuego y pensado para compartir.",
-          },
-          {
-            name: "Jamón asado",
-            note: "Especialidad de la casa",
-            description: "Un clásico de la casa, jugoso y hecho para volver.",
-          },
-          {
-            name: "Paellas y arroces",
-            note: "Para compartir",
-            description: "Para venir con tiempo, pedir mesa y compartir de verdad.",
-          },
-        ]
-      : locale === "en"
-        ? [
-            {
-              name: "Chargrilled octopus",
-              note: "Frequently ordered",
-              description: "Octopus leg over parmentier. One of the dishes that best represents the place.",
-            },
-            {
-              name: "Roast ham",
-              note: "House specialty",
-              description: "La Picatería's signature dish, made for the middle of the table and easy sharing.",
-            },
-            {
-              name: "Paellas and rice",
-              note: "To share",
-              description: "If you are coming for rice, it is better to book ahead and enjoy the table without rushing.",
-            },
-          ]
-        : [
-            {
-              name: "Poulpe a la braise",
-              note: "Tres demande",
-              description: "Patte de poulpe sur parmentier. Un des plats qui resume le mieux la maison.",
-            },
-            {
-              name: "Jambon roti",
-              note: "Specialite",
-              description: "La specialite de La Picatería, pensee pour etre posee au centre de la table et partagee.",
-            },
-            {
-              name: "Paellas et riz",
-              note: "A partager",
-              description: "Si vous venez avec l'idee d'un riz, mieux vaut reserver et prendre le temps de profiter de la table.",
-            },
-          ];
-  const socialProof =
-    locale === "es"
-      ? {
-          title: "Lo que más valoran quienes vienen",
-          points: [
-            "Producto bien trabajado, especialmente la brasa, el pulpo y los arroces.",
-            "La ubicación dentro del mercado y a un paso de la Catedral suma mucho a la experiencia.",
-            "Es un sitio que funciona bien para compartir, alargar la mesa y venir con terraza en mente.",
-          ],
-        }
-      : locale === "en"
-        ? {
-            title: "What guests tend to value most",
-            points: [
-              "Well-handled produce, especially the grill dishes, octopus and rice.",
-              "The market setting and the location near the Cathedral make the visit easy to understand.",
-              "It works especially well for sharing plates, terrace tables and slower meals.",
-            ],
-          }
-        : {
-            title: "Ce que les clients valorisent le plus",
-            points: [
-              "Un produit bien travaille, surtout sur la braise, le poulpe et les riz.",
-              "L'emplacement dans le marche et a deux pas de la Cathedrale rend la proposition tres claire.",
-              "C'est une adresse qui fonctionne bien pour partager, profiter de la terrasse et prendre son temps.",
-            ],
-          };
   const beforeYouCome =
     locale === "es"
       ? {
@@ -270,39 +200,6 @@ export default async function HomePage({ params }: PageProps) {
               "Terrasse, marche et centre historique : La Picatería est au coeur de Grenade, a quelques pas de la Cathedrale.",
             cta: "Voir le contact",
           };
-  const kitchenMoments =
-    locale === "es"
-      ? [
-          {
-            title: "Pulpo a la brasa",
-            description: "Marcado al fuego y pensado para compartir.",
-            image: pinchosImage,
-            alt: "Pinchos y producto real de La Picatería",
-            position: "object-cover object-center",
-          },
-          {
-            title: "Chuletón",
-            description: "Carne a la brasa y plato de decisión rápida si vienes a comer.",
-            image: chuletonImage,
-            alt: "Chuletón a la brasa en La Picatería",
-            position: "object-cover object-center",
-          },
-          {
-            title: "Paella",
-            description: "Para venir con tiempo, pedir mesa y compartir.",
-            image: paellaImage,
-            alt: "Paella de La Picatería",
-            position: "object-cover object-center",
-          },
-          {
-            title: "Jamón asado",
-            description: "Uno de los platos de casa que mejor explica el tono de la carta.",
-            image: brandImage,
-            alt: "Jamón asado de La Picatería",
-            position: "object-cover object-center",
-          },
-        ]
-      : null;
   const realGallery =
     locale === "es"
       ? [
@@ -336,33 +233,6 @@ export default async function HomePage({ params }: PageProps) {
           },
         ]
       : null;
-  const socialProofHighlights =
-    locale === "es"
-      ? [
-          "De los mejores sitios para tapear en Granada",
-          "Producto brutal y ambiente top",
-          "Muy buena ubicación para comer en el centro",
-        ]
-      : null;
-
-  const brandCopy =
-    locale === "es"
-      ? {
-          title: "Producto de mercado, cocina directa y una casa con personalidad",
-          text:
-            "La Picatería combina barra, brasa, vermut, conservas, vinos y cocina para compartir en un espacio con identidad propia.",
-        }
-      : locale === "en"
-        ? {
-            title: "Market produce, straightforward cooking and a place with character",
-            text:
-              "La Picatería brings together bar culture, charcoal grill, vermouth, tinned delicacies, wine and sharing dishes in a space with its own personality.",
-          }
-        : {
-            title: "Produit de marche, cuisine directe et une maison avec de la personnalite",
-            text:
-              "La Picatería melange comptoir, braise, vermouth, conserves, vins et cuisine a partager dans un lieu avec une vraie identite.",
-          };
   return (
     <>
       <RestaurantSchema locale={locale} />
@@ -372,7 +242,7 @@ export default async function HomePage({ params }: PageProps) {
           <div className="relative min-h-[680px]">
               <Image
                 src={heroImage}
-                alt="Barra con producto, vitrina y ambiente real de La Picatería"
+                alt="Paella y carne a la brasa en La Picatería"
                 fill
                 priority
                 className="object-cover object-center saturate-[1.04] contrast-[1.04]"
@@ -427,9 +297,12 @@ export default async function HomePage({ params }: PageProps) {
                     eventName={locale === "es" ? "click_reserve_hero" : undefined}
                     className="inline-flex items-center justify-center rounded-full bg-sand-400 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-bone shadow-[0_24px_40px_rgba(132,81,28,0.4)] transition hover:bg-sand-500 hover:shadow-[0_28px_46px_rgba(132,81,28,0.48)]"
                   />
-                  <CtaButton
+                  <TrackedCtaButton
                     href={`/${locale}/carta`}
                     label={heroCopy.menu}
+                    locale={locale}
+                    location="hero"
+                    eventName="click_menu_hero"
                     variant="secondary"
                   />
                   {locale === "es" ? (
@@ -517,28 +390,51 @@ export default async function HomePage({ params }: PageProps) {
               ) : null}
             </div>
 
-            {locale === "es" && socialProofHighlights ? (
-              <div className="space-y-5 rounded-[1.7rem] border border-border bg-white p-6 shadow-[0_18px_34px_rgba(31,26,23,0.06)]">
-                <div className="space-y-2">
+            <div className="space-y-5 rounded-[1.7rem] border border-border bg-white p-6 shadow-[0_18px_34px_rgba(31,26,23,0.06)]">
+              <div className="grid gap-4 sm:grid-cols-[0.74fr_1.26fr] sm:items-start">
+                <div className="rounded-[1.4rem] border border-sand-300 bg-sand-200/22 px-5 py-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-                    Prueba social
+                    {reviewSummary.kicker}
                   </p>
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sand-500">
-                    ⭐ 4,4 en Google · +2.500 opiniones
+                  <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-sand-500">
+                    {reviewSummary.rating}
                   </p>
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-sand-500">
+                    {reviewSummary.volume}
+                  </p>
+                  <p className="mt-4 text-sm leading-7 text-charcoal">{reviewSummary.title}</p>
                 </div>
                 <div className="grid gap-3">
-                  {socialProofHighlights.map((item) => (
+                  {featuredReviews.slice(0, 2).map((item, index) => (
                     <blockquote
-                      key={item}
-                      className="rounded-[1.3rem] border border-border bg-cream/45 px-4 py-4 text-sm font-medium leading-7 text-charcoal"
+                      key={`${item.tag}-${index}`}
+                      className="rounded-[1.3rem] border border-border bg-cream/45 px-4 py-4 text-sm leading-7 text-charcoal"
                     >
-                      “{item}”
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sand-500">
+                        {item.tag}
+                      </p>
+                      <p className="mt-2 font-medium">“{item.quote}”</p>
                     </blockquote>
                   ))}
                 </div>
               </div>
-            ) : null}
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <TrackedCtaButton
+                  href={`/${locale}/carta`}
+                  label={locale === "es" ? "Ver carta" : locale === "en" ? "View menu" : "Voir la carte"}
+                  locale={locale}
+                  location="social_proof"
+                  eventName="click_social_proof_menu"
+                  variant="secondary"
+                />
+                <TrackedReservationLink
+                  label={locale === "es" ? "Reservar mesa" : locale === "en" ? "Book a table" : "Reserver une table"}
+                  locale={locale}
+                  location="social_proof"
+                  eventName="click_social_proof_reserve"
+                />
+              </div>
+            </div>
           </div>
 
           {locale === "es" && realGallery ? (
@@ -600,7 +496,14 @@ export default async function HomePage({ params }: PageProps) {
                     location="hero"
                     eventName="click_reserve_home_visual_block"
                   />
-                  <CtaButton href={`/${locale}/carta`} label="Ver carta" variant="secondary" />
+                  <TrackedCtaButton
+                    href={`/${locale}/carta`}
+                    label="Ver carta"
+                    locale={locale}
+                    location="hero"
+                    eventName="click_menu_visual_block"
+                    variant="secondary"
+                  />
                 </div>
               </div>
             </div>
@@ -613,125 +516,133 @@ export default async function HomePage({ params }: PageProps) {
       ) : null}
 
       <section className="bg-cream/55 px-5 py-16 sm:px-6 lg:px-10">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-6xl space-y-8">
           <div className="flex flex-col gap-6 border-b border-border pb-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl space-y-4">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
                 {locale === "es"
-                  ? "Especialidades reales"
+                  ? "Platos estrella"
                   : locale === "en"
-                    ? "Real specialties"
-                    : "Specialites de la maison"}
+                    ? "Featured dishes"
+                    : "Plats signatures"}
               </p>
               <h2 className="font-display text-5xl leading-tight text-ink">
                 {locale === "es"
-                  ? "Tres platos para entender la casa"
+                  ? "Cuatro razones muy fáciles para querer venir"
                   : locale === "en"
-                    ? "Dishes that help you decide quickly"
-                    : "Des plats qui aident a decider vite"}
+                    ? "Four fast reasons to picture the table"
+                    : "Quatre raisons simples d'avoir envie d'y aller"}
               </h2>
+              <p className="max-w-2xl text-base leading-8 text-charcoal">
+                {locale === "es"
+                  ? "Producto real, platos reconocibles y una lectura muy rápida para el usuario que compara varios restaurantes antes de reservar."
+                  : locale === "en"
+                    ? "Recognisable dishes, real product and a fast read for guests comparing several places before booking."
+                    : "Des plats reconnaissables, du vrai produit et une lecture rapide pour ceux qui comparent plusieurs adresses avant de reserver."}
+              </p>
             </div>
-            <CtaButton href={`/${locale}/carta`} label={dictionary.cta.menu} />
+            <TrackedCtaButton
+              href={`/${locale}/carta`}
+              label={dictionary.cta.menu}
+              locale={locale}
+              location="featured_dishes"
+              eventName="click_featured_dishes_menu"
+              variant="secondary"
+            />
           </div>
-          <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            {specialties.map((item) => (
-              <article key={item.name} className="space-y-3 border-b border-border pb-5 lg:border-b-0 lg:border-r lg:pr-6 last:border-r-0">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-sand-500">
-                  {item.note}
-                </p>
-                <h3 className="font-display text-3xl text-ink">{item.name}</h3>
-                <p className="text-sm leading-7 text-charcoal">{item.description}</p>
+
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {featuredDishes.map((dish) => (
+              <article
+                key={dish.key}
+                className="overflow-hidden rounded-[1.7rem] border border-border bg-white shadow-[0_18px_38px_rgba(31,26,23,0.08)]"
+              >
+                <div className="relative min-h-[260px]">
+                  <Image
+                    src={dish.image}
+                    alt={dish.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="space-y-4 px-5 py-5">
+                  <div className="space-y-2">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sand-500">
+                      {locale === "es"
+                        ? "Imprescindible"
+                        : locale === "en"
+                          ? "Must try"
+                          : "A ne pas manquer"}
+                    </p>
+                    <h3 className="font-display text-3xl leading-tight text-ink">{dish.name}</h3>
+                    <p className="text-sm leading-7 text-charcoal">{dish.description}</p>
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <TrackedCtaButton
+                      href={`/${locale}/carta`}
+                      label={locale === "es" ? "Ver carta" : locale === "en" ? "View menu" : "Voir la carte"}
+                      locale={locale}
+                      location="featured_dishes"
+                      eventName={`click_featured_dish_${dish.key}_menu`}
+                      variant="secondary"
+                    />
+                    <TrackedReservationLink
+                      label={locale === "es" ? "Reservar mesa" : locale === "en" ? "Book a table" : "Reserver une table"}
+                      locale={locale}
+                      location="featured_dishes"
+                      eventName={`click_featured_dish_${dish.key}_reserve`}
+                    />
+                  </div>
+                </div>
               </article>
             ))}
           </div>
-          {locale === "es" ? (
-            <div className="mt-8 flex flex-col gap-3 rounded-[1.6rem] border border-border bg-white px-6 py-5 sm:flex-row sm:items-center sm:justify-between">
-              <div className="space-y-1">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
-                  Decisión rápida
-                </p>
-                <p className="text-base leading-7 text-charcoal">
-                  Si ya te encaja la carta, reserva tu mesa y evita improvisar en hora punta.
-                </p>
-              </div>
-              <TrackedReservationLink
-                label="Reservar mesa"
-                locale={locale}
-                location="hero"
-                eventName="click_reserve_home_specialties"
-              />
-            </div>
-          ) : null}
         </div>
       </section>
-
-      {locale === "es" && kitchenMoments ? (
-        <section className="px-5 py-16 sm:px-6 lg:px-10">
-          <div className="mx-auto max-w-6xl space-y-8">
-            <div className="space-y-3 border-b border-border pb-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-                Cocina
-              </p>
-              <h2 className="font-display text-5xl leading-tight text-ink">
-                Lo que sale de cocina
-              </h2>
-            </div>
-            <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-              {kitchenMoments.map((item) => (
-                <article key={item.title} className="space-y-4">
-                  <div className="overflow-hidden rounded-[1.5rem] bg-white shadow-[0_16px_34px_rgba(31,26,23,0.08)]">
-                    <div className="relative min-h-[250px]">
-                      <Image
-                        src={item.image}
-                        alt={item.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 25vw"
-                        className={item.position}
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <h3 className="font-display text-3xl text-ink">{item.title}</h3>
-                    <p className="text-sm leading-7 text-charcoal">{item.description}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <div className="pt-2">
-              <TrackedReservationLink
-                label={dictionary.cta.reserve}
-                locale={locale}
-                location="hero"
-              />
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       <section className="px-5 py-16 sm:px-6 lg:px-10">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
           <div className="space-y-5">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-              {locale === "es"
-                ? "Lo que más valoran quienes vienen"
-                : locale === "en"
-                  ? "Social proof without the fluff"
-                  : "Preuve sociale sans effet de manche"}
+              {reviewSummary.kicker}
             </p>
-            {locale === "es" ? (
+            <div className="space-y-3">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sand-500">
-                4,4 en Google · más de 2.500 opiniones
+                {reviewSummary.rating} · {reviewSummary.volume}
               </p>
-            ) : null}
-            <h2 className="font-display text-5xl leading-tight text-ink">
-              {socialProof.title}
-            </h2>
-            <div className="space-y-4">
-              {socialProof.points.map((item) => (
-                <p key={item} className="border-b border-border pb-4 text-base leading-8 text-charcoal">
-                  {item}
-                </p>
+              <h2 className="font-display text-5xl leading-tight text-ink">
+                {reviewSummary.title}
+              </h2>
+            </div>
+            <div className="grid gap-3">
+              {featuredReviews.map((item, index) => (
+                <blockquote
+                  key={`${item.tag}-${index}`}
+                  className="rounded-[1.4rem] border border-border bg-white px-5 py-5 shadow-[0_14px_28px_rgba(31,26,23,0.05)]"
+                >
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sand-500">
+                    {item.tag}
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-charcoal">“{item.quote}”</p>
+                </blockquote>
               ))}
+            </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <TrackedCtaButton
+                href={`/${locale}/carta`}
+                label={locale === "es" ? "Ver carta" : locale === "en" ? "View menu" : "Voir la carte"}
+                locale={locale}
+                location="social_proof"
+                eventName="click_reviews_menu"
+                variant="secondary"
+              />
+              <TrackedReservationLink
+                label={locale === "es" ? "Reservar mesa" : locale === "en" ? "Book a table" : "Reserver une table"}
+                locale={locale}
+                location="social_proof"
+                eventName="click_reviews_reserve"
+              />
             </div>
           </div>
 
@@ -761,6 +672,14 @@ export default async function HomePage({ params }: PageProps) {
                 <p className="mt-3 text-sm leading-7 text-charcoal">
                   Si vienes a por arroz, terraza o mesa con calma, lo más cómodo es reservar antes desde la web.
                 </p>
+                <div className="mt-4">
+                  <TrackedReservationLink
+                    label="Reservar mesa"
+                    locale={locale}
+                    location="social_proof"
+                    eventName="click_reviews_sidebar_reserve"
+                  />
+                </div>
               </div>
             ) : null}
           </div>
@@ -786,8 +705,16 @@ export default async function HomePage({ params }: PageProps) {
                 label={dictionary.cta.reserve}
                 locale={locale}
                 location="hero"
+                eventName="click_reserve_location_block"
               />
-              <CtaButton href={`/${locale}/contacto`} label={dictionary.cta.contact} variant="secondary" />
+              <TrackedCtaButton
+                href={`/${locale}/contacto`}
+                label={dictionary.cta.contact}
+                locale={locale}
+                location="experience_block"
+                eventName="click_contact_location_block"
+                variant="secondary"
+              />
             </div>
           </div>
         </div>
@@ -854,8 +781,21 @@ export default async function HomePage({ params }: PageProps) {
               ))}
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <CtaButton href={`/${locale}/carta`} label={dictionary.cta.menu} />
-              <CtaButton href={`/${locale}/reservas`} label={dictionary.navigation.booking} variant="secondary" />
+              <TrackedCtaButton
+                href={`/${locale}/carta`}
+                label={dictionary.cta.menu}
+                locale={locale}
+                location="carta_page"
+                eventName="click_menu_preview"
+              />
+              <TrackedCtaButton
+                href={`/${locale}/reservas`}
+                label={dictionary.navigation.booking}
+                locale={locale}
+                location="carta_page"
+                eventName="click_booking_preview"
+                variant="secondary"
+              />
             </div>
             {locale === "es" ? (
               <div className="rounded-[1.5rem] border border-border bg-cream/55 px-5 py-5">
@@ -887,14 +827,24 @@ export default async function HomePage({ params }: PageProps) {
           <div className="space-y-8">
             <div className="space-y-4">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-                {dictionary.sections.differentials.eyebrow}
+                {experienceStory.eyebrow}
               </p>
               <h2 className="max-w-2xl font-display text-5xl leading-tight text-ink">
-                {brandCopy.title}
+                {experienceStory.title}
               </h2>
               <p className="max-w-xl text-base leading-8 text-charcoal">
-                {brandCopy.text}
+                {experienceStory.description}
               </p>
+              <div className="grid gap-3 pt-1 sm:grid-cols-2">
+                {experienceStory.bullets.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-[1.3rem] border border-border bg-white/86 px-4 py-4 text-sm leading-7 text-charcoal shadow-[0_10px_24px_rgba(31,26,23,0.04)]"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="space-y-4 border-t border-border pt-5">
@@ -905,8 +855,21 @@ export default async function HomePage({ params }: PageProps) {
                 {dictionary.sections.booking.description}
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
-                <CtaButton href={`/${locale}/reservas`} label={dictionary.navigation.booking} />
-                <CtaButton href={`/${locale}/carta`} label={dictionary.cta.menu} variant="secondary" />
+                <TrackedCtaButton
+                  href={`/${locale}/reservas`}
+                  label={dictionary.navigation.booking}
+                  locale={locale}
+                  location="experience_block"
+                  eventName="click_experience_booking"
+                />
+                <TrackedCtaButton
+                  href={`/${locale}/carta`}
+                  label={dictionary.cta.menu}
+                  locale={locale}
+                  location="experience_block"
+                  eventName="click_experience_menu"
+                  variant="secondary"
+                />
               </div>
             </div>
           </div>
@@ -914,8 +877,8 @@ export default async function HomePage({ params }: PageProps) {
           <div className="overflow-hidden rounded-[1.9rem] bg-white shadow-[0_20px_48px_rgba(31,26,23,0.11)]">
             <div className="relative min-h-[460px]">
               <Image
-                src={chuletonImage}
-                alt="Chuletón a la brasa de La Picatería"
+                src={experienceStory.image}
+                alt={experienceStory.alt}
                 fill
                 className="object-cover"
               />
