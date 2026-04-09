@@ -1,9 +1,11 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
 import defaultConversionConfig from "@/content/conversion-settings.json";
+import {
+  readStoredConversionConfig,
+  writeStoredConversionConfig,
+} from "@/lib/conversion-store";
 
 export type DemandState = "quiet" | "busy" | "very_busy" | "packed";
-export type TerraceState = "available" | "limited" | "full";
+export type TerraceState = "available" | "limited" | "full" | "unavailable";
 export type PlanKey = "solo_tapas" | "a_la_carte" | "group_sharing";
 export type DayKey =
   | "monday"
@@ -64,20 +66,20 @@ export type ResolvedConversionState = {
   matchedRule: TimeRangeRule | null;
 };
 
-const SETTINGS_PATH = path.join(process.cwd(), "content", "conversion-settings.json");
-
 export async function readConversionConfig(): Promise<ConversionConfig> {
   try {
-    const raw = await fs.readFile(SETTINGS_PATH, "utf8");
-    const parsed = JSON.parse(raw) as ConversionConfig;
-    return withSafeDefaults(parsed);
+    const stored = await readStoredConversionConfig();
+    if (!stored) {
+      return withSafeDefaults(defaultConversionConfig as ConversionConfig);
+    }
+    return withSafeDefaults(stored);
   } catch {
     return withSafeDefaults(defaultConversionConfig as ConversionConfig);
   }
 }
 
 export async function writeConversionConfig(config: ConversionConfig) {
-  await fs.writeFile(SETTINGS_PATH, `${JSON.stringify(config, null, 2)}\n`, "utf8");
+  await writeStoredConversionConfig(config);
 }
 
 export async function getResolvedConversionState(
@@ -191,6 +193,8 @@ function terraceSignal(state: TerraceState) {
       return "Terraza limitada";
     case "full":
       return "Terraza completa";
+    case "unavailable":
+      return "Terraza no disponible";
     default:
       return "Terraza disponible";
   }

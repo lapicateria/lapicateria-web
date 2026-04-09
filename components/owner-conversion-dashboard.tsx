@@ -31,6 +31,7 @@ const terraceOptions: { value: TerraceState; label: string }[] = [
   { value: "available", label: "Disponible" },
   { value: "limited", label: "Limitada" },
   { value: "full", label: "Completa" },
+  { value: "unavailable", label: "No disponible" },
 ];
 
 type OwnerResponse = {
@@ -41,6 +42,7 @@ type OwnerResponse = {
     source: "automatic" | "manual";
     localTime: string;
   };
+  error?: string;
 };
 
 export function OwnerConversionDashboard() {
@@ -53,14 +55,24 @@ export function OwnerConversionDashboard() {
     let cancelled = false;
 
     async function load() {
-      const response = await fetch("/api/owner/conversion", { cache: "no-store" });
-      if (!response.ok) {
-        return;
-      }
-      const payload = (await response.json()) as OwnerResponse;
-      if (!cancelled) {
-        setConfig(payload.config);
-        setStatus(payload.resolved);
+      try {
+        const response = await fetch("/api/owner/conversion", { cache: "no-store" });
+        if (!response.ok) {
+          if (!cancelled) {
+            setFeedback("No se ha podido cargar la configuración actual.");
+          }
+          return;
+        }
+        const payload = (await response.json()) as OwnerResponse;
+        if (!cancelled) {
+          setConfig(payload.config);
+          setStatus(payload.resolved);
+          setFeedback(null);
+        }
+      } catch {
+        if (!cancelled) {
+          setFeedback("No se ha podido cargar la configuración actual.");
+        }
       }
     }
 
@@ -78,25 +90,31 @@ export function OwnerConversionDashboard() {
     setSaving(true);
     setFeedback(null);
 
-    const response = await fetch("/api/owner/conversion", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(config),
-    });
+    try {
+      const response = await fetch("/api/owner/conversion", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(config),
+      });
 
-    setSaving(false);
+      const payload = (await response.json()) as OwnerResponse;
 
-    if (!response.ok) {
-      setFeedback("No se ha podido guardar. Vuelve a intentarlo.");
-      return;
+      setSaving(false);
+
+      if (!response.ok) {
+        setFeedback(payload.error ?? "No se ha podido guardar la configuración.");
+        return;
+      }
+
+      setConfig(payload.config);
+      setStatus(payload.resolved);
+      setFeedback("Cambios guardados y publicados.");
+    } catch {
+      setSaving(false);
+      setFeedback("No se ha podido guardar la configuración.");
     }
-
-    const payload = (await response.json()) as OwnerResponse;
-    setConfig(payload.config);
-    setStatus(payload.resolved);
-    setFeedback("Cambios guardados.");
   }
 
   if (!config) {
@@ -422,7 +440,9 @@ export function OwnerConversionDashboard() {
       </section>
 
       <div className="flex items-center justify-between gap-4">
-        <div className="text-sm text-charcoal">{feedback}</div>
+        <div className={`text-sm ${feedback?.includes("guardados") ? "text-olive-700" : "text-charcoal"}`}>
+          {feedback}
+        </div>
         <button
           type="button"
           onClick={() => void saveConfig()}
