@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BookingStatusCard } from "@/components/booking-status-card";
 import { CtaButton } from "@/components/cta-button";
+import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLocale } from "@/lib/i18n";
@@ -54,8 +55,8 @@ export default async function BookingPage({ params }: PageProps) {
               "Booking is recommended at peak times",
               "A place built for sharing and taking your time",
             ],
-          }
-        : {
+        }
+      : {
             title: "Reservez en quelques etapes",
             points: [
               "Dans le Mercado de San Agustin",
@@ -74,18 +75,32 @@ export default async function BookingPage({ params }: PageProps) {
               {dictionary.bookingPage.eyebrow}
             </p>
             <h1 className="font-display text-5xl leading-tight text-ink sm:text-6xl">
-              {dictionary.bookingPage.title}
+              {locale === "es" ? "Reserva tu mesa" : dictionary.bookingPage.title}
             </h1>
             <p className="text-base leading-8 text-charcoal">
-              {dictionary.bookingPage.description}
+              {locale === "es"
+                ? "Si vienes en hora punta o quieres sentarte con calma, mejor reservar antes de venir."
+                : dictionary.bookingPage.description}
             </p>
           </div>
-          <TrackedReservationLink
-            label={dictionary.cta.qamarero}
-            locale={locale}
-            location="reservas_page"
-            className="inline-flex items-center justify-center rounded-full bg-sand-400 px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-bone shadow-[0_18px_30px_rgba(132,81,28,0.28)] transition hover:bg-sand-500"
-          />
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <TrackedReservationLink
+              label={locale === "es" ? "Reservar en Qamarero" : dictionary.cta.qamarero}
+              locale={locale}
+              location="reservas_page"
+              eventName={locale === "es" ? "click_reserve_reservas_page" : undefined}
+              className="inline-flex items-center justify-center rounded-full bg-sand-400 px-7 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-bone shadow-[0_18px_30px_rgba(132,81,28,0.28)] transition hover:bg-sand-500"
+            />
+            {locale === "es" ? (
+              <TrackedPhoneLink
+                phoneHref={dictionary.business.phoneHref}
+                label="Llamar ahora"
+                locale={locale}
+                eventName="click_call_reservas_page"
+                variant="secondary"
+              />
+            ) : null}
+          </div>
         </div>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.62fr_1.38fr]">
@@ -140,7 +155,17 @@ export default async function BookingPage({ params }: PageProps) {
                   </a>
                 </p>
               </div>
-              <CtaButton href={`tel:${dictionary.business.phoneHref}`} label={dictionary.business.phone} variant="secondary" />
+              {locale === "es" ? (
+                <TrackedPhoneLink
+                  phoneHref={dictionary.business.phoneHref}
+                  label="Llamar y preguntar mesa"
+                  locale={locale}
+                  eventName="click_call_reservas_page"
+                  variant="secondary"
+                />
+              ) : (
+                <CtaButton href={`tel:${dictionary.business.phoneHref}`} label={dictionary.business.phone} variant="secondary" />
+              )}
             </div>
           </div>
 

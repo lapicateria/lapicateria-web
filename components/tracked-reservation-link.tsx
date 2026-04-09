@@ -15,6 +15,7 @@ type TrackedReservationLinkProps = {
   location: TrackingLocation;
   variant?: "primary" | "secondary";
   className?: string;
+  eventName?: string;
 };
 
 export function TrackedReservationLink({
@@ -23,6 +24,7 @@ export function TrackedReservationLink({
   location,
   variant = "primary",
   className,
+  eventName,
 }: TrackedReservationLinkProps) {
   const baseClassName = getCtaButtonClassName(variant);
 
@@ -33,6 +35,9 @@ export function TrackedReservationLink({
       rel="noreferrer"
       className={className ?? baseClassName}
       onClick={() => {
+        if (eventName) {
+          trackEvent(eventName, { locale, location });
+        }
         trackEvent("cta_click", { locale, location });
         trackReservationClick({ locale, location });
       }}

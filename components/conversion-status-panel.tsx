@@ -3,7 +3,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { CtaButton } from "@/components/cta-button";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
+import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import type { DemandState, PlanKey, PlanOption, ResolvedConversionState } from "@/lib/conversion";
+import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/lib/i18n";
 
 type StatusResponse = {
@@ -63,6 +65,14 @@ export function ConversionStatusPanel({
   const badgeClassName = stateClassNames[data.resolved.state];
   const primaryLocation = selectedOption.primaryAction === "reserve" ? "plan_simulator" : "hero";
   const secondaryLocation = selectedOption.secondaryAction === "reserve" ? "plan_simulator" : "hero";
+  const urgencyMessage =
+    locale === "es"
+      ? data.resolved.state === "very_busy"
+        ? "Ahora mismo hay bastante movimiento. Si vienes ahora, mejor con reserva."
+        : data.resolved.state === "packed"
+          ? "Hora punta. Mejor llamar o reservar antes de venir."
+          : null
+      : null;
 
   return (
     <section className="px-5 py-10 sm:px-6 lg:px-10">
@@ -86,6 +96,12 @@ export function ConversionStatusPanel({
                 </span>
                 <p className="text-sm font-medium text-charcoal">{data.resolved.reservationHint}</p>
               </div>
+
+              {urgencyMessage ? (
+                <p className="text-sm font-medium leading-7 text-ink">
+                  {urgencyMessage}
+                </p>
+              ) : null}
 
               <div className="grid gap-3 md:grid-cols-2">
                 {content.bookingPoints.map((item, index) => (
@@ -116,7 +132,13 @@ export function ConversionStatusPanel({
                   location="home_availability"
                   className="inline-flex items-center justify-center rounded-full bg-sand-400 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-bone shadow-[0_20px_34px_rgba(132,81,28,0.34)] transition hover:bg-sand-500 hover:shadow-[0_26px_42px_rgba(132,81,28,0.44)]"
                 />
-                <CtaButton href={`tel:${phoneHref}`} label={content.callLabel} variant="secondary" />
+                <TrackedPhoneLink
+                  phoneHref={phoneHref}
+                  label={content.callLabel}
+                  locale={locale}
+                  eventName="click_call_home"
+                  variant="secondary"
+                />
               </div>
             </div>
           </div>
@@ -137,7 +159,19 @@ export function ConversionStatusPanel({
                   <button
                     key={key}
                     type="button"
-                    onClick={() => setSelectedPlan(key)}
+                    onClick={() => {
+                      setSelectedPlan(key);
+                      if (locale === "es") {
+                        trackEvent(
+                          key === "solo_tapas"
+                            ? "click_plan_tapas"
+                            : key === "a_la_carte"
+                              ? "click_plan_comer"
+                              : "click_plan_grupo",
+                          { locale },
+                        );
+                      }
+                    }}
                     className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
                       selectedPlan === key
                         ? "border-sand-400 bg-sand-400 text-bone shadow-[0_10px_20px_rgba(132,81,28,0.18)]"
@@ -306,9 +340,9 @@ function getPanelCopy(locale: Locale) {
   }
 
   return {
-    loading: "Cargando información del servicio...",
-    availabilityEyebrow: "Disponibilidad",
-    availabilityTitle: "Ver disponibilidad antes de reservar",
+      loading: "Cargando información del servicio...",
+      availabilityEyebrow: "Disponibilidad",
+      availabilityTitle: "Ver disponibilidad antes de reservar",
     bookingPoints: [
       "Tapas incluidas con cada bebida",
       "Puedes venir a tapear o sentarte a comer a la carta",
@@ -316,12 +350,12 @@ function getPanelCopy(locale: Locale) {
       "Ubicación: Mercado de San Agustín, centro de Granada",
     ],
     todayOpen: "Abierto hoy",
-    reserveLabel: "Reservar mesa",
-    callLabel: "Llamar",
-    menuLabel: "Ver carta",
+      reserveLabel: "Reservar mesa",
+    callLabel: "Llamar ahora",
+      menuLabel: "Ver carta",
     planEyebrow: "Tu plan",
-    planTitle: "¿Cómo vienes hoy?",
-    nowEyebrow: "Ahora mismo",
-    nowTitle: "Ahora mismo en La Picatería",
+    planTitle: "Cómo se viene a La Picatería",
+      nowEyebrow: "Ahora mismo",
+      nowTitle: "Ahora mismo en La Picatería",
   };
 }

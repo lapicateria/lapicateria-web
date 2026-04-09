@@ -5,6 +5,7 @@ import { ConversionStatusPanel } from "@/components/conversion-status-panel";
 import { CtaButton } from "@/components/cta-button";
 import { RestaurantSchema } from "@/components/restaurant-schema";
 import { SectionHeading } from "@/components/section-heading";
+import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
 import menuData from "@/content/menu.json";
 import { buildMetadata } from "@/lib/metadata";
@@ -326,27 +327,49 @@ export default async function HomePage({ params }: PageProps) {
                       <p className="inline-flex rounded-full border border-white/16 bg-white/12 px-4 py-2 text-sm font-semibold text-white/95 backdrop-blur-sm">
                         ⭐ 4,4 en Google · +2.500 opiniones
                       </p>
-                      <p className="inline-flex rounded-full bg-bone px-4 py-2 text-sm font-semibold text-ink shadow-[0_12px_24px_rgba(16,16,14,0.14)]">
-                        Tapas incluidas con cada bebida
-                      </p>
-                      <p className="text-sm font-medium text-white/82">
-                        Si vienes en hora punta, mejor con reserva.
-                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          "Tapas incluidas con cada bebida",
+                          "Mercado de San Agustín · centro de Granada",
+                          "Si vienes en hora punta, mejor reservar",
+                        ].map((item, index) => (
+                          <p
+                            key={item}
+                            className={`inline-flex rounded-full px-4 py-2 text-sm font-semibold backdrop-blur-sm ${
+                              index === 0
+                                ? "bg-bone text-ink shadow-[0_12px_24px_rgba(16,16,14,0.14)]"
+                                : "border border-white/16 bg-white/12 text-white/92"
+                            }`}
+                          >
+                            {item}
+                          </p>
+                        ))}
+                      </div>
                     </>
                   ) : null}
                 </div>
-                <div className="flex flex-col gap-3 pt-1 sm:flex-row">
+                <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap">
                   <TrackedReservationLink
                     label={heroCopy.reserve}
                     locale={locale}
                     location="hero"
-                    className="inline-flex items-center justify-center rounded-full bg-sand-400 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-bone shadow-[0_22px_36px_rgba(132,81,28,0.36)] transition hover:bg-sand-500 hover:shadow-[0_26px_42px_rgba(132,81,28,0.44)]"
+                    eventName={locale === "es" ? "click_reserve_hero" : undefined}
+                    className="inline-flex items-center justify-center rounded-full bg-sand-400 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-bone shadow-[0_24px_40px_rgba(132,81,28,0.4)] transition hover:bg-sand-500 hover:shadow-[0_28px_46px_rgba(132,81,28,0.48)]"
                   />
                   <CtaButton
                     href={`/${locale}/carta`}
                     label={heroCopy.menu}
                     variant="secondary"
                   />
+                  {locale === "es" ? (
+                    <TrackedPhoneLink
+                      phoneHref={dictionary.business.phoneHref}
+                      label="Llamar ahora"
+                      locale={locale}
+                      eventName="click_call_hero"
+                      variant="secondary"
+                    />
+                  ) : null}
                 </div>
                 {locale === "es" ? (
                   <div className="flex flex-wrap gap-2 pt-1">
@@ -369,10 +392,6 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </div>
       </section>
-
-      {locale === "es" ? (
-        <ConversionStatusPanel locale={locale} phoneHref={dictionary.business.phoneHref} />
-      ) : null}
 
       <section className="px-5 py-10 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-6xl">
@@ -399,6 +418,10 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {locale === "es" ? (
+        <ConversionStatusPanel locale={locale} phoneHref={dictionary.business.phoneHref} />
+      ) : null}
 
       <section className="bg-cream/55 px-5 py-16 sm:px-6 lg:px-10">
         <div className="mx-auto max-w-6xl">
@@ -487,6 +510,11 @@ export default async function HomePage({ params }: PageProps) {
                   ? "Social proof without the fluff"
                   : "Preuve sociale sans effet de manche"}
             </p>
+            {locale === "es" ? (
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-sand-500">
+                4,4 en Google · más de 2.500 opiniones
+              </p>
+            ) : null}
             <h2 className="font-display text-5xl leading-tight text-ink">
               {socialProof.title}
             </h2>
@@ -546,6 +574,41 @@ export default async function HomePage({ params }: PageProps) {
           </div>
         </div>
       </section>
+
+      {locale === "es" ? (
+        <section className="px-5 py-16 sm:px-6 lg:px-10">
+          <div className="mx-auto max-w-6xl rounded-[2rem] border border-border bg-cream/68 px-6 py-8 shadow-[0_18px_36px_rgba(31,26,23,0.08)] sm:px-8">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-3xl space-y-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+                  Reserva
+                </p>
+                <h2 className="font-display text-5xl leading-tight text-ink">
+                  Reserva tu mesa en el centro de Granada
+                </h2>
+                <p className="text-base leading-8 text-charcoal">
+                  Tapas, brasa, terraza y una ubicación perfecta dentro del Mercado de San Agustín.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <TrackedReservationLink
+                  label="Reservar mesa"
+                  locale={locale}
+                  location="hero"
+                  eventName="click_reserve_hero"
+                />
+                <TrackedPhoneLink
+                  phoneHref={dictionary.business.phoneHref}
+                  label="Llamar"
+                  locale={locale}
+                  eventName="click_call_home"
+                  variant="secondary"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section className="px-5 py-16 sm:px-6 lg:px-10">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
@@ -671,9 +734,11 @@ export default async function HomePage({ params }: PageProps) {
             location="hero"
             className="inline-flex w-full items-center justify-center rounded-full bg-sand-400 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-bone shadow-[0_12px_22px_rgba(132,81,28,0.22)] transition hover:bg-sand-500"
           />
-          <CtaButton
-            href={`tel:${dictionary.business.phoneHref}`}
+          <TrackedPhoneLink
+            phoneHref={dictionary.business.phoneHref}
             label={locale === "es" ? "Llamar" : locale === "en" ? "Call" : "Appeler"}
+            locale={locale}
+            eventName="click_call_home"
             variant="secondary"
           />
         </div>
