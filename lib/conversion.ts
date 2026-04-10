@@ -36,6 +36,15 @@ export type BusinessHoursSource = {
   };
 };
 
+export type BusinessHoursException = {
+  date: string;
+  label: string;
+  closed: boolean;
+  primary: BusinessHoursSlot | null;
+  secondary: BusinessHoursSlot | null;
+  specialMessage: string;
+};
+
 export type TimeRangeRule = {
   start: string;
   end: string;
@@ -67,6 +76,7 @@ export type ConversionConfig = {
   timezone: string;
   hoursToday: string;
   businessHours: Record<DayKey, BusinessDayHours>;
+  businessHoursExceptions: BusinessHoursException[];
   businessHoursSource: BusinessHoursSource;
   automaticRules: Record<DayKey, TimeRangeRule[]>;
   override: OverrideConfig;
@@ -90,15 +100,24 @@ export type ResolvedConversionState = {
 
 export type ResolvedBusinessHours = {
   dayKey: DayKey;
+  dateKey: string;
   isOpenToday: boolean;
   labelToday: string;
   summary: string;
   currentMessage: string;
+  activeException: BusinessHoursException | null;
   openingHoursSpecification: Array<{
     "@type": "OpeningHoursSpecification";
     dayOfWeek: string;
     opens: string;
     closes: string;
+  }>;
+  specialOpeningHoursSpecification: Array<{
+    "@type": "OpeningHoursSpecification";
+    validFrom: string;
+    validThrough: string;
+    opens?: string;
+    closes?: string;
   }>;
 };
 
@@ -124,7 +143,8 @@ export async function getResolvedConversionState(
   const config = await readConversionConfig();
   const normalizedOverride = normalizeOverride(config.override, now);
   const parts = getLocalParts(now, config.timezone);
-  const hoursToday = formatDaySummary(config.businessHours[parts.dayKey]);
+  const resolvedHours = resolveBusinessHoursForDate(config, parts.dayKey, parts.dateKey);
+  const hoursToday = formatDaySummary(resolvedHours.hours);
   const automaticState = getAutomaticState(config, parts.dayKey, parts.minutes);
   const finalState = normalizedOverride.mode === "manual" ? normalizedOverride.state : automaticState;
   const stateCopy = config.stateCopy[finalState];
@@ -166,17 +186,21 @@ export async function getResolvedBusinessHours(now = new Date()): Promise<{
 }> {
   const config = await readConversionConfig();
   const parts = getLocalParts(now, config.timezone);
-  const todayHours = config.businessHours[parts.dayKey];
+  const resolvedHours = resolveBusinessHoursForDate(config, parts.dayKey, parts.dateKey);
+  const todayHours = resolvedHours.hours;
 
   return {
     config,
     resolved: {
       dayKey: parts.dayKey,
+      dateKey: parts.dateKey,
       isOpenToday: todayHours?.isOpen ?? false,
       labelToday: buildTodayLabel(todayHours),
       summary: summarizeBusinessHours(config.businessHours),
       currentMessage: buildCurrentHoursMessage(todayHours),
+      activeException: resolvedHours.exception,
       openingHoursSpecification: toOpeningHoursSpecification(config.businessHours),
+      specialOpeningHoursSpecification: toSpecialOpeningHoursSpecification(config.businessHoursExceptions ?? []),
     },
   };
 }
@@ -191,6 +215,7 @@ function withSafeDefaults(config: ConversionConfig): ConversionConfig {
       ...base.businessHours,
       ...config.businessHours,
     },
+    businessHoursExceptions: normalizeBusinessHoursExceptions(config.businessHoursExceptions ?? base.businessHoursExceptions ?? []),
     businessHoursSource: {
       ...base.businessHoursSource,
       ...config.businessHoursSource,
@@ -291,6 +316,9 @@ function getLocalParts(date: Date, timeZone: string) {
   const formatter = new Intl.DateTimeFormat("en-GB", {
     timeZone,
     weekday: "long",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
     hour: "2-digit",
     minute: "2-digit",
     hour12: false,
@@ -303,8 +331,54 @@ function getLocalParts(date: Date, timeZone: string) {
 
   return {
     dayKey: weekday,
+    dateKey: `${parts.find((part) => part.type === "year")?.value ?? "0000"}-${parts.find((part) => part.type === "month")?.value ?? "01"}-${parts.find((part) => part.type === "day")?.value ?? "01"}`,
     minutes: (hour * 60) + minute,
     time: `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`,
+  };
+}
+
+function normalizeBusinessHoursExceptions(exceptions: BusinessHoursException[]) {
+  return [...exceptions]
+    .filter((entry) => /^\d{4}-\d{2}-\d{2}$/.test(String(entry?.date || "").trim()))
+    .map((entry) => ({
+      date: String(entry.date).trim(),
+      label: String(entry.label || "").trim(),
+      closed: Boolean(entry.closed),
+      primary: entry.primary ?? null,
+      secondary: entry.secondary ?? null,
+      specialMessage: String(entry.specialMessage || "").trim(),
+    }))
+    .sort((a, b) => a.date.localeCompare(b.date));
+}
+
+export function resolveBusinessHoursForDate(
+  config: ConversionConfig,
+  dayKey: DayKey,
+  dateKey: string,
+): { hours: BusinessDayHours; exception: BusinessHoursException | null } {
+  const exception =
+    normalizeBusinessHoursExceptions(config.businessHoursExceptions ?? []).find((entry) => entry.date === dateKey) ?? null;
+
+  if (exception) {
+    return {
+      hours: {
+        isOpen: !exception.closed && Boolean(exception.primary),
+        primary: !exception.closed ? exception.primary : null,
+        secondary: !exception.closed ? exception.secondary : null,
+        specialMessage: exception.specialMessage,
+      },
+      exception,
+    };
+  }
+
+  return {
+    hours: config.businessHours[dayKey] ?? {
+      isOpen: false,
+      primary: null,
+      secondary: null,
+      specialMessage: "",
+    },
+    exception: null,
   };
 }
 
@@ -402,6 +476,34 @@ function toOpeningHoursSpecification(hours: Record<DayKey, BusinessDayHours>) {
       specs.push({
         "@type": "OpeningHoursSpecification",
         dayOfWeek: mapping[dayKey],
+        opens: slot.open,
+        closes: slot.close,
+      });
+    });
+  });
+
+  return specs;
+}
+
+function toSpecialOpeningHoursSpecification(exceptions: BusinessHoursException[]) {
+  const specs: ResolvedBusinessHours["specialOpeningHoursSpecification"] = [];
+
+  exceptions.forEach((entry) => {
+    const base = {
+      "@type": "OpeningHoursSpecification" as const,
+      validFrom: entry.date,
+      validThrough: entry.date,
+    };
+
+    if (entry.closed || !entry.primary) {
+      specs.push(base);
+      return;
+    }
+
+    [entry.primary, entry.secondary].forEach((slot) => {
+      if (!slot) return;
+      specs.push({
+        ...base,
         opens: slot.open,
         closes: slot.close,
       });

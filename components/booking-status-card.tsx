@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { BusinessHoursSnapshot } from "@/lib/business-hours";
 import type { ResolvedConversionState } from "@/lib/conversion";
 import type { Locale } from "@/lib/i18n";
 
@@ -9,11 +10,12 @@ type BookingStatusCardProps = {
 };
 
 type StatusResponse = {
+  businessStatus: BusinessHoursSnapshot;
   resolved: ResolvedConversionState;
 };
 
 export function BookingStatusCard({ locale }: BookingStatusCardProps) {
-  const [resolved, setResolved] = useState<ResolvedConversionState | null>(null);
+  const [data, setData] = useState<StatusResponse | null>(null);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export function BookingStatusCard({ locale }: BookingStatusCardProps) {
         }
         const payload = (await response.json()) as StatusResponse;
         if (!cancelled) {
-          setResolved(payload.resolved);
+          setData(payload);
           setHasError(false);
         }
       } catch {
@@ -77,7 +79,8 @@ export function BookingStatusCard({ locale }: BookingStatusCardProps) {
             fallback:
               "La disponibilidad en tiempo real no está respondiendo ahora mismo. Puedes reservar igualmente desde el botón oficial o llamarnos.",
         };
-  const resolvedState = resolved;
+  const resolvedState = data?.resolved ?? null;
+  const effectiveState = resolvedState ? getEffectiveServiceState(locale, resolvedState, data?.businessStatus ?? null) : null;
 
   return (
     <div className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_18px_36px_rgba(31,26,23,0.08)]">
@@ -93,11 +96,11 @@ export function BookingStatusCard({ locale }: BookingStatusCardProps) {
         <div className="mt-5 space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full bg-sand-200/24 px-4 py-2 text-sm font-semibold text-ink">
             <span className="h-2.5 w-2.5 rounded-full bg-sand-500" />
-            {resolvedState?.label}
+            {effectiveState?.label}
           </div>
-          <p className="text-base leading-8 text-charcoal">{resolvedState?.reservationHint}</p>
+          <p className="text-base leading-8 text-charcoal">{effectiveState?.reservationHint}</p>
           <div className="space-y-3">
-            {resolvedState?.currentSignals.map((signal) => (
+            {effectiveState?.currentSignals.map((signal) => (
               <p key={signal} className="border-b border-border pb-3 text-sm leading-7 text-charcoal">
                 {signal}
               </p>
@@ -107,4 +110,60 @@ export function BookingStatusCard({ locale }: BookingStatusCardProps) {
       )}
     </div>
   );
+}
+
+function getEffectiveServiceState(
+  locale: Locale,
+  resolved: ResolvedConversionState,
+  businessStatus: BusinessHoursSnapshot | null,
+) {
+  if (!businessStatus || businessStatus.isOpenNow) {
+    return resolved;
+  }
+
+  const nextOpening =
+    businessStatus.nextOpenTime && businessStatus.nextOpenOffset !== null
+      ? businessStatus.nextOpenOffset === 0
+        ? locale === "es"
+          ? `Abrimos hoy a las ${businessStatus.nextOpenTime}`
+          : locale === "en"
+            ? `We open today at ${businessStatus.nextOpenTime}`
+            : `Ouverture aujourd'hui à ${businessStatus.nextOpenTime}`
+        : businessStatus.nextOpenOffset === 1
+          ? locale === "es"
+            ? `Abrimos mañana a las ${businessStatus.nextOpenTime}`
+            : locale === "en"
+              ? `We open tomorrow at ${businessStatus.nextOpenTime}`
+              : `Ouverture demain à ${businessStatus.nextOpenTime}`
+          : locale === "es"
+            ? `Próxima apertura a las ${businessStatus.nextOpenTime}`
+            : locale === "en"
+              ? `Next opening at ${businessStatus.nextOpenTime}`
+              : `Prochaine ouverture à ${businessStatus.nextOpenTime}`
+      : locale === "es"
+        ? "Consulta horarios antes de venir"
+        : locale === "en"
+          ? "Check opening hours before coming"
+          : "Consultez les horaires avant de venir";
+
+  const reserveMessage =
+    locale === "es"
+      ? "Puedes reservar ya tu mesa"
+      : locale === "en"
+        ? "You can already book your table"
+        : "Vous pouvez deja reserver votre table";
+
+  const specialMessage = businessStatus.specialMessage.trim();
+
+  return {
+    ...resolved,
+    label:
+      locale === "es"
+        ? "Ahora mismo estamos cerrados"
+        : locale === "en"
+          ? "We are closed right now"
+          : "Nous sommes fermes en ce moment",
+    reservationHint: nextOpening,
+    currentSignals: [nextOpening, reserveMessage, specialMessage].filter(Boolean),
+  };
 }

@@ -45,6 +45,7 @@
       "specialMessage": "Cerrado"
     }
   },
+  "businessHoursExceptions": [],
   "businessHoursSource": {
     "source": "owner_panel",
     "externalSync": {

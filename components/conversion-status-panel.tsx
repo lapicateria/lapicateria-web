@@ -4,11 +4,13 @@ import { useEffect, useMemo, useState } from "react";
 import { CtaButton } from "@/components/cta-button";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
 import { TrackedPhoneLink } from "@/components/tracked-phone-link";
+import type { BusinessHoursSnapshot } from "@/lib/business-hours";
 import type { DemandState, PlanKey, PlanOption, ResolvedConversionState } from "@/lib/conversion";
 import { trackEvent } from "@/lib/analytics";
 import type { Locale } from "@/lib/i18n";
 
 type StatusResponse = {
+  businessStatus: BusinessHoursSnapshot;
   planOptions: Record<PlanKey, PlanOption>;
   resolved: ResolvedConversionState;
 };
@@ -62,17 +64,23 @@ export function ConversionStatusPanel({
   }
 
   const selectedOption = data.planOptions[selectedPlan];
-  const badgeClassName = stateClassNames[data.resolved.state];
+  const effectiveServiceState = getEffectiveServiceState(locale, data.resolved, data.businessStatus);
+  const badgeClassName = data.businessStatus.isOpenNow
+    ? stateClassNames[data.resolved.state]
+    : "bg-[rgba(54,31,17,0.12)] text-[rgb(66,38,19)]";
   const primaryLocation = selectedOption.primaryAction === "reserve" ? "plan_simulator" : "hero";
   const secondaryLocation = selectedOption.secondaryAction === "reserve" ? "plan_simulator" : "hero";
-  const urgencyMessage =
+  const urgencyMessage = data.businessStatus.isOpenNow
+    ? (
     locale === "es"
       ? data.resolved.state === "very_busy"
         ? "Ahora mismo hay bastante movimiento. Si vienes ahora, mejor con reserva."
         : data.resolved.state === "packed"
           ? "Hora punta. Mejor llamar o reservar antes de venir."
           : null
-      : null;
+      : null
+    )
+    : null;
 
   return (
     <section className="px-5 py-10 sm:px-6 lg:px-10">
@@ -92,9 +100,9 @@ export function ConversionStatusPanel({
               <div className="flex flex-wrap items-center gap-3">
                 <span className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ${badgeClassName}`}>
                   <span className="h-2.5 w-2.5 rounded-full bg-current" />
-                  {data.resolved.label}
+                  {effectiveServiceState.label}
                 </span>
-                <p className="text-sm font-medium text-charcoal">{data.resolved.reservationHint}</p>
+                <p className="text-sm font-medium text-charcoal">{effectiveServiceState.reservationHint}</p>
               </div>
 
               {urgencyMessage ? (
@@ -122,7 +130,9 @@ export function ConversionStatusPanel({
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
                   {content.todayOpen}
                 </p>
-                <p className="mt-2 text-lg font-semibold text-ink">{data.resolved.hoursToday}</p>
+                <p className="mt-2 text-lg font-semibold text-ink">
+                  {data.businessStatus.isOpenNow ? data.resolved.hoursToday : effectiveServiceState.currentSignals[0]}
+                </p>
               </div>
 
               <div className="flex flex-col gap-3 pt-1 sm:flex-row">
@@ -203,7 +213,7 @@ export function ConversionStatusPanel({
               <h2 className="font-display text-4xl leading-tight text-ink">{content.nowTitle}</h2>
             </div>
             <div className="flex flex-wrap gap-3">
-              {data.resolved.currentSignals.map((signal) => (
+              {effectiveServiceState.currentSignals.map((signal) => (
                 <span
                   key={signal}
                   className="inline-flex rounded-full border border-border bg-bone px-4 py-2 text-sm font-medium text-charcoal"
@@ -221,6 +231,16 @@ export function ConversionStatusPanel({
 
 function createFallbackStatus(): StatusResponse {
   return {
+    businessStatus: {
+      isOpenNow: true,
+      nextOpenDayKey: "monday",
+      nextOpenTime: "17:00",
+      nextOpenOffset: 0,
+      specialMessage: "",
+      activeException: null,
+      todayStatus: "open_now",
+      todayMessage: "until:17:00",
+    },
     planOptions: {
       solo_tapas: {
         label: "Solo tapas",
@@ -258,6 +278,62 @@ function createFallbackStatus(): StatusResponse {
       localTime: "12:00",
       matchedRule: null,
     },
+  };
+}
+
+function getEffectiveServiceState(
+  locale: Locale,
+  resolved: ResolvedConversionState,
+  businessStatus: BusinessHoursSnapshot,
+) {
+  if (businessStatus.isOpenNow) {
+    return resolved;
+  }
+
+  const nextOpening =
+    businessStatus.nextOpenTime && businessStatus.nextOpenOffset !== null
+      ? businessStatus.nextOpenOffset === 0
+        ? locale === "es"
+          ? `Abrimos hoy a las ${businessStatus.nextOpenTime}`
+          : locale === "en"
+            ? `We open today at ${businessStatus.nextOpenTime}`
+            : `Ouverture aujourd'hui à ${businessStatus.nextOpenTime}`
+        : businessStatus.nextOpenOffset === 1
+          ? locale === "es"
+            ? `Abrimos mañana a las ${businessStatus.nextOpenTime}`
+            : locale === "en"
+              ? `We open tomorrow at ${businessStatus.nextOpenTime}`
+              : `Ouverture demain à ${businessStatus.nextOpenTime}`
+          : locale === "es"
+            ? `Próxima apertura a las ${businessStatus.nextOpenTime}`
+            : locale === "en"
+              ? `Next opening at ${businessStatus.nextOpenTime}`
+              : `Prochaine ouverture à ${businessStatus.nextOpenTime}`
+      : locale === "es"
+        ? "Consulta horarios antes de venir"
+        : locale === "en"
+          ? "Check opening hours before coming"
+          : "Consultez les horaires avant de venir";
+
+  const reserveMessage =
+    locale === "es"
+      ? "Puedes reservar ya tu mesa"
+      : locale === "en"
+        ? "You can already book your table"
+        : "Vous pouvez deja reserver votre table";
+
+  const specialMessage = businessStatus.specialMessage.trim();
+
+  return {
+    ...resolved,
+    label:
+      locale === "es"
+        ? "Ahora mismo estamos cerrados"
+        : locale === "en"
+          ? "We are closed right now"
+          : "Nous sommes fermes en ce moment",
+    reservationHint: nextOpening,
+    currentSignals: [nextOpening, reserveMessage, specialMessage].filter(Boolean),
   };
 }
 

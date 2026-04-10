@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import type {
   BusinessDayHours,
+  BusinessHoursException,
   ConversionConfig,
   DayKey,
   DemandState,
@@ -38,6 +39,17 @@ const terraceOptions: { value: TerraceState; label: string }[] = [
 function emptyDayHours(): BusinessDayHours {
   return {
     isOpen: false,
+    primary: null,
+    secondary: null,
+    specialMessage: "",
+  };
+}
+
+function emptyBusinessHoursException(): BusinessHoursException {
+  return {
+    date: "",
+    label: "",
+    closed: true,
     primary: null,
     secondary: null,
     specialMessage: "",
@@ -147,6 +159,38 @@ export function OwnerConversionDashboard() {
     });
   }
 
+  function updateBusinessHoursException(index: number, next: BusinessHoursException) {
+    setConfig((current) => {
+      if (!current) return current;
+      const exceptions = [...(current.businessHoursExceptions ?? [])];
+      exceptions[index] = next;
+      return {
+        ...current,
+        businessHoursExceptions: exceptions.sort((a, b) => a.date.localeCompare(b.date)),
+      };
+    });
+  }
+
+  function addBusinessHoursException() {
+    setConfig((current) => {
+      if (!current) return current;
+      return {
+        ...current,
+        businessHoursExceptions: [...(current.businessHoursExceptions ?? []), emptyBusinessHoursException()],
+      };
+    });
+  }
+
+  function removeBusinessHoursException(index: number) {
+    setConfig((current) => {
+      if (!current) return current;
+      return {
+        ...current,
+        businessHoursExceptions: (current.businessHoursExceptions ?? []).filter((_, itemIndex) => itemIndex !== index),
+      };
+    });
+  }
+
   return (
     <div className="space-y-8">
       <section className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_18px_36px_rgba(31,26,23,0.08)]">
@@ -162,6 +206,197 @@ export function OwnerConversionDashboard() {
             </p>
           </div>
         ) : null}
+      </section>
+
+      <section className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_18px_36px_rgba(31,26,23,0.08)]">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
+              Excepciones por fecha
+            </p>
+            <p className="text-sm leading-7 text-charcoal">
+              Festivos, cierres puntuales y horarios especiales. Si existe una excepción para hoy, tiene prioridad sobre la semana.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={addBusinessHoursException}
+            className="rounded-2xl border border-border bg-bone px-4 py-3 text-sm font-semibold text-ink"
+          >
+            Añadir excepción
+          </button>
+        </div>
+
+        <div className="mt-6 space-y-4">
+          {(config.businessHoursExceptions ?? []).length === 0 ? (
+            <div className="rounded-[1.4rem] border border-dashed border-border bg-bone/50 p-4 text-sm text-charcoal">
+              No hay excepciones configuradas.
+            </div>
+          ) : null}
+
+          {(config.businessHoursExceptions ?? []).map((exception, index) => (
+            <div key={`${exception.date || "new"}-${index}`} className="rounded-[1.4rem] border border-border bg-bone/60 p-4">
+              <div className="grid gap-4 lg:grid-cols-[0.9fr_0.9fr_0.7fr_0.7fr_0.7fr_0.7fr_auto] lg:items-end">
+                <label className="space-y-2 text-sm text-charcoal">
+                  <span>Fecha</span>
+                  <input
+                    type="date"
+                    value={exception.date}
+                    onChange={(event) =>
+                      updateBusinessHoursException(index, {
+                        ...exception,
+                        date: event.target.value,
+                      })
+                    }
+                    className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink"
+                  />
+                </label>
+
+                <label className="space-y-2 text-sm text-charcoal">
+                  <span>Etiqueta</span>
+                  <input
+                    type="text"
+                    value={exception.label}
+                    onChange={(event) =>
+                      updateBusinessHoursException(index, {
+                        ...exception,
+                        label: event.target.value,
+                      })
+                    }
+                    placeholder="Ej. Festivo"
+                    className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink"
+                  />
+                </label>
+
+                <label className="inline-flex items-center gap-2 text-sm text-charcoal">
+                  <input
+                    type="checkbox"
+                    checked={exception.closed}
+                    onChange={(event) =>
+                      updateBusinessHoursException(index, {
+                        ...exception,
+                        closed: event.target.checked,
+                        primary: event.target.checked ? null : exception.primary ?? { open: "09:00", close: "17:00" },
+                        secondary: event.target.checked ? null : exception.secondary,
+                      })
+                    }
+                  />
+                  Cerrado total
+                </label>
+
+                <label className="space-y-2 text-sm text-charcoal">
+                  <span>Primer tramo abre</span>
+                  <input
+                    type="time"
+                    value={exception.primary?.open ?? ""}
+                    disabled={exception.closed}
+                    onChange={(event) =>
+                      updateBusinessHoursException(index, {
+                        ...exception,
+                        closed: false,
+                        primary: {
+                          open: event.target.value,
+                          close: exception.primary?.close ?? "17:00",
+                        },
+                      })
+                    }
+                    className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink disabled:opacity-50"
+                  />
+                </label>
+
+                <label className="space-y-2 text-sm text-charcoal">
+                  <span>Primer tramo cierra</span>
+                  <input
+                    type="time"
+                    value={exception.primary?.close ?? ""}
+                    disabled={exception.closed}
+                    onChange={(event) =>
+                      updateBusinessHoursException(index, {
+                        ...exception,
+                        closed: false,
+                        primary: {
+                          open: exception.primary?.open ?? "09:00",
+                          close: event.target.value,
+                        },
+                      })
+                    }
+                    className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink disabled:opacity-50"
+                  />
+                </label>
+
+                <label className="space-y-2 text-sm text-charcoal">
+                  <span>Segundo tramo abre</span>
+                  <input
+                    type="time"
+                    value={exception.secondary?.open ?? ""}
+                    disabled={exception.closed}
+                    onChange={(event) =>
+                      updateBusinessHoursException(index, {
+                        ...exception,
+                        closed: false,
+                        secondary: event.target.value
+                          ? {
+                              open: event.target.value,
+                              close: exception.secondary?.close ?? "17:00",
+                            }
+                          : null,
+                      })
+                    }
+                    className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink disabled:opacity-50"
+                  />
+                </label>
+
+                <label className="space-y-2 text-sm text-charcoal">
+                  <span>Segundo tramo cierra</span>
+                  <input
+                    type="time"
+                    value={exception.secondary?.close ?? ""}
+                    disabled={exception.closed || !exception.secondary}
+                    onChange={(event) =>
+                      updateBusinessHoursException(index, {
+                        ...exception,
+                        closed: false,
+                        secondary: exception.secondary
+                          ? {
+                              open: exception.secondary.open,
+                              close: event.target.value,
+                            }
+                          : null,
+                      })
+                    }
+                    className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink disabled:opacity-50"
+                  />
+                </label>
+              </div>
+
+              <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
+                <label className="space-y-2 text-sm text-charcoal">
+                  <span>Mensaje especial opcional</span>
+                  <input
+                    type="text"
+                    value={exception.specialMessage}
+                    onChange={(event) =>
+                      updateBusinessHoursException(index, {
+                        ...exception,
+                        specialMessage: event.target.value,
+                      })
+                    }
+                    placeholder="Ej. Hoy solo mediodía"
+                    className="w-full rounded-2xl border border-border bg-white px-4 py-3 text-ink"
+                  />
+                </label>
+
+                <button
+                  type="button"
+                  onClick={() => removeBusinessHoursException(index)}
+                  className="rounded-2xl border border-border bg-white px-4 py-3 text-sm font-semibold text-ink"
+                >
+                  Borrar
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_18px_36px_rgba(31,26,23,0.08)]">

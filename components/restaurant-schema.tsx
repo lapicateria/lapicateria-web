@@ -53,6 +53,9 @@ export async function RestaurantSchema({ locale }: RestaurantSchemaProps) {
       dictionary.business.tiktokUrl,
     ],
     openingHoursSpecification: hours.openingHoursSpecification,
+    ...(hours.specialOpeningHoursSpecification.length > 0
+      ? { specialOpeningHoursSpecification: hours.specialOpeningHoursSpecification }
+      : {}),
   };
 
   return (
