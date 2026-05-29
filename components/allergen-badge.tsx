@@ -15,7 +15,7 @@ export function AllergenBadge({
     <span
       title={label}
       aria-label={label}
-      className="inline-flex h-7 min-w-7 items-center justify-center rounded-full border border-border bg-white px-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-sand-500 shadow-[0_4px_10px_rgba(31,26,23,0.04)]"
+      className="inline-flex h-8 min-w-8 items-center justify-center rounded-full border border-border bg-white px-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] whitespace-nowrap text-sand-500 shadow-[0_4px_10px_rgba(31,26,23,0.04)]"
     >
       {symbol}
     </span>

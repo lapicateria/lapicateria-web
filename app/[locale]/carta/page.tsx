@@ -231,10 +231,30 @@ export default async function MenuPage({ params }: PageProps) {
                 {(category.items as MenuItemWithAllergens[]).map((item) => (
                   <article key={item.id} className="border-b border-border/70 pb-5">
                     <div className="flex items-start justify-between gap-4">
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <h2 className="font-display text-3xl leading-tight text-ink">
                           {item.names[locale as Locale]}
                         </h2>
+                        {item.allergens && item.allergens.length > 0 ? (
+                          <div
+                            className="mt-3 flex flex-wrap gap-2"
+                            aria-label={
+                              locale === "es"
+                                ? "Alérgenos del plato"
+                                : locale === "en"
+                                  ? "Dish allergens"
+                                  : "Allergènes du plat"
+                            }
+                          >
+                            {item.allergens.map((allergen) => (
+                              <AllergenBadge
+                                key={`${item.id}-${allergen}`}
+                                allergen={allergen}
+                                locale={locale}
+                              />
+                            ))}
+                          </div>
+                        ) : null}
                         {getTags(item.id).length > 0 ? (
                           <div className="mt-3 flex flex-wrap gap-2">
                             {getTags(item.id).map((tag) => (
@@ -250,17 +270,6 @@ export default async function MenuPage({ params }: PageProps) {
                         <p className="mt-2 max-w-3xl text-sm leading-7 text-charcoal">
                           {item.descriptions[locale as Locale]}
                         </p>
-                        {item.allergens && item.allergens.length > 0 ? (
-                          <div className="mt-3 flex flex-wrap gap-2" aria-label={locale === "es" ? "Alérgenos del plato" : locale === "en" ? "Dish allergens" : "Allergènes du plat"}>
-                            {item.allergens.map((allergen) => (
-                              <AllergenBadge
-                                key={`${item.id}-${allergen}`}
-                                allergen={allergen}
-                                locale={locale}
-                              />
-                            ))}
-                          </div>
-                        ) : null}
                       </div>
                       <span className="shrink-0 text-2xl font-semibold text-sand-500">
                         {item.price}
@@ -348,6 +357,10 @@ export default async function MenuPage({ params }: PageProps) {
               location="carta_page"
             />
           </div>
+        </div>
+
+        <div className="mt-10">
+          <AllergenLegend locale={locale} />
         </div>
       </div>
     </section>
