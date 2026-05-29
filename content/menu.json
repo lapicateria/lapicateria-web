@@ -82,7 +82,9 @@
             "fr": "Quatre demi-artichauts avec anchois de Cantabrie."
           },
           "price": "12,00 EUR",
-          "allergens": []
+          "allergens": [
+            "fish"
+          ]
         },
         {
           "id": "tomate-con-boqueron",
@@ -97,7 +99,10 @@
             "fr": "Tomates de saison, fraiches et charnues, accompagnees de boquerons au vinaigre et d'un assaisonnement maison."
           },
           "price": "14,50 EUR",
-          "allergens": []
+          "allergens": [
+            "fish",
+            "sulfites"
+          ]
         }
       ]
     },
@@ -127,7 +132,10 @@
             "fr": "Patte de poulpe a la braise sur parmentier et petites fleurs."
           },
           "price": "22,50 EUR",
-          "allergens": []
+          "allergens": [
+            "milk",
+            "molluscs"
+          ]
         },
         {
           "id": "fritura-de-pescado",
@@ -142,7 +150,11 @@
             "fr": "Morue, chien de mer, poissons rouges, boquerons et gambas. Peut varier selon la disponibilite du jour."
           },
           "price": "16,50 EUR",
-          "allergens": []
+          "allergens": [
+            "gluten",
+            "fish",
+            "crustaceans"
+          ]
         },
         {
           "id": "mejillones",
@@ -157,7 +169,9 @@
             "fr": "Moules fraiches cuites a la vapeur avec notre sauce verte a l'ail et au persil."
           },
           "price": "13,00 EUR",
-          "allergens": []
+          "allergens": [
+            "molluscs"
+          ]
         },
         {
           "id": "captura-del-dia",
@@ -202,7 +216,10 @@
             "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
           },
           "price": "16,50 EUR",
-          "allergens": []
+          "allergens": [
+            "crustaceans",
+            "molluscs"
+          ]
         },
         {
           "id": "paella-carne",
@@ -292,7 +309,11 @@
             "fr": "Au jambon roti ou aux oeufs frits a l'ail."
           },
           "price": "14,50 EUR",
-          "allergens": []
+          "allergens": [
+            "gluten",
+            "eggs",
+            "milk"
+          ]
         },
         {
           "id": "nachos-con-guacamole",
@@ -307,7 +328,9 @@
             "fr": "Tortillas mexicaines avec legumes, viande hachee, fromage fondu et jalapenos."
           },
           "price": "16,00 EUR",
-          "allergens": []
+          "allergens": [
+            "milk"
+          ]
         },
         {
           "id": "tablas-a-tu-gusto",
@@ -442,7 +465,10 @@
             "fr": "Provolone grille avec pain de campagne."
           },
           "price": "15,50 EUR",
-          "allergens": []
+          "allergens": [
+            "gluten",
+            "milk"
+          ]
         },
         {
           "id": "alcachofas-con-tomate-seco",
@@ -472,7 +498,9 @@
             "fr": "Tartare de tomate sechee accompagne d'olives noires, de noix croquantes et de notre assaisonnement maison."
           },
           "price": "16,50 EUR",
-          "allergens": []
+          "allergens": [
+            "tree_nuts"
+          ]
         }
       ]
     },
@@ -502,7 +530,9 @@
             "fr": "Pommes frites avec oeufs bien frits."
           },
           "price": "11,50 EUR",
-          "allergens": []
+          "allergens": [
+            "eggs"
+          ]
         },
         {
           "id": "con-jamon",
@@ -517,7 +547,9 @@
             "fr": "Base de pommes de terre avec 2 oeufs et jambon serrano."
           },
           "price": "14,00 EUR",
-          "allergens": []
+          "allergens": [
+            "eggs"
+          ]
         },
         {
           "id": "con-gulas",
@@ -532,7 +564,10 @@
             "fr": "Base de pommes de terre avec 2 oeufs et gulas du nord, avec la grace du sud."
           },
           "price": "15,50 EUR",
-          "allergens": []
+          "allergens": [
+            "eggs",
+            "fish"
+          ]
         },
         {
           "id": "con-pulpo",
@@ -547,7 +582,10 @@
             "fr": "Pommes de terre avec 2 oeufs, poulpe a la galicienne et notre aioli doux a l'ail confit."
           },
           "price": "16,50 EUR",
-          "allergens": []
+          "allergens": [
+            "eggs",
+            "molluscs"
+          ]
         }
       ]
     },
@@ -652,7 +690,9 @@
             "fr": "Les preferes des petits, servis avec frites et ketchup."
           },
           "price": "12,00 EUR",
-          "allergens": []
+          "allergens": [
+            "gluten"
+          ]
         },
         {
           "id": "parrillada-iberica-mixta",
@@ -727,7 +767,9 @@
             "fr": "Vin rouge au verre."
           },
           "price": "4,50 EUR",
-          "allergens": []
+          "allergens": [
+            "sulfites"
+          ]
         },
         {
           "id": "rioja",
@@ -742,7 +784,9 @@
             "fr": "Vin rouge au verre."
           },
           "price": "4,00 EUR",
-          "allergens": []
+          "allergens": [
+            "sulfites"
+          ]
         },
         {
           "id": "opta",
@@ -757,7 +801,9 @@
             "fr": "Vin rouge au verre."
           },
           "price": "4,00 EUR",
-          "allergens": []
+          "allergens": [
+            "sulfites"
+          ]
         }
       ]
     },
@@ -787,7 +833,9 @@
             "fr": "Vin blanc au verre."
           },
           "price": "3,50 EUR",
-          "allergens": []
+          "allergens": [
+            "sulfites"
+          ]
         },
         {
           "id": "flor-de-sabina",
@@ -802,7 +850,9 @@
             "fr": "Vin blanc au verre."
           },
           "price": "3,50 EUR",
-          "allergens": []
+          "allergens": [
+            "sulfites"
+          ]
         },
         {
           "id": "frizzante",
@@ -817,7 +867,9 @@
             "fr": "Vin blanc au verre."
           },
           "price": "4,50 EUR",
-          "allergens": []
+          "allergens": [
+            "sulfites"
+          ]
         }
       ]
     },
@@ -847,7 +899,9 @@
             "fr": "Biere."
           },
           "price": "3,00 EUR",
-          "allergens": []
+          "allergens": [
+            "gluten"
+          ]
         },
         {
           "id": "alhambra-roja",
@@ -862,7 +916,9 @@
             "fr": "Biere."
           },
           "price": "4,00 EUR",
-          "allergens": []
+          "allergens": [
+            "gluten"
+          ]
         },
         {
           "id": "tercio",
@@ -877,7 +933,9 @@
             "fr": "Biere."
           },
           "price": "3,25 EUR",
-          "allergens": []
+          "allergens": [
+            "gluten"
+          ]
         }
       ]
     },
