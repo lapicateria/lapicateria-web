@@ -51,7 +51,8 @@
             "en": "Mixed greens with tomato, cucumber, sweetcorn and carrot. Add avocado, tuna or chicken.",
             "fr": "Base de pousses vertes, tomate, concombre, mais et carotte. Possibilite d'ajouter avocat, thon ou poulet."
           },
-          "price": "10,50 EUR"
+          "price": "10,50 EUR",
+          "allergens": []
         },
         {
           "id": "volcan-de-tomate",
@@ -65,7 +66,8 @@
             "en": "Pink tomato salad with sun-dried tomato pesto and avocado.",
             "fr": "Jardin de tomate rose avec pesto de tomate sechee et avocat."
           },
-          "price": "14,50 EUR"
+          "price": "14,50 EUR",
+          "allergens": []
         },
         {
           "id": "alcachofas-con-anchoas",
@@ -79,7 +81,8 @@
             "en": "Four artichoke halves topped with Cantabrian anchovies.",
             "fr": "Quatre demi-artichauts avec anchois de Cantabrie."
           },
-          "price": "12,00 EUR"
+          "price": "12,00 EUR",
+          "allergens": []
         },
         {
           "id": "tomate-con-boqueron",
@@ -93,7 +96,8 @@
             "en": "Seasonal tomatoes served with marinated anchovies and the house dressing.",
             "fr": "Tomates de saison, fraiches et charnues, accompagnees de boquerons au vinaigre et d'un assaisonnement maison."
           },
-          "price": "14,50 EUR"
+          "price": "14,50 EUR",
+          "allergens": []
         }
       ]
     },
@@ -122,7 +126,8 @@
             "en": "Chargrilled octopus leg over parmentier and edible flowers.",
             "fr": "Patte de poulpe a la braise sur parmentier et petites fleurs."
           },
-          "price": "22,50 EUR"
+          "price": "22,50 EUR",
+          "allergens": []
         },
         {
           "id": "fritura-de-pescado",
@@ -136,7 +141,8 @@
             "en": "Cod, marinated dogfish, red mullet, anchovies and prawns. Selection may vary with the daily catch.",
             "fr": "Morue, chien de mer, poissons rouges, boquerons et gambas. Peut varier selon la disponibilite du jour."
           },
-          "price": "16,50 EUR"
+          "price": "16,50 EUR",
+          "allergens": []
         },
         {
           "id": "mejillones",
@@ -150,7 +156,8 @@
             "en": "Fresh steamed mussels served with our garlic and parsley green sauce.",
             "fr": "Moules fraiches cuites a la vapeur avec notre sauce verte a l'ail et au persil."
           },
-          "price": "13,00 EUR"
+          "price": "13,00 EUR",
+          "allergens": []
         },
         {
           "id": "captura-del-dia",
@@ -164,7 +171,8 @@
             "en": "Grilled squid, sea bass or butterflied gilt-head bream.",
             "fr": "Calamar a la plancha, loup de mer ou dorade ouverte."
           },
-          "price": "S/M"
+          "price": "S/M",
+          "allergens": []
         }
       ]
     },
@@ -193,7 +201,8 @@
             "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
             "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
           },
-          "price": "16,50 EUR"
+          "price": "16,50 EUR",
+          "allergens": []
         },
         {
           "id": "paella-carne",
@@ -207,7 +216,8 @@
             "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
             "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
           },
-          "price": "16,50 EUR"
+          "price": "16,50 EUR",
+          "allergens": []
         },
         {
           "id": "arroz-negro",
@@ -221,7 +231,8 @@
             "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
             "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
           },
-          "price": "16,50 EUR"
+          "price": "16,50 EUR",
+          "allergens": []
         },
         {
           "id": "paella-verduras",
@@ -235,7 +246,8 @@
             "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
             "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
           },
-          "price": "13,50 EUR"
+          "price": "13,50 EUR",
+          "allergens": []
         }
       ]
     },
@@ -264,7 +276,8 @@
             "en": "Our house specialty. Slow-roasted pork ham served in its own juices with the house touch.",
             "fr": "Notre specialite. Jambon de porc roti a feu doux et arrose de son jus avec la touche de la maison."
           },
-          "price": "13,00 EUR"
+          "price": "13,00 EUR",
+          "allergens": []
         },
         {
           "id": "croquetas-caseras",
@@ -278,7 +291,8 @@
             "en": "Choose roast ham or fried eggs with garlic.",
             "fr": "Au jambon roti ou aux oeufs frits a l'ail."
           },
-          "price": "14,50 EUR"
+          "price": "14,50 EUR",
+          "allergens": []
         },
         {
           "id": "nachos-con-guacamole",
@@ -292,7 +306,8 @@
             "en": "Corn chips topped with vegetables, minced meat, melted cheese and jalapenos.",
             "fr": "Tortillas mexicaines avec legumes, viande hachee, fromage fondu et jalapenos."
           },
-          "price": "16,00 EUR"
+          "price": "16,00 EUR",
+          "allergens": []
         },
         {
           "id": "tablas-a-tu-gusto",
@@ -306,7 +321,8 @@
             "en": "Choose ham, cheese or a mixed board.",
             "fr": "Jambon, fromages ou mixte jambon et fromages."
           },
-          "price": "Desde 12,00 EUR"
+          "price": "Desde 12,00 EUR",
+          "allergens": []
         }
       ]
     },
@@ -335,7 +351,8 @@
             "en": "Beef or veal cut, ask us about the breeds currently available.",
             "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
           },
-          "price": "28,50 EUR"
+          "price": "28,50 EUR",
+          "allergens": []
         },
         {
           "id": "solomillo",
@@ -349,7 +366,8 @@
             "en": "Premium beef tenderloin cut to order (approx. 300 g).",
             "fr": "Filet de boeuf premium coupe minute (env. 300 g)."
           },
-          "price": "29,50 EUR"
+          "price": "29,50 EUR",
+          "allergens": []
         },
         {
           "id": "chuleton",
@@ -363,7 +381,8 @@
             "en": "Beef or veal cut, ask us about the breeds currently available.",
             "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
           },
-          "price": "S/M"
+          "price": "S/M",
+          "allergens": []
         },
         {
           "id": "t-bone",
@@ -377,7 +396,8 @@
             "en": "Beef or veal cut, ask us about the breeds currently available.",
             "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
           },
-          "price": "38,50 EUR"
+          "price": "38,50 EUR",
+          "allergens": []
         }
       ]
     },
@@ -406,7 +426,8 @@
             "en": "Selection of fresh vegetables grilled over charcoal.",
             "fr": "Selection de legumes frais de notre potager cuits a la braise."
           },
-          "price": "16,00 EUR"
+          "price": "16,00 EUR",
+          "allergens": []
         },
         {
           "id": "provolone-trufado",
@@ -420,7 +441,8 @@
             "en": "Grilled provolone served with country bread.",
             "fr": "Provolone grille avec pain de campagne."
           },
-          "price": "15,50 EUR"
+          "price": "15,50 EUR",
+          "allergens": []
         },
         {
           "id": "alcachofas-con-tomate-seco",
@@ -434,7 +456,8 @@
             "en": "Tender artichokes sauteed with sun-dried tomato and black olives, dressed with aromatic oil.",
             "fr": "Artichauts tendres sautes avec tomate sechee et olives noires, assaisonnes avec une huile aromatique."
           },
-          "price": "15,50 EUR"
+          "price": "15,50 EUR",
+          "allergens": []
         },
         {
           "id": "tartar-de-tomate-seco",
@@ -448,7 +471,8 @@
             "en": "Sun-dried tomato tartare with black olives, crunchy walnuts and the house dressing.",
             "fr": "Tartare de tomate sechee accompagne d'olives noires, de noix croquantes et de notre assaisonnement maison."
           },
-          "price": "16,50 EUR"
+          "price": "16,50 EUR",
+          "allergens": []
         }
       ]
     },
@@ -477,7 +501,8 @@
             "en": "Fried potatoes topped with properly fried eggs.",
             "fr": "Pommes frites avec oeufs bien frits."
           },
-          "price": "11,50 EUR"
+          "price": "11,50 EUR",
+          "allergens": []
         },
         {
           "id": "con-jamon",
@@ -491,7 +516,8 @@
             "en": "Potatoes topped with 2 eggs and Serrano ham.",
             "fr": "Base de pommes de terre avec 2 oeufs et jambon serrano."
           },
-          "price": "14,00 EUR"
+          "price": "14,00 EUR",
+          "allergens": []
         },
         {
           "id": "con-gulas",
@@ -505,7 +531,8 @@
             "en": "Potatoes with 2 eggs and baby eels, northern product with southern attitude.",
             "fr": "Base de pommes de terre avec 2 oeufs et gulas du nord, avec la grace du sud."
           },
-          "price": "15,50 EUR"
+          "price": "15,50 EUR",
+          "allergens": []
         },
         {
           "id": "con-pulpo",
@@ -519,7 +546,8 @@
             "en": "Potatoes with 2 eggs, Galician-style octopus and our smooth confit garlic aioli.",
             "fr": "Pommes de terre avec 2 oeufs, poulpe a la galicienne et notre aioli doux a l'ail confit."
           },
-          "price": "16,50 EUR"
+          "price": "16,50 EUR",
+          "allergens": []
         }
       ]
     },
@@ -548,7 +576,8 @@
             "en": "Iberian pork cut served with fries and Padron peppers.",
             "fr": "Piece de porc iberique servie avec frites et piments de Padron."
           },
-          "price": "16,50 EUR"
+          "price": "16,50 EUR",
+          "allergens": []
         },
         {
           "id": "churrasco",
@@ -562,7 +591,8 @@
             "en": "Butterflied Iberian pork loin served with fries and Padron peppers.",
             "fr": "Solomillo de porc iberique ouvert servi avec frites et piments de Padron."
           },
-          "price": "16,50 EUR"
+          "price": "16,50 EUR",
+          "allergens": []
         },
         {
           "id": "abanico",
@@ -576,7 +606,8 @@
             "en": "Iberian pork cut served with fries and Padron peppers.",
             "fr": "Piece de porc iberique servie avec frites et piments de Padron."
           },
-          "price": "18,50 EUR"
+          "price": "18,50 EUR",
+          "allergens": []
         },
         {
           "id": "pluma-iberica",
@@ -590,7 +621,8 @@
             "en": "100% Iberian pork pluma served with fries and Padron peppers.",
             "fr": "Pluma de porc 100% iberique accompagnee de frites et de piments de Padron."
           },
-          "price": "19,00 EUR"
+          "price": "19,00 EUR",
+          "allergens": []
         }
       ]
     },
@@ -619,7 +651,8 @@
             "en": "A children's favourite served with fries and ketchup.",
             "fr": "Les preferes des petits, servis avec frites et ketchup."
           },
-          "price": "12,00 EUR"
+          "price": "12,00 EUR",
+          "allergens": []
         },
         {
           "id": "parrillada-iberica-mixta",
@@ -633,7 +666,8 @@
             "en": "Almost 1 kg of Iberian pork: secreto, pluma, abanico and pork loin.",
             "fr": "Pres d'1 kg de viande iberique : secreto, pluma, abanico et filet de porc."
           },
-          "price": "38,50 EUR"
+          "price": "38,50 EUR",
+          "allergens": []
         },
         {
           "id": "contramuslo-de-pollo",
@@ -647,7 +681,8 @@
             "en": "Charcoal-marinated chicken thigh served with hand-cut fries and Padron peppers.",
             "fr": "Haut de cuisse marine a la braise, servi avec nos frites fraichement coupees et des piments de Padron."
           },
-          "price": "12,00 EUR"
+          "price": "12,00 EUR",
+          "allergens": []
         },
         {
           "id": "chuletillas-de-cordero",
@@ -661,7 +696,8 @@
             "en": "Portion of milk-fed lamb chops with fries and Padron peppers.",
             "fr": "Portion de cotelettes d'agneau de lait accompagnees de frites et de piments de Padron."
           },
-          "price": "22,50 EUR"
+          "price": "22,50 EUR",
+          "allergens": []
         }
       ]
     },
@@ -680,21 +716,48 @@
       "items": [
         {
           "id": "ribera",
-          "names": { "es": "Ribera", "en": "Ribera", "fr": "Ribera" },
-          "descriptions": { "es": "Vino tinto por copa.", "en": "Red wine by the glass.", "fr": "Vin rouge au verre." },
-          "price": "4,50 EUR"
+          "names": {
+            "es": "Ribera",
+            "en": "Ribera",
+            "fr": "Ribera"
+          },
+          "descriptions": {
+            "es": "Vino tinto por copa.",
+            "en": "Red wine by the glass.",
+            "fr": "Vin rouge au verre."
+          },
+          "price": "4,50 EUR",
+          "allergens": []
         },
         {
           "id": "rioja",
-          "names": { "es": "Rioja", "en": "Rioja", "fr": "Rioja" },
-          "descriptions": { "es": "Vino tinto por copa.", "en": "Red wine by the glass.", "fr": "Vin rouge au verre." },
-          "price": "4,00 EUR"
+          "names": {
+            "es": "Rioja",
+            "en": "Rioja",
+            "fr": "Rioja"
+          },
+          "descriptions": {
+            "es": "Vino tinto por copa.",
+            "en": "Red wine by the glass.",
+            "fr": "Vin rouge au verre."
+          },
+          "price": "4,00 EUR",
+          "allergens": []
         },
         {
           "id": "opta",
-          "names": { "es": "Opta", "en": "Opta", "fr": "Opta" },
-          "descriptions": { "es": "Vino tinto por copa.", "en": "Red wine by the glass.", "fr": "Vin rouge au verre." },
-          "price": "4,00 EUR"
+          "names": {
+            "es": "Opta",
+            "en": "Opta",
+            "fr": "Opta"
+          },
+          "descriptions": {
+            "es": "Vino tinto por copa.",
+            "en": "Red wine by the glass.",
+            "fr": "Vin rouge au verre."
+          },
+          "price": "4,00 EUR",
+          "allergens": []
         }
       ]
     },
@@ -713,21 +776,48 @@
       "items": [
         {
           "id": "rueda-verdejo",
-          "names": { "es": "Rueda-Verdejo", "en": "Rueda-Verdejo", "fr": "Rueda-Verdejo" },
-          "descriptions": { "es": "Vino blanco por copa.", "en": "White wine by the glass.", "fr": "Vin blanc au verre." },
-          "price": "3,50 EUR"
+          "names": {
+            "es": "Rueda-Verdejo",
+            "en": "Rueda-Verdejo",
+            "fr": "Rueda-Verdejo"
+          },
+          "descriptions": {
+            "es": "Vino blanco por copa.",
+            "en": "White wine by the glass.",
+            "fr": "Vin blanc au verre."
+          },
+          "price": "3,50 EUR",
+          "allergens": []
         },
         {
           "id": "flor-de-sabina",
-          "names": { "es": "Flor de Sabina", "en": "Flor de Sabina", "fr": "Flor de Sabina" },
-          "descriptions": { "es": "Vino blanco por copa.", "en": "White wine by the glass.", "fr": "Vin blanc au verre." },
-          "price": "3,50 EUR"
+          "names": {
+            "es": "Flor de Sabina",
+            "en": "Flor de Sabina",
+            "fr": "Flor de Sabina"
+          },
+          "descriptions": {
+            "es": "Vino blanco por copa.",
+            "en": "White wine by the glass.",
+            "fr": "Vin blanc au verre."
+          },
+          "price": "3,50 EUR",
+          "allergens": []
         },
         {
           "id": "frizzante",
-          "names": { "es": "Frizzante", "en": "Frizzante", "fr": "Frizzante" },
-          "descriptions": { "es": "Vino blanco por copa.", "en": "White wine by the glass.", "fr": "Vin blanc au verre." },
-          "price": "4,50 EUR"
+          "names": {
+            "es": "Frizzante",
+            "en": "Frizzante",
+            "fr": "Frizzante"
+          },
+          "descriptions": {
+            "es": "Vino blanco por copa.",
+            "en": "White wine by the glass.",
+            "fr": "Vin blanc au verre."
+          },
+          "price": "4,50 EUR",
+          "allergens": []
         }
       ]
     },
@@ -746,21 +836,48 @@
       "items": [
         {
           "id": "alhambra-especial",
-          "names": { "es": "Alhambra Especial", "en": "Alhambra Especial", "fr": "Alhambra Especial" },
-          "descriptions": { "es": "Cerveza.", "en": "Beer.", "fr": "Biere." },
-          "price": "3,00 EUR"
+          "names": {
+            "es": "Alhambra Especial",
+            "en": "Alhambra Especial",
+            "fr": "Alhambra Especial"
+          },
+          "descriptions": {
+            "es": "Cerveza.",
+            "en": "Beer.",
+            "fr": "Biere."
+          },
+          "price": "3,00 EUR",
+          "allergens": []
         },
         {
           "id": "alhambra-roja",
-          "names": { "es": "Alhambra Roja", "en": "Alhambra Roja", "fr": "Alhambra Roja" },
-          "descriptions": { "es": "Cerveza.", "en": "Beer.", "fr": "Biere." },
-          "price": "4,00 EUR"
+          "names": {
+            "es": "Alhambra Roja",
+            "en": "Alhambra Roja",
+            "fr": "Alhambra Roja"
+          },
+          "descriptions": {
+            "es": "Cerveza.",
+            "en": "Beer.",
+            "fr": "Biere."
+          },
+          "price": "4,00 EUR",
+          "allergens": []
         },
         {
           "id": "tercio",
-          "names": { "es": "Tercio", "en": "Bottle beer", "fr": "Tercio" },
-          "descriptions": { "es": "Cerveza.", "en": "Beer.", "fr": "Biere." },
-          "price": "3,25 EUR"
+          "names": {
+            "es": "Tercio",
+            "en": "Bottle beer",
+            "fr": "Tercio"
+          },
+          "descriptions": {
+            "es": "Cerveza.",
+            "en": "Beer.",
+            "fr": "Biere."
+          },
+          "price": "3,25 EUR",
+          "allergens": []
         }
       ]
     },
@@ -779,39 +896,93 @@
       "items": [
         {
           "id": "pepsi",
-          "names": { "es": "Pepsi", "en": "Pepsi", "fr": "Pepsi" },
-          "descriptions": { "es": "Refresco.", "en": "Soft drink.", "fr": "Boisson." },
-          "price": "2,50 EUR"
+          "names": {
+            "es": "Pepsi",
+            "en": "Pepsi",
+            "fr": "Pepsi"
+          },
+          "descriptions": {
+            "es": "Refresco.",
+            "en": "Soft drink.",
+            "fr": "Boisson."
+          },
+          "price": "2,50 EUR",
+          "allergens": []
         },
         {
           "id": "kas-naranja",
-          "names": { "es": "Kas Naranja", "en": "Kas Orange", "fr": "Kas Orange" },
-          "descriptions": { "es": "Refresco.", "en": "Soft drink.", "fr": "Boisson." },
-          "price": "2,50 EUR"
+          "names": {
+            "es": "Kas Naranja",
+            "en": "Kas Orange",
+            "fr": "Kas Orange"
+          },
+          "descriptions": {
+            "es": "Refresco.",
+            "en": "Soft drink.",
+            "fr": "Boisson."
+          },
+          "price": "2,50 EUR",
+          "allergens": []
         },
         {
           "id": "kas-limon",
-          "names": { "es": "Kas Limon", "en": "Kas Lemon", "fr": "Kas Citron" },
-          "descriptions": { "es": "Refresco.", "en": "Soft drink.", "fr": "Boisson." },
-          "price": "2,50 EUR"
+          "names": {
+            "es": "Kas Limon",
+            "en": "Kas Lemon",
+            "fr": "Kas Citron"
+          },
+          "descriptions": {
+            "es": "Refresco.",
+            "en": "Soft drink.",
+            "fr": "Boisson."
+          },
+          "price": "2,50 EUR",
+          "allergens": []
         },
         {
           "id": "agua",
-          "names": { "es": "Agua", "en": "Water", "fr": "Eau" },
-          "descriptions": { "es": "Agua mineral.", "en": "Mineral water.", "fr": "Eau minerale." },
-          "price": "2,50 EUR"
+          "names": {
+            "es": "Agua",
+            "en": "Water",
+            "fr": "Eau"
+          },
+          "descriptions": {
+            "es": "Agua mineral.",
+            "en": "Mineral water.",
+            "fr": "Eau minerale."
+          },
+          "price": "2,50 EUR",
+          "allergens": []
         },
         {
           "id": "agua-gas",
-          "names": { "es": "Agua gas", "en": "Sparkling water", "fr": "Eau petillante" },
-          "descriptions": { "es": "Agua con gas.", "en": "Sparkling water.", "fr": "Eau gazeuse." },
-          "price": "2,50 EUR"
+          "names": {
+            "es": "Agua gas",
+            "en": "Sparkling water",
+            "fr": "Eau petillante"
+          },
+          "descriptions": {
+            "es": "Agua con gas.",
+            "en": "Sparkling water.",
+            "fr": "Eau gazeuse."
+          },
+          "price": "2,50 EUR",
+          "allergens": []
         },
         {
           "id": "lipton",
-          "names": { "es": "Lipton", "en": "Lipton", "fr": "Lipton" },
-          "descriptions": { "es": "Refresco.", "en": "Soft drink.", "fr": "Boisson." },
-          "price": "2,75 EUR"
+          "names": {
+            "es": "Lipton",
+            "en": "Lipton",
+            "fr": "Lipton"
+          },
+          "descriptions": {
+            "es": "Refresco.",
+            "en": "Soft drink.",
+            "fr": "Boisson."
+          },
+          "price": "2,75 EUR",
+          "allergens": []
         }
       ]
     }

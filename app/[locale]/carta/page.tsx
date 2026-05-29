@@ -1,14 +1,25 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AllergenBadge } from "@/components/allergen-badge";
+import { AllergenLegend } from "@/components/allergen-legend";
 import { CtaButton } from "@/components/cta-button";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
 import menuData from "@/content/menu.json";
+import type { AllergenKey } from "@/lib/allergens";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/i18n";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
+};
+
+type MenuItemWithAllergens = {
+  id: string;
+  names: Record<Locale, string>;
+  descriptions: Record<Locale, string>;
+  price: string;
+  allergens?: AllergenKey[];
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -131,6 +142,10 @@ export default async function MenuPage({ params }: PageProps) {
           ))}
         </div>
 
+        <div className="mt-8">
+          <AllergenLegend locale={locale} />
+        </div>
+
         <div className="mt-10 rounded-[1.6rem] border border-border bg-cream/55 p-6">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
             {eatingGuide.title}
@@ -213,7 +228,7 @@ export default async function MenuPage({ params }: PageProps) {
               </div>
 
               <div className="space-y-5 border-t border-border pt-2">
-                {category.items.map((item) => (
+                {(category.items as MenuItemWithAllergens[]).map((item) => (
                   <article key={item.id} className="border-b border-border/70 pb-5">
                     <div className="flex items-start justify-between gap-4">
                       <div className="min-w-0">
@@ -235,6 +250,17 @@ export default async function MenuPage({ params }: PageProps) {
                         <p className="mt-2 max-w-3xl text-sm leading-7 text-charcoal">
                           {item.descriptions[locale as Locale]}
                         </p>
+                        {item.allergens && item.allergens.length > 0 ? (
+                          <div className="mt-3 flex flex-wrap gap-2" aria-label={locale === "es" ? "Alérgenos del plato" : locale === "en" ? "Dish allergens" : "Allergènes du plat"}>
+                            {item.allergens.map((allergen) => (
+                              <AllergenBadge
+                                key={`${item.id}-${allergen}`}
+                                allergen={allergen}
+                                locale={locale}
+                              />
+                            ))}
+                          </div>
+                        ) : null}
                       </div>
                       <span className="shrink-0 text-2xl font-semibold text-sand-500">
                         {item.price}
