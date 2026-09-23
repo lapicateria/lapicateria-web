@@ -52,7 +52,7 @@ const dictionaries = {
       kicker: "Mercado · brasa de carbón · Granada",
       title: "Brasa de carbón y cocina de mercado en La Picatería",
       subtitle:
-        "Tapas, paellas, brasa y producto de mercado en el Mercado de San Agustín, junto a la Catedral de Granada.",
+        "Tapas, brasa y producto de mercado en el Mercado de San Agustín, junto a la Catedral de Granada.",
       card: {
         eyebrow: "Cocina real",
         title: "Carta honesta, brasa de carbón y mesa para compartir",
@@ -80,7 +80,7 @@ const dictionaries = {
       },
       {
         eyebrow: "Carta",
-        title: "Paellas, tapas y mesa larga",
+        title: "Tapas, brasa y mesa larga",
         description:
           "Una carta clara, pensada para compartir, pedir con calma y volver."
       }
@@ -94,7 +94,7 @@ const dictionaries = {
       {
         title: "Producto reconocible",
         description:
-          "Tomate rosa, boquerón en vinagre, pulpo, brasas y paellas: la web habla el mismo idioma que la mesa."
+          "Tomate rosa, boquerón en vinagre, pulpo y brasas: la web habla el mismo idioma que la mesa."
       },
       {
         title: "Reserva sin fricción",
@@ -111,7 +111,7 @@ const dictionaries = {
       },
       menu: {
         eyebrow: "Carta",
-        title: "Tapas, paellas, brasas y bebidas con precios claros",
+        title: "Tapas, brasas y bebidas con precios claros",
         description:
           "Consulta la carta real de La Picatería con precios visibles y una lectura cómoda desde el móvil."
       },
@@ -143,7 +143,7 @@ const dictionaries = {
       eyebrow: "Carta actual",
       title: "Carta real, clara y fácil de consultar",
       description:
-        "Entrantes, mar, paellas, brasas, vegetarianos, huevos rotos y bebidas con una lectura directa y precios visibles."
+        "Entrantes, mar, brasas, vegetarianos, huevos rotos y bebidas con una lectura directa y precios visibles."
     },
     bookingPage: {
       eyebrow: "Reservas oficiales",
@@ -176,12 +176,12 @@ const dictionaries = {
       home: {
         title: "La Picatería · brasa de carbón y cocina de mercado en Granada",
         description:
-          "La Picatería, en el Mercado de San Agustín junto a la Catedral, reúne brasa, paellas, tapas, terraza y reservas directas."
+          "La Picatería, en el Mercado de San Agustín junto a la Catedral, reúne brasa, tapas, terraza y reservas directas."
       },
       menu: {
         title: "Carta real de La Picatería",
         description:
-          "Consulta la carta real actual de La Picatería: entrantes, mar, paellas, brasas, vegetarianos, huevos rotos y bebidas."
+          "Consulta la carta real actual de La Picatería: entrantes, mar, brasas, vegetarianos, huevos rotos y bebidas."
       },
       booking: {
         title: "Reservas oficiales La Picatería",
@@ -216,7 +216,7 @@ const dictionaries = {
       kicker: "Market kitchen · charcoal grill · Granada",
       title: "Charcoal grill and market cooking at La Picateria",
       subtitle:
-        "A brighter, more product-led website that feels closer to the restaurant itself: tapas, paellas, grill dishes and a unique location inside Mercado de San Agustin.",
+        "A brighter, more product-led website that feels closer to the restaurant itself: tapas, grill dishes and a unique location inside Mercado de San Agustin.",
       card: {
         eyebrow: "Real kitchen",
         title: "An honest menu, charcoal grill and dishes made for sharing",
@@ -244,7 +244,7 @@ const dictionaries = {
       },
       {
         eyebrow: "Menu",
-        title: "Tapas, paellas and long-table dishes",
+        title: "Tapas, grill dishes and long-table plates",
         description:
           "A fuller menu with clear pricing that helps guests decide and book."
       }
@@ -258,7 +258,7 @@ const dictionaries = {
       {
         title: "Recognisable produce",
         description:
-          "Pink tomatoes, marinated anchovies, octopus, grill dishes and paellas define the menu and the site."
+          "Pink tomatoes, marinated anchovies, octopus and grill dishes define the menu and the site."
       },
       {
         title: "Booking without friction",
@@ -275,7 +275,7 @@ const dictionaries = {
       },
       menu: {
         eyebrow: "Real menu",
-        title: "Tapas, paellas, grill dishes and drinks with visible prices",
+        title: "Tapas, grill dishes and drinks with visible prices",
         description:
           "The old demo menu is gone. The page now renders the live restaurant menu from structured JSON."
       },
@@ -307,7 +307,7 @@ const dictionaries = {
       eyebrow: "Current menu",
       title: "The real La Picateria menu, structured for mobile",
       description:
-        "Starters, seafood, paellas, grill dishes, vegetarian options, broken eggs and drinks in clear HTML."
+        "Starters, seafood, grill dishes, vegetarian options, broken eggs and drinks in clear HTML."
     },
     bookingPage: {
       eyebrow: "Official bookings",
@@ -340,12 +340,12 @@ const dictionaries = {
       home: {
         title: "La Picateria · charcoal grill and market cooking in Granada",
         description:
-          "La Picateria, inside Mercado de San Agustin next to the Cathedral, serves grill dishes, paellas, tapas and direct bookings."
+          "La Picateria, inside Mercado de San Agustin next to the Cathedral, serves grill dishes, tapas and direct bookings."
       },
       menu: {
         title: "The real La Picateria menu",
         description:
-          "Browse the current La Picateria menu: starters, seafood, paellas, grill dishes, vegetarian plates, broken eggs and drinks."
+          "Browse the current La Picateria menu: starters, seafood, grill dishes, vegetarian plates, broken eggs and drinks."
       },
       booking: {
         title: "Official La Picateria bookings",
@@ -380,7 +380,7 @@ const dictionaries = {
       kicker: "Cuisine de marche · braise au charbon · Grenade",
       title: "Braise au charbon et cuisine de marche a La Picateria",
       subtitle:
-        "Une experience web plus lumineuse et plus fidele au restaurant : tapas, paellas, braise et une adresse singuliere dans le Mercado de San Agustin.",
+        "Une experience web plus lumineuse et plus fidele au restaurant : tapas, braise et une adresse singuliere dans le Mercado de San Agustin.",
       card: {
         eyebrow: "Cuisine reelle",
         title: "Une carte sincere, de la braise au charbon et des plats a partager",
@@ -408,7 +408,7 @@ const dictionaries = {
       },
       {
         eyebrow: "Carte",
-        title: "Tapas, paellas et plats pour partager",
+        title: "Tapas, braise et plats pour partager",
         description:
           "Une carte plus complete et lisible, avec des prix visibles pour aider a reserver."
       }
@@ -422,7 +422,7 @@ const dictionaries = {
       {
         title: "Des produits reconnaissables",
         description:
-          "Tomate rose, boquerons, poulpe, braises et paellas donnent du fond a la carte comme au site."
+          "Tomate rose, boquerons, poulpe et braises donnent du fond a la carte comme au site."
       },
       {
         title: "Reservation sans friction",
@@ -439,7 +439,7 @@ const dictionaries = {
       },
       menu: {
         eyebrow: "Carte reelle",
-        title: "Tapas, paellas, braises et boissons avec prix visibles",
+        title: "Tapas, braises et boissons avec prix visibles",
         description:
           "La carte demo disparait. La page affiche maintenant la vraie carte du restaurant via JSON."
       },
@@ -471,7 +471,7 @@ const dictionaries = {
       eyebrow: "Carte actuelle",
       title: "La vraie carte de La Picateria, structuree pour le mobile",
       description:
-        "Entrees, mer, paellas, braises, options vegetariennes, oeufs casses et boissons dans une lecture claire."
+        "Entrees, mer, braises, options vegetariennes, oeufs casses et boissons dans une lecture claire."
     },
     bookingPage: {
       eyebrow: "Reservations officielles",
@@ -504,12 +504,12 @@ const dictionaries = {
       home: {
         title: "La Picateria · braise au charbon et cuisine de marche a Grenade",
         description:
-          "La Picateria, dans le Mercado de San Agustin a cote de la Cathedrale, propose tapas, paellas, braise et reservations directes."
+          "La Picateria, dans le Mercado de San Agustin a cote de la Cathedrale, propose tapas, braise et reservations directes."
       },
       menu: {
         title: "La vraie carte de La Picateria",
         description:
-          "Consultez la carte actuelle de La Picateria : entrees, mer, paellas, braises, vegetarien, oeufs casses et boissons."
+          "Consultez la carte actuelle de La Picateria : entrees, mer, braises, vegetarien, oeufs casses et boissons."
       },
       booking: {
         title: "Reservations officielles La Picateria",

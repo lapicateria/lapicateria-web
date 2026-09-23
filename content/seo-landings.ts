@@ -56,7 +56,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         whyTitle: "Por qué elegir La Picatería si buscas tapas en Granada",
         whyPoints: [
           "Tapas con cada bebida y una carta que va más allá del picoteo rápido.",
-          "Brasa de carbón, jamón asado, arroces y platos para compartir.",
+          "Brasa de carbón, jamón asado, tapeo y platos para compartir.",
           "Ubicación dentro del Mercado de San Agustín, muy útil para local y visitante.",
         ],
         localTitle: "Tapear en Granada con una ubicación que te lo pone fácil",
@@ -65,7 +65,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Más que tapas: una mesa para alargar el plan",
         experienceText:
           "Puedes venir a tapear, pedir una comida más completa o sentarte con calma. Esa mezcla de barra, terraza, mercado y cocina directa es parte del atractivo.",
-        featuredDishKeys: ["pinchos", "jamon_asado", "paella"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada-centro", "comer-en-granada-centro"],
         topCtaLabel: "Reservar mesa",
         midCtaTitle: "Si ya te encaja el plan, mejor reservar",
@@ -85,7 +85,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         whyTitle: "Why choose La Picatería for tapas in Granada",
         whyPoints: [
           "Tapas with drinks plus a fuller menu when you want more than a quick stop.",
-          "Charcoal grill dishes, roast ham, rice dishes and plates made for sharing.",
+          "Charcoal grill dishes, roast ham, tapas and plates made for sharing.",
           "Inside Mercado de San Agustin, useful for both visitors and locals.",
         ],
         localTitle: "A central Granada location that makes the choice easier",
@@ -94,7 +94,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Not only tapas, but a place to stay longer",
         experienceText:
           "You can come for bar bites, a proper meal or a slower table with terrace atmosphere. That flexibility is part of the appeal.",
-        featuredDishKeys: ["pinchos", "jamon_asado", "paella"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada-centro", "comer-en-granada-centro"],
         topCtaLabel: "Book a table",
         midCtaTitle: "If the plan already makes sense, book it now",
@@ -114,7 +114,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         whyTitle: "Pourquoi choisir La Picatería pour des tapas a Grenade",
         whyPoints: [
           "Tapas avec boisson et une vraie carte pour aller plus loin qu'un arret rapide.",
-          "Braise au charbon, jambon roti, riz et plats a partager.",
+          "Braise au charbon, jambon roti, tapas et plats a partager.",
           "Dans le Mercado de San Agustin, tres pratique pour visiteurs et locaux.",
         ],
         localTitle: "Une localisation centrale qui simplifie le choix",
@@ -123,7 +123,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Pas seulement des tapas, mais une table ou rester",
         experienceText:
           "Vous pouvez venir pour le comptoir, pour un vrai repas ou pour prendre votre temps en terrasse. Cette souplesse fait partie du charme.",
-        featuredDishKeys: ["pinchos", "jamon_asado", "paella"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada-centro", "comer-en-granada-centro"],
         topCtaLabel: "Reserver une table",
         midCtaTitle: "Si le plan vous convient deja, reservez",
@@ -163,7 +163,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Centro, ambiente y mesa con ritmo propio",
         experienceText:
           "La Picatería funciona para el aperitivo, la comida y la sobremesa. Ese equilibrio entre tapeo, cocina y ambiente le da más recorrido que un bar de paso.",
-        featuredDishKeys: ["pinchos", "paella", "chuleton"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada", "comer-en-granada-centro", "restaurante-mercado-san-agustin"],
         topCtaLabel: "Reservar en Granada centro",
         midCtaTitle: "Granada centro suele invitar a improvisar. Aquí es mejor llegar con plan.",
@@ -192,7 +192,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "City centre, atmosphere and a table worth keeping",
         experienceText:
           "La Picatería works for aperitivo, lunch and slower meals, which gives it more range than a stop-and-go tapas bar.",
-        featuredDishKeys: ["pinchos", "paella", "chuleton"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada", "comer-en-granada-centro", "restaurante-mercado-san-agustin"],
         topCtaLabel: "Book in central Granada",
         midCtaTitle: "Central Granada often pushes people to improvise. Better to arrive with a plan.",
@@ -221,7 +221,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Centre-ville, ambiance et table ou rester",
         experienceText:
           "La Picatería fonctionne pour l'aperitif, le dejeuner et les repas plus calmes, avec plus d'ampleur qu'un simple bar a tapas.",
-        featuredDishKeys: ["pinchos", "paella", "chuleton"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada", "comer-en-granada-centro", "restaurante-mercado-san-agustin"],
         topCtaLabel: "Reserver au centre de Grenade",
         midCtaTitle: "Au centre de Grenade, mieux vaut arriver avec un plan clair",
@@ -235,11 +235,11 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
   },
   "comer-en-granada-centro": {
     slug: "comer-en-granada-centro",
-    image: "/images/real/paella_entrecot.jpg",
+    image: "/images/real/chuleton.jpg",
     imageAlt: {
-      es: "Paella y carne a la brasa en La Picatería",
-      en: "Paella and grilled meat at La Picatería",
-      fr: "Paella et viande a la braise a La Picatería",
+      es: "Chuletón a la brasa en La Picatería",
+      en: "Charcoal-grilled steak at La Picatería",
+      fr: "Chuletón a la braise a La Picatería",
     },
     content: {
       es: {
@@ -251,7 +251,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
           "Si tu búsqueda es dónde comer en Granada centro, aquí encuentras una propuesta completa: buena ubicación, cocina reconocible y posibilidad de reservar sin salir de la web.",
         whyTitle: "Por qué funciona para comer en el centro de Granada",
         whyPoints: [
-          "Brasa, arroces, tapas y platos para comer con calma.",
+          "Brasa, tapas y platos para comer con calma.",
           "Ubicación dentro del Mercado de San Agustín, a un paso de la Catedral.",
           "Carta clara para decidir si quieres tapeo, comida completa o comida para compartir.",
         ],
@@ -261,7 +261,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Producto real y una mesa que merece quedarse un rato",
         experienceText:
           "Aquí no todo va de entrar y salir. La terraza, la brasa y los platos al centro ayudan a convertir la comida en una experiencia más redonda.",
-        featuredDishKeys: ["paella", "chuleton", "jamon_asado"],
+        featuredDishKeys: ["chuleton", "jamon_asado", "pinchos"],
         relatedSlugs: ["tapas-granada-centro", "restaurante-mercado-san-agustin"],
         topCtaLabel: "Reservar para comer",
         midCtaTitle: "Si vienes a comer en Granada centro, mejor no dejarlo para el último minuto",
@@ -280,7 +280,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
           "If you are searching for where to eat in central Granada, this is a complete option with an easy location, recognisable cooking and direct booking.",
         whyTitle: "Why it works for lunch or dinner in central Granada",
         whyPoints: [
-          "Grill dishes, rice, tapas and plates for a slower meal.",
+          "Grill dishes, tapas and plates for a slower meal.",
           "Inside Mercado de San Agustin, a short walk from the Cathedral.",
           "A clear menu whether you want tapas, a full meal or dishes to share.",
         ],
@@ -290,7 +290,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Real produce and a table worth keeping for a while",
         experienceText:
           "This is not only about stopping quickly. Terrace seating, charcoal grill cooking and sharing dishes make the meal feel more complete.",
-        featuredDishKeys: ["paella", "chuleton", "jamon_asado"],
+        featuredDishKeys: ["chuleton", "jamon_asado", "pinchos"],
         relatedSlugs: ["tapas-granada-centro", "restaurante-mercado-san-agustin"],
         topCtaLabel: "Book for lunch or dinner",
         midCtaTitle: "If you want to eat in central Granada, do not leave it too late",
@@ -309,7 +309,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
           "Si vous cherchez ou manger au centre de Grenade, vous trouvez ici une option complete avec emplacement pratique, cuisine reconnaissable et reservation directe.",
         whyTitle: "Pourquoi cela fonctionne tres bien pour dejeuner ou diner au centre",
         whyPoints: [
-          "Braise, riz, tapas et plats pour manger plus calmement.",
+          "Braise, tapas et plats pour manger plus calmement.",
           "Dans le Mercado de San Agustin, a quelques pas de la Cathedrale.",
           "Une carte claire selon que vous vouliez tapas, vrai repas ou partage.",
         ],
@@ -319,7 +319,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Vrai produit et une table qui merite qu'on y reste",
         experienceText:
           "Ici, il ne s'agit pas seulement d'un arret rapide. Terrasse, braise et plats a partager rendent le repas plus complet.",
-        featuredDishKeys: ["paella", "chuleton", "jamon_asado"],
+        featuredDishKeys: ["chuleton", "jamon_asado", "pinchos"],
         relatedSlugs: ["tapas-granada-centro", "restaurante-mercado-san-agustin"],
         topCtaLabel: "Reserver pour manger",
         midCtaTitle: "Pour manger au centre de Grenade, mieux vaut ne pas attendre",
@@ -344,7 +344,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         eyebrow: "Restaurante Mercado San Agustín",
         title: "Restaurante en el Mercado de San Agustín con brasa, tapas y terraza",
         description:
-          "La Picatería está dentro del Mercado de San Agustín y ofrece una propuesta muy completa de tapas, brasa de carbón, paellas y platos para compartir.",
+          "La Picatería está dentro del Mercado de San Agustín y ofrece una propuesta muy completa de tapas, brasa de carbón y platos para compartir.",
         heroIntro:
           "Si estás buscando un restaurante en el Mercado de San Agustín, La Picatería destaca por combinar ubicación, cocina de mercado, brasa y una experiencia muy fácil de recomendar.",
         whyTitle: "Qué aporta La Picatería dentro del Mercado de San Agustín",
@@ -359,7 +359,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Mercado, centro histórico y mesa con personalidad",
         experienceText:
           "La combinación de mercado, terraza, centro de Granada y cocina con brasa hace que la experiencia tenga más recorrido que una simple parada turística.",
-        featuredDishKeys: ["pinchos", "jamon_asado", "paella"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada-centro", "comer-en-granada-centro"],
         topCtaLabel: "Reservar en el mercado",
         midCtaTitle: "Si quieres venir al Mercado de San Agustín con la mesa hecha, reserva antes",
@@ -373,7 +373,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         eyebrow: "Restaurant Mercado de San Agustin",
         title: "Restaurant in Mercado de San Agustin with tapas, grill dishes and terrace seating",
         description:
-          "La Picatería sits inside Mercado de San Agustin with tapas, charcoal grill dishes, paellas and a sharing-friendly menu.",
+          "La Picatería sits inside Mercado de San Agustin with tapas, charcoal grill dishes and a sharing-friendly menu.",
         heroIntro:
           "If you are looking for a restaurant in Mercado de San Agustin, La Picatería stands out because it combines location, market produce and a very easy dining concept.",
         whyTitle: "Why La Picatería stands out inside the market",
@@ -388,7 +388,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Market setting, city centre and a restaurant with character",
         experienceText:
           "The mix of market atmosphere, terrace seating, central Granada and charcoal grill cooking gives the visit more depth than a simple tourist stop.",
-        featuredDishKeys: ["pinchos", "jamon_asado", "paella"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada-centro", "comer-en-granada-centro"],
         topCtaLabel: "Book inside the market",
         midCtaTitle: "If you want Mercado de San Agustin with the table already solved, book ahead",
@@ -402,7 +402,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         eyebrow: "Restaurant Mercado de San Agustin",
         title: "Restaurant dans le Mercado de San Agustin avec tapas, braise et terrasse",
         description:
-          "La Picatería est dans le Mercado de San Agustin avec tapas, braise au charbon, paellas et carte pensee pour partager.",
+          "La Picatería est dans le Mercado de San Agustin avec tapas, braise au charbon et carte pensee pour partager.",
         heroIntro:
           "Si vous cherchez un restaurant dans le Mercado de San Agustin, La Picatería se distingue par son emplacement, son vrai produit et sa reservation facile.",
         whyTitle: "Pourquoi La Picatería ressort bien dans le marche",
@@ -417,7 +417,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
         experienceTitle: "Marche, centre-ville et un restaurant avec personnalite",
         experienceText:
           "Le melange du marche, de la terrasse, du centre de Grenade et de la braise donne plus de relief qu'une simple halte touristique.",
-        featuredDishKeys: ["pinchos", "jamon_asado", "paella"],
+        featuredDishKeys: ["pinchos", "jamon_asado", "chuleton"],
         relatedSlugs: ["tapas-granada-centro", "comer-en-granada-centro"],
         topCtaLabel: "Reserver dans le marche",
         midCtaTitle: "Si vous voulez venir au Mercado de San Agustin avec la table prevue, reservez avant",

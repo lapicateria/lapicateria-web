@@ -143,7 +143,7 @@ export default async function BookingPage({ params }: PageProps) {
                 </p>
                 <div className="mt-4 space-y-3 text-sm leading-7 text-charcoal">
                   <p>Reservar desde aquí te asegura mejor tu hora y te deja la visita resuelta en pocos pasos.</p>
-                  <p>Si vienes con idea clara de terraza, arroz o mesa tranquila, mejor no dejarlo para última hora.</p>
+                  <p>Si vienes con idea clara de terraza o mesa tranquila, mejor no dejarlo para última hora.</p>
                   <p>Si el formulario tarda o falla, usa el botón principal o llámanos directamente.</p>
                   <p>{hours.todayMessage}</p>
                 </div>

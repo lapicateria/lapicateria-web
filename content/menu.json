@@ -2,24 +2,18 @@
   "notes": {
     "es": [
       "Nuestra brasa es de carbón.",
-      "Paellas con elaboración mínima para 2 personas.",
-      "Tiempo estimado de paellas: 35-40 min.",
       "Servicio en terraza +10%.",
       "Precios con IVA incluido.",
       "Nuestro vermut es casero."
     ],
     "en": [
       "Our grill uses charcoal.",
-      "Paellas require a minimum order of 2 people.",
-      "Estimated paella cooking time: 35-40 min.",
       "Terrace service +10%.",
       "Prices include VAT.",
       "Our vermouth is homemade."
     ],
     "fr": [
       "Notre braise est au charbon.",
-      "Paellas avec preparation minimum pour 2 personnes.",
-      "Temps estime des paellas : 35-40 min.",
       "Service en terrasse +10%.",
       "Prix TTC.",
       "Notre vermouth est maison."
@@ -191,84 +185,6 @@
       ]
     },
     {
-      "id": "paellas",
-      "names": {
-        "es": "Paellas",
-        "en": "Paellas",
-        "fr": "Paellas"
-      },
-      "descriptions": {
-        "es": "Elaboracion minima para 2 pax. Tiempo de cocina estimado 35-40 min.",
-        "en": "Minimum order for 2 guests. Estimated cooking time 35-40 min.",
-        "fr": "Preparation minimum pour 2 personnes. Temps estime 35-40 min."
-      },
-      "items": [
-        {
-          "id": "paella-marisco",
-          "names": {
-            "es": "De marisco",
-            "en": "Seafood paella",
-            "fr": "Paella de fruits de mer"
-          },
-          "descriptions": {
-            "es": "Precio por persona, elaboracion minima para 2 pax. Tiempo de elaboracion 35-40 min.",
-            "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
-            "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
-          },
-          "price": "16,50 EUR",
-          "allergens": [
-            "crustaceans",
-            "molluscs"
-          ]
-        },
-        {
-          "id": "paella-carne",
-          "names": {
-            "es": "De carne",
-            "en": "Meat paella",
-            "fr": "Paella de viande"
-          },
-          "descriptions": {
-            "es": "Precio por persona, elaboracion minima para 2 pax. Tiempo de elaboracion 35-40 min.",
-            "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
-            "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
-          },
-          "price": "16,50 EUR",
-          "allergens": []
-        },
-        {
-          "id": "arroz-negro",
-          "names": {
-            "es": "Arroz negro",
-            "en": "Black rice",
-            "fr": "Riz noir"
-          },
-          "descriptions": {
-            "es": "Precio por persona, elaboracion minima para 2 pax. Tiempo de elaboracion 35-40 min.",
-            "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
-            "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
-          },
-          "price": "16,50 EUR",
-          "allergens": []
-        },
-        {
-          "id": "paella-verduras",
-          "names": {
-            "es": "De verduras",
-            "en": "Vegetable paella",
-            "fr": "Paella de legumes"
-          },
-          "descriptions": {
-            "es": "Precio por persona, elaboracion minima para 2 pax. Tiempo de elaboracion 35-40 min.",
-            "en": "Price per person. Minimum 2 guests. Cooking time 35-40 min.",
-            "fr": "Prix par personne. Minimum 2 convives. Temps de preparation 35-40 min."
-          },
-          "price": "13,50 EUR",
-          "allergens": []
-        }
-      ]
-    },
-    {
       "id": "para-compartir",
       "names": {
         "es": "Para compartir",
@@ -331,21 +247,6 @@
           "allergens": [
             "milk"
           ]
-        },
-        {
-          "id": "tablas-a-tu-gusto",
-          "names": {
-            "es": "Tablas a tu gusto",
-            "en": "Boards to your taste",
-            "fr": "Planches a votre gout"
-          },
-          "descriptions": {
-            "es": "De jamon, de quesos o de jamon y quesos.",
-            "en": "Choose ham, cheese or a mixed board.",
-            "fr": "Jambon, fromages ou mixte jambon et fromages."
-          },
-          "price": "Desde 12,00 EUR",
-          "allergens": []
         }
       ]
     },
@@ -749,9 +650,9 @@
         "fr": "Boissons · Vins rouges"
       },
       "descriptions": {
-        "es": "Copas para acompanar brasas, arroces y mesa larga.",
-        "en": "Wines by the glass to pair with grill dishes and rice.",
-        "fr": "Vins au verre pour accompagner braises, riz et grandes tables."
+        "es": "Copas para acompanar brasas y platos para compartir.",
+        "en": "Wines by the glass to pair with grill dishes and sharing plates.",
+        "fr": "Vins au verre pour accompagner braises et plats a partager."
       },
       "items": [
         {

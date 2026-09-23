@@ -256,7 +256,7 @@ function createFallbackStatus(): StatusResponse {
       },
       group_sharing: {
         label: "Compartir en grupo",
-        message: "Si venís a compartir paellas, brasa o mesa larga, mejor venir con reserva.",
+        message: "Si venís a compartir, disfrutar de la brasa o alargar la mesa, mejor venir con reserva.",
         primaryAction: "reserve",
         secondaryAction: "call",
       },

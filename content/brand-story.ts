@@ -69,7 +69,7 @@ export const featuredReviewsByLocale: Record<Locale, ReviewItem[]> = {
       tag: "Tapeo y producto",
     },
     {
-      quote: "Brasa, arroces y una ubicación comodísima dentro del mercado. Muy fácil de recomendar.",
+      quote: "Brasa, tapeo y una ubicación comodísima dentro del mercado. Muy fácil de recomendar.",
       tag: "Mercado y centro",
     },
     {
@@ -122,13 +122,6 @@ export const featuredReviewsByLocale: Record<Locale, ReviewItem[]> = {
 export const featuredDishesByLocale: Record<Locale, FeaturedDish[]> = {
   es: [
     {
-      key: "paella",
-      name: "Paella",
-      description: "Arroz para compartir, de los que piden mesa, tiempo y ganas de alargar la comida.",
-      image: "/images/real/paella.jpg",
-      alt: "Paella de La Picatería",
-    },
-    {
       key: "chuleton",
       name: "Chuletón",
       description: "Brasa de carbón y corte potente para quien viene con hambre de plan serio.",
@@ -152,13 +145,6 @@ export const featuredDishesByLocale: Record<Locale, FeaturedDish[]> = {
   ],
   en: [
     {
-      key: "paella",
-      name: "Paella",
-      description: "A sharing rice dish worth booking for if you want to enjoy the table properly.",
-      image: "/images/real/paella.jpg",
-      alt: "Paella at La Picatería",
-    },
-    {
       key: "chuleton",
       name: "Chuleta steak",
       description: "Charcoal-grilled beef for guests looking for a more substantial meal.",
@@ -181,13 +167,6 @@ export const featuredDishesByLocale: Record<Locale, FeaturedDish[]> = {
     },
   ],
   fr: [
-    {
-      key: "paella",
-      name: "Paella",
-      description: "Un riz a partager qui merite de reserver si vous voulez profiter de la table.",
-      image: "/images/real/paella.jpg",
-      alt: "Paella de La Picatería",
-    },
     {
       key: "chuleton",
       name: "Chuletón",
@@ -326,7 +305,7 @@ export const whyPeopleReturnByLocale: Record<Locale, ReturnModule> = {
     points: [
       "Porque está en el centro y es fácil quedar aquí.",
       "Porque puedes venir de tapas o sentarte a comer con calma.",
-      "Porque la brasa, el jamón asado y los arroces dejan recuerdo.",
+      "Porque la brasa, el jamón asado y el tapeo dejan recuerdo.",
     ],
   },
   en: {
@@ -334,7 +313,7 @@ export const whyPeopleReturnByLocale: Record<Locale, ReturnModule> = {
     points: [
       "Because the central location makes it easy to meet here.",
       "Because it works for quick tapas or a slower meal.",
-      "Because the grill dishes, roast ham and rice are memorable.",
+      "Because the grill dishes, roast ham and tapas are memorable.",
     ],
   },
   fr: {
@@ -342,7 +321,7 @@ export const whyPeopleReturnByLocale: Record<Locale, ReturnModule> = {
     points: [
       "Parce que l'emplacement central est tres pratique.",
       "Parce que l'adresse fonctionne pour tapas ou repas plus calme.",
-      "Parce que la braise, le jambon roti et les riz marquent.",
+      "Parce que la braise, le jambon roti et les tapas marquent.",
     ],
   },
 };

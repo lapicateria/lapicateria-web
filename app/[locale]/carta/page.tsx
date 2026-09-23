@@ -52,8 +52,8 @@ export default async function MenuPage({ params }: PageProps) {
           title: "Antes de pedir",
           points: [
             "Carta pensada para compartir",
-            "Brasa de carbón, tapas, paellas y platos para poner al centro",
-            "Si vienes con idea de paella, brasa o mesa larga, mejor reservar",
+            "Brasa de carbón, tapas y platos para poner al centro",
+            "Si vienes con idea de brasa o mesa larga, mejor reservar",
           ],
         }
       : locale === "en"
@@ -61,27 +61,27 @@ export default async function MenuPage({ params }: PageProps) {
             title: "How to eat at La Picateria",
             points: [
               "A menu built for sharing",
-              "Charcoal grill, tapas, paellas and dishes designed for the middle of the table",
-              "If you are coming for paella or a larger table, it is better to book ahead",
+              "Charcoal grill, tapas and dishes designed for the middle of the table",
+              "If you are coming for a larger table, it is better to book ahead",
             ],
           }
         : {
             title: "Comment manger a La Picateria",
             points: [
               "Une carte pensee pour partager",
-              "Braise au charbon, tapas, paellas et plats de centre de table",
-              "Si vous venez pour une paella ou une grande table, mieux vaut reserver",
+              "Braise au charbon, tapas et plats de centre de table",
+              "Si vous venez avec une grande table, mieux vaut reserver",
             ],
           };
   const getTags = (itemId: string) => {
     const tags: string[] = [];
-    if (["jamon-asado", "croquetas-caseras", "nachos-con-guacamole", "tablas-a-tu-gusto", "paella-marisco", "paella-carne", "arroz-negro", "paella-verduras"].includes(itemId)) {
+    if (["jamon-asado", "croquetas-caseras", "nachos-con-guacamole"].includes(itemId)) {
       tags.push(locale === "es" ? "Para compartir" : locale === "en" ? "To share" : "A partager");
     }
     if (["pulpo-a-la-brasa", "entrecot", "solomillo", "chuleton", "t-bone", "secreto-iberico", "churrasco", "abanico", "pluma-iberica", "contramuslo-de-pollo"].includes(itemId)) {
       tags.push(locale === "es" ? "Brasa" : locale === "en" ? "Grill" : "Braise");
     }
-    if (["pulpo-a-la-brasa", "jamon-asado", "paella-marisco", "pluma-iberica"].includes(itemId)) {
+    if (["pulpo-a-la-brasa", "jamon-asado", "pluma-iberica"].includes(itemId)) {
       tags.push(locale === "es" ? "Recomendado" : locale === "en" ? "Recommended" : "Recommande");
     }
     return tags;
@@ -90,10 +90,10 @@ export default async function MenuPage({ params }: PageProps) {
     locale === "es"
       ? [
           {
-            image: "/images/real/paella.jpg",
-            alt: "Paella de La Picatería",
-            title: "Paella para compartir",
-            text: "Si vienes con idea de arroz, mejor reservar y venir con tiempo.",
+            image: "/images/real/jamon_asado.jpg",
+            alt: "Jamón asado de La Picatería",
+            title: "Especialidad de la casa",
+            text: "Jamón asado y platos reconocibles para compartir en el centro de la mesa.",
           },
           {
             image: "/images/real/chuleton.jpg",
@@ -120,7 +120,7 @@ export default async function MenuPage({ params }: PageProps) {
             </p>
             {locale === "es" ? (
               <p className="text-sm font-medium leading-7 text-charcoal">
-                Si vienes en hora punta, con idea de arroz o a comer con calma, mejor reservar antes de venir.
+                Si vienes en hora punta o a comer con calma, mejor reservar antes de venir.
               </p>
             ) : null}
           </div>
@@ -174,8 +174,8 @@ export default async function MenuPage({ params }: PageProps) {
           <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="relative min-h-[320px]">
               <Image
-                src="/images/real/paella_entrecot.jpg"
-                alt="Paella y carne a la brasa en La Picatería"
+                src="/images/real/barra-producto.jpg"
+                alt="Barra y producto de La Picatería"
                 fill
                 className="object-cover"
               />
@@ -279,37 +279,6 @@ export default async function MenuPage({ params }: PageProps) {
                 ))}
               </div>
 
-              {locale === "es" && category.id === "arroces-y-fideua" ? (
-                <div className="overflow-hidden rounded-[1.6rem] border border-border bg-white shadow-[0_14px_30px_rgba(31,26,23,0.05)]">
-                  <div className="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
-                    <div className="relative min-h-[260px]">
-                      <Image
-                        src="/images/real/paella.jpg"
-                        alt="Paella de La Picatería"
-                        fill
-                        sizes="(max-width: 1024px) 100vw, 45vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex items-center p-6">
-                      <div className="space-y-3">
-                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
-                          Puente carta → reserva
-                        </p>
-                        <p className="text-sm leading-7 text-charcoal">
-                          Si vienes a por arroz, fines de semana o con idea de alargar la mesa, mejor reservar antes y llegar con el plan hecho.
-                        </p>
-                        <TrackedReservationLink
-                          label="Reservar mesa"
-                          locale={locale}
-                          location="carta_page"
-                          eventName="click_reserve_menu_rice_block"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : null}
             </section>
           ))}
         </div>

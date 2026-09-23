@@ -23,13 +23,13 @@ import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, getMenuPreview, isValidLocale } from "@/lib/i18n";
 
-const heroImage = "/images/real/paella_entrecot.jpg";
+const heroImage = "/images/real/chuleton.jpg";
 const terraceImage = "/images/real/terraza.jpg";
 const brandImage = "/images/real/jamon_asado.jpg";
 const chuletonImage = "/images/real/chuleton.jpg";
-const paellaImage = "/images/real/paella.jpg";
 const pinchosImage = "/images/real/pinchos_picateria.jpg";
 const atmosphereImage = "/images/real/barra-producto.jpg";
+const barImage = "/images/real/barra-madera.jpg";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -92,7 +92,7 @@ export default async function HomePage({ params }: PageProps) {
           {
             eyebrow: "Por qué ir",
             title: "Terraza y producto reconocible",
-            text: "Pulpo, jamón asado, arroces y brasa de carbón con un tono muy de mercado.",
+            text: "Pulpo, jamón asado, tapeo y brasa de carbón con un tono muy de mercado.",
           },
           {
             eyebrow: "Qué hacer ahora",
@@ -154,7 +154,7 @@ export default async function HomePage({ params }: PageProps) {
             eyebrow: "Mercado · brasa de carbón · Granada",
             title: "Brasa de carbón, tapas y producto real en el centro de Granada",
             subtitle:
-            "En el Mercado de San Agustín, junto a la Catedral. Un sitio para tapear, compartir paellas, sentarse con calma y decidir rápido si reservas o vienes directo.",
+            "En el Mercado de San Agustín, junto a la Catedral. Un sitio para tapear, compartir, sentarse con calma y decidir rápido si reservas o vienes directo.",
             reserve: "Reservar mesa",
             menu: "Ver carta",
           }
@@ -163,7 +163,7 @@ export default async function HomePage({ params }: PageProps) {
             eyebrow: "MARKET · CHARCOAL GRILL · GRANADA",
             title: "Charcoal grill and real produce in the heart of Granada",
             subtitle:
-              "Tapas, paellas and sharing plates inside Mercado de San Agustin, next to the Cathedral.",
+              "Tapas, charcoal grill dishes and sharing plates inside Mercado de San Agustin, next to the Cathedral.",
             reserve: "Book a table",
             menu: "View menu",
           }
@@ -171,7 +171,7 @@ export default async function HomePage({ params }: PageProps) {
             eyebrow: "MARCHE · BRAISE AU CHARBON · GRENADE",
             title: "Braise au charbon et vrai produit au centre de Grenade",
             subtitle:
-              "Tapas, paellas et plats a partager dans le Mercado de San Agustin, a cote de la Cathedrale.",
+              "Tapas, braise au charbon et plats a partager dans le Mercado de San Agustin, a cote de la Cathedrale.",
             reserve: "Reserver une table",
             menu: "Voir la carte",
           };
@@ -201,10 +201,10 @@ export default async function HomePage({ params }: PageProps) {
     locale === "es"
       ? [
           {
-            title: "Paella",
-            note: "Para compartir",
-            image: paellaImage,
-            alt: "Paella servida en La Picatería",
+            title: "Pinchos y barra",
+            note: "Tapeo",
+            image: pinchosImage,
+            alt: "Pinchos y producto de barra en La Picatería",
             className: "md:col-span-2",
           },
           {
@@ -239,7 +239,7 @@ export default async function HomePage({ params }: PageProps) {
           <div className="relative min-h-[680px]">
               <Image
                 src={heroImage}
-                alt="Paella y carne a la brasa en La Picatería"
+                alt="Chuletón a la brasa de carbón en La Picatería"
                 fill
                 priority
                 className="object-cover object-center saturate-[1.04] contrast-[1.04]"
@@ -377,7 +377,7 @@ export default async function HomePage({ params }: PageProps) {
                     Microdecisión
                   </p>
                   <p className="mt-3 text-sm leading-7 text-charcoal">
-                    Si vienes en hora punta, a por paella o con idea de terraza, mejor reservar antes.
+                    Si vienes en hora punta o con idea de terraza, mejor reservar antes.
                   </p>
                   <p className="mt-2 text-sm leading-7 text-charcoal">
                     {hours.todayMessage}
@@ -674,7 +674,7 @@ export default async function HomePage({ params }: PageProps) {
                   Reserva recomendada
                 </p>
                 <p className="mt-3 text-sm leading-7 text-charcoal">
-                  Si vienes a por arroz, terraza o mesa con calma, lo más cómodo es reservar antes desde la web.
+                  Si vienes por la terraza o quieres una mesa con calma, lo más cómodo es reservar antes desde la web.
                 </p>
                 <div className="mt-4">
                   <TrackedReservationLink
@@ -923,8 +923,8 @@ export default async function HomePage({ params }: PageProps) {
           <div className="overflow-hidden rounded-[1.9rem] bg-white shadow-[0_20px_48px_rgba(31,26,23,0.11)]">
             <div className="relative min-h-[520px]">
               <Image
-                src={paellaImage}
-                alt="Paella real de La Picatería"
+                src={barImage}
+                alt="Barra de La Picatería en el Mercado de San Agustín"
                 fill
                 className="object-cover"
               />
