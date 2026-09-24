@@ -7,7 +7,6 @@ import { TrackedReservationLink } from "@/components/tracked-reservation-link";
 import {
   quickDecisionByLocale,
   touristModuleByLocale,
-  whyPeopleReturnByLocale,
 } from "@/content/brand-story";
 import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import { buildMetadata } from "@/lib/metadata";
@@ -44,7 +43,6 @@ export default async function ContactPage({ params }: PageProps) {
   const hours = await getBusinessHoursPresentation(locale);
   const quickDecision = quickDecisionByLocale[locale];
   const touristModule = touristModuleByLocale[locale];
-  const whyPeopleReturn = whyPeopleReturnByLocale[locale];
   const beforeYouCome =
     locale === "es"
       ? {
@@ -52,8 +50,8 @@ export default async function ContactPage({ params }: PageProps) {
           points: [
             "Tapas incluidas con cada bebida",
             "Puedes venir solo de tapas o comer a la carta",
-            "Comida media alrededor de 20 €",
-            "Mejor reservar si vienes en hora punta o con idea de terraza",
+            "Consulta la carta antes de venir",
+            "Mejor reservar si vienes en hora punta",
           ],
         }
       : locale === "en"
@@ -61,18 +59,18 @@ export default async function ContactPage({ params }: PageProps) {
             title: "Before you come",
             points: [
               "Inside Mercado de San Agustin and 1 minute from the Cathedral",
-              "Average meal around 20 EUR",
+              "View the current menu before your visit",
               "Better to book at peak times",
-              "A good fit for terrace tables, the city centre and sharing dishes",
+              "Tapas and sharing dishes in central Granada",
             ],
           }
         : {
             title: "Avant de venir",
             points: [
-              "Dans le Mercado de San Agustin et a 1 minute de la Cathedrale",
-              "Repas moyen autour de 20 EUR",
-              "Mieux vaut reserver aux heures de pointe",
-              "Une bonne adresse pour la terrasse, le centre et les plats a partager",
+              "Dans le Mercado de San Agustin, à une minute de la Cathédrale",
+              "Consultez la carte avant votre visite",
+              "Mieux vaut réserver aux heures de pointe",
+              "Tapas et plats à partager au centre de Grenade",
             ],
           };
 
@@ -117,33 +115,6 @@ export default async function ContactPage({ params }: PageProps) {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.62fr_1.38fr] lg:items-start">
           <div className="space-y-6">
-            {locale === "es" ? (
-              <div className="rounded-[1.6rem] border border-sand-300 bg-sand-200/22 p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-600">
-                  Decidir rápido
-                </p>
-                <div className="mt-4 space-y-3 text-sm leading-7 text-charcoal">
-                  <p>Estás en el centro, dentro del mercado y a un paso de la Catedral.</p>
-                  <p>Si ya te encaja la ubicación, lo más práctico es reservar ahora o llamar.</p>
-                </div>
-                <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                  <TrackedReservationLink
-                    label="Reservar mesa"
-                    locale={locale}
-                    location="contact_page"
-                    eventName="click_reserve_contact_card"
-                  />
-                  <TrackedPhoneLink
-                    phoneHref={dictionary.business.phoneHref}
-                    label="Llamar"
-                    locale={locale}
-                    eventName="click_call_contact_card"
-                    variant="secondary"
-                  />
-                </div>
-              </div>
-            ) : null}
-
             <div className="rounded-[1.6rem] border border-border bg-white p-6 shadow-[0_14px_28px_rgba(31,26,23,0.05)]">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
                 {quickDecision.title}
@@ -247,10 +218,7 @@ export default async function ContactPage({ params }: PageProps) {
                     Ubicación y ambiente
                   </p>
                   <p className="mt-2 max-w-lg text-sm leading-7 text-white/92">
-                    Mercado, terraza y centro histórico. Si ya te encaja la zona, reserva antes de venir.
-                  </p>
-                  <p className="mt-2 max-w-lg text-sm leading-7 text-white/86">
-                    {whyPeopleReturn.points[0]}
+                    Mercado, centro histórico y una ubicación fácil de encontrar junto a la Catedral.
                   </p>
                 </div>
               </div>

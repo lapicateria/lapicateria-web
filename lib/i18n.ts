@@ -141,9 +141,9 @@ const dictionaries = {
     },
     menuPage: {
       eyebrow: "Carta actual",
-      title: "Carta real, clara y fácil de consultar",
+      title: "Nuestra carta",
       description:
-        "Entrantes, mar, brasas, vegetarianos, huevos rotos y bebidas con una lectura directa y precios visibles."
+        "Entrantes, platos del mar, brasas, opciones vegetarianas, huevos rotos y bebidas con precios visibles."
     },
     bookingPage: {
       eyebrow: "Reservas oficiales",
@@ -179,9 +179,9 @@ const dictionaries = {
           "La Picatería, en el Mercado de San Agustín junto a la Catedral, reúne brasa, tapas, terraza y reservas directas."
       },
       menu: {
-        title: "Carta real de La Picatería",
+        title: "Carta de La Picatería",
         description:
-          "Consulta la carta real actual de La Picatería: entrantes, mar, brasas, vegetarianos, huevos rotos y bebidas."
+          "Consulta la carta actual de La Picatería: entrantes, mar, brasas, vegetarianos, huevos rotos y bebidas."
       },
       booking: {
         title: "Reservas oficiales La Picatería",
@@ -305,9 +305,9 @@ const dictionaries = {
     },
     menuPage: {
       eyebrow: "Current menu",
-      title: "The real La Picateria menu, structured for mobile",
+      title: "Our menu",
       description:
-        "Starters, seafood, grill dishes, vegetarian options, broken eggs and drinks in clear HTML."
+        "Starters, seafood, charcoal-grilled dishes, vegetarian options, broken eggs and drinks with visible prices."
     },
     bookingPage: {
       eyebrow: "Official bookings",
@@ -325,9 +325,9 @@ const dictionaries = {
     },
     contactPage: {
       eyebrow: "Contact",
-      title: "Clear contact details with a softer editorial layout",
+      title: "Where to find us",
       description:
-        "Map, phone, email and booking access in a cleaner visual system aligned with the restaurant identity.",
+        "Inside Mercado de San Agustin, in central Granada and only a few steps from the Cathedral.",
       mapEmbedUrl:
         "https://www.google.com/maps?q=Mercado+de+San+Agustin+Granada&z=17&output=embed"
     },
@@ -343,14 +343,14 @@ const dictionaries = {
           "La Picateria, inside Mercado de San Agustin next to the Cathedral, serves grill dishes, tapas and direct bookings."
       },
       menu: {
-        title: "The real La Picateria menu",
+        title: "La Picateria menu",
         description:
           "Browse the current La Picateria menu: starters, seafood, grill dishes, vegetarian plates, broken eggs and drinks."
       },
       booking: {
         title: "Official La Picateria bookings",
         description:
-          "Book a table at La Picateria through the official Qamarero integration with visible fallback details."
+          "Book a table at La Picateria through the official Qamarero booking channel."
       },
       contact: {
         title: "La Picateria contact and location",
@@ -469,9 +469,9 @@ const dictionaries = {
     },
     menuPage: {
       eyebrow: "Carte actuelle",
-      title: "La vraie carte de La Picateria, structuree pour le mobile",
+      title: "Notre carte",
       description:
-        "Entrees, mer, braises, options vegetariennes, oeufs casses et boissons dans une lecture claire."
+        "Entrées, produits de la mer, grillades, options végétariennes, œufs cassés et boissons avec prix visibles."
     },
     bookingPage: {
       eyebrow: "Reservations officielles",
@@ -489,9 +489,9 @@ const dictionaries = {
     },
     contactPage: {
       eyebrow: "Contact",
-      title: "Coordonnees claires dans un habillage plus editorial",
+      title: "Nous trouver",
       description:
-        "Carte, telephone, email et acces aux reservations dans une mise en page plus douce et plus gastronomique.",
+        "Dans le Mercado de San Agustin, au centre de Grenade et à quelques pas de la Cathédrale.",
       mapEmbedUrl:
         "https://www.google.com/maps?q=Mercado+de+San+Agustin+Granada&z=17&output=embed"
     },
@@ -507,14 +507,14 @@ const dictionaries = {
           "La Picateria, dans le Mercado de San Agustin a cote de la Cathedrale, propose tapas, braise et reservations directes."
       },
       menu: {
-        title: "La vraie carte de La Picateria",
+        title: "Carte de La Picateria",
         description:
           "Consultez la carte actuelle de La Picateria : entrees, mer, braises, vegetarien, oeufs casses et boissons."
       },
       booking: {
         title: "Reservations officielles La Picateria",
         description:
-          "Reservez une table a La Picateria avec l'integration officielle Qamarero et un fallback toujours visible."
+          "Réservez une table à La Picateria via le canal officiel Qamarero."
       },
       contact: {
         title: "Contact et emplacement La Picateria",

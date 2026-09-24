@@ -1,10 +1,5 @@
 import type { Locale } from "@/lib/i18n";
 
-type ReviewItem = {
-  quote: string;
-  tag: string;
-};
-
 type FeaturedDish = {
   key: string;
   name: string;
@@ -31,92 +26,6 @@ type TouristModule = {
   title: string;
   description: string;
   bullets: string[];
-};
-
-type ReturnModule = {
-  title: string;
-  points: string[];
-};
-
-export const reviewSummaryByLocale: Record<
-  Locale,
-  { title: string; rating: string; volume: string; kicker: string }
-> = {
-  es: {
-    title: "Muy recomendado para tapear, comer con calma y reservar con criterio",
-    rating: "4,4 en Google",
-    volume: "+2.500 opiniones",
-    kicker: "Prueba social",
-  },
-  en: {
-    title: "A well-rated choice for tapas, proper meals and easy booking",
-    rating: "4.4 on Google",
-    volume: "2,500+ reviews",
-    kicker: "Social proof",
-  },
-  fr: {
-    title: "Une adresse tres recommande pour tapas, repas complets et reservation facile",
-    rating: "4,4 sur Google",
-    volume: "2 500+ avis",
-    kicker: "Preuve sociale",
-  },
-};
-
-export const featuredReviewsByLocale: Record<Locale, ReviewItem[]> = {
-  es: [
-    {
-      quote: "De los mejores sitios para tapear en Granada si buscas producto y una mesa con ambiente.",
-      tag: "Tapeo y producto",
-    },
-    {
-      quote: "Brasa, tapeo y una ubicación comodísima dentro del mercado. Muy fácil de recomendar.",
-      tag: "Mercado y centro",
-    },
-    {
-      quote: "Buen sitio para compartir, comer con calma y salir con la sensación de haber acertado.",
-      tag: "Compartir y reservar",
-    },
-    {
-      quote: "Terraza, carta clara y platos que entran por los ojos incluso antes de sentarte.",
-      tag: "Terraza y carta",
-    },
-  ],
-  en: [
-    {
-      quote: "A very solid choice for tapas, charcoal grill dishes and a relaxed table in central Granada.",
-      tag: "Tapas and grill",
-    },
-    {
-      quote: "The market setting makes it easy to understand and easy to recommend.",
-      tag: "Location",
-    },
-    {
-      quote: "Works especially well if you want to share dishes and book ahead for a calmer meal.",
-      tag: "Sharing table",
-    },
-    {
-      quote: "Terrace, recognisable produce and a menu that helps you decide fast.",
-      tag: "Menu and terrace",
-    },
-  ],
-  fr: [
-    {
-      quote: "Une adresse tres fiable pour tapas, braise et repas detendu au centre de Grenade.",
-      tag: "Tapas et braise",
-    },
-    {
-      quote: "Le cadre du marche rend l'experience tres facile a comprendre et a recommander.",
-      tag: "Emplacement",
-    },
-    {
-      quote: "Ideal pour partager les plats et reserver a l'avance si vous voulez prendre votre temps.",
-      tag: "A partager",
-    },
-    {
-      quote: "Terrasse, vrai produit et une carte qui aide a decider vite.",
-      tag: "Carte et terrasse",
-    },
-  ],
 };
 
 export const featuredDishesByLocale: Record<Locale, FeaturedDish[]> = {
@@ -238,30 +147,30 @@ export const experienceStoryByLocale: Record<Locale, ExperienceStory> = {
 
 export const quickDecisionByLocale: Record<Locale, QuickDecisionModule> = {
   es: {
-    title: "Decisión rápida",
+    title: "Información útil",
     items: [
       "Centro de Granada · junto a la Catedral",
       "Tapas, brasa y platos para compartir",
-      "Precio medio alrededor de 20 €",
+      "Dentro del Mercado de San Agustín",
       "Muy recomendable reservar en hora punta",
     ],
   },
   en: {
-    title: "Quick decision",
+    title: "Useful information",
     items: [
       "Central Granada · next to the Cathedral",
       "Tapas, charcoal grill and sharing dishes",
-      "Typical spend around 20 EUR",
+      "Inside Mercado de San Agustin",
       "Booking is advisable at peak times",
     ],
   },
   fr: {
-    title: "Decision rapide",
+    title: "Informations utiles",
     items: [
-      "Centre de Grenade · a cote de la Cathedrale",
-      "Tapas, braise et plats a partager",
-      "Addition moyenne autour de 20 EUR",
-      "Reservation conseillee aux heures fortes",
+      "Centre de Grenade · près de la Cathédrale",
+      "Tapas, braise et plats à partager",
+      "Dans le Mercado de San Agustin",
+      "Réservation conseillée aux heures de pointe",
     ],
   },
 };
@@ -295,33 +204,6 @@ export const touristModuleByLocale: Record<Locale, TouristModule> = {
       "A une minute de la Cathedrale",
       "Dans le marche et tres facile a trouver",
       "Convient pour tapas ou vrai repas",
-    ],
-  },
-};
-
-export const whyPeopleReturnByLocale: Record<Locale, ReturnModule> = {
-  es: {
-    title: "Por qué la gente vuelve",
-    points: [
-      "Porque está en el centro y es fácil quedar aquí.",
-      "Porque puedes venir de tapas o sentarte a comer con calma.",
-      "Porque la brasa, el jamón asado y el tapeo dejan recuerdo.",
-    ],
-  },
-  en: {
-    title: "Why people come back",
-    points: [
-      "Because the central location makes it easy to meet here.",
-      "Because it works for quick tapas or a slower meal.",
-      "Because the grill dishes, roast ham and tapas are memorable.",
-    ],
-  },
-  fr: {
-    title: "Pourquoi les gens reviennent",
-    points: [
-      "Parce que l'emplacement central est tres pratique.",
-      "Parce que l'adresse fonctionne pour tapas ou repas plus calme.",
-      "Parce que la braise, le jambon roti et les tapas marquent.",
     ],
   },
 };
