@@ -143,7 +143,7 @@ const dictionaries = {
       eyebrow: "Carta actual",
       title: "Nuestra carta",
       description:
-        "Entrantes, platos del mar, brasas, opciones vegetarianas, huevos rotos y bebidas con precios visibles."
+        "La nueva carta de La Picatería: burgers SMASH LAB, platos para compartir, mar, patatas caseras, huevos rotos y brasa."
     },
     bookingPage: {
       eyebrow: "Reservas oficiales",
@@ -174,14 +174,14 @@ const dictionaries = {
     menuNotesTitle: "Notas de carta",
     meta: {
       home: {
-        title: "La Picatería · brasa de carbón y cocina de mercado en Granada",
+        title: "La Picatería · SMASH LAB y brasa en Granada",
         description:
-          "La Picatería, en el Mercado de San Agustín junto a la Catedral, reúne brasa, tapas, terraza y reservas directas."
+          "SMASH LAB llega a La Picatería: burgers, patatas caseras y brasa en el Mercado de San Agustín, Granada. Consulta la nueva carta y reserva mesa."
       },
       menu: {
         title: "Carta de La Picatería",
         description:
-          "Consulta la carta actual de La Picatería: entrantes, mar, brasas, vegetarianos, huevos rotos y bebidas."
+          "Descubre la nueva carta de La Picatería con SMASH LAB: siete burgers, patatas caseras, brasa y platos para compartir."
       },
       booking: {
         title: "Reservas oficiales La Picatería",
@@ -538,10 +538,10 @@ export function getMenuPreview(
   locale: Locale,
 ): Array<{ name: string; description: string; price: string }> {
   const featuredIds = [
-    "volcan-de-tomate",
+    "baconera",
     "pulpo-a-la-brasa",
     "jamon-asado",
-    "pluma-iberica"
+    "ferxa-trufada"
   ];
 
   const items = menu.categories

@@ -15,7 +15,7 @@ import { getBusinessHoursPresentation } from "@/lib/business-hours";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, getMenuPreview, isValidLocale } from "@/lib/i18n";
 
-const heroImage = "/images/real/chuleton.jpg";
+const heroImage = "/images/logos/smash-lab-fenix.webp";
 const barImage = "/images/real/barra-madera.jpg";
 const terraceImage = "/images/real/terraza.jpg";
 
@@ -55,29 +55,29 @@ export default async function HomePage({ params }: PageProps) {
   const heroCopy =
     locale === "es"
       ? {
-          eyebrow: "Mercado · brasa de carbón · Granada",
-          title: "Brasa de carbón, tapas y producto real en el centro de Granada",
+          eyebrow: "NOVEDAD · LLEGA SMASH LAB",
+          title: "La Picatería renace. Más fuego. Más sabor.",
           subtitle:
-            "Dentro del Mercado de San Agustín, junto a la Catedral. Tapeo, platos para compartir y cocina a la brasa.",
+            "SMASH LAB ya está en La Picatería. Siete burgers, patatas caseras y una carta renovada, junto a nuestra brasa de siempre. En el Mercado de San Agustín, Granada.",
           reserve: "Reservar mesa",
           menu: "Ver carta",
           call: "Llamar",
         }
       : locale === "en"
         ? {
-            eyebrow: "Market · charcoal grill · Granada",
-            title: "Charcoal grill and real produce in the heart of Granada",
+            eyebrow: "NEW · SMASH LAB HAS ARRIVED",
+            title: "La Picatería rises again. More fire. More flavour.",
             subtitle:
-              "Inside Mercado de San Agustin, next to the Cathedral. Tapas, sharing plates and charcoal-grilled dishes.",
+              "SMASH LAB is now at La Picatería. Seven burgers, homemade fries and a refreshed menu alongside our signature charcoal grill. Mercado de San Agustín, Granada.",
             reserve: "Book a table",
             menu: "View menu",
             call: "Call",
           }
         : {
-            eyebrow: "Marché · braise au charbon · Grenade",
-            title: "Braise au charbon et produits de qualité au centre de Grenade",
+            eyebrow: "NOUVEAUTÉ · SMASH LAB EST ARRIVÉ",
+            title: "La Picatería renaît. Plus de feu. Plus de saveur.",
             subtitle:
-              "Dans le Mercado de San Agustin, près de la Cathédrale. Tapas, plats à partager et cuisine à la braise.",
+              "SMASH LAB arrive à La Picatería. Sept burgers, des frites maison et une carte renouvelée, avec nos grillades au charbon. Mercado de San Agustín, Grenade.",
             reserve: "Réserver une table",
             menu: "Voir la carte",
             call: "Appeler",
@@ -128,57 +128,24 @@ export default async function HomePage({ params }: PageProps) {
     <>
       <RestaurantSchema locale={locale} />
 
-      <section className="px-5 pb-12 pt-8 sm:px-6 lg:px-10 lg:pb-16 lg:pt-10">
-        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2.3rem] bg-white shadow-[0_28px_70px_rgba(31,26,23,0.14)]">
-          <div className="relative min-h-[620px]">
-            <Image
-              src={heroImage}
-              alt="Chuletón a la brasa de carbón en La Picatería"
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-center saturate-[1.04] contrast-[1.04]"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,16,14,0.8)_0%,rgba(16,16,14,0.5)_42%,rgba(16,16,14,0.12)_100%)]" />
-            <div className="relative z-10 flex min-h-[620px] items-end px-6 py-9 sm:px-10 lg:px-14 lg:py-14">
-              <div className="max-w-3xl space-y-6">
-                <p className="inline-flex rounded-full border border-white/20 bg-white/12 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white backdrop-blur-sm">
-                  {heroCopy.eyebrow}
-                </p>
-                <div className="space-y-4">
-                  <h1 className="font-display text-5xl leading-[0.92] text-white sm:text-6xl lg:text-7xl">
-                    {heroCopy.title}
-                  </h1>
-                  <p className="max-w-2xl text-lg leading-8 text-white/90 sm:text-xl">
-                    {heroCopy.subtitle}
-                  </p>
-                </div>
-                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/85">
-                  {hours.todayStatus}
-                </p>
-                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <TrackedReservationLink
-                    label={heroCopy.reserve}
-                    locale={locale}
-                    location="hero"
-                    eventName={locale === "es" ? "click_reserve_hero" : undefined}
-                  />
-                  <TrackedCtaButton
-                    href={`/${locale}/carta`}
-                    label={heroCopy.menu}
-                    locale={locale}
-                    location="hero"
-                    eventName="click_menu_hero"
-                    variant="secondary"
-                  />
-                  <TrackedPhoneLink
-                    phoneHref={dictionary.business.phoneHref}
-                    label={heroCopy.call}
-                    locale={locale}
-                    eventName={locale === "es" ? "click_call_hero" : "click_call_global"}
-                    variant="secondary"
-                  />
-                </div>
+      <section className="launch-section px-5 pb-12 pt-6 sm:px-6 lg:px-10">
+        <div className="launch-card mx-auto max-w-6xl overflow-hidden">
+          <div className="relative aspect-[2.34/1] bg-cream">
+            <Image src={heroImage} alt="La Picatería · SMASH LAB, con el ave fénix de fuego naranja" fill preload sizes="(max-width: 1200px) 100vw, 1152px" className="object-contain" />
+          </div>
+          <div className="launch-copy grid gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[1.4fr_1fr] lg:px-12 lg:py-12">
+            <div className="space-y-5">
+              <p className="launch-badge">{heroCopy.eyebrow}</p>
+              <h1 className="launch-title">{heroCopy.title}</h1>
+              <p className="max-w-2xl text-base leading-8 text-white/85 sm:text-lg">{heroCopy.subtitle}</p>
+            </div>
+            <div className="flex flex-col justify-end gap-4">
+              <p className="text-2xl font-bold text-[#ff8b3d]">THE SHOW MUST GO ON.</p>
+              <p className="text-sm text-white/80">{hours.todayStatus}</p>
+              <div className="flex flex-col gap-3">
+                <TrackedCtaButton href={`/${locale}/carta#smash-lab`} label={locale === "es" ? "Descubre la nueva carta" : locale === "en" ? "Discover the new menu" : "Découvrez la nouvelle carte"} locale={locale} location="hero" eventName="click_menu_hero" />
+                <TrackedReservationLink label={heroCopy.reserve} locale={locale} location="hero" eventName={locale === "es" ? "click_reserve_hero" : undefined} />
+                <TrackedPhoneLink phoneHref={dictionary.business.phoneHref} label={heroCopy.call} locale={locale} eventName={locale === "es" ? "click_call_hero" : "click_call_global"} variant="secondary" />
               </div>
             </div>
           </div>

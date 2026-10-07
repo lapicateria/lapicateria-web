@@ -30,7 +30,7 @@ export async function SiteHeader({ locale, dictionary }: SiteHeaderProps) {
               />
             </Link>
             <p className="mt-1 hidden text-xs uppercase tracking-[0.24em] text-charcoal/80 sm:block">
-              {dictionary.header.tagline}
+              La Picatería · SMASH LAB
             </p>
           </div>
 

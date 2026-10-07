@@ -3,13 +3,13 @@
 @theme inline {
   --color-ink: #1f1a17;
   --color-charcoal: #4c433d;
-  --color-olive: #3e4a33;
+  --color-olive: #9c3c0e;
   --color-bone: #f8f4ed;
   --color-cream: #f1e7d9;
-  --color-sand-200: #d7bb8b;
-  --color-sand-300: #c49249;
-  --color-sand-400: #a96b26;
-  --color-sand-500: #84511c;
+  --color-sand-200: #ffc394;
+  --color-sand-300: #ff9b54;
+  --color-sand-400: #b8440b;
+  --color-sand-500: #9b3507;
   --color-clay: #8f6647;
   --color-border: #d6c1a5;
   --font-sans: "Avenir Next", "Segoe UI", sans-serif;
@@ -45,3 +45,15 @@ a {
 iframe {
   color-scheme: light;
 }
+
+.launch-card { border-radius: 1.75rem; border: 1px solid #e97029; box-shadow: 0 22px 60px #49210e20; }
+.launch-copy { background: #1e1815; border-top: 5px solid #f47622; color: white; }
+.launch-badge { display: inline-block; padding: .6rem 1rem; background: #ff8938; color: #25190f; font-size: .875rem; font-weight: 800; letter-spacing: .08em; border-radius: .35rem; }
+.launch-title { font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 4.6rem); line-height: 1.08; text-wrap: balance; }
+.menu-category { scroll-margin-top: 12rem; }
+.smash-category { background: #211914; color: #fff; border-top: 5px solid #f47622; border-radius: 1.25rem; padding: clamp(1.25rem, 4vw, 2.5rem); }
+.smash-category .dish-name, .smash-category .dish-copy { color: #fff; }
+.smash-category .dish-copy { opacity: .85; }
+.smash-category .dish-price, .smash-category .category-title { color: #ff9b54; }
+.smash-category article { border-color: #ffffff30; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }

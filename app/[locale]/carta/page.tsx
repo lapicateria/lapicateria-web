@@ -10,327 +10,75 @@ import type { AllergenKey } from "@/lib/allergens";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLocale, type Locale } from "@/lib/i18n";
 
-type PageProps = {
-  params: Promise<{ locale: string }>;
-};
+type PageProps = { params: Promise<{ locale: string }> };
+type MenuItem = { id: string; names: Record<Locale, string>; descriptions: Record<Locale, string>; price: string; allergens?: AllergenKey[] };
 
-type MenuItemWithAllergens = {
-  id: string;
-  names: Record<Locale, string>;
-  descriptions: Record<Locale, string>;
-  price: string;
-  allergens?: AllergenKey[];
+const copy = {
+  es: { badge: "NOVEDAD · SMASH LAB", title: "Nueva carta. Mismo espíritu. Más fuego.", text: "Las burgers de SMASH LAB llegan a La Picatería. Descubre las siete, con patatas caseras incluidas, y nuestra carta renovada para compartir y disfrutar de la brasa.", pdf: "Ver carta impresa (PDF)", nav: "Secciones de la carta", new: "NOVEDAD" },
+  en: { badge: "NEW · SMASH LAB", title: "New menu. Same spirit. More fire.", text: "SMASH LAB burgers have arrived at La Picatería. Discover all seven, served with homemade fries, alongside our refreshed sharing plates and charcoal grill.", pdf: "View printed menu (PDF, Spanish)", nav: "Menu sections", new: "NEW" },
+  fr: { badge: "NOUVEAUTÉ · SMASH LAB", title: "Nouvelle carte. Même esprit. Plus de feu.", text: "Les burgers SMASH LAB arrivent à La Picatería. Découvrez les sept, servis avec des frites maison, ainsi que notre carte renouvelée et nos grillades au charbon.", pdf: "Voir la carte imprimée (PDF, espagnol)", nav: "Rubriques de la carte", new: "NOUVEAUTÉ" },
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-
-  if (!isValidLocale(locale)) {
-    return {};
-  }
-
+  if (!isValidLocale(locale)) return {};
   const dictionary = getDictionary(locale);
-
-  return buildMetadata(locale, {
-    title: dictionary.meta.menu.title,
-    description: dictionary.meta.menu.description,
-    path: `/${locale}/carta`,
-  });
+  return buildMetadata(locale, { title: dictionary.meta.menu.title, description: dictionary.meta.menu.description, path: `/${locale}/carta` });
 }
 
 export default async function MenuPage({ params }: PageProps) {
   const { locale } = await params;
-
-  if (!isValidLocale(locale)) {
-    notFound();
-  }
-
+  if (!isValidLocale(locale)) notFound();
   const dictionary = getDictionary(locale);
-  const eatingGuide =
-    locale === "es"
-      ? {
-          title: "Antes de pedir",
-          points: [
-            "Carta pensada para compartir",
-            "Brasa de carbón, tapas y platos para poner al centro",
-            "Si vienes con idea de brasa o mesa larga, mejor reservar",
-          ],
-        }
-      : locale === "en"
-        ? {
-            title: "How to eat at La Picateria",
-            points: [
-              "A menu built for sharing",
-              "Charcoal grill, tapas and dishes designed for the middle of the table",
-              "If you are coming for a larger table, it is better to book ahead",
-            ],
-          }
-        : {
-            title: "Comment manger a La Picateria",
-            points: [
-              "Une carte pensee pour partager",
-              "Braise au charbon, tapas et plats de centre de table",
-              "Si vous venez avec une grande table, mieux vaut reserver",
-            ],
-          };
-  const getTags = (itemId: string) => {
-    const tags: string[] = [];
-    if (["jamon-asado", "croquetas-caseras", "nachos-con-guacamole"].includes(itemId)) {
-      tags.push(locale === "es" ? "Para compartir" : locale === "en" ? "To share" : "A partager");
-    }
-    if (["pulpo-a-la-brasa", "entrecot", "solomillo", "chuleton", "t-bone", "secreto-iberico", "churrasco", "abanico", "pluma-iberica", "contramuslo-de-pollo"].includes(itemId)) {
-      tags.push(locale === "es" ? "Brasa" : locale === "en" ? "Grill" : "Braise");
-    }
-    if (["pulpo-a-la-brasa", "jamon-asado", "pluma-iberica"].includes(itemId)) {
-      tags.push(locale === "es" ? "Recomendado" : locale === "en" ? "Recommended" : "Recommande");
-    }
-    return tags;
-  };
-  const menuVisuals =
-    locale === "es"
-      ? [
-          {
-            image: "/images/real/jamon_asado.jpg",
-            alt: "Jamón asado de La Picatería",
-            title: "Especialidad de la casa",
-            text: "Jamón asado y platos reconocibles para compartir en el centro de la mesa.",
-          },
-          {
-            image: "/images/real/chuleton.jpg",
-            alt: "Chuletón a la brasa de La Picatería",
-            title: "Brasa de carbón",
-            text: "Chuletón, cortes a la brasa y platos de mesa larga para venir con ganas de comer.",
-          },
-        ]
-      : null;
-
+  const c = copy[locale];
   return (
-    <section className="px-5 py-14 sm:px-6 lg:px-10 lg:py-18">
+    <section className="px-5 py-10 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col gap-6 border-b border-border pb-8 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-              {dictionary.menuPage.eyebrow}
-            </p>
-            <h1 className="font-display text-5xl leading-tight text-ink sm:text-6xl">
-              {dictionary.menuPage.title}
-            </h1>
-            <p className="text-base leading-8 text-charcoal">
-              {dictionary.menuPage.description}
-            </p>
-            {locale === "es" ? (
-              <p className="text-sm font-medium leading-7 text-charcoal">
-                Si vienes en hora punta o a comer con calma, mejor reservar antes de venir.
-              </p>
-            ) : null}
+        <div className="launch-card overflow-hidden">
+          <div className="relative aspect-[2.34/1] bg-cream">
+            <Image src="/images/logos/smash-lab-fenix.webp" alt="La Picatería · SMASH LAB · Fénix" fill preload sizes="(max-width: 1200px) 100vw, 1152px" className="object-contain" />
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <TrackedReservationLink
-              label={dictionary.cta.reserve}
-              locale={locale}
-              location="carta_page"
-            />
-            <CtaButton href={`/${locale}/contacto`} label={dictionary.cta.contact} variant="secondary" />
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-3 md:grid-cols-2">
-          {menuData.notes[locale as Locale].map((note) => (
-            <div key={note} className="border-b border-border/70 pb-3 text-sm leading-7 text-charcoal">
-              {note}
+          <div className="launch-copy space-y-5 px-6 py-8 sm:px-10">
+            <p className="launch-badge">{c.badge}</p>
+            <h1 className="launch-title">{c.title}</h1>
+            <p className="max-w-3xl text-base leading-8 text-white/85">{c.text}</p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <TrackedReservationLink label={dictionary.cta.reserve} locale={locale} location="carta_page" />
+              <CtaButton href="/carta/la-picateria-smash-lab.pdf" label={c.pdf} variant="secondary" external />
             </div>
-          ))}
+          </div>
         </div>
-
-        <div className="mt-8">
-          <AllergenLegend locale={locale} />
+        <nav aria-label={c.nav} className="my-8 flex flex-wrap gap-3">
+          {menuData.categories.map(category => <a key={category.id} href={`#${category.id}`} className="rounded-full border border-border bg-white px-4 py-3 text-sm font-semibold text-sand-500 hover:bg-cream">{category.names[locale]}</a>)}
+        </nav>
+        <div className="mb-8 flex flex-wrap gap-x-8 gap-y-3 text-sm text-charcoal">
+          {menuData.notes[locale].map(note => <p key={note}>{note}</p>)}
         </div>
-
-        <div className="mt-10 rounded-[1.6rem] border border-border bg-cream/55 p-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-            {eatingGuide.title}
-          </p>
-          <div className="mt-4 grid gap-3 md:grid-cols-3">
-            {eatingGuide.points.map((point) => (
-              <div key={point} className="text-sm leading-7 text-charcoal">
-                {point}
+        <div className="space-y-12">
+          {menuData.categories.map(category => (
+            <section id={category.id} key={category.id} className={`menu-category ${category.id === "smash-lab" ? "smash-category" : ""}`}>
+              <div className="mb-6 space-y-3">
+                {category.id === "smash-lab" && <p className="launch-badge">{c.new}</p>}
+                <h2 className="category-title font-display text-4xl text-ink">{category.names[locale]}</h2>
+                {category.descriptions[locale] && <p className="dish-copy max-w-3xl text-base leading-7 text-charcoal">{category.descriptions[locale]}</p>}
               </div>
-            ))}
-          </div>
-          {locale === "es" ? (
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-              <TrackedReservationLink
-                label="¿Te encaja? Reserva tu mesa"
-                locale={locale}
-                location="carta_page"
-                eventName="click_reserve_menu_decision"
-              />
-              <CtaButton href={`/${locale}/reservas`} label="Ver reservas" variant="secondary" />
-            </div>
-          ) : null}
-        </div>
-
-        <div className="mt-10 overflow-hidden rounded-[1.8rem] bg-white shadow-[0_18px_44px_rgba(95,106,100,0.1)]">
-          <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="relative min-h-[320px]">
-              <Image
-                src="/images/real/barra-producto.jpg"
-                alt="Barra y producto de La Picatería"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="flex items-center bg-cream/60 p-6 sm:p-8">
-              <p className="max-w-md text-base leading-8 text-charcoal">
-                Carta clara, precios visibles y platos reales que ayudan a decidir rápido desde el móvil si hoy vienes de tapas o a comer con calma.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {locale === "es" && menuVisuals ? (
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            {menuVisuals.map((item) => (
-              <article
-                key={item.title}
-                className="overflow-hidden rounded-[1.6rem] bg-white shadow-[0_16px_34px_rgba(31,26,23,0.08)]"
-              >
-                <div className="relative min-h-[260px]">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="space-y-2 px-5 py-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
-                    {item.title}
-                  </p>
-                  <p className="text-sm leading-7 text-charcoal">{item.text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : null}
-
-        <div className="mt-12 space-y-14">
-          {menuData.categories.map((category) => (
-            <section key={category.id} className="space-y-6">
-              <div className="space-y-3">
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sand-500">
-                  {category.names[locale as Locale]}
-                </p>
-                <p className="max-w-3xl text-sm leading-7 text-charcoal">
-                  {category.descriptions[locale as Locale]}
-                </p>
-              </div>
-
-              <div className="space-y-5 border-t border-border pt-2">
-                {(category.items as MenuItemWithAllergens[]).map((item) => (
-                  <article key={item.id} className="border-b border-border/70 pb-5">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="min-w-0 flex-1">
-                        <h2 className="font-display text-3xl leading-tight text-ink">
-                          {item.names[locale as Locale]}
-                        </h2>
-                        {item.allergens && item.allergens.length > 0 ? (
-                          <div
-                            className="mt-3 flex flex-wrap gap-2"
-                            aria-label={
-                              locale === "es"
-                                ? "Alérgenos del plato"
-                                : locale === "en"
-                                  ? "Dish allergens"
-                                  : "Allergènes du plat"
-                            }
-                          >
-                            {item.allergens.map((allergen) => (
-                              <AllergenBadge
-                                key={`${item.id}-${allergen}`}
-                                allergen={allergen}
-                                locale={locale}
-                              />
-                            ))}
-                          </div>
-                        ) : null}
-                        {getTags(item.id).length > 0 ? (
-                          <div className="mt-3 flex flex-wrap gap-2">
-                            {getTags(item.id).map((tag) => (
-                              <span
-                                key={tag}
-                                className="rounded-full bg-cream px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-sand-500"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        ) : null}
-                        <p className="mt-2 max-w-3xl text-sm leading-7 text-charcoal">
-                          {item.descriptions[locale as Locale]}
-                        </p>
-                      </div>
-                      <span className="shrink-0 text-2xl font-semibold text-sand-500">
-                        {item.price}
-                      </span>
+              <div className="grid gap-x-10 md:grid-cols-2">
+                {(category.items as MenuItem[]).map(item => (
+                  <article key={item.id} className="border-t border-border py-6">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="dish-name min-w-0 font-display text-2xl leading-tight text-ink">{item.names[locale]}</h3>
+                      <span className="dish-price shrink-0 whitespace-nowrap text-lg font-semibold text-sand-500">{item.price}</span>
                     </div>
+                    {item.descriptions[locale] && <p className="dish-copy mt-3 text-base leading-7 text-charcoal">{item.descriptions[locale]}</p>}
+                    {item.allergens && item.allergens.length > 0 && <div className="mt-3 flex flex-wrap gap-2">{item.allergens.map(allergen => <AllergenBadge key={allergen} allergen={allergen} locale={locale} />)}</div>}
                   </article>
                 ))}
               </div>
-
             </section>
           ))}
         </div>
-
-        {locale === "es" ? (
-          <div className="mt-12 rounded-[1.8rem] border border-border bg-white px-6 py-7 shadow-[0_14px_30px_rgba(31,26,23,0.06)]">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-2xl space-y-2">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-sand-500">
-                  Reserva recomendada
-                </p>
-                <h2 className="font-display text-4xl leading-tight text-ink">
-                  ¿Te apetece venir? Reserva tu mesa
-                </h2>
-                <p className="text-sm leading-7 text-charcoal">
-                  La carta está hecha para compartir y decidir rápido. Si ya sabes que vienes, deja la mesa cerrada antes de acercarte.
-                </p>
-              </div>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <TrackedReservationLink
-                  label="Reservar mesa"
-                  locale={locale}
-                  location="carta_page"
-                  eventName="click_reserve_menu_mid"
-                />
-                <CtaButton href={`/${locale}/contacto`} label="Cómo llegar" variant="secondary" />
-              </div>
-            </div>
-          </div>
-        ) : null}
-
-        <div className="mt-14 rounded-[1.8rem] border border-border bg-cream/68 px-6 py-8 text-center sm:px-8">
-          <div className="mx-auto max-w-2xl space-y-5">
-            <h2 className="font-display text-4xl leading-tight text-ink">
-              {locale === "es" ? "¿Te apetece probarlo?" : locale === "en" ? "Fancy trying it?" : "Envie de gouter ?"}
-            </h2>
-            {locale === "es" ? (
-              <p className="text-sm leading-7 text-charcoal">
-                Si vienes en hora punta o quieres venir con calma, mejor reservar antes.
-              </p>
-            ) : null}
-            <TrackedReservationLink
-              label={dictionary.cta.reserve}
-              locale={locale}
-              location="carta_page"
-            />
-          </div>
-        </div>
-
-        <div className="mt-10">
-          <AllergenLegend locale={locale} />
-        </div>
+        <div className="mt-12"><AllergenLegend locale={locale} /></div>
+        <div className="mt-10 flex justify-center"><TrackedReservationLink label={dictionary.cta.reserve} locale={locale} location="carta_page" /></div>
       </div>
     </section>
   );

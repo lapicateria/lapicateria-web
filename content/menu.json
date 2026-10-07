@@ -1,36 +1,146 @@
 {
   "notes": {
     "es": [
-      "Nuestra brasa es de carbón.",
-      "Servicio en terraza +10%.",
       "Precios con IVA incluido.",
-      "Nuestro vermut es casero."
+      "Todas las burgers incluyen patatas.",
+      "Opciones sin gluten y vegetarianas: consulta con nuestro equipo."
     ],
     "en": [
-      "Our grill uses charcoal.",
-      "Terrace service +10%.",
       "Prices include VAT.",
-      "Our vermouth is homemade."
+      "All burgers include fries.",
+      "Ask our team about gluten-free and vegetarian options."
     ],
     "fr": [
-      "Notre braise est au charbon.",
-      "Service en terrasse +10%.",
       "Prix TTC.",
-      "Notre vermouth est maison."
+      "Tous les burgers sont servis avec des frites.",
+      "Consultez notre équipe pour les options sans gluten et végétariennes."
     ]
   },
   "categories": [
     {
-      "id": "entrantes",
+      "id": "smash-lab",
       "names": {
-        "es": "Entrantes",
-        "en": "Starters",
-        "fr": "Entrees"
+        "es": "SMASH LAB · Nuestras burgers",
+        "en": "SMASH LAB · Our burgers",
+        "fr": "SMASH LAB · Nos burgers"
       },
       "descriptions": {
-        "es": "Tomate, huerta y aperitivos fríos para abrir la mesa con ritmo de mercado.",
-        "en": "Tomatoes, vegetables and fresh starters to begin with a market feel.",
-        "fr": "Tomates, legumes et entrees fraiches pour ouvrir la table avec un esprit de marche."
+        "es": "Todas las burgers incluyen patatas. Doble smash: 180 g de carne. Pollo Kick: pollo a la brasa. Smash Picatería: 100 g de carne + jamón asado.",
+        "en": "All burgers include fries. Double smash: 180 g of beef. Pollo Kick: grilled chicken. Smash Picatería: 100 g of beef + roast pork ham.",
+        "fr": "Tous les burgers sont servis avec des frites. Double smash : 180 g de viande. Pollo Kick : poulet grillé. Smash Picatería : 100 g de viande + jambon rôti."
+      },
+      "items": [
+        {
+          "id": "baconera",
+          "names": {
+            "es": "Baconera",
+            "en": "Baconera",
+            "fr": "Baconera"
+          },
+          "descriptions": {
+            "es": "Doble smash, cheddar americano y mermelada casera de bacon.",
+            "en": "Double smash, American cheddar and homemade bacon jam.",
+            "fr": "Double smash, cheddar américain et confiture de bacon maison."
+          },
+          "price": "14,90 €"
+        },
+        {
+          "id": "ahumada",
+          "names": {
+            "es": "Ahumada",
+            "en": "Ahumada",
+            "fr": "Ahumada"
+          },
+          "descriptions": {
+            "es": "Doble smash, queso ahumado y ajonesa ahumada casera.",
+            "en": "Double smash, smoked cheese and homemade smoked garlic mayo.",
+            "fr": "Double smash, fromage fumé et mayonnaise à l’ail fumée maison."
+          },
+          "price": "14,90 €"
+        },
+        {
+          "id": "cabra-loca",
+          "names": {
+            "es": "Cabra Loca",
+            "en": "Cabra Loca",
+            "fr": "Cabra Loca"
+          },
+          "descriptions": {
+            "es": "Doble smash, queso de cabra, cebolla caramelizada y salsa BBQ casera.",
+            "en": "Double smash, goat cheese, caramelised onion and homemade BBQ sauce.",
+            "fr": "Double smash, chèvre, oignon caramélisé et sauce BBQ maison."
+          },
+          "price": "14,90 €"
+        },
+        {
+          "id": "ferxa-trufada",
+          "names": {
+            "es": "Ferxa Trufada",
+            "en": "Ferxa Trufada",
+            "fr": "Ferxa Trufada"
+          },
+          "descriptions": {
+            "es": "Doble smash, cheddar blanco ahumado, cebolla caramelizada, mayo trufada, parmigiano y cebollino.",
+            "en": "Double smash, smoked white cheddar, caramelised onion, truffle mayo, parmigiano and chives.",
+            "fr": "Double smash, cheddar blanc fumé, oignon caramélisé, mayonnaise truffée, parmigiano et ciboulette."
+          },
+          "price": "14,90 €"
+        },
+        {
+          "id": "bourbon-bacon",
+          "names": {
+            "es": "Bourbon Bacon",
+            "en": "Bourbon Bacon",
+            "fr": "Bourbon Bacon"
+          },
+          "descriptions": {
+            "es": "Doble smash, cheddar, bacon crujiente, cebolla caramelizada y salsa bourbon BBQ.",
+            "en": "Double smash, cheddar, crispy bacon, caramelised onion and bourbon BBQ sauce.",
+            "fr": "Double smash, cheddar, bacon croustillant, oignon caramélisé et sauce BBQ au bourbon."
+          },
+          "price": "14,90 €"
+        },
+        {
+          "id": "pollo-kick",
+          "names": {
+            "es": "Pollo Kick",
+            "en": "Pollo Kick",
+            "fr": "Pollo Kick"
+          },
+          "descriptions": {
+            "es": "Contramuslo de pollo a la brasa, pepinillos en rodajas y salsa ranchera.",
+            "en": "Grilled chicken thigh, sliced pickles and ranch sauce.",
+            "fr": "Haut de cuisse de poulet grillé, cornichons et sauce ranch."
+          },
+          "price": "15,90 €"
+        },
+        {
+          "id": "smash-picateria",
+          "names": {
+            "es": "Smash Picatería",
+            "en": "Smash Picatería",
+            "fr": "Smash Picatería"
+          },
+          "descriptions": {
+            "es": "100 g de carne de vacuno smash, jamón asado, cheddar blanco ahumado, tomate seco, piparras y ajonesa ahumada casera.",
+            "en": "100 g smashed beef, roast pork ham, smoked white cheddar, sun-dried tomato, piparra peppers and homemade smoked garlic mayo.",
+            "fr": "100 g de bœuf smash, jambon rôti, cheddar blanc fumé, tomate séchée, piments piparra et mayonnaise à l’ail fumée maison."
+          },
+          "price": "16,50 €"
+        }
+      ]
+    },
+    {
+      "id": "para-empezar",
+      "names": {
+        "es": "Para empezar",
+        "en": "Starters",
+        "fr": "Pour commencer"
+      },
+      "descriptions": {
+        "es": "",
+        "en": "",
+        "fr": ""
       },
       "items": [
         {
@@ -41,27 +151,11 @@
             "fr": "Salade classique"
           },
           "descriptions": {
-            "es": "Base de brotes verdes, tomate, pepino, maíz y zanahoria. Añade más ingredientes: aguacate, atún o pollo.",
-            "en": "Mixed greens with tomato, cucumber, sweetcorn and carrot. Add avocado, tuna or chicken.",
-            "fr": "Base de pousses vertes, tomate, concombre, mais et carotte. Possibilite d'ajouter avocat, thon ou poulet."
+            "es": "Mezcla de lechugas, tomates cherry, cebolla morada, brotes de soja, maíz y vinagreta de la casa.",
+            "en": "Mixed lettuce, cherry tomatoes, red onion, bean sprouts, sweetcorn and house vinaigrette.",
+            "fr": "Salades, tomates cerises, oignon rouge, pousses de soja, maïs et vinaigrette maison."
           },
-          "price": "10,50 EUR",
-          "allergens": []
-        },
-        {
-          "id": "volcan-de-tomate",
-          "names": {
-            "es": "Volcán de tomate",
-            "en": "Tomato volcano",
-            "fr": "Volcan de tomate"
-          },
-          "descriptions": {
-            "es": "Jardin de tomate rosa con pesto de tomate seco y aguacate.",
-            "en": "Pink tomato salad with sun-dried tomato pesto and avocado.",
-            "fr": "Jardin de tomate rose avec pesto de tomate sechee et avocat."
-          },
-          "price": "14,50 EUR",
-          "allergens": []
+          "price": "10,50 €"
         },
         {
           "id": "alcachofas-con-anchoas",
@@ -71,32 +165,95 @@
             "fr": "Artichauts aux anchois"
           },
           "descriptions": {
-            "es": "Cuatro medias alcachofas con anchoas del Cantabrico.",
-            "en": "Four artichoke halves topped with Cantabrian anchovies.",
-            "fr": "Quatre demi-artichauts avec anchois de Cantabrie."
+            "es": "Alcachofas confitadas con anchoas del Cantábrico.",
+            "en": "Confit artichokes with Cantabrian anchovies.",
+            "fr": "Artichauts confits et anchois de Cantabrie."
           },
-          "price": "12,00 EUR",
-          "allergens": [
-            "fish"
-          ]
+          "price": "15,00 €"
         },
         {
           "id": "tomate-con-boqueron",
           "names": {
-            "es": "Tomate con boquerón en vinagre",
+            "es": "Tomate con boquerón",
             "en": "Tomato with marinated anchovies",
-            "fr": "Tomate et boquerons au vinaigre"
+            "fr": "Tomates aux anchois marinés"
           },
           "descriptions": {
             "es": "Tomates de temporada, frescos y carnosos, acompañados de boquerones en vinagre y un aliño especial de la casa.",
-            "en": "Seasonal tomatoes served with marinated anchovies and the house dressing.",
-            "fr": "Tomates de saison, fraiches et charnues, accompagnees de boquerons au vinaigre et d'un assaisonnement maison."
+            "en": "Seasonal tomatoes with marinated anchovies and house dressing.",
+            "fr": "Tomates de saison, anchois marinés au vinaigre et assaisonnement maison."
           },
-          "price": "14,50 EUR",
-          "allergens": [
-            "fish",
-            "sulfites"
-          ]
+          "price": "14,50 €"
+        },
+        {
+          "id": "jamon-asado",
+          "names": {
+            "es": "Jamón asado",
+            "en": "Roast pork ham",
+            "fr": "Jambon rôti"
+          },
+          "descriptions": {
+            "es": "Nuestra especialidad. Jamón de cerdo asado a fuego lento y regado en su jugo con nuestro toque especial.",
+            "en": "Our speciality: slow-roasted pork ham served in its own juices with our special touch.",
+            "fr": "Notre spécialité : jambon de porc rôti lentement, arrosé de son jus avec notre touche maison."
+          },
+          "price": "15,00 €"
+        },
+        {
+          "id": "croquetas-caseras",
+          "names": {
+            "es": "Croquetones caseros (5 uds.)",
+            "en": "Homemade croquettes (5 pieces)",
+            "fr": "Croquettes maison (5 pièces)"
+          },
+          "descriptions": {
+            "es": "Cremosos y crujientes. Unidad: 3,50 €. Pregunta por nuestras variedades.",
+            "en": "Creamy and crispy. Per piece: €3.50. Ask about our varieties.",
+            "fr": "Crémeux et croustillants. À l’unité : 3,50 €. Demandez nos variétés."
+          },
+          "price": "15,00 €"
+        },
+        {
+          "id": "nachos-smash",
+          "names": {
+            "es": "Nachos Smash",
+            "en": "Nachos Smash",
+            "fr": "Nachos Smash"
+          },
+          "descriptions": {
+            "es": "Nachos con carne, cheddar, pico de gallo, jalapeños y guacamole.",
+            "en": "Nachos with beef, cheddar, pico de gallo, jalapeños and guacamole.",
+            "fr": "Nachos, viande, cheddar, pico de gallo, jalapeños et guacamole."
+          },
+          "price": "16,00 €"
+        },
+        {
+          "id": "provolone-trufado",
+          "names": {
+            "es": "Provolone trufado",
+            "en": "Truffled provolone",
+            "fr": "Provolone à la truffe"
+          },
+          "descriptions": {
+            "es": "Provolone fundido con toque de trufa, pasas y pan rústico.",
+            "en": "Melted provolone with truffle, raisins and rustic bread.",
+            "fr": "Provolone fondu, touche de truffe, raisins secs et pain rustique."
+          },
+          "price": "15,90 €"
+        },
+        {
+          "id": "carpaccio-vacuno",
+          "names": {
+            "es": "Carpaccio de vacuno",
+            "en": "Beef carpaccio",
+            "fr": "Carpaccio de bœuf"
+          },
+          "descriptions": {
+            "es": "Finas láminas de vacuno, parmigiano, alcaparras y un toque de limón y AOVE.",
+            "en": "Thinly sliced beef, parmigiano, capers, lemon and extra virgin olive oil.",
+            "fr": "Fines tranches de bœuf, parmigiano, câpres, citron et huile d’olive vierge extra."
+          },
+          "price": "16,90 €"
         }
       ]
     },
@@ -108,314 +265,109 @@
         "fr": "De la mer"
       },
       "descriptions": {
-        "es": "Pescados y mariscos con protagonismo de plancha, vapor y brasa.",
-        "en": "Fish and seafood with grill, steam and charcoal taking the lead.",
-        "fr": "Poissons et fruits de mer avec un role central pour la plancha, la vapeur et la braise."
+        "es": "",
+        "en": "",
+        "fr": ""
       },
       "items": [
         {
           "id": "pulpo-a-la-brasa",
           "names": {
             "es": "Pulpo a la brasa",
-            "en": "Chargrilled octopus",
-            "fr": "Poulpe a la braise"
+            "en": "Grilled octopus",
+            "fr": "Poulpe grillé"
           },
           "descriptions": {
-            "es": "Pata de pulpo a la brasa sobre parmentier y florecillas.",
-            "en": "Chargrilled octopus leg over parmentier and edible flowers.",
-            "fr": "Patte de poulpe a la braise sur parmentier et petites fleurs."
+            "es": "Pulpo a la brasa sobre parmentier de patata y pimentón de la Vera.",
+            "en": "Grilled octopus on potato parmentier with La Vera paprika.",
+            "fr": "Poulpe grillé sur parmentier de pommes de terre et paprika de la Vera."
           },
-          "price": "22,50 EUR",
-          "allergens": [
-            "milk",
-            "molluscs"
-          ]
+          "price": "26,50 €"
         },
         {
-          "id": "fritura-de-pescado",
+          "id": "fritura-pescado",
           "names": {
             "es": "Fritura de pescado",
-            "en": "Fried fish platter",
-            "fr": "Friture de poisson"
+            "en": "Mixed fried fish",
+            "fr": "Friture de poissons"
           },
           "descriptions": {
-            "es": "Bacalao, cazon, rojos, boquerones, langostinos. Puede variar en funcion de la disponibilidad del dia.",
-            "en": "Cod, marinated dogfish, red mullet, anchovies and prawns. Selection may vary with the daily catch.",
-            "fr": "Morue, chien de mer, poissons rouges, boquerons et gambas. Peut varier selon la disponibilite du jour."
+            "es": "Variado de pescado frito, crujiente por fuera y tierno por dentro.",
+            "en": "Mixed fried fish, crispy outside and tender inside.",
+            "fr": "Assortiment de poissons frits, croustillants et tendres."
           },
-          "price": "16,50 EUR",
-          "allergens": [
-            "gluten",
-            "fish",
-            "crustaceans"
-          ]
-        },
-        {
-          "id": "mejillones",
-          "names": {
-            "es": "Mejillones",
-            "en": "Mussels",
-            "fr": "Moules"
-          },
-          "descriptions": {
-            "es": "Sabrosos y frescos mejillones al vapor regados con nuestra salsa verde de ajo y perejil.",
-            "en": "Fresh steamed mussels served with our garlic and parsley green sauce.",
-            "fr": "Moules fraiches cuites a la vapeur avec notre sauce verte a l'ail et au persil."
-          },
-          "price": "13,00 EUR",
-          "allergens": [
-            "molluscs"
-          ]
-        },
-        {
-          "id": "captura-del-dia",
-          "names": {
-            "es": "Captura del dia",
-            "en": "Catch of the day",
-            "fr": "Peche du jour"
-          },
-          "descriptions": {
-            "es": "Calamar plancha, lubina o dorada a la espalda.",
-            "en": "Grilled squid, sea bass or butterflied gilt-head bream.",
-            "fr": "Calamar a la plancha, loup de mer ou dorade ouverte."
-          },
-          "price": "S/M",
-          "allergens": []
+          "price": "17,90 €"
         }
       ]
     },
     {
-      "id": "para-compartir",
+      "id": "patatas",
       "names": {
-        "es": "Para compartir",
-        "en": "To share",
-        "fr": "A partager"
+        "es": "Nuestras patatas",
+        "en": "Our fries",
+        "fr": "Nos frites"
       },
       "descriptions": {
-        "es": "Los platos con mas ADN de casa, pensados para centro de mesa.",
-        "en": "The most house-led dishes, designed for the middle of the table.",
-        "fr": "Les plats les plus identitaires de la maison, pensés pour etre partages."
+        "es": "Patatas fritas caseras.",
+        "en": "Homemade fries.",
+        "fr": "Frites maison."
       },
       "items": [
         {
-          "id": "jamon-asado",
+          "id": "bacon-cheddar",
           "names": {
-            "es": "Jamon asado",
-            "en": "Roast ham",
-            "fr": "Jambon roti"
+            "es": "Bacon Cheddar",
+            "en": "Bacon Cheddar",
+            "fr": "Bacon Cheddar"
           },
           "descriptions": {
-            "es": "Nuestra especialidad. Jamon de cerdo asado a fuego lento y regado en su jugo con nuestro toque especial.",
-            "en": "Our house specialty. Slow-roasted pork ham served in its own juices with the house touch.",
-            "fr": "Notre specialite. Jambon de porc roti a feu doux et arrose de son jus avec la touche de la maison."
+            "es": "Patatas caseras, cheddar y bacon crujiente.",
+            "en": "Homemade fries, cheddar and crispy bacon.",
+            "fr": "Frites maison, cheddar et bacon croustillant."
           },
-          "price": "13,00 EUR",
-          "allergens": []
+          "price": "9,90 €"
         },
         {
-          "id": "croquetas-caseras",
+          "id": "smash-fries",
           "names": {
-            "es": "Croquetas caseras",
-            "en": "Homemade croquettes",
-            "fr": "Croquettes maison"
+            "es": "Smash Fries",
+            "en": "Smash Fries",
+            "fr": "Smash Fries"
           },
           "descriptions": {
-            "es": "De jamon asado o de huevos fritos con ajos.",
-            "en": "Choose roast ham or fried eggs with garlic.",
-            "fr": "Au jambon roti ou aux oeufs frits a l'ail."
+            "es": "Patatas caseras, carne smash, cheddar y guacamole.",
+            "en": "Homemade fries, smashed beef, cheddar and guacamole.",
+            "fr": "Frites maison, viande smash, cheddar et guacamole."
           },
-          "price": "14,50 EUR",
-          "allergens": [
-            "gluten",
-            "eggs",
-            "milk"
-          ]
+          "price": "10,90 €"
         },
         {
-          "id": "nachos-con-guacamole",
+          "id": "patatas-trufadas",
           "names": {
-            "es": "Nachos con guacamole",
-            "en": "Nachos with guacamole",
-            "fr": "Nachos au guacamole"
+            "es": "Trufadas",
+            "en": "Truffle fries",
+            "fr": "Frites truffées"
           },
           "descriptions": {
-            "es": "Tortillas mexicanas acompanadas de verduras y carne picada y colmadas de queso fundido y jalapenos.",
-            "en": "Corn chips topped with vegetables, minced meat, melted cheese and jalapenos.",
-            "fr": "Tortillas mexicaines avec legumes, viande hachee, fromage fondu et jalapenos."
+            "es": "Patatas caseras con mayo trufada, queso en lascas y cebollino.",
+            "en": "Homemade fries with truffle mayo, cheese shavings and chives.",
+            "fr": "Frites maison, mayonnaise truffée, copeaux de fromage et ciboulette."
           },
-          "price": "16,00 EUR",
-          "allergens": [
-            "milk"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ternera-o-vaca",
-      "names": {
-        "es": "Ternera o vaca",
-        "en": "Beef or veal",
-        "fr": "Veau ou boeuf"
-      },
-      "descriptions": {
-        "es": "Nuestra brasa es de carbon. Cortes de vaca o ternera, consulta las razas disponibles.",
-        "en": "Our grill is charcoal-fired. Beef and veal cuts, ask about current breeds available.",
-        "fr": "Notre braise est au charbon. Morceaux de boeuf ou de veau, demandez les races disponibles."
-      },
-      "items": [
-        {
-          "id": "entrecot",
-          "names": {
-            "es": "Entrecot",
-            "en": "Entrecote",
-            "fr": "Entrecote"
-          },
-          "descriptions": {
-            "es": "Corte de vaca o ternera, consultanos por las diferentes razas que tenemos.",
-            "en": "Beef or veal cut, ask us about the breeds currently available.",
-            "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
-          },
-          "price": "28,50 EUR",
-          "allergens": []
-        },
-        {
-          "id": "solomillo",
-          "names": {
-            "es": "Solomillo",
-            "en": "Tenderloin",
-            "fr": "Filet"
-          },
-          "descriptions": {
-            "es": "Corte de solomillo de ternera premium al corte (aprox. 300 g).",
-            "en": "Premium beef tenderloin cut to order (approx. 300 g).",
-            "fr": "Filet de boeuf premium coupe minute (env. 300 g)."
-          },
-          "price": "29,50 EUR",
-          "allergens": []
-        },
-        {
-          "id": "chuleton",
-          "names": {
-            "es": "Chuleton",
-            "en": "Bone-in rib steak",
-            "fr": "Cote de boeuf"
-          },
-          "descriptions": {
-            "es": "Corte de vaca o ternera, consultanos por las diferentes razas que tenemos.",
-            "en": "Beef or veal cut, ask us about the breeds currently available.",
-            "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
-          },
-          "price": "S/M",
-          "allergens": []
-        },
-        {
-          "id": "t-bone",
-          "names": {
-            "es": "T-Bone",
-            "en": "T-Bone",
-            "fr": "T-Bone"
-          },
-          "descriptions": {
-            "es": "Corte de vaca o ternera, consultanos por las diferentes razas que tenemos.",
-            "en": "Beef or veal cut, ask us about the breeds currently available.",
-            "fr": "Morceau de boeuf ou de veau, demandez-nous les races disponibles."
-          },
-          "price": "38,50 EUR",
-          "allergens": []
-        }
-      ]
-    },
-    {
-      "id": "vegetarianos",
-      "names": {
-        "es": "Vegetarianos",
-        "en": "Vegetarian",
-        "fr": "Vegetariens"
-      },
-      "descriptions": {
-        "es": "Verdura, queso y despensa mediterranea con protagonismo de carbon y aceite.",
-        "en": "Vegetables, cheese and Mediterranean pantry ingredients with charcoal and olive oil at the center.",
-        "fr": "Legumes, fromage et produits mediterraneens avec la braise et l'huile comme fil conducteur."
-      },
-      "items": [
-        {
-          "id": "parrillada-de-verduras",
-          "names": {
-            "es": "Parrillada de verduras",
-            "en": "Grilled vegetables",
-            "fr": "Parrillade de legumes"
-          },
-          "descriptions": {
-            "es": "Seleccion de verduras frescas de nuestra huerta asadas a la brasa de carbon.",
-            "en": "Selection of fresh vegetables grilled over charcoal.",
-            "fr": "Selection de legumes frais de notre potager cuits a la braise."
-          },
-          "price": "16,00 EUR",
-          "allergens": []
-        },
-        {
-          "id": "provolone-trufado",
-          "names": {
-            "es": "Provolone trufado",
-            "en": "Truffled provolone",
-            "fr": "Provolone truffe"
-          },
-          "descriptions": {
-            "es": "Queso provolone a la parrilla con pan de pueblo.",
-            "en": "Grilled provolone served with country bread.",
-            "fr": "Provolone grille avec pain de campagne."
-          },
-          "price": "15,50 EUR",
-          "allergens": [
-            "gluten",
-            "milk"
-          ]
-        },
-        {
-          "id": "alcachofas-con-tomate-seco",
-          "names": {
-            "es": "Alcachofas con tomate seco",
-            "en": "Artichokes with sun-dried tomato",
-            "fr": "Artichauts a la tomate sechee"
-          },
-          "descriptions": {
-            "es": "Tiernas alcachofas salteadas con tomate seco y aceitunas negras, alinadas con un aromatico aceite.",
-            "en": "Tender artichokes sauteed with sun-dried tomato and black olives, dressed with aromatic oil.",
-            "fr": "Artichauts tendres sautes avec tomate sechee et olives noires, assaisonnes avec une huile aromatique."
-          },
-          "price": "15,50 EUR",
-          "allergens": []
-        },
-        {
-          "id": "tartar-de-tomate-seco",
-          "names": {
-            "es": "Tartar de tomate seco y aceituna negra",
-            "en": "Sun-dried tomato and black olive tartare",
-            "fr": "Tartare de tomate sechee et olive noire"
-          },
-          "descriptions": {
-            "es": "Delicioso tartar de tomate seco, acompanado de aceitunas negras y nueces crujientes, realzado con nuestro aderezo especial de la casa.",
-            "en": "Sun-dried tomato tartare with black olives, crunchy walnuts and the house dressing.",
-            "fr": "Tartare de tomate sechee accompagne d'olives noires, de noix croquantes et de notre assaisonnement maison."
-          },
-          "price": "16,50 EUR",
-          "allergens": [
-            "tree_nuts"
-          ]
+          "price": "10,90 €"
         }
       ]
     },
     {
       "id": "huevos-rotos",
       "names": {
-        "es": "Huevos rotos",
+        "es": "No me toques los huevos",
         "en": "Broken eggs",
-        "fr": "Oeufs casses"
+        "fr": "Œufs cassés"
       },
       "descriptions": {
-        "es": "Patata frita, huevos y toppings para compartir sin ceremonia.",
-        "en": "Fried potatoes, eggs and toppings made for easy sharing.",
-        "fr": "Pommes frites, oeufs et garnitures a partager sans ceremonie."
+        "es": "Patatas caseras con 2 huevos.",
+        "en": "Homemade fries with 2 eggs.",
+        "fr": "Frites maison avec 2 œufs."
       },
       "items": [
         {
@@ -423,222 +375,281 @@
           "names": {
             "es": "Huevos rotos",
             "en": "Broken eggs",
-            "fr": "Oeufs casses"
+            "fr": "Œufs cassés"
           },
           "descriptions": {
-            "es": "Patatas fritas con huevos bien fritos.",
-            "en": "Fried potatoes topped with properly fried eggs.",
-            "fr": "Pommes frites avec oeufs bien frits."
+            "es": "Patatas caseras con 2 huevos.",
+            "en": "Homemade fries with 2 eggs.",
+            "fr": "Frites maison avec 2 œufs."
           },
-          "price": "11,50 EUR",
-          "allergens": [
-            "eggs"
-          ]
+          "price": "14,00 €"
         },
         {
-          "id": "con-jamon",
+          "id": "huevos-jamon-serrano",
           "names": {
-            "es": "Con jamon",
-            "en": "With ham",
-            "fr": "Au jambon"
+            "es": "Con jamón serrano",
+            "en": "With serrano ham",
+            "fr": "Au jambon serrano"
           },
           "descriptions": {
-            "es": "Base de patatas con 2 huevos y jamon serrano.",
-            "en": "Potatoes topped with 2 eggs and Serrano ham.",
-            "fr": "Base de pommes de terre avec 2 oeufs et jambon serrano."
+            "es": "Patatas caseras con 2 huevos.",
+            "en": "Homemade fries with 2 eggs.",
+            "fr": "Frites maison avec 2 œufs."
           },
-          "price": "14,00 EUR",
-          "allergens": [
-            "eggs"
-          ]
+          "price": "16,50 €"
         },
         {
-          "id": "con-gulas",
+          "id": "huevos-jamon-asado",
           "names": {
-            "es": "Con gulas",
-            "en": "With baby eels",
-            "fr": "Aux gulas"
+            "es": "Con jamón asado",
+            "en": "With roast pork ham",
+            "fr": "Au jambon rôti"
           },
           "descriptions": {
-            "es": "Base de patatas con 2 huevos y gulas del norte pero con la gracia del sur.",
-            "en": "Potatoes with 2 eggs and baby eels, northern product with southern attitude.",
-            "fr": "Base de pommes de terre avec 2 oeufs et gulas du nord, avec la grace du sud."
+            "es": "Patatas caseras con 2 huevos.",
+            "en": "Homemade fries with 2 eggs.",
+            "fr": "Frites maison avec 2 œufs."
           },
-          "price": "15,50 EUR",
-          "allergens": [
-            "eggs",
-            "fish"
-          ]
+          "price": "18,50 €"
         },
         {
-          "id": "con-pulpo",
+          "id": "huevos-pulpo",
           "names": {
-            "es": "Con pulpo",
-            "en": "With octopus",
-            "fr": "Au poulpe"
+            "es": "Con pulpo estilo gallega",
+            "en": "With Galician-style octopus",
+            "fr": "Au poulpe à la galicienne"
           },
           "descriptions": {
-            "es": "Base de patatas con 2 huevos, pulpo al estilo gallego y nuestro suave alioli de ajo confitado.",
-            "en": "Potatoes with 2 eggs, Galician-style octopus and our smooth confit garlic aioli.",
-            "fr": "Pommes de terre avec 2 oeufs, poulpe a la galicienne et notre aioli doux a l'ail confit."
+            "es": "Patatas caseras con 2 huevos.",
+            "en": "Homemade fries with 2 eggs.",
+            "fr": "Frites maison avec 2 œufs."
           },
-          "price": "16,50 EUR",
-          "allergens": [
-            "eggs",
-            "molluscs"
-          ]
+          "price": "19,50 €"
+        },
+        {
+          "id": "huevos-secreto",
+          "names": {
+            "es": "Con secreto a la brasa",
+            "en": "With grilled secreto pork",
+            "fr": "Au secreto de porc grillé"
+          },
+          "descriptions": {
+            "es": "Patatas caseras con 2 huevos.",
+            "en": "Homemade fries with 2 eggs.",
+            "fr": "Frites maison avec 2 œufs."
+          },
+          "price": "20,90 €"
+        },
+        {
+          "id": "huevos-morcilla",
+          "names": {
+            "es": "Con morcilla",
+            "en": "With blood sausage",
+            "fr": "Au boudin noir"
+          },
+          "descriptions": {
+            "es": "Patatas caseras con 2 huevos.",
+            "en": "Homemade fries with 2 eggs.",
+            "fr": "Frites maison avec 2 œufs."
+          },
+          "price": "18,50 €"
+        },
+        {
+          "id": "huevos-chistorra",
+          "names": {
+            "es": "Con chistorra",
+            "en": "With chistorra sausage",
+            "fr": "À la chistorra"
+          },
+          "descriptions": {
+            "es": "Patatas caseras con 2 huevos.",
+            "en": "Homemade fries with 2 eggs.",
+            "fr": "Frites maison avec 2 œufs."
+          },
+          "price": "18,50 €"
         }
       ]
     },
     {
       "id": "brasa",
       "names": {
-        "es": "Brasa",
-        "en": "Grill",
-        "fr": "Braise"
+        "es": "Brasa y carnes",
+        "en": "Grill and meat",
+        "fr": "Grillades et viandes"
       },
       "descriptions": {
-        "es": "Carnes ibericas con patatas fritas y pimientos de Padron.",
-        "en": "Iberian pork cuts served with fries and Padron peppers.",
-        "fr": "Pieces iberiques servies avec frites et piments de Padron."
+        "es": "",
+        "en": "",
+        "fr": ""
       },
       "items": [
         {
           "id": "secreto-iberico",
           "names": {
-            "es": "Secreto iberico",
-            "en": "Iberian secreto",
-            "fr": "Secreto iberique"
+            "es": "Secreto ibérico",
+            "en": "Iberian secreto pork",
+            "fr": "Secreto de porc ibérique"
           },
           "descriptions": {
-            "es": "Corte de carne iberica servido con patatas fritas y pimientos de Padron.",
-            "en": "Iberian pork cut served with fries and Padron peppers.",
-            "fr": "Piece de porc iberique servie avec frites et piments de Padron."
+            "es": "",
+            "en": "",
+            "fr": ""
           },
-          "price": "16,50 EUR",
-          "allergens": []
+          "price": "18,90 €"
         },
         {
           "id": "churrasco",
           "names": {
-            "es": "Churrasco",
-            "en": "Churrasco",
-            "fr": "Churrasco"
+            "es": "Churrasco ibérico",
+            "en": "Iberian pork churrasco",
+            "fr": "Churrasco de porc ibérique"
           },
           "descriptions": {
-            "es": "Solomillo de cerdo iberico abierto servido con patatas fritas y pimientos de Padron.",
-            "en": "Butterflied Iberian pork loin served with fries and Padron peppers.",
-            "fr": "Solomillo de porc iberique ouvert servi avec frites et piments de Padron."
+            "es": "",
+            "en": "",
+            "fr": ""
           },
-          "price": "16,50 EUR",
-          "allergens": []
+          "price": "19,90 €"
         },
         {
           "id": "abanico",
           "names": {
-            "es": "Abanico",
-            "en": "Abanico",
-            "fr": "Abanico"
+            "es": "Abanico ibérico",
+            "en": "Iberian abanico pork",
+            "fr": "Abanico de porc ibérique"
           },
           "descriptions": {
-            "es": "Corte de carne iberica servido con patatas fritas y pimientos de Padron.",
-            "en": "Iberian pork cut served with fries and Padron peppers.",
-            "fr": "Piece de porc iberique servie avec frites et piments de Padron."
+            "es": "",
+            "en": "",
+            "fr": ""
           },
-          "price": "18,50 EUR",
-          "allergens": []
+          "price": "19,90 €"
         },
         {
           "id": "pluma-iberica",
           "names": {
-            "es": "Pluma iberica",
-            "en": "Iberian pluma",
-            "fr": "Pluma iberique"
+            "es": "Pluma ibérica",
+            "en": "Iberian pluma pork",
+            "fr": "Pluma de porc ibérique"
           },
           "descriptions": {
-            "es": "Pluma de cerdo raza 100% iberica acompanada de patatas fritas y pimientos de Padron.",
-            "en": "100% Iberian pork pluma served with fries and Padron peppers.",
-            "fr": "Pluma de porc 100% iberique accompagnee de frites et de piments de Padron."
+            "es": "",
+            "en": "",
+            "fr": ""
           },
-          "price": "19,00 EUR",
-          "allergens": []
-        }
-      ]
-    },
-    {
-      "id": "extra",
-      "names": {
-        "es": "Extra",
-        "en": "Extra",
-        "fr": "Extra"
-      },
-      "descriptions": {
-        "es": "Opciones familiares, parrilladas y cortes para ampliar la mesa.",
-        "en": "Family options, mixed grills and extra cuts for larger tables.",
-        "fr": "Options familiales, grillades mixtes et supplements pour les grandes tables."
-      },
-      "items": [
-        {
-          "id": "nuggets-de-pollo",
-          "names": {
-            "es": "Nuggets de pollo",
-            "en": "Chicken nuggets",
-            "fr": "Nuggets de poulet"
-          },
-          "descriptions": {
-            "es": "Los favoritos de los peques acompanados de patatas fritas y ketchup.",
-            "en": "A children's favourite served with fries and ketchup.",
-            "fr": "Les preferes des petits, servis avec frites et ketchup."
-          },
-          "price": "12,00 EUR",
-          "allergens": [
-            "gluten"
-          ]
+          "price": "20,90 €"
         },
         {
-          "id": "parrillada-iberica-mixta",
+          "id": "parrilla-iberica",
           "names": {
-            "es": "Parrillada iberica mixta",
-            "en": "Mixed Iberian grill",
-            "fr": "Parrillade iberique mixte"
+            "es": "Parrilla ibérica mixta",
+            "en": "Mixed Iberian pork grill",
+            "fr": "Grillade ibérique mixte"
           },
           "descriptions": {
-            "es": "Casi 1 kg de carne iberica: secreto, pluma, abanico y solomillo de cerdo.",
-            "en": "Almost 1 kg of Iberian pork: secreto, pluma, abanico and pork loin.",
-            "fr": "Pres d'1 kg de viande iberique : secreto, pluma, abanico et filet de porc."
+            "es": "Secreto, abanico y pluma ibéricos.",
+            "en": "Iberian secreto, abanico and pluma cuts.",
+            "fr": "Secreto, abanico et pluma de porc ibérique."
           },
-          "price": "38,50 EUR",
-          "allergens": []
+          "price": "39,00 €"
         },
         {
           "id": "contramuslo-de-pollo",
           "names": {
-            "es": "Contramuslo de pollo",
-            "en": "Chicken thigh",
-            "fr": "Haut de cuisse de poulet"
+            "es": "Contramuslo de pollo a la brasa",
+            "en": "Grilled chicken thigh",
+            "fr": "Haut de cuisse de poulet grillé"
           },
           "descriptions": {
-            "es": "Marinado a la brasa, acompanado de nuestras patatas recien cortadas y pimientos de Padron.",
-            "en": "Charcoal-marinated chicken thigh served with hand-cut fries and Padron peppers.",
-            "fr": "Haut de cuisse marine a la braise, servi avec nos frites fraichement coupees et des piments de Padron."
+            "es": "",
+            "en": "",
+            "fr": ""
           },
-          "price": "12,00 EUR",
-          "allergens": []
+          "price": "15,90 €"
         },
         {
-          "id": "chuletillas-de-cordero",
+          "id": "entrecot",
           "names": {
-            "es": "Chuletillas de cordero",
-            "en": "Lamb chops",
-            "fr": "Cotelettes d'agneau"
+            "es": "Entrecot",
+            "en": "Entrecôte",
+            "fr": "Entrecôte"
           },
           "descriptions": {
-            "es": "Racion de chuletillas de cordero lechal acompanadas de patatas fritas y pimientos de Padron.",
-            "en": "Portion of milk-fed lamb chops with fries and Padron peppers.",
-            "fr": "Portion de cotelettes d'agneau de lait accompagnees de frites et de piments de Padron."
+            "es": "",
+            "en": "",
+            "fr": ""
           },
-          "price": "22,50 EUR",
-          "allergens": []
+          "price": "27,90 €"
+        },
+        {
+          "id": "chuleton",
+          "names": {
+            "es": "Chuletón",
+            "en": "Bone-in rib steak",
+            "fr": "Côte de bœuf"
+          },
+          "descriptions": {
+            "es": "",
+            "en": "",
+            "fr": ""
+          },
+          "price": "S/M"
+        },
+        {
+          "id": "costillar-bbq",
+          "names": {
+            "es": "Costillar BBQ",
+            "en": "BBQ ribs",
+            "fr": "Travers BBQ"
+          },
+          "descriptions": {
+            "es": "",
+            "en": "",
+            "fr": ""
+          },
+          "price": "22,90 €"
+        },
+        {
+          "id": "cachopo-serrano",
+          "names": {
+            "es": "Cachopo serrano y queso",
+            "en": "Serrano ham and cheese cachopo",
+            "fr": "Cachopo au jambon serrano et fromage"
+          },
+          "descriptions": {
+            "es": "600–700 g.",
+            "en": "600–700 g.",
+            "fr": "600–700 g."
+          },
+          "price": "23,90 €"
+        },
+        {
+          "id": "cachopo-cabra",
+          "names": {
+            "es": "Cachopo de rulo de cabra y cebolla caramelizada",
+            "en": "Goat cheese and caramelised onion cachopo",
+            "fr": "Cachopo au chèvre et oignon caramélisé"
+          },
+          "descriptions": {
+            "es": "600–700 g.",
+            "en": "600–700 g.",
+            "fr": "600–700 g."
+          },
+          "price": "24,90 €"
+        },
+        {
+          "id": "nuggets-caseros",
+          "names": {
+            "es": "Nuggets de pollo caseros",
+            "en": "Homemade chicken nuggets",
+            "fr": "Nuggets de poulet maison"
+          },
+          "descriptions": {
+            "es": "",
+            "en": "",
+            "fr": ""
+          },
+          "price": "11,90 €"
         }
       ]
     },
