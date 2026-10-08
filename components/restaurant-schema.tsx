@@ -24,7 +24,7 @@ export async function RestaurantSchema({ locale }: RestaurantSchemaProps) {
     hasMap: business.mapsUrl,
     image: [
       "https://lapicateria.es/images/real/barra-producto.jpg",
-      "https://lapicateria.es/images/real/terraza.jpg",
+      "https://lapicateria.es/images/real/terraza-actual.jpg",
     ],
     address: {
       "@type": "PostalAddress",

@@ -209,7 +209,7 @@ export default async function ContactPage({ params }: PageProps) {
             <div className="grid gap-0 lg:grid-rows-[0.72fr_1.28fr]">
               <div className="relative min-h-[240px]">
                 <Image
-                  src="/images/real/terraza.jpg"
+                  src="/images/real/terraza-actual.jpg"
                   alt="Terraza de La Picatería en el centro de Granada"
                   fill
                   sizes="(max-width: 1024px) 100vw, 60vw"

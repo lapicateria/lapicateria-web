@@ -333,7 +333,7 @@ export const seoLandings: Record<SeoLandingSlug, SeoLandingEntry> = {
   },
   "restaurante-mercado-san-agustin": {
     slug: "restaurante-mercado-san-agustin",
-    image: "/images/real/terraza.jpg",
+    image: "/images/real/terraza-actual.jpg",
     imageAlt: {
       es: "Terraza de La Picatería en el Mercado de San Agustín",
       en: "Terrace at La Picatería in Mercado de San Agustin",
