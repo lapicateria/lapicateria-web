@@ -17,7 +17,7 @@ import { getDictionary, getMenuPreview, isValidLocale } from "@/lib/i18n";
 
 const heroImage = "/images/logos/smash-lab-fenix.webp";
 const barImage = "/images/real/barra-madera.jpg";
-const terraceImage = "/images/real/terraza.jpg";
+const terraceImage = "/images/real/terraza-actual.jpg";
 
 type PageProps = {
   params: Promise<{ locale: string }>;
@@ -58,7 +58,7 @@ export default async function HomePage({ params }: PageProps) {
           eyebrow: "NOVEDAD · LLEGA SMASH LAB",
           title: "La Picatería renace. Más fuego. Más sabor.",
           subtitle:
-            "SMASH LAB ya está en La Picatería. Siete burgers, patatas caseras y una carta renovada, junto a nuestra brasa de siempre. En el Mercado de San Agustín, Granada.",
+            "La Picatería reabre al completo. SMASH LAB se suma a nuestra oferta tradicional con siete burgers y patatas caseras, junto a la brasa y los sabores de siempre. Mercado de San Agustín, Granada.",
           reserve: "Reservar mesa",
           menu: "Ver carta",
           call: "Llamar",
@@ -68,7 +68,7 @@ export default async function HomePage({ params }: PageProps) {
             eyebrow: "NEW · SMASH LAB HAS ARRIVED",
             title: "La Picatería rises again. More fire. More flavour.",
             subtitle:
-              "SMASH LAB is now at La Picatería. Seven burgers, homemade fries and a refreshed menu alongside our signature charcoal grill. Mercado de San Agustín, Granada.",
+              "La Picatería fully reopens. SMASH LAB joins our traditional menu with seven burgers and homemade fries, alongside our signature charcoal grill. Mercado de San Agustín, Granada.",
             reserve: "Book a table",
             menu: "View menu",
             call: "Call",
@@ -77,7 +77,7 @@ export default async function HomePage({ params }: PageProps) {
             eyebrow: "NOUVEAUTÉ · SMASH LAB EST ARRIVÉ",
             title: "La Picatería renaît. Plus de feu. Plus de saveur.",
             subtitle:
-              "SMASH LAB arrive à La Picatería. Sept burgers, des frites maison et une carte renouvelée, avec nos grillades au charbon. Mercado de San Agustín, Grenade.",
+              "La Picatería rouvre au complet. SMASH LAB complète notre offre traditionnelle avec sept burgers et des frites maison, aux côtés de nos grillades au charbon. Mercado de San Agustín, Grenade.",
             reserve: "Réserver une table",
             menu: "Voir la carte",
             call: "Appeler",
@@ -130,10 +130,10 @@ export default async function HomePage({ params }: PageProps) {
 
       <section className="launch-section px-5 pb-12 pt-6 sm:px-6 lg:px-10">
         <div className="launch-card mx-auto max-w-6xl overflow-hidden">
-          <div className="relative aspect-[2.34/1] bg-cream">
+          <div className="relative aspect-[3/1] bg-cream">
             <Image src={heroImage} alt="La Picatería · SMASH LAB, con el ave fénix de fuego naranja" fill preload sizes="(max-width: 1200px) 100vw, 1152px" className="object-contain" />
           </div>
-          <div className="launch-copy grid gap-8 px-6 py-8 sm:px-10 lg:grid-cols-[1.4fr_1fr] lg:px-12 lg:py-12">
+          <div className="launch-copy grid gap-6 px-6 py-6 sm:px-10 lg:grid-cols-[1.4fr_1fr] lg:px-10 lg:py-8">
             <div className="space-y-5">
               <p className="launch-badge">{heroCopy.eyebrow}</p>
               <h1 className="launch-title">{heroCopy.title}</h1>

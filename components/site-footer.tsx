@@ -1,3 +1,4 @@
+import { ServiceHours } from "@/components/service-hours";
 import Image from "next/image";
 import Link from "next/link";
 import { getBusinessHoursPresentation } from "@/lib/business-hours";
@@ -60,7 +61,7 @@ export async function SiteFooter({ locale, dictionary }: SiteFooterProps) {
 
         <div className="grid gap-3 text-sm text-charcoal">
           <p className="leading-7">{dictionary.business.address}</p>
-          <p className="leading-7">{hours.summary}</p>
+          <ServiceHours locale={locale} />
           <p className="text-xs uppercase tracking-[0.16em] text-charcoal/76">{hours.todayStatus}</p>
           <Link href={`/${locale}/reservas`} className="transition hover:text-sand-500">
             {dictionary.cta.reserve}

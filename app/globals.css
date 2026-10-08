@@ -49,7 +49,7 @@ iframe {
 .launch-card { border-radius: 1.75rem; border: 1px solid #e97029; box-shadow: 0 22px 60px #49210e20; }
 .launch-copy { background: #1e1815; border-top: 5px solid #f47622; color: white; }
 .launch-badge { display: inline-block; padding: .6rem 1rem; background: #ff8938; color: #25190f; font-size: .875rem; font-weight: 800; letter-spacing: .08em; border-radius: .35rem; }
-.launch-title { font-family: var(--font-display); font-size: clamp(2.4rem, 4.5vw, 4.6rem); line-height: 1.08; text-wrap: balance; }
+.launch-title { font-family: var(--font-display); font-size: clamp(2.1rem, 3.7vw, 3.6rem); line-height: 1.08; text-wrap: balance; }
 .menu-category { scroll-margin-top: 12rem; }
 .smash-category { background: #211914; color: #fff; border-top: 5px solid #f47622; border-radius: 1.25rem; padding: clamp(1.25rem, 4vw, 2.5rem); }
 .smash-category .dish-name, .smash-category .dish-copy { color: #fff; }

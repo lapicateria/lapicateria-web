@@ -1,3 +1,4 @@
+import { ServiceHours } from "@/components/service-hours";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -126,6 +127,7 @@ export default async function ContactPage({ params }: PageProps) {
                   </div>
                 ))}
               </div>
+              <ServiceHours locale={locale} />
               <p className="mt-4 text-sm leading-7 text-charcoal">{hours.todayStatus}</p>
             </div>
 

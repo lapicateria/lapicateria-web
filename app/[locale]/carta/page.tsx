@@ -35,7 +35,7 @@ export default async function MenuPage({ params }: PageProps) {
     <section className="px-5 py-10 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-6xl">
         <div className="launch-card overflow-hidden">
-          <div className="relative aspect-[2.34/1] bg-cream">
+          <div className="relative aspect-[3/1] bg-cream">
             <Image src="/images/logos/smash-lab-fenix.webp" alt="La Picatería · SMASH LAB · Fénix" fill preload sizes="(max-width: 1200px) 100vw, 1152px" className="object-contain" />
           </div>
           <div className="launch-copy space-y-5 px-6 py-8 sm:px-10">
