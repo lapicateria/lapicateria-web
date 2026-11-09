@@ -283,20 +283,6 @@
             "fr": "Poulpe grillé sur parmentier de pommes de terre et paprika de la Vera."
           },
           "price": "26,50 €"
-        },
-        {
-          "id": "fritura-pescado",
-          "names": {
-            "es": "Fritura de pescado",
-            "en": "Mixed fried fish",
-            "fr": "Friture de poissons"
-          },
-          "descriptions": {
-            "es": "Variado de pescado frito, crujiente por fuera y tierno por dentro.",
-            "en": "Mixed fried fish, crispy outside and tender inside.",
-            "fr": "Assortiment de poissons frits, croustillants et tendres."
-          },
-          "price": "17,90 €"
         }
       ]
     },
