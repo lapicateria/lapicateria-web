@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BookingEmbedPanel } from "@/components/booking-embed-panel";
+import { ServiceHours } from "@/components/service-hours";
 import { TrackedCtaButton } from "@/components/tracked-cta-button";
 import { TrackedPhoneLink } from "@/components/tracked-phone-link";
 import { TrackedReservationLink } from "@/components/tracked-reservation-link";
@@ -44,7 +45,7 @@ export default async function BookingPage({ params }: PageProps) {
           eyebrow: "Reservas oficiales",
           title: "Reserva tu mesa",
           intro:
-            "Selecciona día, hora y número de personas en el formulario oficial de Qamarero.",
+            "Elige entre Taberna Barbadillo, Salón Faustino y Terraza. Selecciona día, hora y número de personas en el formulario oficial de Qamarero.",
           direct: "Abrir reserva oficial",
           call: "Llamar",
           detailsTitle: "Antes de venir",
@@ -60,7 +61,7 @@ export default async function BookingPage({ params }: PageProps) {
             eyebrow: "Official bookings",
             title: "Book your table",
             intro:
-              "Choose the date, time and number of guests in the official Qamarero form.",
+              "Choose between Taberna Barbadillo, Salón Faustino and Terraza. Select the date, time and number of guests in the official Qamarero form.",
             direct: "Open official booking",
             call: "Call",
             detailsTitle: "Before you visit",
@@ -74,7 +75,7 @@ export default async function BookingPage({ params }: PageProps) {
             eyebrow: "Réservations officielles",
             title: "Réservez votre table",
             intro:
-              "Choisissez la date, l’heure et le nombre de personnes dans le formulaire officiel Qamarero.",
+              "Choisissez entre Taberna Barbadillo, Salón Faustino et Terraza. Sélectionnez la date, l’heure et le nombre de personnes dans le formulaire officiel Qamarero.",
             direct: "Ouvrir la réservation officielle",
             call: "Appeler",
             detailsTitle: "Avant votre visite",
@@ -124,6 +125,7 @@ export default async function BookingPage({ params }: PageProps) {
               <div className="mt-4 space-y-3 text-sm leading-7 text-charcoal">
                 <p className="font-semibold text-ink">{copy.location}</p>
                 <p>{hours.todayStatus}</p>
+                <ServiceHours locale={locale} />
                 <p>{copy.note}</p>
               </div>
             </div>

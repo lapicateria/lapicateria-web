@@ -12,22 +12,16 @@
       "specialMessage": ""
     },
     "tuesday": {
-      "isOpen": true,
-      "primary": {
-        "open": "09:00",
-        "close": "17:00"
-      },
+      "isOpen": false,
+      "primary": null,
       "secondary": null,
-      "specialMessage": "Solo Puesto 32"
+      "specialMessage": ""
     },
     "wednesday": {
-      "isOpen": true,
-      "primary": {
-        "open": "09:00",
-        "close": "17:00"
-      },
+      "isOpen": false,
+      "primary": null,
       "secondary": null,
-      "specialMessage": "Solo Puesto 32"
+      "specialMessage": ""
     },
     "thursday": {
       "isOpen": true,
