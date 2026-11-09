@@ -125,7 +125,7 @@ const dictionaries = {
         eyebrow: "Reservas",
         title: "Reserva oficial y directa",
         description:
-          "Reserva desde la web con el canal oficial y, si el formulario falla o tarda en cargar, usa el botón principal o llámanos."
+          "Elige Taberna Barbadillo, Salón Faustino o Terraza y reserva tu mesa. Para grupos, fines de semana y festivos, mejor con antelación."
       }
     },
     location: {
@@ -169,14 +169,14 @@ const dictionaries = {
     },
     footer: {
       copy:
-        "La Picatería. Barra, brasa de carbón, producto de mercado y reservas directas en pleno centro de Granada."
+        "La Picatería · Smash Lab. Gildas y pinchos desde 2012, jamón asado y smash burgers en el Mercado de San Agustín, junto a la Catedral de Granada."
     },
     menuNotesTitle: "Notas de carta",
     meta: {
       home: {
-        title: "La Picatería · SMASH LAB y brasa en Granada",
+        title: "La Picatería · Gildas, pinchos y Smash Lab en Granada",
         description:
-          "SMASH LAB llega a La Picatería: burgers, patatas caseras y brasa en el Mercado de San Agustín, Granada. Consulta la nueva carta y reserva mesa."
+          "Gildas y pinchos desde 2012, jamón asado y smash burgers en el Mercado de San Agustín, junto a la Catedral de Granada. Consulta la carta y reserva mesa."
       },
       menu: {
         title: "Carta de La Picatería",
@@ -186,7 +186,7 @@ const dictionaries = {
       booking: {
         title: "Reservas oficiales La Picatería",
         description:
-          "Reserva mesa en La Picatería desde la web con integración oficial de Qamarero, botón principal y contacto visible."
+          "Reserva mesa en Taberna Barbadillo, Salón Faustino o Terraza de La Picatería · Smash Lab, en el Mercado de San Agustín, Granada."
       },
       contact: {
         title: "Contacto y ubicación La Picatería",
@@ -277,7 +277,7 @@ const dictionaries = {
         eyebrow: "Real menu",
         title: "Tapas, grill dishes and drinks with visible prices",
         description:
-          "The old demo menu is gone. The page now renders the live restaurant menu from structured JSON."
+          "Explore our pinchos, roast ham, Smash Lab burgers, sharing dishes and drinks before choosing your meal."
       },
       location: {
         eyebrow: "Location",
@@ -287,9 +287,9 @@ const dictionaries = {
       },
       booking: {
         eyebrow: "Bookings",
-        title: "Official Qamarero flow with a softer brand expression",
+        title: "Book your table at the market",
         description:
-          "The booking flow stays intact while the surrounding page now matches the rest of the site."
+          "Choose Taberna Barbadillo, Salón Faustino or Terraza and book your table. Advance booking is recommended for groups, weekends and public holidays."
       }
     },
     location: {
@@ -333,24 +333,24 @@ const dictionaries = {
     },
     footer: {
       copy:
-        "La Picateria. Market cooking, charcoal grill and direct bookings in central Granada."
+        "La Picatería · Smash Lab. Gildas and pinchos since 2012, roast ham and smash burgers inside Mercado de San Agustín, next to Granada Cathedral."
     },
     menuNotesTitle: "Menu notes",
     meta: {
       home: {
-        title: "La Picateria · charcoal grill and market cooking in Granada",
+        title: "La Picatería · Pinchos and Smash Lab burgers in Granada",
         description:
-          "La Picateria, inside Mercado de San Agustin next to the Cathedral, serves grill dishes, tapas and direct bookings."
+          "Gildas and pinchos since 2012, roast ham and smash burgers inside Mercado de San Agustín, next to Granada Cathedral. View the menu and book a table."
       },
       menu: {
         title: "La Picateria menu",
         description:
-          "Browse the current La Picateria menu: starters, seafood, grill dishes, vegetarian plates, broken eggs and drinks."
+          "Discover La Picatería · Smash Lab: pinchos, roast ham, smash burgers with homemade fries, sharing dishes and drinks at Granada's Mercado de San Agustín."
       },
       booking: {
         title: "Official La Picateria bookings",
         description:
-          "Book a table at La Picateria through the official Qamarero booking channel."
+          "Book a table in Taberna Barbadillo, Salón Faustino or Terraza at La Picatería · Smash Lab, inside Mercado de San Agustín, Granada."
       },
       contact: {
         title: "La Picateria contact and location",
@@ -441,7 +441,7 @@ const dictionaries = {
         eyebrow: "Carte reelle",
         title: "Tapas, braises et boissons avec prix visibles",
         description:
-          "La carte demo disparait. La page affiche maintenant la vraie carte du restaurant via JSON."
+          "Découvrez nos pinchos, notre jambon rôti, les burgers Smash Lab, nos plats à partager et nos boissons avant de choisir votre repas."
       },
       location: {
         eyebrow: "Emplacement",
@@ -451,9 +451,9 @@ const dictionaries = {
       },
       booking: {
         eyebrow: "Reservations",
-        title: "Le flux officiel Qamarero, dans une interface plus douce",
+        title: "Réservez votre table au marché",
         description:
-          "Le moteur officiel reste en place, avec un habillage visuel mieux aligne sur le reste du site."
+          "Choisissez Taberna Barbadillo, Salón Faustino ou Terraza et réservez votre table. Pour les groupes, les week-ends et les jours fériés, pensez à réserver à l’avance."
       }
     },
     location: {
@@ -497,24 +497,24 @@ const dictionaries = {
     },
     footer: {
       copy:
-        "La Picateria. Cuisine de marche, braise au charbon et reservations directes au centre de Grenade."
+        "La Picatería · Smash Lab. Gildas et pinchos depuis 2012, jambon rôti et smash burgers dans le Mercado de San Agustín, près de la Cathédrale de Grenade."
     },
     menuNotesTitle: "Notes de carte",
     meta: {
       home: {
-        title: "La Picateria · braise au charbon et cuisine de marche a Grenade",
+        title: "La Picatería · Pinchos et burgers Smash Lab à Grenade",
         description:
-          "La Picateria, dans le Mercado de San Agustin a cote de la Cathedrale, propose tapas, braise et reservations directes."
+          "Gildas et pinchos depuis 2012, jambon rôti et smash burgers dans le Mercado de San Agustín, près de la Cathédrale de Grenade. Découvrez la carte et réservez."
       },
       menu: {
         title: "Carte de La Picateria",
         description:
-          "Consultez la carte actuelle de La Picateria : entrees, mer, braises, vegetarien, oeufs casses et boissons."
+          "Découvrez La Picatería · Smash Lab : pinchos, jambon rôti, smash burgers avec frites maison, plats à partager et boissons au Mercado de San Agustín de Grenade."
       },
       booking: {
         title: "Reservations officielles La Picateria",
         description:
-          "Réservez une table à La Picateria via le canal officiel Qamarero."
+          "Réservez votre table à Taberna Barbadillo, Salón Faustino ou Terraza de La Picatería · Smash Lab, dans le Mercado de San Agustín, Grenade."
       },
       contact: {
         title: "Contact et emplacement La Picateria",

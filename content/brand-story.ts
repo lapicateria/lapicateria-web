@@ -31,17 +31,17 @@ type TouristModule = {
 export const featuredDishesByLocale: Record<Locale, FeaturedDish[]> = {
   es: [
     {
-      key: "chuleton",
-      name: "Chuletón",
-      description: "Brasa de carbón y corte potente para quien viene con hambre de plan serio.",
-      image: "/images/real/chuleton.jpg",
-      alt: "Chuletón a la brasa de La Picatería",
+      key: "pinchos",
+      name: "Gildas y pinchos",
+      description: "Aceitunas, encurtidos, gildas y pinchos. Pioneros desde 2012, con venta directa en los puestos 32–35.",
+      image: "/images/real/pinchos_picateria.jpg",
+      alt: "Bandeja de pinchos y encurtidos de La Picatería",
     },
     {
       key: "jamon_asado",
       name: "Jamón asado",
       description: "Uno de los platos de casa más reconocibles y de los que mejor resumen la propuesta.",
-      image: "/images/real/jamon_asado.jpg",
+      image: "/images/real/jamon-asado-actual.jpg",
       alt: "Jamón asado de La Picatería",
     },
     {
@@ -54,17 +54,17 @@ export const featuredDishesByLocale: Record<Locale, FeaturedDish[]> = {
   ],
   en: [
     {
-      key: "chuleton",
-      name: "Chuleta steak",
-      description: "Charcoal-grilled beef for guests looking for a more substantial meal.",
-      image: "/images/real/chuleton.jpg",
-      alt: "Charcoal-grilled chuleta steak at La Picatería",
+      key: "pinchos",
+      name: "Gildas and pinchos",
+      description: "Olives, pickles, gildas and pinchos. Pioneers since 2012, available to take away from stalls 32–35.",
+      image: "/images/real/pinchos_picateria.jpg",
+      alt: "Platter of pinchos and pickles at La Picatería",
     },
     {
       key: "jamon_asado",
       name: "Roast ham",
       description: "One of the house signatures and one of the easiest dishes to remember.",
-      image: "/images/real/jamon_asado.jpg",
+      image: "/images/real/jamon-asado-actual.jpg",
       alt: "Roast ham at La Picatería",
     },
     {
@@ -77,17 +77,17 @@ export const featuredDishesByLocale: Record<Locale, FeaturedDish[]> = {
   ],
   fr: [
     {
-      key: "chuleton",
-      name: "Chuletón",
-      description: "Une grande piece a la braise pour ceux qui viennent avec envie d'un vrai repas.",
-      image: "/images/real/chuleton.jpg",
-      alt: "Chuletón a la braise de La Picatería",
+      key: "pinchos",
+      name: "Gildas et pinchos",
+      description: "Olives, légumes marinés, gildas et pinchos. Pionniers depuis 2012, en vente directe aux stands 32–35.",
+      image: "/images/real/pinchos_picateria.jpg",
+      alt: "Plateau de pinchos et légumes marinés de La Picatería",
     },
     {
       key: "jamon_asado",
       name: "Jambon roti",
       description: "Un des plats signatures de la maison, facile a retenir apres le repas.",
-      image: "/images/real/jamon_asado.jpg",
+      image: "/images/real/jamon-asado-actual.jpg",
       alt: "Jambon roti de La Picatería",
     },
     {

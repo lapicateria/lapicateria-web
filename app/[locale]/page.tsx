@@ -58,7 +58,7 @@ export default async function HomePage({ params }: PageProps) {
           eyebrow: "NOVEDAD · LLEGA SMASH LAB",
           title: "La Picatería renace. Más fuego. Más sabor.",
           subtitle:
-            "La Picatería reabre al completo. SMASH LAB se suma a nuestra oferta tradicional con siete burgers y patatas caseras, junto a la brasa y los sabores de siempre. Mercado de San Agustín, Granada.",
+            "La Picatería reabre al completo. Gildas, pinchos y encurtidos desde 2012, nuestro jamón asado y las burgers de SMASH LAB con patatas caseras. En el Mercado de San Agustín, junto a la Catedral de Granada.",
           reserve: "Reservar mesa",
           menu: "Ver carta",
           call: "Llamar",
@@ -68,7 +68,7 @@ export default async function HomePage({ params }: PageProps) {
             eyebrow: "NEW · SMASH LAB HAS ARRIVED",
             title: "La Picatería rises again. More fire. More flavour.",
             subtitle:
-              "La Picatería fully reopens. SMASH LAB joins our traditional menu with seven burgers and homemade fries, alongside our signature charcoal grill. Mercado de San Agustín, Granada.",
+              "La Picatería fully reopens. Gildas, pinchos and pickles since 2012, our signature roast ham and SMASH LAB burgers with homemade fries. Inside Mercado de San Agustín, next to Granada Cathedral.",
             reserve: "Book a table",
             menu: "View menu",
             call: "Call",
@@ -77,7 +77,7 @@ export default async function HomePage({ params }: PageProps) {
             eyebrow: "NOUVEAUTÉ · SMASH LAB EST ARRIVÉ",
             title: "La Picatería renaît. Plus de feu. Plus de saveur.",
             subtitle:
-              "La Picatería rouvre au complet. SMASH LAB complète notre offre traditionnelle avec sept burgers et des frites maison, aux côtés de nos grillades au charbon. Mercado de San Agustín, Grenade.",
+              "La Picatería rouvre au complet. Gildas, pinchos et légumes marinés depuis 2012, notre jambon rôti et les burgers SMASH LAB avec frites maison. Dans le Mercado de San Agustín, près de la Cathédrale de Grenade.",
             reserve: "Réserver une table",
             menu: "Voir la carte",
             call: "Appeler",
@@ -88,18 +88,18 @@ export default async function HomePage({ params }: PageProps) {
       ? {
           eyebrow: "Especialidades de la casa",
           title: "Sabores que definen La Picatería",
-          text: "Producto reconocible, brasa de carbón y platos pensados para compartir.",
+          text: "Los pinchos de siempre, nuestro jamón asado y Smash Lab. Elige tu plan para compartir en el mercado.",
         }
       : locale === "en"
         ? {
             eyebrow: "House specialities",
             title: "Flavours that define La Picatería",
-            text: "Recognisable produce, charcoal grilling and dishes made for sharing.",
+            text: "Traditional pinchos, our signature roast ham and Smash Lab. Find your next meal to share at the market.",
           }
         : {
             eyebrow: "Spécialités de la maison",
             title: "Les saveurs de La Picatería",
-            text: "Des produits reconnaissables, une cuisson à la braise et des plats à partager.",
+            text: "Nos pinchos de toujours, notre jambon rôti et Smash Lab. Choisissez votre prochain repas à partager au marché.",
           };
 
   const locationCopy =
@@ -143,8 +143,8 @@ export default async function HomePage({ params }: PageProps) {
               <p className="text-2xl font-bold text-[#ff8b3d]">THE SHOW MUST GO ON.</p>
               <p className="text-sm text-white/80">{hours.todayStatus}</p>
               <div className="flex flex-col gap-3">
-                <TrackedCtaButton href={`/${locale}/carta#smash-lab`} label={locale === "es" ? "Descubre la nueva carta" : locale === "en" ? "Discover the new menu" : "Découvrez la nouvelle carte"} locale={locale} location="hero" eventName="click_menu_hero" />
                 <TrackedReservationLink label={heroCopy.reserve} locale={locale} location="hero" eventName={locale === "es" ? "click_reserve_hero" : undefined} />
+                <TrackedCtaButton href={`/${locale}/carta#smash-lab`} label={locale === "es" ? "Descubre la nueva carta" : locale === "en" ? "Discover the new menu" : "Découvrez la nouvelle carte"} locale={locale} location="hero" eventName="click_menu_hero" variant="secondary" />
                 <TrackedPhoneLink phoneHref={dictionary.business.phoneHref} label={heroCopy.call} locale={locale} eventName={locale === "es" ? "click_call_hero" : "click_call_global"} variant="secondary" />
               </div>
             </div>
