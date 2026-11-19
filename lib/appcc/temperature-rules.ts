@@ -23,7 +23,7 @@ const picateriaTemperatureEquipment: TemperatureEquipment[] = [
   { name: "Vitrina frigorífica en L", zone: "Puesto 32", kind: "refrigerated", active: true, note: "Exposición de pinchos y aceitunas arriba. Anchoas, alcachofas e ingredientes en la parte inferior." },
   { name: "Botellero de verdura", zone: "Cocina", kind: "refrigerated", active: true },
   { name: "Congelador de cocina", zone: "Cocina", kind: "freezer", active: true },
-  { name: "Congelador de hielo embolsado", zone: "Almacén", kind: "freezer", active: true, note: "Hielo embolsado para bebidas." },
+  { name: "Congelador de hielo embolsado", zone: "Almacén", kind: "freezer", active: true, note: "Hielo embolsado para bebidas. Uso ocasional para pescado: mantenerlo congelado en un recipiente estanco separado del hielo." },
 ];
 
 function readTemperatureEquipment(): TemperatureEquipment[] {
