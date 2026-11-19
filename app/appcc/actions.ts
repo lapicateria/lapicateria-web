@@ -1790,8 +1790,8 @@ export async function saveChecklistOpeningAction(formData: FormData) {
   const session = await requireAdminPermission("cleaning:create");
 
   const checks = [
-    "Arcón frío correcto",
-    "Arcón congelador correcto",
+    "Cámara del puesto 32 y vitrina en L revisadas",
+    "Congelador de cocina revisado",
     "Lavamanos operativo",
     "Productos etiquetados",
     "Limpieza realizada",
@@ -1825,7 +1825,7 @@ export async function saveChecklistClosingAction(formData: FormData) {
   const checks = [
     "Basura retirada",
     "Superficies desinfectadas",
-    "Arcón frío cerrado",
+    "Perecederos trasladados a la cámara del puesto 32 al cierre",
     "Freidoras apagadas",
     "Productos almacenados",
     "Incidencias registradas",

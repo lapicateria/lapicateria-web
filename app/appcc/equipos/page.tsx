@@ -46,6 +46,7 @@ export default async function EquiposPage({ searchParams }: { searchParams?: Pro
                     <h3 className="mt-3 text-2xl font-black uppercase tracking-[-0.03em]">{equipment.name}</h3>
                     <div className="mt-4 grid gap-2 text-sm text-stone-700">
                       <p>Ubicación: {equipment.zone}</p>
+                      {equipment.note ? <p>{equipment.note}</p> : null}
                       <p>Tipo: {equipmentType(equipment.name, equipment.active, equipment.kind)}</p>
                       <p>Estado: {equipment.active ? "activo" : "fuera de servicio"}</p>
                       <p>Temperatura objetivo: {target(equipment.kind, equipment.active)}</p>
@@ -80,7 +81,11 @@ export default async function EquiposPage({ searchParams }: { searchParams?: Pro
               <TextAreaField name="fault_history" label="Historial averías" />
               <SubmitButton />
             </form>
-            <RecentRecords records={records.ok ? records.data : []} title="Fichas técnicas guardadas" />
+            {records.ok ? (
+              <RecentRecords records={records.data} title="Fichas técnicas guardadas" showResponsible={false} />
+            ) : (
+              <p className="mt-4 text-sm text-[#f2c6bb]">No se pudieron consultar las fichas técnicas guardadas.</p>
+            )}
             {params?.error ? <p className="mt-4 text-sm text-[#f2c6bb]">{params.error}</p> : null}
           </section>
         </div>

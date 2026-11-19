@@ -1,8 +1,10 @@
 export type TemperatureEquipmentKind = "refrigerated" | "freezer";
 
+const temperatureZones = ["Puesto 32", "Barra", "Cocina", "Almacén"] as const;
+
 export type TemperatureEquipment = {
   name: string;
-  zone: "Barra" | "Cocina" | "Almacén";
+  zone: (typeof temperatureZones)[number];
   kind: TemperatureEquipmentKind;
   active: boolean;
   archived?: boolean;
@@ -16,13 +18,22 @@ export type TemperatureEvaluation = {
   acceptableRange: string;
 };
 
+const picateriaTemperatureEquipment: TemperatureEquipment[] = [
+  { name: "Cámara frigorífica grande", zone: "Puesto 32", kind: "refrigerated", active: true, note: "Aceitunas, carnes, quesos e ingredientes para pinchos." },
+  { name: "Vitrina frigorífica en L", zone: "Puesto 32", kind: "refrigerated", active: true, note: "Exposición de pinchos y aceitunas arriba. Anchoas, alcachofas e ingredientes en la parte inferior." },
+  { name: "Botellero de verdura", zone: "Cocina", kind: "refrigerated", active: true },
+  { name: "Congelador de cocina", zone: "Cocina", kind: "freezer", active: true },
+];
+
 function readTemperatureEquipment(): TemperatureEquipment[] {
   try {
-    const equipment: unknown = JSON.parse(process.env.NEXT_PUBLIC_APPCC_TEMPERATURE_EQUIPMENT || "[]");
+    const configuredEquipment = process.env.NEXT_PUBLIC_APPCC_TEMPERATURE_EQUIPMENT;
+    if (!configuredEquipment) return picateriaTemperatureEquipment;
+    const equipment: unknown = JSON.parse(configuredEquipment);
     if (!Array.isArray(equipment)) return [];
     return equipment.filter((item): item is TemperatureEquipment =>
       item && typeof item.name === "string" && item.name.trim().length > 0
-      && ["Barra", "Cocina", "Almacén"].includes(item.zone)
+      && temperatureZones.includes(item.zone)
       && ["refrigerated", "freezer"].includes(item.kind)
       && typeof item.active === "boolean");
   } catch {

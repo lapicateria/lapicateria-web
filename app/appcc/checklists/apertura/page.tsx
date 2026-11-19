@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 };
 
 const checks = [
-  "Arcón frío correcto",
-  "Arcón congelador correcto",
+  "Cámara del puesto 32 y vitrina en L revisadas",
+  "Congelador de cocina revisado",
   "Lavamanos operativo",
   "Productos etiquetados",
   "Limpieza realizada",

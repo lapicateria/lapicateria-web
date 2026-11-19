@@ -48,9 +48,9 @@ El acceso interno es `/appcc`. La integración procede de
 2. Usa `.env.appcc.example` como referencia para `.env.local` y las variables del
    despliegue. Genera valores independientes para la contraseña de arranque,
    la firma de sesión y el token del puente de impresión.
-3. Configura el listado real de equipos de frío en
+3. El panel incluye los equipos de frío de La Picatería. Para sustituir el listado, configura
    `NEXT_PUBLIC_APPCC_TEMPERATURE_EQUIPMENT` antes de compilar. Las zonas admitidas
-   son `Barra`, `Cocina` y `Almacén`. Los tipos son `refrigerated` y `freezer`.
+   son `Puesto 32`, `Barra`, `Cocina` y `Almacén`. Los tipos son `refrigerated` y `freezer`.
    Entra a `/appcc` con la contraseña inicial y crea las cuentas nominales desde
    Usuarios. Revisa las fichas del centro documental y carga los documentos y
    proveedores del establecimiento.

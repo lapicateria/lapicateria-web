@@ -3806,9 +3806,9 @@ export async function getRecentAiSupplierDocuments(limit = 20): Promise<DbResult
 }
 
 export async function getRecentEquipmentAssets(): Promise<DbResult<RecentAdminRecord[]>> {
-  const result = await getRows<{ id: string; name: string; location: string | null; status: string | null; created_at: string }>(
+  const result = await getRows<{ id: string; name: string; location: string | null; status: string | null; created_at: string; fault_history: string | null }>(
     "admin_equipment_assets",
-    "?select=id,name,location,status,created_at&order=created_at.desc&limit=10",
+    "?select=id,name,location,status,created_at,fault_history&order=location.asc,name.asc,id.asc",
   );
 
   if (!result.ok) return result;
@@ -3821,6 +3821,7 @@ export async function getRecentEquipmentAssets(): Promise<DbResult<RecentAdminRe
       record_time: null,
       responsible: null,
       status: record.status || "operativo",
+      observations: record.fault_history,
       main: `${record.name}${record.location ? ` · ${record.location}` : ""}`,
     })),
   };

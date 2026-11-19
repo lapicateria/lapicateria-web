@@ -30,7 +30,7 @@ export function TemperatureForm({ action }: { action: (formData: FormData) => vo
   const evaluation = selectedEquipmentConfig && temperatureInput.trim() && Number.isFinite(parsedTemperature)
     ? evaluateTemperature(selectedEquipment, parsedTemperature)
     : null;
-  const groupedEquipment = ["Barra", "Cocina", "Almacén"].map((zone) => ({
+  const groupedEquipment = Array.from(new Set(temperatureEquipment.map((equipment) => equipment.zone))).map((zone) => ({
     zone,
     items: temperatureEquipment.filter((equipment) => equipment.zone === zone),
   }));

@@ -46,7 +46,7 @@ const cards: Card[] = [
     kind: "termometro",
     icon: "🌡",
     title: "Leer temperatura mediante fotografía",
-    description: "Preparado para displays digitales de Arcón frío, Arcón congelador y Arcón hielo.",
+    description: "Preparado para leer displays digitales de los equipos de frío.",
   },
   {
     kind: "aceite",
