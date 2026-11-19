@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { hasAdminPermission } from "@/lib/appcc/auth/permissions";
 import { requireAdminSession } from "@/lib/appcc/auth";
 import { getOpenEquipmentAlerts, getRecentTemperatureRecords } from "@/lib/appcc/database";
 import { resolveAppccRecordFilters } from "@/lib/appcc/appcc-record-filters";
@@ -19,7 +21,7 @@ export default async function TemperaturasPage({
 }: {
   searchParams?: Promise<Record<string, string | undefined>>;
 }) {
-  await requireAdminSession();
+  const session = await requireAdminSession();
   const params = await searchParams;
   const filters = resolveAppccRecordFilters(params);
   const hasFilters = filters.preset !== "all" || Boolean(filters.subject || filters.status || filters.source || filters.dateFrom || filters.dateTo);
@@ -53,6 +55,11 @@ export default async function TemperaturasPage({
         />
       )}
     >
+      {hasAdminPermission(session, "appcc:manage") && (
+        <Link className="mb-4 inline-block font-semibold underline" href="/appcc/temperaturas/cotejo">
+          Listados históricos pendientes de cotejo
+        </Link>
+      )}
       <TemperatureForm action={saveTemperatureRecordAction} />
       <TemperatureAlerts alerts={alerts.ok ? alerts.data : []} />
     </RecordPageShell>
