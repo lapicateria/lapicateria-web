@@ -1,0 +1,34 @@
+import type { Metadata } from "next";
+import { requireAdminPermission } from "@/lib/appcc/auth/permissions";
+import { getSupplierOptions } from "@/lib/appcc/database";
+import { AdminHeader } from "../_components/AdminHeader";
+import { IaAssistantClient } from "./IaAssistantClient";
+
+export const metadata: Metadata = {
+  title: "Asistente IA APPCC | Panel interno",
+  description: "Base interna para OCR y clasificación inteligente de documentos APPCC.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
+export default async function IaAppccPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ saved?: string; error?: string }>;
+}) {
+  await requireAdminPermission("settings:manage");
+  const params = await searchParams;
+  const suppliersResult = await getSupplierOptions();
+  const suppliers = suppliersResult.ok ? suppliersResult.data : [];
+
+  return (
+    <main className="min-h-screen bg-[#0d0d0d] text-white">
+      <AdminHeader title="Asistente IA APPCC" description="Subida y clasificación inteligente de documentos sanitarios, albaranes, facturas, etiquetas y registros." />
+      <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 md:py-12">
+        <IaAssistantClient saved={params?.saved === "1"} errorMessage={params?.error} suppliers={suppliers} />
+      </section>
+    </main>
+  );
+}

@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/owner/", "/api/owner/"],
+        disallow: ["/owner/", "/api/owner/", "/appcc", "/api/print-jobs"],
       },
     ],
     sitemap: "https://lapicateria.es/sitemap.xml",
