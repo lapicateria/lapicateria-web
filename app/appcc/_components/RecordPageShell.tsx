@@ -14,6 +14,7 @@ export function RecordPageShell({
   recordsIntro,
   showRecordResponsible,
   beforeRecords,
+  afterRecords,
   children,
 }: {
   title: string;
@@ -25,6 +26,7 @@ export function RecordPageShell({
   recordsIntro?: string;
   showRecordResponsible?: boolean;
   beforeRecords?: React.ReactNode;
+  afterRecords?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
@@ -39,6 +41,7 @@ export function RecordPageShell({
           <div className="mt-6">{children}</div>
           {beforeRecords}
           <RecentRecords records={records} title={recordsTitle} intro={recordsIntro} showResponsible={showRecordResponsible} />
+          {afterRecords}
         </div>
       </section>
     </main>

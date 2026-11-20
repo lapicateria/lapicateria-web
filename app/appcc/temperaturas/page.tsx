@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { adminSupabaseRequest } from "@/lib/appcc/repositories/legacy-core";
+import { filterTemperatureHistory, historyStatuses, type TemperatureArchive } from "@/lib/appcc/temperature-history";
+import { TemperatureHistory } from "./TemperatureHistory";
 import { hasAdminPermission } from "@/lib/appcc/auth/permissions";
 import { requireAdminSession } from "@/lib/appcc/auth";
 import { getOpenEquipmentAlerts, getRecentTemperatureRecords } from "@/lib/appcc/database";
@@ -25,11 +27,24 @@ export default async function TemperaturasPage({
   const params = await searchParams;
   const filters = resolveAppccRecordFilters(params);
   const hasFilters = filters.preset !== "all" || Boolean(filters.subject || filters.status || filters.source || filters.dateFrom || filters.dateTo);
-  const [records, alerts] = await Promise.all([
+  const canReview = hasAdminPermission(session, "appcc:manage");
+  const [records, alerts, archive] = await Promise.all([
     getRecentTemperatureRecords({ ...filters, limit: hasFilters ? 200 : 10 }),
     getOpenEquipmentAlerts(),
+    canReview ? adminSupabaseRequest<TemperatureArchive[]>("appcc_temperature_review_batches", {
+      method: "GET",
+      query: "?select=id,filename,content,reviewed_at,evidence_reference&order=created_at.desc",
+    }) : null,
   ]);
-  const data = records.ok ? records.data : [];
+  const data = records.ok && !historyStatuses.includes(filters.status || "") ? records.data : [];
+  const history = filterTemperatureHistory(archive?.ok ? archive.data : [], filters);
+  const equipmentNames = new Set(temperatureEquipment.filter((equipment) => equipment.active).map((equipment) => equipment.name));
+  if (archive?.ok) {
+    for (const row of filterTemperatureHistory(archive.data, { preset: "all" })) {
+      const parent = row.equipment.split(" · ")[0];
+      if (!equipmentNames.has(parent)) equipmentNames.add(row.equipment);
+    }
+  }
 
   return (
     <RecordPageShell
@@ -41,29 +56,23 @@ export default async function TemperaturasPage({
       recordsTitle={hasFilters ? "Registros encontrados" : "Últimos 10 registros"}
       recordsIntro="Ordenados siempre de más reciente a más antiguo."
       showRecordResponsible={false}
+      afterRecords={canReview && <TemperatureHistory rows={history} loadFailed={archive?.ok === false} />}
       beforeRecords={(
-        <>
-          <AppccRecordFilters
-            filters={filters}
-            subjectLabel="Equipo"
-            subjectOptions={temperatureEquipment.filter((equipment) => equipment.active).map((equipment) => ({ label: equipment.name, value: equipment.name }))}
-            statusOptions={[
-              { label: "Correcto", value: "correcto" },
-              { label: "Revisar", value: "revisar" },
-              { label: "Incidencia", value: "incidencia" },
-            ]}
-            foundCount={data.length}
-          />
-          {hasAdminPermission(session, "appcc:manage") && (
-            <aside className="mt-5 rounded-2xl border border-white/15 bg-white/5 p-4">
-              <h2 className="font-bold">Histórico de temperaturas</h2>
-              <p className="mt-1 text-sm text-stone-300">Consulta los listados archivados y el estado de su cotejo.</p>
-              <Link className="mt-3 inline-flex rounded-full bg-[#d94b2b] px-4 py-2 text-sm font-bold text-white" href="/appcc/temperaturas/cotejo">
-                Ver listados históricos
-              </Link>
-            </aside>
-          )}
-        </>
+        <AppccRecordFilters
+          filters={filters}
+          subjectLabel="Equipo"
+          subjectOptions={[...equipmentNames].map((name) => ({ label: name, value: name }))}
+          statusOptions={[
+            { label: "Correcto", value: "correcto" },
+            { label: "Revisar", value: "revisar" },
+            { label: "Incidencia", value: "incidencia" },
+            ...(canReview ? [
+              { label: "Histórico · Pendiente de cotejo", value: "historico_pendiente" },
+              { label: "Histórico · Revisión documental registrada", value: "historico_revisado" },
+            ] : []),
+          ]}
+          foundCount={data.length}
+        />
       )}
     >
       <TemperatureForm action={saveTemperatureRecordAction} />
