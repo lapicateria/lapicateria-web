@@ -42,24 +42,30 @@ export default async function TemperaturasPage({
       recordsIntro="Ordenados siempre de más reciente a más antiguo."
       showRecordResponsible={false}
       beforeRecords={(
-        <AppccRecordFilters
-          filters={filters}
-          subjectLabel="Equipo"
-          subjectOptions={temperatureEquipment.filter((equipment) => equipment.active).map((equipment) => ({ label: equipment.name, value: equipment.name }))}
-          statusOptions={[
-            { label: "Correcto", value: "correcto" },
-            { label: "Revisar", value: "revisar" },
-            { label: "Incidencia", value: "incidencia" },
-          ]}
-          foundCount={data.length}
-        />
+        <>
+          <AppccRecordFilters
+            filters={filters}
+            subjectLabel="Equipo"
+            subjectOptions={temperatureEquipment.filter((equipment) => equipment.active).map((equipment) => ({ label: equipment.name, value: equipment.name }))}
+            statusOptions={[
+              { label: "Correcto", value: "correcto" },
+              { label: "Revisar", value: "revisar" },
+              { label: "Incidencia", value: "incidencia" },
+            ]}
+            foundCount={data.length}
+          />
+          {hasAdminPermission(session, "appcc:manage") && (
+            <aside className="mt-5 rounded-2xl border border-white/15 bg-white/5 p-4">
+              <h2 className="font-bold">Histórico de temperaturas</h2>
+              <p className="mt-1 text-sm text-stone-300">Consulta los listados archivados y el estado de su cotejo.</p>
+              <Link className="mt-3 inline-flex rounded-full bg-[#d94b2b] px-4 py-2 text-sm font-bold text-white" href="/appcc/temperaturas/cotejo">
+                Ver listados históricos
+              </Link>
+            </aside>
+          )}
+        </>
       )}
     >
-      {hasAdminPermission(session, "appcc:manage") && (
-        <Link className="mb-4 inline-block font-semibold underline" href="/appcc/temperaturas/cotejo">
-          Listados históricos pendientes de cotejo
-        </Link>
-      )}
       <TemperatureForm action={saveTemperatureRecordAction} />
       <TemperatureAlerts alerts={alerts.ok ? alerts.data : []} />
     </RecordPageShell>
